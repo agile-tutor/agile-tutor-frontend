@@ -1,23 +1,21 @@
-import 'materialize-css/dist/css/materialize.min.css'
-
+import 'materialize-css/dist/css/materialize.min.css';
+import '../App.css';
 
 function Alumno({nombre, asistencia, setearAsistencia}) {
     return (
-      <div className="Alumno">
-          <tr>
+          <tr className='Fila-alumno' >
             <td>{nombre}</td>
             <td>      
               <label>
               {console.log(nombre, asistencia)}
                 { asistencia ? 
-                  <input type="checkbox" class="filled-in" checked="checked" disabled = "disabled" />
+                  <input name={nombre} type="checkbox" className="filled-in" checked="checked" onChange={setearAsistencia} />
                   : 
-                  <input type="checkbox" class="filled-in" />}
+                  <input name={nombre} type="checkbox" className="filled-in" onChange={setearAsistencia} />}
                 <span>✔</span>
               </label>
             </td>
           </tr>
-      </div>
     );
   }
   
