@@ -1,22 +1,31 @@
+import { useContext } from 'react';
+import { Context } from '../context/Context.js';
 import 'materialize-css/dist/css/materialize.min.css';
 import '../App.css';
 
-function Alumno({nombre, asistencia, setearAsistencia}) {
-    return (
-          <tr className='Fila-alumno' >
-            <td>{nombre}</td>
-            <td>      
-              <label>
-              {console.log(nombre, asistencia)}
-                { asistencia ? 
-                  <input name={nombre} type="checkbox" className="filled-in" checked="checked" onChange={setearAsistencia} />
-                  : 
-                  <input name={nombre} type="checkbox" className="filled-in" onChange={setearAsistencia} />}
-                <span>✔</span>
-              </label>
-            </td>
-          </tr>
-    );
+function Alumno({ nombre, asistencia }) {
+
+  const { updateAttendance } = useContext(Context)
+
+  const handleChangeAttendance = ({ target }) => {
+    updateAttendance(target);
   }
-  
-  export default Alumno;
+
+  return (
+    <tr className='Fila-alumno' >
+      <td>{nombre}</td>
+      <td>
+        <label>
+          {console.log(nombre, asistencia)}
+          {asistencia ?
+            <input name={nombre} type="checkbox" className="filled-in" checked="checked" onChange={handleChangeAttendance} />
+            :
+            <input name={nombre} type="checkbox" className="filled-in" onChange={handleChangeAttendance} />}
+          <span>✔</span>
+        </label>
+      </td>
+    </tr>
+  );
+}
+
+export default Alumno;
