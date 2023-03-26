@@ -1,16 +1,16 @@
-import Comision from './components/Comision.js';
-import './App.css';
 import { Provider } from './context/Provider.js';
-import PorcentajeAsistencia from './components/PorcentajeAsistencia.js';
+import { AttendanceRoutes } from './routes.js';
+import './App.css';
 
-function App() {
+
+const App = () => {
   return (
-    <div className="App">
-      <Provider>
-        <Comision />
-        <PorcentajeAsistencia />
-      </Provider>
-    </div>
+    <Provider>
+      <div className="App">
+        <AttendanceRoutes />
+      </div>
+    </Provider>
+
   );
 }
 

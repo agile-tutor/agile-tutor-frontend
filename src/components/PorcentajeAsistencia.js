@@ -24,7 +24,7 @@ function PorcentajeAsistencia() {
                 </p>
             </form>
             <div>
-                Alumnos que no cumplen el requisito:
+                Alumnos que NO cumplen el requisito:
                 {checked.map((alumno) => { return (<CardAlumno key={alumno.nombre} nombre={alumno.nombre} asistencia={alumno.asistencia} />) })}
             </div>
         </div>

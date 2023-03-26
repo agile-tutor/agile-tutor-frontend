@@ -16,4 +16,4 @@ function CardAlumno({ nombre, asistencia }) {
     )
 }
 
-export default CardAlumno
+export default CardAlumno;
