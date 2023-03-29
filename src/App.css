@@ -33,3 +33,11 @@ td {
 .card-panel {
   padding: 2rem;
 }
+
+.tealRed {
+  background-color: red !important;
+}
+
+.tealGreen {
+  background-color: green !important;
+}

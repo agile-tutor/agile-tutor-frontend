@@ -4,7 +4,17 @@ import { Context } from "./Context"
 
 export const Provider = ({ children }) => {
 
-  const [checked, setChecked] = useState([{ nombre: "Ada Lovelace", asistencia: false }, { nombre: "Alan Turing", asistencia: false }, { nombre: "Donald Knuth", asistencia: false }, { nombre: "Dennis Ritchie", asistencia: true }, { nombre: "Richard Stallman", asistencia: false }, { nombre: "Bjarne Stroustrup", asistencia: false }, { nombre: "Tim Berners-Lee", asistencia: false }, { nombre: "Alan Cooper", asistencia: false }, { nombre: "Linus Torvalds", asistencia: false }])
+  const [checked, setChecked] = useState([
+    { nombre: "Ada Lovelace", asistencia: false, porcentaje: 75 },
+    { nombre: "Alan Turing", asistencia: false, porcentaje: 70 },
+    { nombre: "Donald Knuth", asistencia: false, porcentaje: 76 },
+    { nombre: "Dennis Ritchie", asistencia: true, porcentaje: 15 },
+    { nombre: "Richard Stallman", asistencia: false, porcentaje: 8 },
+    { nombre: "Bjarne Stroustrup", asistencia: false, porcentaje: 100 },
+    { nombre: "Tim Berners-Lee", asistencia: false, porcentaje: 95 },
+    { nombre: "Alan Cooper", asistencia: false, porcentaje: 25 },
+    { nombre: "Linus Torvalds", asistencia: false, porcentaje: 50 }
+  ])
 
   const value = {
     //estado

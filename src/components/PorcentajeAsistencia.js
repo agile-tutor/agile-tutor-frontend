@@ -14,6 +14,10 @@ function PorcentajeAsistencia() {
         console.log('value is:', event.target.value);
     };
 
+    const dontPass = checked.filter((alumno) => { return (alumno.porcentaje < porcentaje) });
+
+    const pass = checked.filter((alumno) => { return (alumno.porcentaje >= porcentaje) });
+
     return (
         <div className='PorcentajeAsistencia' >
             Asistencia Requerida
@@ -25,7 +29,11 @@ function PorcentajeAsistencia() {
             </form>
             <div>
                 Alumnos que NO cumplen el requisito:
-                {checked.map((alumno) => { return (<CardAlumno key={alumno.nombre} nombre={alumno.nombre} asistencia={alumno.asistencia} />) })}
+                {dontPass.map((alumno) => { return (<CardAlumno key={alumno.nombre} nombre={alumno.nombre} porcentaje={alumno.porcentaje} porcentajeActual={porcentaje} />) })}
+            </div>
+            <div>
+                Alumnos que cumplen el requisito:
+                {pass.map((alumno) => { return (<CardAlumno key={alumno.nombre} nombre={alumno.nombre} porcentaje={alumno.porcentaje} porcentajeActual={porcentaje} />) })}
             </div>
         </div>
     )
