@@ -35,9 +35,32 @@ td {
 }
 
 .tealRed {
-  background-color: red !important;
+  background-color: #9f283b !important;
 }
 
 .tealGreen {
-  background-color: green !important;
+  background-color: #1f849c !important;
 }
+
+.image-logo {
+  margin: .5rem;
+  max-width: 10rem;
+  max-height: 10rem;
+}
+
+.nav-wrapper {
+  background-color: #dad9d5;
+}
+
+#nav-var-web {
+  color: #9f283b;
+}
+
+#boton-save-attendance {
+  margin-top: 3rem;
+}
+
+/*
+.sidenav {
+  color: #9f283b;
+}*/
