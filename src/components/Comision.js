@@ -14,6 +14,7 @@ function Comision() {
   */
   return (
     <div className="Comision">
+      <h4 className="titulo-tabla" >Comision #666</h4>
       <table className="Comision-table strip">
         <thead>
           <tr>

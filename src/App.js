@@ -1,16 +1,19 @@
 import { Provider } from './context/Provider.js';
+import { BrowserRouter as Router } from "react-router-dom";
 import { AttendanceRoutes } from './routes.js';
-import NavBar from './components/NavBar.js';
 import './App.css';
-
+import NavBar from './components/NavBar.js';
 
 const App = () => {
+
   return (
     <Provider>
-      <NavBar />
-      <div className="App">
-        <AttendanceRoutes />
-      </div>
+      <Router>
+        <NavBar />
+        <div className="App">
+          <AttendanceRoutes />
+        </div>
+      </Router>
     </Provider>
 
   );

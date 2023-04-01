@@ -13,6 +13,7 @@
 .Comision {
   text-align: center;
   padding-bottom: 50px;
+  padding-top: 1rem;
 }
 
 .Comision-table {
@@ -24,10 +25,15 @@ td {
   padding: 1em;
 }
 
+.porcentajeAsistencia {
+  font-size:normal;
+  padding: 1rem;
+}
+
 .porcentajeToShow {
   color: crimson;
-  font-size: medium;
-  font-weight: bold;
+  font-size:larger;
+  font-weight:normal;
 }
 
 .card-panel {
@@ -56,11 +62,28 @@ td {
   color: #9f283b;
 }
 
+#nav-var-mob {
+  color: #dad9d5;
+  font-weight: no;
+  font-size: large;
+  margin: 5% 5% 0 0;
+} 
+
 #boton-save-attendance {
   margin-top: 3rem;
 }
 
-/*
+.titulo-tabla {
+padding: .2rem;
+margin: .2rem;
+color: #1f849c;
+font-weight: bolder;
+text-align: center;
+justify-content: center;
+}
+
 .sidenav {
-  color: #9f283b;
-}*/
+  background-color: #1f849c;
+  border-radius: 0 0 100% 0;
+}
+
