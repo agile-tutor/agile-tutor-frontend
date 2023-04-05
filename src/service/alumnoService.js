@@ -1,19 +1,32 @@
 import axios from 'axios';
 import { AlumnoModel } from '../domain/alumnoModel'
-const REST_SERVER_URL = "http://localhost:5000"
+import { REST_SERVER_URL } from './constants'
+
 class AlumnoService {
-
-
-  //const postContent = ( id) => axios.post('http://localhost:7000/user/fav', { id: id }, { headers: { Authorization: localStorage.getItem('Token') } })
 
   alumnoAsJson(alumnoJson) {
     return AlumnoModel.fromJson(alumnoJson)
   }
 
-  async getComision(id) {
-    const alumnosJson = await axios.get(`${REST_SERVER_URL}/comision/${id}`)
-    const alumnos = alumnosJson.data.map(this.alumnoAsJson)
-    return alumnos.sort((a, b) => (a.nombre < b.nombre) ? -1 : 1)
+  async getComision(/*id*/) {
+
+    try {
+      const alumnosJson = await axios.get(`${REST_SERVER_URL}/api/students`, {
+        method: 'GET',
+        mode: 'no-cors',
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Credentials': 'true'
+        },
+        credentials: 'same-origin',
+      })
+      console.log(alumnosJson);
+      const alumnos = alumnosJson.data.map(this.alumnoAsJson);
+      return alumnos.sort((a, b) => (a.nombre < b.nombre) ? -1 : 1);
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   async actualizarComision(comision) {

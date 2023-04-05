@@ -1,15 +1,29 @@
 export class AlumnoModel {
-  constructor(){
+  constructor() {
     this.id = 0
-    this.nombre = ''
-    this.attendance = ''
+    this.name = ''
+    this.surname = ''
+    this.identifier = ''
+    this.email = ''
+    this.attendances = ''
+    this.attendancespercent = 0.0
+    this.observations = ''
   }
 
   static fromJson(alumnoJson) {
     const result = Object.assign(new AlumnoModel(),
       alumnoJson,
-      { nombre: alumnoJson.nombre, attendance: alumnoJson.attendance }
-    )  
+      {
+        id: (alumnoJson.id * 1),
+        name: alumnoJson.name,
+        surname: alumnoJson.surname,
+        identifier: alumnoJson.identifier,
+        email: alumnoJson.email,
+        attendances: (alumnoJson.attendances[0].attended === "true"),
+        attendancespercent: Number(alumnoJson.attendancepercentage),
+        observations: alumnoJson.observations
+      }
+    )
     return result
   }
 }

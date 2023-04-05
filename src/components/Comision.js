@@ -12,9 +12,9 @@ function Comision() {
   
       })
   */
-  const withoutCheck = checked.filter((alumno) => { return (!alumno.asistencia) });
+  const withoutCheck = checked.filter((alumno) => { return (!alumno.attendances) });
 
-  const withCheck = checked.filter((alumno) => { return (alumno.asistencia) });
+  const withCheck = checked.filter((alumno) => { return (alumno.attendances) });
 
   return (
     <div className="Comision">
@@ -27,8 +27,8 @@ function Comision() {
           </tr>
         </thead>
         <tbody>
-          {withoutCheck.map((alumno) => { return (<Alumno key={alumno.nombre} nombre={alumno.nombre} asistencia={alumno.asistencia} />) })}
-          {withCheck.map((alumno) => { return (<Alumno key={alumno.nombre} nombre={alumno.nombre} asistencia={alumno.asistencia} />) })}        
+          {withoutCheck.map((alumno) => { return (<Alumno key={alumno.id} id={alumno.id} nombre={alumno.name + " " + alumno.surname} asistencia={alumno.attendances} />) })}
+          {withCheck.map((alumno) => { return (<Alumno key={alumno.id} id={alumno.id} nombre={alumno.name + " " + alumno.surname} asistencia={alumno.attendances} />) })}
         </tbody>
       </table>
       <button id='boton-save-attendance' className='btn waves-effect waves-light' type="submit" name='action' onClick={saveAttendance}>Guardar Asistencias
