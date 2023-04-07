@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import 'materialize-css/dist/css/materialize.min.css'
 import Alumno from './Alumno.js';
 import { Context } from '../context/Context.js';
+import Preloader from '../utils/Preloader.js'
 
 function Comision() {
 
@@ -42,32 +43,34 @@ function Comision() {
   console.log(withoutCheck)
   console.log(withCheck)
   return (
-    <div className="Comision">
-      <h4 className="titulo-tabla" >Comision #666</h4>
-      <table className="Comision-table strip">
-        <thead>
-          <tr>
-            <th>Estudiante</th>
-            <th>Asistencia</th>
-          </tr>
-        </thead>
-        <tbody>
+    <div> {checked.length === 0 ? <Preloader /> :
+      <div className="Comision">
+        <h4 className="titulo-tabla" >Comision #666</h4>
+        <table className="Comision-table strip">
+          <thead>
+            <tr>
+              <th>Estudiante</th>
+              <th>Asistencia</th>
+            </tr>
+          </thead>
+          <tbody>
 
-          {withoutCheck.map((alumno) => {
-            return (<Alumno key={alumno.id} id={alumno.id} id_asistencia={attendanceDay(alumno, diauno).id}
-              nombre={alumno.name + " " + alumno.surname} asistencia={attendanceDay(alumno, diauno).attended} />)
-          })}
+            {withoutCheck.map((alumno) => {
+              return (<Alumno key={alumno.id} id={alumno.id} id_asistencia={attendanceDay(alumno, diauno).id}
+                nombre={alumno.name + " " + alumno.surname} asistencia={attendanceDay(alumno, diauno).attended} />)
+            })}
 
-          {withCheck.map((alumno) => {
-            return (<Alumno key={alumno.id} id={alumno.id} id_asistencia={attendanceDay(alumno, diauno).id}
-              nombre={alumno.name + " " + alumno.surname} asistencia={attendanceDay(alumno, diauno).attended} />)
-          })}
+            {withCheck.map((alumno) => {
+              return (<Alumno key={alumno.id} id={alumno.id} id_asistencia={attendanceDay(alumno, diauno).id}
+                nombre={alumno.name + " " + alumno.surname} asistencia={attendanceDay(alumno, diauno).attended} />)
+            })}
 
-        </tbody>
-      </table>
-      <button id='boton-save-attendance' className='btn waves-effect waves-light' type="submit" name='action' onClick={saveAttendance}>Guardar Asistencias
-        <i className='material-icons right'>send</i>
-      </button>
+          </tbody>
+        </table>
+        <button id='boton-save-attendance' className='btn waves-effect waves-light' type="submit" name='action' onClick={saveAttendance}>Guardar Asistencias
+          <i className='material-icons right'>send</i>
+        </button>
+      </div>}
     </div>
   );
 }
