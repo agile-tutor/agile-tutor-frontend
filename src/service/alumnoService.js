@@ -23,9 +23,30 @@ class AlumnoService {
       })
       console.log(alumnosJson);
       const alumnos = alumnosJson.data.map(this.alumnoAsJson);
-      return alumnos.sort((a, b) => (a.nombre < b.nombre) ? -1 : 1);
+      return alumnos.sort((a, b) => (a.surname < b.surname) ? -1 : 1);
     } catch (error) {
       console.error(error);
+    }
+  }
+
+  async updateAttendances(attendances) {
+    console.log(attendances);
+    let asistencias = JSON.stringify(attendances)
+    try {
+      const response = await axios({
+        url: `${REST_SERVER_URL}/api/updateattendances`,
+        method: 'PUT',
+        data: asistencias,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Credentials': 'true'
+        },
+      })
+      return response
+    } catch (e) {
+      alert(e)
+      console.error(e)
     }
   }
 

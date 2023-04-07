@@ -3,21 +3,21 @@ import { Context } from '../context/Context.js';
 import 'materialize-css/dist/css/materialize.min.css';
 import '../App.css';
 
-function Alumno({ id, nombre, asistencia }) {
+function Alumno({ id, id_asistencia, nombre, asistencia }) {
 
   const { updateAttendance } = useContext(Context)
 
   const handleChangeAttendance = ({ target }) => {
-    updateAttendance(target);
+    updateAttendance(target, id_asistencia);
   }
 
   return (
     <tr className='Fila-alumno' >
-      <td>{nombre}</td>
+      <td>{nombre+" "+id_asistencia+" "+asistencia}</td>
       <td>
         <label>
           {console.log(nombre, asistencia)}
-          {asistencia ?
+          {(asistencia === true) || (asistencia === "true") ?
             <input id={id} name={nombre} type="checkbox" className="filled-in" checked="checked" onChange={handleChangeAttendance} />
             :
             <input id={id} name={nombre} type="checkbox" className="filled-in" onChange={handleChangeAttendance} />}

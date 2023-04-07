@@ -5,7 +5,7 @@ export class AlumnoModel {
     this.surname = ''
     this.identifier = ''
     this.email = ''
-    this.attendances = ''
+    this.attendances = []
     this.attendancespercent = 0.0
     this.observations = ''
   }
@@ -19,7 +19,7 @@ export class AlumnoModel {
         surname: alumnoJson.surname,
         identifier: alumnoJson.identifier,
         email: alumnoJson.email,
-        attendances: (alumnoJson.attendances[0].attended === "true"),
+        attendances: alumnoJson.attendances,
         attendancespercent: Number(alumnoJson.attendancepercentage),
         observations: alumnoJson.observations
       }
