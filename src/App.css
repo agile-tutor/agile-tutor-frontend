@@ -17,12 +17,26 @@
 }
 
 .Comision-table {
-  margin: .5em;
-  padding: .5em;
+  padding: 5vh;
+  width: 90vw;
 }
 
-td {
-  padding: 1em;
+#columna-check{
+  padding-left: 10.5vw;
+}
+
+#columna-apellidonombre{
+  padding-top: 1.5vh;
+  padding-left: 10.5vw;
+}
+
+#descripcion-asistencias{
+  padding-left: 7.5vw;
+}
+
+
+#descripcion-estudiante{
+  padding-left: 10.5vw;
 }
 
 .porcentajeAsistencia {
@@ -42,6 +56,7 @@ td {
 
 .tealRed {
   background-color: #9f283b !important;
+  border-radius: 1%;
 }
 
 .tealGreen {
@@ -64,17 +79,18 @@ td {
 
 #nav-var-mob {
   color: #dad9d5;
-  font-weight: no;
   font-size: large;
-  margin: 5% 5% 0 0;
+  margin: 5vw -2.5vh;
 } 
 
 #boton-save-attendance {
   margin-top: 3rem;
+  height: 10vh;
+  width: 65vw;
 }
 
 .titulo-tabla {
-padding: .2rem;
+padding: 2rem;
 margin: .2rem;
 color: #1f849c;
 font-weight: bolder;
@@ -87,3 +103,39 @@ justify-content: center;
   border-radius: 0 0 100% 0;
 }
 
+.breadcrumb {
+  padding: .1rem;
+  color: #9f283b;
+}
+
+.dropdown-trigger{
+  color: #9f283b;
+}
+
+.dropdown-content {
+  color: #1f849c;
+  font-weight: normal;
+}
+
+.passAttendanceTable {
+  width: 75vw;
+}
+
+#guardar-asistencias-boton{
+  font-size: xx-large;
+}
+
+.toast {
+  background-color: #1f849c;
+  border-radius: 2px;
+}
+
+.btn {
+  background-color: #1f849c;
+}
+
+
+[type="checkbox"].filled-in:checked + span:not(.lever)::after {
+  background-color: #1f849c;
+  border: 2px solid #3f91a5;
+}

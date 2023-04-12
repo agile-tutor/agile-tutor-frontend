@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { AlumnoModel } from '../domain/alumnoModel'
 import { REST_SERVER_URL } from './constants'
+import M from 'materialize-css/dist/js/materialize.min.js';
 
 class AlumnoService {
 
@@ -43,6 +44,7 @@ class AlumnoService {
           'Access-Control-Allow-Credentials': 'true'
         },
       })
+      M.toast({html: 'Asistencias actualizadas con éxito!'})
       return response
     } catch (e) {
       alert(e)

@@ -13,10 +13,10 @@ function Alumno({ id, id_asistencia, nombre, asistencia }) {
 
   return (
     <tr className='Fila-alumno' >
-      <td>{nombre+" "+id_asistencia+" "+asistencia}</td>
-      <td>
+      <td id="columna-apellidonombre">{nombre/*+" "+id_asistencia+" "+asistencia*/}</td>
+      <td id="columna-check">
         <label>
-          {console.log(nombre, asistencia)}
+          {/*console.log(nombre, asistencia)*/}
           {(asistencia === true) || (asistencia === "true") ?
             <input id={id} name={nombre} type="checkbox" className="filled-in" checked="checked" onChange={handleChangeAttendance} />
             :

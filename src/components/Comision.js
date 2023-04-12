@@ -2,17 +2,12 @@ import { useContext } from 'react';
 import 'materialize-css/dist/css/materialize.min.css'
 import Alumno from './Alumno.js';
 import { Context } from '../context/Context.js';
-import Preloader from '../utils/Preloader.js'
+import Preloader from '../utils/Preloader.js';
+import Breadcrumbs from '../utils/Breadcrumbs.js';
 
 function Comision() {
 
   const { checked, saveAttendance } = useContext(Context)
-
-  /*
-      useEffect(() => {
-  
-      })
-  */
 
   //    console.log(checked[0].attendances[0].attended)
   const diauno = 1
@@ -45,30 +40,31 @@ function Comision() {
   return (
     <div> {checked.length === 0 ? <Preloader /> :
       <div className="Comision">
-        <h4 className="titulo-tabla" >Comision #666</h4>
+        <Breadcrumbs />
+        <h4 className="titulo-tabla" >Comisión 1</h4>
         <table className="Comision-table strip">
           <thead>
             <tr>
-              <th>Estudiante</th>
-              <th>Asistencia</th>
+              <th id="descripcion-estudiante">Estudiante</th>
+              <th id="descripcion-asistencias">Asistencia</th>
             </tr>
           </thead>
           <tbody>
 
             {withoutCheck.map((alumno) => {
               return (<Alumno key={alumno.id} id={alumno.id} id_asistencia={attendanceDay(alumno, diauno).id}
-                nombre={alumno.name + " " + alumno.surname} asistencia={attendanceDay(alumno, diauno).attended} />)
+                nombre={alumno.surname + " " + alumno.name} asistencia={attendanceDay(alumno, diauno).attended} />)
             })}
 
             {withCheck.map((alumno) => {
               return (<Alumno key={alumno.id} id={alumno.id} id_asistencia={attendanceDay(alumno, diauno).id}
-                nombre={alumno.name + " " + alumno.surname} asistencia={attendanceDay(alumno, diauno).attended} />)
+                nombre={alumno.surname + " " + alumno.name} asistencia={attendanceDay(alumno, diauno).attended} />)
             })}
 
           </tbody>
         </table>
-        <button id='boton-save-attendance' className='btn waves-effect waves-light' type="submit" name='action' onClick={saveAttendance}>Guardar Asistencias
-          <i className='material-icons right'>send</i>
+        <button id='boton-save-attendance' className='btn waves-effect waves-light' type="submit" name='action' onClick={saveAttendance}>
+          <i id="guardar-asistencias-boton" className='material-icons left'>save </i>  Guardar Asistencias
         </button>
       </div>}
     </div>

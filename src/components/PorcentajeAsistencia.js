@@ -18,7 +18,7 @@ function PorcentajeAsistencia() {
     const pass = checked.filter((alumno) => { return (Number(alumno.attendancespercent) >= porcentaje) });
     return (
         <div className='porcentajeAsistencia' >
-            <h4 className="titulo-tabla" >Configuración de Porcentaje requerido</h4>
+            <h4 className="titulo-tabla" >Configurar porcentaje requerido</h4>
             <form action="#">
                 <p className="range-field">
                     <label className='porcentajeToShow'>{"Asistencia del " + porcentaje}%</label>
