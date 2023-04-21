@@ -18,9 +18,9 @@ function Alumno({ id, id_asistencia, nombre, asistencia }) {
         <label>
           {/*console.log(nombre, asistencia)*/}
           {(asistencia === true) || (asistencia === "true") ?
-            <input id={id} name={nombre} type="checkbox" className="filled-in" checked="checked" onChange={handleChangeAttendance} />
+            <input data-testid="attendancebutton" id={id} name={nombre} type="checkbox" className="filled-in" checked="checked" onChange={handleChangeAttendance} />
             :
-            <input id={id} name={nombre} type="checkbox" className="filled-in" onChange={handleChangeAttendance} />}
+            <input data-testid="attendancebutton" id={id} name={nombre} type="checkbox" className="filled-in" onChange={handleChangeAttendance} />}
           <span>✔</span>
         </label>
       </td>
