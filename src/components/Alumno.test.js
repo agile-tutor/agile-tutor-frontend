@@ -39,6 +39,4 @@ describe('Alumno', () => {
         //Assert 
         expect(screen.getByTestId("attendancebutton").checked).toEqual(false)
     })
-
-
 })

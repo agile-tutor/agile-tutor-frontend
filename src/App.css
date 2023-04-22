@@ -21,33 +21,33 @@
   width: 90vw;
 }
 
-#columna-check{
+#columna-check {
   padding-left: 10.5vw;
 }
 
-#columna-apellidonombre{
+#columna-apellidonombre {
   padding-top: 1.5vh;
   padding-left: 10.5vw;
 }
 
-#descripcion-asistencias{
+#descripcion-asistencias {
   padding-left: 7.5vw;
 }
 
 
-#descripcion-estudiante{
+#descripcion-estudiante {
   padding-left: 10.5vw;
 }
 
 .porcentajeAsistencia {
-  font-size:normal;
+  font-size: normal;
   padding: 1rem;
 }
 
 .porcentajeToShow {
   color: crimson;
-  font-size:larger;
-  font-weight:normal;
+  font-size: larger;
+  font-weight: normal;
 }
 
 .card-panel {
@@ -81,7 +81,7 @@
   color: #dad9d5;
   font-size: large;
   margin: 5vw -2.5vh;
-} 
+}
 
 #boton-save-attendance {
   margin-top: 3rem;
@@ -89,13 +89,22 @@
   width: 65vw;
 }
 
+#boton-change-daycheck {
+  color: #9f283b;
+}
+
+#boton-change-daycheck:focus {
+  background-color: #1f849c;
+  color: #dad9d5;
+}
+
 .titulo-tabla {
-padding: 2rem;
-margin: .2rem;
-color: #1f849c;
-font-weight: bolder;
-text-align: center;
-justify-content: center;
+  padding: 2rem;
+  margin: .2rem;
+  color: #1f849c;
+  font-weight: bolder;
+  text-align: center;
+  justify-content: center;
 }
 
 .sidenav {
@@ -108,7 +117,7 @@ justify-content: center;
   color: #9f283b;
 }
 
-.dropdown-trigger{
+.dropdown-trigger {
   color: #9f283b;
 }
 
@@ -121,7 +130,12 @@ justify-content: center;
   width: 75vw;
 }
 
-#guardar-asistencias-boton{
+#editComisionTable {
+  width: 75vw;
+  font-size: small;
+}
+
+#guardar-asistencias-boton {
   font-size: xx-large;
 }
 
@@ -135,7 +149,15 @@ justify-content: center;
 }
 
 
-[type="checkbox"].filled-in:checked + span:not(.lever)::after {
+[type="checkbox"].filled-in:checked+span:not(.lever)::after {
   background-color: #1f849c;
   border: 2px solid #3f91a5;
+}
+
+.tabs .tab a {
+  font-size: 2.5vmax
+}
+
+.responsivelogo {
+  max-width: 95vw;
 }

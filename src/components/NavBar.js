@@ -20,9 +20,9 @@ function NavBar() {
                     <a href="#" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
                     <ul className="right hide-on-med-and-down" >
                         <li ><Link id='nav-var-web' to="/passAttendance">Pasar Asistencia</Link></li>
+                        <li ><Link id='nav-var-web' to="/editCourse">Editar Comision</Link></li>
                         <li ><Link id='nav-var-web' to="/attendancePercent">Porcentaje Asistencia</Link></li>
-                        {/*<li ><Link id='nav-var-web' to="/passAttendance">Pasar Asistencia</Link></li>
-                        <li ><Link id='nav-var-web' to="/attendancePercent">Configuración Asistencias</Link></li>*/}
+                        <li ><Link id='nav-var-web' to="/tasks">Tareas Programadas</Link></li>
                     </ul>
                 </div>
             </nav>
@@ -30,10 +30,10 @@ function NavBar() {
             <ul className="sidenav sidenav-close" id="mobile-demo">
                 <li ><Link id='nav-var-mob' to="/"><i className="material-icons">home</i>Home</Link></li>
                 <li ><Link id='nav-var-mob' to="/passAttendance"><i className="material-icons">pan_tool</i>Pasar Asistencia</Link></li>
+                <li ><Link id='nav-var-mob' to="/editCourse"><i className="material-icons">mode_edit</i>Editar Comision</Link></li>
                 <li ><Link id='nav-var-mob' to="/attendancePercent"><i className="material-icons">settings</i>Porcentaje Asistencia</Link></li>
-                {/*<li ><Link id='nav-var-mob' to="/passAttendance">Pasar Asistencia</Link></li>
-                <li ><Link id='nav-var-mob' to="/attendancePercent">Configuración Asistencias</Link></li>
-                <li><a className="dropdown-trigger" href="#!" data-target="dropdown2">Comision<i className="material-icons right">arrow_drop_down</i></a></li>*/}
+                <li ><Link id='nav-var-mob' to="/tasks"><i className="material-icons">schedule</i>Tareas Programadas</Link></li>
+                {/*<li><a className="dropdown-trigger" href="#!" data-target="dropdown2">Comision<i className="material-icons right">arrow_drop_down</i></a></li>*/}
             </ul>
         </div>
     )

@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 import { alumnoService } from "../service/alumnoService"
 import { Context } from "./Context"
-//import { AttendanceModel } from '../domain/attendanceModel'
 import { AttendanceModel } from "../domain/attendanceModel"
 
 export const Provider = ({ children }) => {
@@ -14,8 +13,6 @@ export const Provider = ({ children }) => {
     checked,
     //funciones que afectan el estado
     updateAttendance: (target, id_asistencia) => {
-      //      console.log(checked, target.checked, id_asistencia)
-      //     console.log(id_asistencia)
       const updatedChecked = checked.map(alumno =>
         alumno.id === (target.id * 1)
           ? { ...alumno, attendances: modifyAttendance(alumno.attendances, (target.checked), (id_asistencia)) }

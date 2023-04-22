@@ -1,16 +1,26 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import 'materialize-css/dist/css/materialize.min.css'
 import Alumno from './Alumno.js';
 import { Context } from '../context/Context.js';
 import Preloader from '../utils/Preloader.js';
 import Breadcrumbs from '../utils/Breadcrumbs.js';
+import M from 'materialize-css/dist/js/materialize.min.js';
 
 function Comision() {
 
   const { checked, saveAttendance } = useContext(Context)
+  const [diaToCheck, setDiaToCheck] = useState(1)
+
+  useEffect(() => {
+    M.Tabs.init();
+  }, []);
+
+  const changeDay = (dia) => {
+    setDiaToCheck(dia)
+  }
+
 
   //    console.log(checked[0].attendances[0].attended)
-  const diauno = 1
 
   const attendanceDay = (student, lookingForday) => {
     // console.log(student.name + " " + student.attendances.find(a => a.day === lookingForday).attended)
@@ -21,18 +31,18 @@ function Comision() {
   //    return student.attendances.find(a => a.day === lookingForday).attended
   //  }
 
-  console.log(checked.map(alumno => alumno.attendances).flat().filter(attendance => attendance.day === diauno))
+  console.log(checked.map(alumno => alumno.attendances).flat().filter(attendance => attendance.day === diaToCheck))
 
-  console.log(checked.filter((alumno) => (alumno.attendances.find(a => a.day === diauno).attended === 'false')))
-  console.log(checked.filter((alumno) => alumno.attendances.find(a => a.day === diauno).attended === 'true'))
+  console.log(checked.filter((alumno) => (alumno.attendances.find(a => a.day === diaToCheck).attended === 'false')))
+  console.log(checked.filter((alumno) => alumno.attendances.find(a => a.day === diaToCheck).attended === 'true'))
   const withoutCheck = checked.filter((alumno) =>
-    (alumno.attendances.find(a => a.day === diauno).attended === 'false')
-    || (!alumno.attendances.find(a => a.day === diauno).attended === true)
+    (alumno.attendances.find(a => a.day === diaToCheck).attended === 'false')
+    || (!alumno.attendances.find(a => a.day === diaToCheck).attended === true)
   );
 
   const withCheck = checked.filter((alumno) =>
-    (alumno.attendances.find(a => a.day === diauno).attended === 'true')
-    || (alumno.attendances.find(a => a.day === diauno).attended === true)
+    (alumno.attendances.find(a => a.day === diaToCheck).attended === 'true')
+    || (alumno.attendances.find(a => a.day === diaToCheck).attended === true)
   );
 
   console.log(withoutCheck)
@@ -40,8 +50,22 @@ function Comision() {
   return (
     <div> {checked.length === 0 ? <Preloader /> :
       <div className="Comision">
-        <Breadcrumbs />
-        <h4 className="titulo-tabla" >Comisión 1</h4>
+        <Breadcrumbs posicion0={"Pasar Asistencias"} posicion1={"Comisión 1"} posicion2={"Dia " + diaToCheck} route0={"/passAttendance"} route1={"/comision"} />
+        <h4 className="titulo-tabla" >Encuentro N°</h4>
+
+        <div className="row">
+          <div className="col s12">
+            <ul className="tabs">
+              <li className="tab col s2"><button id='boton-change-daycheck' onClick={() => changeDay(1)}>1</button></li>
+              <li className="tab col s2"><button id='boton-change-daycheck' onClick={() => changeDay(2)}>2</button></li>
+              <li className="tab col s2"><button id='boton-change-daycheck' onClick={() => changeDay(3)}>3</button></li>
+              <li className="tab col s2"><button id='boton-change-daycheck' onClick={() => changeDay(4)}>4</button></li>
+              <li className="tab col s2"><button id='boton-change-daycheck' onClick={() => changeDay(5)}>5</button></li>
+              <li className="tab col s2"><button id='boton-change-daycheck' onClick={() => changeDay(6)}>6</button></li>
+            </ul>
+          </div>
+        </div>
+
         <table className="Comision-table strip">
           <thead>
             <tr>
@@ -52,13 +76,13 @@ function Comision() {
           <tbody>
 
             {withoutCheck.map((alumno) => {
-              return (<Alumno key={alumno.id} id={alumno.id} id_asistencia={attendanceDay(alumno, diauno).id}
-                nombre={alumno.surname + " " + alumno.name} asistencia={attendanceDay(alumno, diauno).attended} />)
+              return (<Alumno key={alumno.id} id={alumno.id} id_asistencia={attendanceDay(alumno, diaToCheck).id}
+                nombre={alumno.surname + " " + alumno.name} asistencia={attendanceDay(alumno, diaToCheck).attended} />)
             })}
 
             {withCheck.map((alumno) => {
-              return (<Alumno key={alumno.id} id={alumno.id} id_asistencia={attendanceDay(alumno, diauno).id}
-                nombre={alumno.surname + " " + alumno.name} asistencia={attendanceDay(alumno, diauno).attended} />)
+              return (<Alumno key={alumno.id} id={alumno.id} id_asistencia={attendanceDay(alumno, diaToCheck).id}
+                nombre={alumno.surname + " " + alumno.name} asistencia={attendanceDay(alumno, diaToCheck).attended} />)
             })}
 
           </tbody>
