@@ -20,9 +20,9 @@ export const Provider = ({ children }) => {
       )
       setChecked(updatedChecked)
     },
-    saveAttendance: () => {
+    saveAttendance: (day) => {
       console.log('guardando cambios')
-      updateAttendances(checked.map(alumno => alumno.attendances).flat())
+      updateAttendances(checked.map(alumno => alumno.attendances).flat(), day)
     },
   }
 
@@ -36,8 +36,8 @@ export const Provider = ({ children }) => {
     return AttendanceModel.fromJson(attendanceJson)
   }
 
-  const updateAttendances = async (updatedAttendances) => {
-    await alumnoService.updateAttendances(updatedAttendances)
+  const updateAttendances = async (updatedAttendances, day) => {
+    await alumnoService.updateAttendances(updatedAttendances, day)
     setTodb(true)
   }
 

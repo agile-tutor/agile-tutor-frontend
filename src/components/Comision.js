@@ -87,7 +87,7 @@ function Comision() {
 
           </tbody>
         </table>
-        <button id='boton-save-attendance' className='btn waves-effect waves-light' type="submit" name='action' onClick={saveAttendance}>
+        <button id='boton-save-attendance' className='btn waves-effect waves-light' type="submit" name='action' onClick={() => saveAttendance(diaToCheck)}>
           <i id="guardar-asistencias-boton" className='material-icons left'>save </i>  Guardar Asistencias
         </button>
       </div>}
