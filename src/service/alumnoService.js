@@ -9,10 +9,10 @@ class AlumnoService {
     return AlumnoModel.fromJson(alumnoJson)
   }
 
-  async getComision(/*id*/) {
+  async getComision(number) {
 
     try {
-      const alumnosJson = await axios.get(`${REST_SERVER_URL}/api/students`, {
+      const alumnosJson = await axios.get(`${REST_SERVER_URL}/api/course/students/${number}`, {
         method: 'GET',
         mode: 'no-cors',
         headers: {
@@ -30,13 +30,14 @@ class AlumnoService {
     }
   }
 
-  async updateAttendances(attendances, day) {
+  async updateAttendances(attendances, course) {
     console.log(attendances);
     let asistencias = JSON.stringify(attendances)
+    console.log(asistencias);
     try {
       const response = await axios({
-        url: `${REST_SERVER_URL}/api/updateattendances/${day}`,
-        method: 'PUT',
+        url: `${REST_SERVER_URL}/api/students/attendances/update/${course}`,
+        method: 'POST',
         data: asistencias,
         headers: {
           'Access-Control-Allow-Origin': '*',

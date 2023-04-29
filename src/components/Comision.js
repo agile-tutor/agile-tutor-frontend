@@ -8,9 +8,9 @@ import M from 'materialize-css/dist/js/materialize.min.js';
 
 function Comision() {
 
-  const { checked, saveAttendance } = useContext(Context)
+  const { checked, saveAttendance, number } = useContext(Context)
   const [diaToCheck, setDiaToCheck] = useState(1)
-
+  //const [course setCourse] = checked.filter({})
   useEffect(() => {
     M.Tabs.init();
   }, []);
@@ -50,7 +50,7 @@ function Comision() {
   return (
     <div> {checked.length === 0 ? <Preloader /> :
       <div className="Comision">
-        <Breadcrumbs posicion0={"Pasar Asistencias"} posicion1={"Comisión 1"} posicion2={"Dia " + diaToCheck} route0={"/passAttendance"} route1={"/comision"} />
+        <Breadcrumbs posicion0={"Pasar Asistencias"} posicion1={"Comisión " + number} posicion2={"Dia " + diaToCheck} route0={"/passAttendance"} route1={"/comision"} />
         <h4 className="titulo-tabla" >Encuentro N°</h4>
 
         <div className="row">
