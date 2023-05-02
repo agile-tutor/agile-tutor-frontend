@@ -161,3 +161,16 @@
 .responsivelogo {
   max-width: 95vw;
 }
+
+#add-student-btn {
+background-color: #1f849c;
+}
+
+.Fila-alumno-block {
+  background-color: #9f283b; 
+  color:#dad9d5
+}
+
+.greyicons {
+  color:#dad9d5
+}

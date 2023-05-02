@@ -32,6 +32,14 @@ export const Provider = ({ children }) => {
       loadCourse(number)
       setNumber(number)
     },
+    blockUnblockStudent: (idStudent, blockedStatus) => {
+      console.log('bloqueo/desbloqueo de estudiante')
+      const updateBlocked = checked.map(alumno =>
+        alumno.id === idStudent ? { ...alumno, bloqued: blockedStatus } : alumno)
+      setChecked(updateBlocked)
+
+      blockStudent(idStudent, blockedStatus)
+    }
   }
 
   const attendanceToStudentAttendanceDTO = (checked, day) => {
@@ -54,6 +62,11 @@ export const Provider = ({ children }) => {
 
   const updateAttendances = async (updatedAttendances, number) => {
     await alumnoService.updateAttendances(updatedAttendances, number)
+    setTodb(true)
+  }
+
+  const blockStudent = async (idStudent, blockedStatus) => {
+    await alumnoService.blockStudent(idStudent, blockedStatus)
     setTodb(true)
   }
 

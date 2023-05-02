@@ -45,7 +45,29 @@ class AlumnoService {
           'Access-Control-Allow-Credentials': 'true'
         },
       })
-      M.toast({html: 'Asistencias actualizadas con éxito!'})
+      M.toast({ html: 'Asistencias actualizadas con éxito!' })
+      return response
+    } catch (e) {
+      alert(e)
+      console.error(e)
+    }
+  }
+
+  async blockStudent(id, blockedStatus) {
+    let blockedstring = JSON.stringify(blockedStatus)
+    console.log(blockedstring);
+    try {
+      const response = await axios({
+        url: `${REST_SERVER_URL}/api/students/block/${id}`,
+        method: 'PUT',
+        data: {blocked: blockedstring},
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Credentials': 'true'
+        },
+      })
+      M.toast({ html: 'Alumno actualizado con éxito!' })
       return response
     } catch (e) {
       alert(e)

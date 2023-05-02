@@ -8,6 +8,7 @@ export class AlumnoModel {
     this.attendances = []
     this.attendancespercent = 0.0
     this.observations = ''
+    this.blocked = false
   }
 
   static fromJson(alumnoJson) {
@@ -21,7 +22,8 @@ export class AlumnoModel {
         email: alumnoJson.email,
         attendances: alumnoJson.attendances,
         attendancespercent: Number(alumnoJson.attendancepercentage),
-        observations: alumnoJson.observations
+        observations: alumnoJson.observations,
+        blocked: alumnoJson.blocked
       }
     )
     return result

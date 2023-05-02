@@ -3,7 +3,7 @@ import { Context } from '../context/Context.js';
 import 'materialize-css/dist/css/materialize.min.css';
 import '../App.css';
 
-function Alumno({ id, id_asistencia, nombre, asistencia }) {
+function Alumno({ id, id_asistencia, nombre, asistencia, clnametr, disablevalue }) {
 
   const { updateAttendance } = useContext(Context)
 
@@ -12,14 +12,15 @@ function Alumno({ id, id_asistencia, nombre, asistencia }) {
   }
 
   return (
-    <tr className='Fila-alumno' >
+    <tr className={clnametr} >
       <td id="columna-apellidonombre">{nombre}</td>
       <td id="columna-check">
         <label>
-          {(asistencia === true) || (asistencia === "true") ?
-            <input data-testid="attendancebutton" id={id} name={nombre} type="checkbox" className="filled-in" checked="checked" onChange={handleChangeAttendance} />
+          {
+          (asistencia === true) || (asistencia === "true") ?
+            <input data-testid="attendancebutton" id={id} name={nombre} type="checkbox" className="filled-in" checked="checked" onChange={handleChangeAttendance} disabled={disablevalue}/>
             :
-            <input data-testid="attendancebutton" id={id} name={nombre} type="checkbox" className="filled-in" onChange={handleChangeAttendance} />}
+            <input data-testid="attendancebutton" id={id} name={nombre} type="checkbox" className="filled-in" onChange={handleChangeAttendance} disabled={disablevalue}/>}
           <span>✔</span>
         </label>
       </td>
