@@ -10,12 +10,15 @@ function Comision() {
 
   const { checked, saveAttendance, number } = useContext(Context)
   const [diaToCheck, setDiaToCheck] = useState(1)
+  const [title, setTitle] = useState("Presentación del taller de vida universitaria")
+
   useEffect(() => {
     M.Tabs.init();
   }, []);
 
-  const changeDay = (dia) => {
+  const changeDay = (dia, titleOfDay) => {
     setDiaToCheck(dia)
+    setTitle(titleOfDay)
   }
 
   const attendanceDay = (student, lookingForday) => {
@@ -43,23 +46,26 @@ function Comision() {
     || (alumno.blocked === true)
   );
 
+  const anycheck = withCheck.length > 0
+
   console.log(withoutCheck)
   console.log(withCheck)
   return (
     <div> {checked.length === 0 ? <Preloader /> :
       <div className="Comision">
         <Breadcrumbs posicion0={"Pasar Asistencias"} posicion1={"Comisión " + number} posicion2={"Dia " + diaToCheck} route0={"/passAttendance"} route1={"/comision"} />
-        <h4 className="titulo-tabla" >Encuentro N° {diaToCheck} </h4>
-
+        {anycheck ? <a id='floating-btn' className="btn-floating btn-large waves-effect waves-light right"><i className="material-icons">create</i></a> : <div></div>}
+        <h4 className="titulo-tabla" > {title} </h4>
         <div className="row">
           <div className="col s12">
+            <h5 id='titulo-encuentro' >Encuentro N°</h5>
             <ul className="tabs">
-              <li className="tab col s2"><button id='boton-change-daycheck' onClick={() => changeDay(1)}>Presentación</button></li>
-              <li className="tab col s2"><button id='boton-change-daycheck' onClick={() => changeDay(2)}>HistoriaUNQ</button></li>
-              <li className="tab col s2"><button id='boton-change-daycheck' onClick={() => changeDay(3)}>EducaciónSuperior</button></li>
-              <li className="tab col s2"><button id='boton-change-daycheck' onClick={() => changeDay(4)}>Acto</button></li>
-              <li className="tab col s2"><button id='boton-change-daycheck' onClick={() => changeDay(5)}>DerechoHumano</button></li>
-              <li className="tab col s2"><button id='boton-change-daycheck' onClick={() => changeDay(6)}>Servicios</button></li>
+              <li className="tab col s2"><button id='boton-change-daycheck' onClick={() => changeDay(1, "Presentación del taller de vida universitaria")}>1</button></li>
+              <li className="tab col s2"><button id='boton-change-daycheck' onClick={() => changeDay(2, "Historia de la Universidad Argentina y de la UNQ")}>2</button></li>
+              <li className="tab col s2"><button id='boton-change-daycheck' onClick={() => changeDay(3, "Regimen de estudios y estatuto universitario")}>3</button></li>
+              <li className="tab col s2"><button id='boton-change-daycheck' onClick={() => changeDay(4, "Acto de recibimiento")}>4</button></li>
+              <li className="tab col s2"><button id='boton-change-daycheck' onClick={() => changeDay(5, "La Educación Superior como derecho humano")}>5</button></li>
+              <li className="tab col s2"><button id='boton-change-daycheck' onClick={() => changeDay(6, "Áreas, servicios y becas")}>6</button></li>
             </ul>
           </div>
         </div>

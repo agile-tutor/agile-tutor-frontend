@@ -4,18 +4,21 @@ import { Context } from '../context/Context.js';
 import Preloader from '../utils/Preloader.js';
 import Breadcrumbs from '../utils/Breadcrumbs.js';
 import AlumnoEdit from './AlumnoEdit.js';
+import M from 'materialize-css/dist/js/materialize.min.js';
 
 function ComisionEdit() {
 
     const { checked, number, blockUnblockStudent, getCourse } = useContext(Context)
-
     const [change, setChange] = useState(false)
+    const [chargin, setChargin] = useState(false)
 
     const handleEditStudent = async (id, status) => {
         console.log(id)
         console.log(status)
         blockUnblockStudent(id, !status)
+        setChargin(true)
         await delay(1000);
+        setChargin(false)
         setChange(!change)
     }
 
@@ -27,24 +30,31 @@ function ComisionEdit() {
         getCourse(number)
     }, [change])
 
+    useEffect(() => {
+        M.AutoInit();
+    });
+
     return (
         <div>
             <div> {checked.length === 0 ? <Preloader /> :
                 <div className="Comision">
                     <Breadcrumbs posicion1={"Editar Comisión"} posicion2={"Comisión " + number} posicion0={"Home"} route0={"/"} route1={"/editCourse"} />
                     <h4 className="titulo-tabla" >Editar Comisión</h4>
+                    {chargin ?
+                        <div id='chargin-mode' className="progress">
+                            <div className="indeterminate"></div>
+                        </div> :
+                        <div id='chargin-mode'>
+                        </div>
+                    }
                     <table id="editComisionTable" className="Comision-table strip">
                         <thead>
                             <tr>
-                                <th /*id="descripcion-estudiante"*/>Apellido</th>
-                                <th /*id="descripcion-estudiante"*/>Nombre</th>
-                                <th /*id="descripcion-estudiante"*/>NroID</th>
-                                <th /*id="descripcion-estudiante"*/>Email</th>
-                                <th /*id="descripcion-estudiante"*/>bloquear</th>
-                                <th /*id="descripcion-estudiante"*/>editar</th>
-                                <th /*id="descripcion-estudiante"*/>cambiar de comisión</th>
-                                {//            <th /*id="descripcion-estudiante"*/>Observaciones</th> 
-                                }
+                                <th id="descripcion-edicion-estudiante">Apellido</th>
+                                <th id="descripcion-edicion-estudiante">Nombre</th>
+                                <th id="descripcion-edicion-estudiante">bloquear</th>
+                                <th id="descripcion-edicion-estudiante">editar</th>
+                                <th id="descripcion-edicion-estudiante">cambiar comisión</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -55,13 +65,13 @@ function ComisionEdit() {
                                     } else {
                                         return a.surname < b.surname ? -1 : 1
                                     }
-                                }).map((alumno) => { return (<AlumnoEdit key={alumno.id} id={alumno.id} apellido={alumno.surname} nombre={alumno.name} identificacion={alumno.identifier} email={alumno.email} blocked={alumno.blocked} clnametr={!alumno.blocked ? 'Fila-alumno' : 'Fila-alumno-block'} clicons={!alumno.blocked ? 'material-icons left' : 'material-icons left greyicons'} handleEditStudent={handleEditStudent} />) })
+                                }).map((alumno) => { return (<AlumnoEdit key={alumno.id} id={alumno.id} apellido={alumno.surname} nombre={alumno.name} identificacion={alumno.identifier} email={alumno.email} blocked={alumno.blocked} observaciones={alumno.observations} clnametr={!alumno.blocked ? 'Fila-alumno' : 'Fila-alumno-block'} clicons={!alumno.blocked ? 'material-icons left' : 'material-icons left greyicons'} handleEditStudent={handleEditStudent} />) })
 
                             }
                             {/* id, nombre, apellido, indentificacion, email, observaciones */}
                         </tbody>
                     </table>
-                    <a id='add-student-btn' className="btn-floating btn-large waves-effect waves-light"><i className="material-icons">add</i></a>
+                    <a id='floating-btn' className="btn-floating btn-large waves-effect waves-light"><i className="material-icons">add</i></a>
                 </div>}
             </div>
 

@@ -23,6 +23,7 @@ function NavBar() {
                         <li ><Link id='nav-var-web' to="/editCourse">Editar Comision</Link></li>
                         <li ><Link id='nav-var-web' to="/attendancePercent">Porcentaje Asistencia</Link></li>
                         <li ><Link id='nav-var-web' to="/tasks">Tareas Programadas</Link></li>
+                        <li ><Link id='nav-var-web' to="/search">Buscar</Link></li>
                     </ul>
                 </div>
             </nav>
