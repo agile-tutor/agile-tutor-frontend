@@ -210,3 +210,11 @@
   max-width: 90vw !important;
   max-height: 80vh !important;
 }
+
+#lupasearch {
+  color: #9f283b;
+}
+/*
+.input-field{
+  padding-top: 3.5vh;
+}*/

@@ -60,7 +60,7 @@ class AlumnoService {
       const response = await axios({
         url: `${REST_SERVER_URL}/api/students/block/${id}`,
         method: 'PUT',
-        data: {blocked: blockedstring},
+        data: { blocked: blockedstring },
         headers: {
           'Access-Control-Allow-Origin': '*',
           'Content-Type': 'application/json',
@@ -74,6 +74,28 @@ class AlumnoService {
       console.error(e)
     }
   }
+
+  async getNotifierAbsent() {
+
+    try {
+      const alumnosJson = await axios.get(`${REST_SERVER_URL}/api/students/toNotify`, {
+        method: 'GET',
+        mode: 'no-cors',
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Credentials': 'true'
+        },
+        credentials: 'same-origin',
+      })
+      console.log(alumnosJson);
+      const alumnos = alumnosJson.data.map(this.alumnoAsJson);
+      return alumnos.sort((a, b) => (a.surname < b.surname) ? -1 : 1);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
 
   async actualizarComision(comision) {
     try {

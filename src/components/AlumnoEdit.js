@@ -53,33 +53,33 @@ function AlumnoEdit({ nombre, apellido, identificacion, email, observaciones, id
                                     <div className="row">
                                         <div className="input-field col s6">
                                             <input defaultValue={apellido} id="last_name" type="text" className="validate" />
-                                            <label className="active" for="last_name">Apellido</label>
+                                            <label className="active" htmlFor="last_name">Apellido</label>
                                         </div>
                                         <div className="input-field col s6">
                                             <input defaultValue={nombre} id="first_name" type="text" className="validate" />
-                                            <label className="active" for="first_name">Nombre</label>
+                                            <label className="active" htmlFor="first_name">Nombre</label>
                                         </div>
                                     </div>
                                     <div className="row">
                                         <div className="input-field col s6">
                                             <input defaultValue={email} id="email" type="email" className="validate" />
-                                            <label className="active" for="email">Email</label>
+                                            <label className="active" htmlFor="email">Email</label>
                                         </div>
                                         <div className="input-field col s6">
                                             <input defaultValue={identificacion} id="first_name" type="number" /*className="validate"*/ />
-                                            <label className="active" for="itentifier">identificacion</label>
+                                            <label className="active" htmlFor="itentifier">identificacion</label>
                                         </div>
                                     </div>
                                     <div className="row">
                                         <div className="input-field col s12">
                                             <textarea defaultValue={observaciones} id="textarea1" className="materialize-textarea"></textarea>
-                                            <label className="active" for="textarea1">Observaciones</label>
+                                            <label className="active" htmlFor="textarea1">Observaciones</label>
                                         </div>
                                     </div>
                                 </form>
                             </div>
                         </div>
-                        <div class="modal-footer">
+                        <div className="modal-footer">
                             <a href="#!" className="modal-close waves-effect waves-green btn-flat">Cancelar</a>
                             <a href="#!" className="modal-close waves-effect waves-green btn-flat">Aceptar</a>
                         </div>

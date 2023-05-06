@@ -5,9 +5,9 @@ import PassAttendance from "./routes/PassAttendance";
 import EditCourse from "./routes/EditCourse";
 import ComisionEdit from "./components/ComisionEdit";
 import Home from "./routes/Home";
-//import SchedulerTask from "./routes/SchedulerTask";
+import SchedulerTask from "./routes/SchedulerTask";
 import Search from "./routes/Search";
-import AlumnoModal from "./components/AlumnoModal";
+//import AlumnoModal from "./components/AlumnoModal";
 
 export const AttendanceRoutes = () =>
 
@@ -19,5 +19,5 @@ export const AttendanceRoutes = () =>
         <Route path="/passAttendance/" element={<PassAttendance />} />
         <Route path="/editCourse/" element={<EditCourse />} />
         <Route path="/attendancePercent/" element={<PorcentajeAsistencia />} />
-        <Route path="/tasks/" element={<AlumnoModal />/*<SchedulerTask />*/} />
+        <Route path="/tasks/" element={<SchedulerTask />} />
     </Routes>

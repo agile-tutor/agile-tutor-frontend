@@ -16,6 +16,11 @@ function Comision() {
     M.Tabs.init();
   }, []);
 
+  useEffect(() => {
+    var elems = document.querySelectorAll('.tooltipped');
+    M.Tooltip.init(elems);
+  }, []);
+
   const changeDay = (dia, titleOfDay) => {
     setDiaToCheck(dia)
     setTitle(titleOfDay)
@@ -60,12 +65,12 @@ function Comision() {
           <div className="col s12">
             <h5 id='titulo-encuentro' >Encuentro N°</h5>
             <ul className="tabs">
-              <li className="tab col s2"><button id='boton-change-daycheck' onClick={() => changeDay(1, "Presentación del taller de vida universitaria")}>1</button></li>
-              <li className="tab col s2"><button id='boton-change-daycheck' onClick={() => changeDay(2, "Historia de la Universidad Argentina y de la UNQ")}>2</button></li>
-              <li className="tab col s2"><button id='boton-change-daycheck' onClick={() => changeDay(3, "Regimen de estudios y estatuto universitario")}>3</button></li>
-              <li className="tab col s2"><button id='boton-change-daycheck' onClick={() => changeDay(4, "Acto de recibimiento")}>4</button></li>
-              <li className="tab col s2"><button id='boton-change-daycheck' onClick={() => changeDay(5, "La Educación Superior como derecho humano")}>5</button></li>
-              <li className="tab col s2"><button id='boton-change-daycheck' onClick={() => changeDay(6, "Áreas, servicios y becas")}>6</button></li>
+              <li className="tab col s2"><button className="btn tooltipped" id='boton-change-daycheck' data-position="top" data-tooltip="Presentación del taller de vida universitaria" onClick={() => changeDay(1, "Presentación del taller de vida universitaria")}>1</button></li>
+              <li className="tab col s2"><button className="btn tooltipped" id='boton-change-daycheck' data-position="top" data-tooltip="Historia de la Universidad Argentina y de la UNQ" onClick={() => changeDay(2, "Historia de la Universidad Argentina y de la UNQ")}>2</button></li>
+              <li className="tab col s2"><button className="btn tooltipped" id='boton-change-daycheck' data-position="top" data-tooltip="Regimen de estudios y estatuto universitario" onClick={() => changeDay(3, "Regimen de estudios y estatuto universitario")}>3</button></li>
+              <li className="tab col s2"><button className="btn tooltipped" id='boton-change-daycheck' data-position="top" data-tooltip="Acto de recibimiento" onClick={() => changeDay(4, "Acto de recibimiento")}>4</button></li>
+              <li className="tab col s2"><button className="btn tooltipped" id='boton-change-daycheck' data-position="top" data-tooltip="La Educación Superior como derecho humano" onClick={() => changeDay(5, "La Educación Superior como derecho humano")}>5</button></li>
+              <li className="tab col s2"><button className="btn tooltipped" id='boton-change-daycheck' data-position="top" data-tooltip="Áreas, servicios y becas" onClick={() => changeDay(6, "Áreas, servicios y becas")}>6</button></li>
             </ul>
           </div>
         </div>
