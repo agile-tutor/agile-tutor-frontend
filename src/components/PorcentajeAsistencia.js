@@ -1,4 +1,5 @@
 import { useContext, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Context } from '../context/Context';
 import '../App.css';
 import CardAlumno from './CardAlumno';
@@ -17,21 +18,31 @@ function PorcentajeAsistencia() {
     const dontPass = checked.filter((alumno) => { return (Number(alumno.attendancespercent) < porcentaje) });
     const pass = checked.filter((alumno) => { return (Number(alumno.attendancespercent) >= porcentaje) });
     return (
-        <div className='porcentajeAsistencia' >
-            <h4 className="titulo-tabla" >Configurar porcentaje requerido</h4>
-            <form action="#">
-                <p className="range-field">
-                    <label className='porcentajeToShow'>{"Asistencia del " + porcentaje}%</label>
-                    <input type="range" id="test5" min="0" max="100" value={porcentaje} onChange={handleChange} />
-                </p>
-            </form>
-            <div>
-                <h5>Alumnos que NO cumplen: </h5>
-                {dontPass.map((alumno) => { return (<CardAlumno key={alumno.id} nombre={alumno.name + " " + alumno.surname} porcentaje={alumno.attendancespercent} porcentajeActual={porcentaje} />) })}
-            </div>
-            <div>
-                <h5>Alumnos que cumplen: </h5>
-                {pass.map((alumno) => { return (<CardAlumno key={alumno.id} nombre={alumno.name + " " + alumno.surname} porcentaje={alumno.attendancespercent} porcentajeActual={porcentaje} />) })}
+        <div>
+            <nav>
+                <div className="nav-wrapper bodytitulo">
+                    <div className="col s12">
+                        <Link to={"/"} className="breadcrumb bodytitulo">Porcentaje de Asistencia</Link>
+                    </div>
+                </div>
+            </nav>
+
+            <div className='porcentajeAsistencia' >
+                <h5 className="titulo-tabla" >Configurar porcentaje requerido</h5>
+                <form action="#">
+                    <p className="range-field">
+                        <label className='porcentajeToShow'>{"Asistencia del " + porcentaje}%</label>
+                        <input type="range" id="test5" min="0" max="100" value={porcentaje} onChange={handleChange} />
+                    </p>
+                </form>
+                <div>
+                    <h5>Alumnos que NO cumplen: </h5>
+                    {dontPass.map((alumno) => { return (<CardAlumno key={alumno.id} nombre={alumno.name + " " + alumno.surname} porcentaje={alumno.attendancespercent} porcentajeActual={porcentaje} />) })}
+                </div>
+                <div>
+                    <h5>Alumnos que cumplen: </h5>
+                    {pass.map((alumno) => { return (<CardAlumno key={alumno.id} nombre={alumno.name + " " + alumno.surname} porcentaje={alumno.attendancespercent} porcentajeActual={porcentaje} />) })}
+                </div>
             </div>
         </div>
     )

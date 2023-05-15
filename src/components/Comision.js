@@ -58,7 +58,7 @@ function Comision() {
   return (
     <div> {checked.length === 0 ? <Preloader /> :
       <div className="Comision">
-        <Breadcrumbs posicion0={"Pasar Asistencias"} posicion1={"Comisión " + number} posicion2={"Dia " + diaToCheck} route0={"/passAttendance"} route1={"/comision"} />
+        <Breadcrumbs posicion0={"Pasar Asistencias"} posicion1={"Comisión " + number} posicion2={"Dia " + diaToCheck} />
         {anycheck ? <a id='floating-btn' className="btn-floating btn-large waves-effect waves-light right"><i className="material-icons">create</i></a> : <div></div>}
         <h4 className="titulo-tabla" > {title} </h4>
         <div className="row">

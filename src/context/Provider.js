@@ -6,12 +6,14 @@ import { StudentAttendanceDTO } from "../domain/studentAttendanceDTO"
 
 export const Provider = ({ children }) => {
 
-  const [checked, setChecked] = useState([])
-  const [todb, setTodb] = useState(false)
-  const [number, setNumber] = useState(1)
+  const [allStudents, setAllStudents] = useState([]);
+  const [checked, setChecked] = useState([]);
+  const [todb, setTodb] = useState(false);
+  const [number, setNumber] = useState(1);
 
   const value = {
     //estado
+    allStudents,
     checked,
     number,
     //funciones que afectan el estado
@@ -20,25 +22,29 @@ export const Provider = ({ children }) => {
         alumno.id === (target.id * 1)
           ? { ...alumno, attendances: modifyAttendance(alumno.attendances, (target.checked), (id_asistencia)) }
           : alumno
-      )
-      setChecked(updatedChecked)
+      );
+      setChecked(updatedChecked);
     },
     saveAttendance: (day) => {
-      console.log('guardando cambios')
-      updateAttendances(attendanceToStudentAttendanceDTO(checked, day), number)
+      console.log('guardando cambios');
+      updateAttendances(attendanceToStudentAttendanceDTO(checked, day), number);
     },
     getCourse: (number) => {
-      console.log('cargando comision')
-      loadCourse(number)
-      setNumber(number)
+      console.log('cargando comision');
+      loadCourse(number);
+      setNumber(number);
     },
     blockUnblockStudent: (idStudent, blockedStatus) => {
-      console.log('bloqueo/desbloqueo de estudiante')
+      console.log('bloqueo/desbloqueo de estudiante');
       const updateBlocked = checked.map(alumno =>
-        alumno.id === idStudent ? { ...alumno, bloqued: blockedStatus } : alumno)
-      setChecked(updateBlocked)
+        alumno.id === idStudent ? { ...alumno, bloqued: blockedStatus } : alumno);
+      setChecked(updateBlocked);
 
-      blockStudent(idStudent, blockedStatus)
+      blockStudent(idStudent, blockedStatus);
+    },
+    getAllStudents: () => {
+      console.log('obteniendo todos los alumnos');
+      loadAllStudents();    
     }
   }
 
@@ -73,9 +79,6 @@ export const Provider = ({ children }) => {
   const loadCourse = async (number) => {
     try {
       const comision = await alumnoService.getComision(number)
-      console.log(comision)
-      let asistencias = comision.map(alumno => alumno.attendances).flat()
-      console.log(asistencias.filter(attendance => attendance.day === 1))
       comision.map(alumno =>
         alumno.attendances.map(attendanceAsJson))
       setChecked(comision)
@@ -84,8 +87,19 @@ export const Provider = ({ children }) => {
     }
   }
 
+  const loadAllStudents = async () => {
+    try {
+      const allData = await alumnoService.getAllStudents();
+      allData.map(alumno =>
+        alumno.attendances.map(attendanceAsJson));
+      setAllStudents(allData);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   useEffect(() => {
-    loadCourse(number)
+    loadCourse(number);
   }, [todb])
 
   return (

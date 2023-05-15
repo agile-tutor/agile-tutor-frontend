@@ -1,21 +1,18 @@
-import React from 'react'
-import 'materialize-css/dist/css/materialize.min.css'
+import { useContext, useState } from 'react';
+import { Context } from '../context/Context.js';
+import 'materialize-css/dist/css/materialize.min.css';
+import SearchBar from '../components/SearchBar';
+import SearchResultList from '../components/SearchResultList';
 
 function Search() {
+
+    const { allStudents, getAllStudents } = useContext(Context);
+    const [results, setResults] = useState([]);
+
     return (
-        <div className="navbar">
-            <h3 className="titulo-tabla">Buscar un alumno:</h3>
-            <nav className="nav-extended">
-                <div className="nav-wrapper">
-                    <form>
-                        <div className="input-field">
-                            <input id="search" type="search" />
-                            <label className="label-icon" for="search"><i className="material-icons">search</i></label>
-                            <i className="material-icons">close</i>
-                        </div>
-                    </form>
-                </div>
-            </nav>
+        <div>
+            <SearchBar setResults={setResults} getAllStudents={getAllStudents} allStudents={allStudents} />
+            <SearchResultList results={results} />
         </div>
     )
 }

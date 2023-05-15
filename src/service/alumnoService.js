@@ -30,6 +30,27 @@ class AlumnoService {
     }
   }
 
+  async getAllStudents() {
+
+    try {
+      const alumnosJson = await axios.get(`${REST_SERVER_URL}/api/students`, {
+        method: 'GET',
+        mode: 'no-cors',
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Credentials': 'true'
+        },
+        credentials: 'same-origin',
+      })
+      console.log(alumnosJson);
+      const alumnos = alumnosJson.data.map(this.alumnoAsJson);
+      return alumnos.sort((a, b) => (a.surname < b.surname) ? -1 : 1);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   async updateAttendances(attendances, course) {
     console.log(attendances);
     let asistencias = JSON.stringify(attendances)
@@ -52,7 +73,30 @@ class AlumnoService {
       console.error(e)
     }
   }
-
+/*
+async updateAttendances(attendances, courseId) {
+  console.log(attendances);
+  let asistencias = JSON.stringify(attendances)
+  console.log(asistencias);
+  try {
+    const response = await axios({
+      url: `${REST_SERVER_URL}/api/course/students/attendances/update/${courseId}`,
+      method: 'PUT',
+      data: asistencias,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Credentials': 'true'
+      },
+    })
+    M.toast({ html: 'Asistencias actualizadas con éxito!' })
+    return response
+  } catch (e) {
+    alert(e)
+    console.error(e)
+  }
+}
+*/
   async blockStudent(id, blockedStatus) {
     let blockedstring = JSON.stringify(blockedStatus)
     console.log(blockedstring);

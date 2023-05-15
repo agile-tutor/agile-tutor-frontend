@@ -1,15 +1,42 @@
 import Logo from '../TIPLOGO.png';
 import "../App.css";
-import { useEffect } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { Link/*, useHistory*/ } from 'react-router-dom';
+import { Context } from '../context/Context.js';
 import M from 'materialize-css/dist/js/materialize.min.js';
-
+import SearchResultList from '../components/SearchResultList.js'
+import SelectComision from '../routes/SelectComision';
+import SelectComisionEdit from '../routes/SelectComisionEdit';
 
 function NavBar() {
+
+    const [input, setInput] = useState("");
+    const { allStudents, getAllStudents } = useContext(Context);
+    const [results, setResults] = useState([]);
+
+    const handleChange = (value) => {
+        getAllStudents();
+        setInput(value);
+        const results = allStudents.filter((student) => {
+            return (
+                value && student &&
+                (
+                    student.name && student.name.toLowerCase().includes(value)
+                    || student.surname && student.surname.toLowerCase().includes(value)
+                )
+            );
+        });
+        setResults(results);
+    };
 
     useEffect(() => {
         var sidenav = document.querySelectorAll(".sidenav");
         M.Sidenav.init(sidenav, {});
+    }, []);
+
+    useEffect(() => {
+        let elems = document.querySelectorAll('.dropdown-trigger');
+        M.Dropdown.init(elems, { inDuration: 300, outDuration: 225 });
     }, []);
 
     return (
@@ -19,19 +46,22 @@ function NavBar() {
                     <Link to="/" className="brand-logo" ><img className="image-logo" src={Logo}></img></Link>
                     <a href="#" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
                     <ul className="right hide-on-med-and-down" >
-                        <li ><Link id='nav-var-web' to="/passAttendance">Pasar Asistencia</Link></li>
-                        <li ><Link id='nav-var-web' to="/editCourse">Editar Comision</Link></li>
-                        <li ><Link id='nav-var-web' to="/attendancePercent">Porcentaje Asistencia</Link></li>
-                        <li ><Link id='nav-var-web' to="/tasks">Tareas Programadas</Link></li>
+                        {//            <li><a className="dropdown-trigger" href="#!" data-target="dropdown1">Seleccionar Comision<i className="material-icons right">arrow_drop_down</i></a></li>
+                        }
+                        <SelectComision action="Pasar Asistencia" />
+                        <SelectComisionEdit action="Editar Comision" />
+                        <li ><Link className="navbar-item" id='nav-var-web' to="/attendancePercent"><i className="material-icons">settings</i>Porcentaje Asistencia</Link></li>
+                        <li ><Link className="navbar-item" id='nav-var-web' to="/tasks"><i className="material-icons">schedule</i>Tareas Programadas</Link></li>
                         <li >
-                        <form>
-                        <div className="input-field">
-                            <input id="search" type="search" />
-                            <label className="label-icon" for="search"><i id='lupasearch' className="material-icons">search</i></label>
-                            <i className="material-icons">close</i>
-                        </div>
-                    </form>
-                    </li>
+                            <form>
+                                <div className="input-field">
+                                    <input id="search" type="search" value={input} onChange={(e) => handleChange(e.target.value)} />
+                                    <label className="label-icon" htmlFor="search"><i id='lupasearch' className="material-icons">search</i></label>
+                                    <i className="material-icons" onClick={() => handleChange("")}>close</i>
+                                </div>
+                            </form>
+                            <SearchResultList results={results} />
+                        </li>
                     </ul>
                 </div>
             </nav>

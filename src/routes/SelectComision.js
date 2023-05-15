@@ -3,7 +3,7 @@ import { Context } from '../context/Context.js';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { Link } from 'react-router-dom';
 
-function SelectComision() {
+function SelectComision({ action }) {
 
     const { getCourse } = useContext(Context)
 
@@ -13,16 +13,20 @@ function SelectComision() {
     }, []);
 
     return (
-        <div className="passAttendanceTable">
-            <h4 className="titulo-tabla" >  <i className="material-icons">pan_tool</i>Pasar Asistencia</h4>
-            <ul id="dropdown1" className="dropdown-content">
+        /*    <div className="passAttendanceTable">
+                <h4 className="titulo-tabla" >  <i className="material-icons">pan_tool</i>Pasar Asistencia</h4>
+    
+                  <div>*/
+        <div>
+            <ul id="dropdownPassAtendance" className="dropdown-content">
                 <li><Link to="/comision" onClick={() => getCourse(1)}>Comisión 1</Link></li>
+                <li className="divider"></li>
                 <li><Link to="/comision" onClick={() => getCourse(2)}>Comisión 2</Link></li>
-                {//             <li className="divider"></li>
-                }          <li><Link to="/comision" onClick={() => getCourse(3)}>Comisión 3</Link></li>
+                <li className="divider"></li>
+                <li><Link to="/comision" onClick={() => getCourse(3)}>Comisión 3</Link></li>
             </ul>
             <ul className="xxxxxxx" >
-                <li><Link className="dropdown-trigger" href="#!" data-target="dropdown1">Seleccionar Comision<i className="material-icons right">arrow_drop_down</i></Link></li>
+                <li><Link className="dropdown-trigger" href="#!" data-target="dropdownPassAtendance"><i className="material-icons">pan_tool</i>{action}<i className="material-icons right">arrow_drop_down</i></Link></li>
             </ul>
         </div>
     )

@@ -38,8 +38,9 @@ function ComisionEdit() {
         <div>
             <div> {checked.length === 0 ? <Preloader /> :
                 <div className="Comision">
-                    <Breadcrumbs posicion1={"Editar Comisión"} posicion2={"Comisión " + number} posicion0={"Home"} route0={"/"} route1={"/editCourse"} />
+                    <Breadcrumbs posicion1={"Editar Comisión"} posicion2={"Comisión " + number} posicion0={"Home"} />
                     <h4 className="titulo-tabla" >Editar Comisión</h4>
+                    <h5 id='titulo-encuentro'>-</h5>
                     {chargin ?
                         <div id='chargin-mode' className="progress">
                             <div className="indeterminate"></div>

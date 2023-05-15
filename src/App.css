@@ -3,7 +3,7 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  padding-top: 15px;
+  padding-top: .1px;
   font-family: Lato, sans-serif;
   font-size: calc(10px + 2vmin);
   height: 100vh;
@@ -13,7 +13,7 @@
 .Comision {
   text-align: center;
   padding-bottom: 50px;
-  padding-top: 1rem;
+  padding-top: 0.1rem;
 }
 
 .Comision-table {
@@ -35,7 +35,6 @@
 #descripcion-asistencias {
   padding-left: 7.5vw;
 }
-
 
 #descripcion-estudiante {
   padding-left: 10.5vw;
@@ -83,6 +82,17 @@
   background-color: #dad9d5;
 }
 
+.bodytitulo{
+  text-align: center;
+  font-size: xx-large;
+  width: 100vw;
+  background-color: #eeeeee;
+}
+
+.breadcrumb-main {
+  background-color: #eeeeee;
+}
+
 #nav-var-web {
   color: #9f283b;
 }
@@ -91,6 +101,10 @@
   color: #dad9d5;
   font-size: large;
   margin: 5vw -2.5vh;
+}
+
+.hide-on-med-and-down {
+  width: 79vw;
 }
 
 #boton-save-attendance {
@@ -113,11 +127,12 @@
 
 .titulo-tabla {
   padding: 2rem;
-  margin: .2rem;
+  margin: .2rem .2rem 0rem .2rem;
   color: #1f849c;
   font-weight: bolder;
   text-align: center;
   justify-content: center;
+  background-color: #fde5e9;
 }
 
 .sidenav {
@@ -132,6 +147,13 @@
 
 .dropdown-trigger {
   color: #9f283b;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.navbar-item {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .dropdown-content {
@@ -198,7 +220,8 @@
 
 #titulo-encuentro {
   color: #9f283b;
-  background-color: #dad9d5;
+  background-color: #eeeeee;
+  margin-top: unset;
 }
 
 .breadcrumb:last-child {
@@ -214,7 +237,74 @@
 #lupasearch {
   color: #9f283b;
 }
+
 /*
 .input-field{
   padding-top: 3.5vh;
 }*/
+
+.textSchedulerTask {
+  color: #1f849c;
+  font-weight: bold;
+  max-width: 90vw !important;
+  max-height: 20vh !important;
+  padding-left: 1vh;
+  margin-left: 1vh;
+  padding-top: 4vh;
+}
+
+.iconSchedulerTask {
+  color: #9f283b;
+  background-color: #dad9d5;
+  border-radius: 100%;
+  font-weight: bold;
+  margin-right: 2vh;
+  padding: 1.5vh;
+}
+
+.hourTask {
+  font-size: larger;
+  font-style: oblique;
+  text-align: center;
+  margin: 6vh;
+  color: #9f283b;
+  border: 2px solid#1f849c;
+}
+
+.studentSearchInput {
+  border-radius: 20px;
+}
+
+.result-list {
+  width: 100%;
+  color: #9f283b;
+  background-color: #1f839c33;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 0px 8px #ddd;
+  border-radius: 10px;
+  margin-top: 1vh;
+  max-height: 300px;
+  overflow-y: scroll;
+}
+
+.search-result {
+  padding: 0 0 1vh 2vh;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-right: .5vw;
+}
+
+.search-result :hover {
+  background-color: #efefef;
+}
+
+.search-page {
+  margin-top: -30vh;
+}
+
+.to-notify {
+  background-color: red;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}

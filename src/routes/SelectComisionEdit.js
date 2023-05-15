@@ -3,7 +3,7 @@ import { Context } from '../context/Context.js';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { Link } from 'react-router-dom';
 
-function SelectComision() {
+function SelectComisionEdit({ action }) {
 
     const { getCourse } = useContext(Context)
 
@@ -13,19 +13,22 @@ function SelectComision() {
     }, []);
 
     return (
-        <div className="passAttendanceTable">
-            <h4 className="titulo-tabla" >  <i className="material-icons">mode_edit</i>Editar Comisión</h4>
-            <ul id="dropdown1" className="dropdown-content">
+        <div>
+            {/*   <div className="passAttendanceTable">
+                <h4 className="titulo-tabla" >  <i className="material-icons">mode_edit</i>Editar Comisión</h4>
+    <div>*/}
+            <ul id="dropdownComisionEdit" className="dropdown-content">
                 <li><Link to="/comisionEdit" onClick={() => getCourse(1)}>Comisión 1</Link></li>
+                <li className="divider"></li>
                 <li><Link to="/comisionEdit" onClick={() => getCourse(2)}>Comisión 2</Link></li>
-                {//             <li className="divider"></li>
-                }          <li><Link to="/comisionEdit" onClick={() => getCourse(3)}>Comisión 3</Link></li>
+                <li className="divider"></li>
+                <li><Link to="/comisionEdit" onClick={() => getCourse(3)}>Comisión 3</Link></li>
             </ul>
             <ul className="xxxxxxx" >
-                <li><Link className="dropdown-trigger" href="#!" data-target="dropdown1">Seleccionar Comision<i className="material-icons right">arrow_drop_down</i></Link></li>
+                <li><Link className="dropdown-trigger" href="#!" data-target="dropdownComisionEdit"><i className="material-icons">mode_edit</i>{action}<i className="material-icons right">arrow_drop_down</i></Link></li>
             </ul>
         </div>
     )
 }
 
-export default SelectComision
+export default SelectComisionEdit
