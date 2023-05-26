@@ -82,23 +82,21 @@ function SchedulerTask() {
         <div className="indeterminate"></div>
       </div> : timeToNotify}</h5>
       <h4></h4>
-      <h4>Alumnos a notificar:</h4>
+      <h4 className="bodytitulo left" >Alumnos a notificar:</h4>
       {
         ((students.length) === 0 || typeof (students) == "undefined") ?
           <p>"No existen alumnos pendientes de notificar por ausencias"</p> :
           students.map((alumno) => {
             return (
-              <div className="row to-notify">
-                <div className="col s12 m6">
-                  <div className="card">
-                    <div className="card-image">
-                      <img src={imageCard} />
-                      <span className="card-title">Card Title</span>
-                      <a className="btn-floating halfway-fab waves-effect waves-light red"><i className="material-icons">notifications_off</i></a>
-                    </div>
-                    <div className="card-content">
-                      <p>{alumno.name + " " + alumno.surname}</p>
-                    </div>
+              <div className="to-notify">
+                <div className="card">
+                  <div className="card-image">
+                    <img className="logo" src={imageCard} />
+                    <span className="card-content">{alumno.name + " " + alumno.surname}</span>
+                    <a className="btn-floating halfway-fab waves-effect waves-light red"><i className="material-icons">notifications_off</i></a>
+                  </div>
+                  <div className="card-content">
+                    <p>{alumno.email}</p>
                   </div>
                 </div>
               </div>

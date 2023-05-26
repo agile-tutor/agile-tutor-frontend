@@ -42,9 +42,13 @@ export const Provider = ({ children }) => {
 
       blockStudent(idStudent, blockedStatus);
     },
+    updateStudent: (idStudent, student) => {
+      console.log('actualizando estudiante editado');
+      updateStudent(idStudent, student);
+    },
     getAllStudents: () => {
       console.log('obteniendo todos los alumnos');
-      loadAllStudents();    
+      loadAllStudents();
     }
   }
 
@@ -73,6 +77,11 @@ export const Provider = ({ children }) => {
 
   const blockStudent = async (idStudent, blockedStatus) => {
     await alumnoService.blockStudent(idStudent, blockedStatus)
+    setTodb(true)
+  }
+
+  const updateStudent = async (idStudent, student) => {
+    await alumnoService.updateStudent(idStudent, student)
     setTodb(true)
   }
 

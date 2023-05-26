@@ -141,9 +141,52 @@ async updateAttendances(attendances, courseId) {
   }
 
 
-  async actualizarComision(comision) {
+  async updateCourse(comision) {
     try {
       return await axios.put(`${REST_SERVER_URL}/comision/${comision.id}`, { listado: comision })
+    } catch (e) {
+      alert(e)
+      console.error(e)
+    }
+  }
+
+  async getStudent(id) {
+
+    try {
+      const alumnoJson = await axios.get(`${REST_SERVER_URL}/api/students/${id}`, {
+        method: 'GET',
+        mode: 'no-cors',
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Credentials': 'true'
+        },
+        credentials: 'same-origin',
+      })
+      console.log(alumnoJson);
+      const alumno = this.alumnoAsJson(alumnoJson);
+      return alumno;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  async updateStudent(id, student) {
+   // let studentstring = JSON.stringify(student)
+    console.log(student);
+    try {
+      const response = await axios({
+        url: `${REST_SERVER_URL}/api/students/${id}`,
+        method: 'PUT',
+        data: student ,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Credentials': 'true'
+        },
+      })
+      M.toast({ html: 'Alumno actualizado con éxito!' })
+      return response
     } catch (e) {
       alert(e)
       console.error(e)

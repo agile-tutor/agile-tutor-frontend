@@ -1,74 +1,72 @@
-//import React, { useState } from 'react';
-//import M from 'materialize-css/dist/js/materialize.min.js';
 
-const AlumnoModal = (/*{ addTech }*/) => {
-  //  const [firstName, setFirstName] = useState('');
-   // const [lastName, setLastName] = useState('');
+const AlumnoModal = ({ name, surname, studentid, identifier, emailedit, observations, setName, setSurname, setIdentifier, setEmailedit, setObservations, handleClickUpdate }) => {
 
- /*   const onSubmit = () => {
-        if (firstName === '' || lastName === '') {
-            M.toast({ html: 'Please Enter the First and Last Name' });
-        } else {
-            addTech({
-                firstName,
-                lastName,
-            });
+    return (
 
-            M.toast({ html: `${firstName} ${lastName} was successfully added.` });
-        }
-    };
-*/
-    return (/*
-        <div id='add-tech-modal' className='modal'>
-            <div className='modal-content'>
-                <h4>New Technician</h4>
-                <div className='row'>
-                    <div className='input-field'>
-                        <input
-                            type='text'
-                            name='firstName'
-                            value={firstName}
-                            onChange={(e) => setFirstName(e.target.value)}
-                        />
-                        <label htmlFor='firstName' className='active'>
-                            First Name
-                        </label>
-                    </div>
+        <div id={"modaledit" + studentid} className="modal">
+            {console.log(studentid)}
+            <div className="modal-content">
+                {handleClickUpdate == null ?
+                    <h4>Datos del estudiante:</h4>
+                    :
+                    <h4>Modifique los datos actuales:</h4>
+                }
+                <div className="row">
+                    <form className="col s12">
+                        <div className="row">
+                            <div className="input-field col s6">
+                                {handleClickUpdate == null ?
+                                    <input disabled value={surname} id="last_name" type="text" className="validate" />
+                                    :
+                                    <input defaultValue={surname} onChange={(e) => setSurname(e.target.value)} id="last_name" type="text" className="validate" />
+                                }
+                                <label className="active" htmlFor="last_name">Apellido</label>
+                            </div>
+                            <div className="input-field col s6">
+                                {handleClickUpdate == null ?
+                                    <input disabled value={name} id="first_name" type="text" className="validate" />
+                                    :
+                                    <input defaultValue={name} onChange={(e) => setName(e.target.value)} id="first_name" type="text" className="validate" />
+                                }
+                                <label className="active" htmlFor="first_name">Nombre</label>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="input-field col s6">
+                                {handleClickUpdate == null ?
+                                    <input disabled value={emailedit} id="email" type="email" className="validate" />
+                                    :
+                                    <input defaultValue={emailedit} onChange={(e) => setEmailedit(e.target.value)} id="email" type="email" className="validate" />
+                                }
+                                <label className="active" htmlFor="email">Email</label>
+                            </div>
+                            <div className="input-field col s6">
+                                {handleClickUpdate == null ?
+                                    <input disabled value={identifier} id="identifier" type="number" className="validate" />
+                                    :
+                                    <input defaultValue={identifier} onChange={(e) => setIdentifier(e.target.value)} id="identifier" type="number" />
+                                }
+                                <label className="active" htmlFor="itentifier">identificacion</label>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="input-field col s12">
+                                {handleClickUpdate == null ?
+                                    <textarea disabled value={observations} id="textarea1" className="materialize-textarea" />
+                                    :
+                                    <textarea defaultValue={observations} onChange={(e) => setObservations(e.target.value)} id="textarea1" className="materialize-textarea"></textarea>
+                                }
+                                <label className="active" htmlFor="textarea1">Observaciones</label>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-                <div className='row'>
-                    <div className='input-field'>
-                        <input
-                            type='text'
-                            name='lastName'
-                            value={lastName}
-                            onChange={(e) => setLastName(e.target.value)}
-                        />
-                        <label htmlFor='lastName' className='active'>
-                            Last Name
-                        </label>
-                    </div>
-                </div>
             </div>
-            <div className='modal-footer'>
-                <a
-                    href='#!'
-                    onClick={onSubmit}
-                    className='modal-close waves-effect blue btn'
-                >
-                    Enter
-                </a>
+            <div className="modal-footer">
+                <a href="#!" className="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+                <a href="#!" onClick={() => { handleClickUpdate(); }} className="modal-close waves-effect waves-green btn-flat">Aceptar</a>
             </div>
-        </div>*/
-        <div id="modaledit" class="modal">
-            <div class="modal-content">
-                <h4>Modal Header</h4>
-                <p>A bunch of text</p>
-            </div>
-            <div class="modal-footer">
-                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-            </div>
-        </div>
-    );
+        </div>);
 };
 
 export default AlumnoModal;

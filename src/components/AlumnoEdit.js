@@ -1,32 +1,43 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from "react";
 import 'materialize-css/dist/css/materialize.min.css';
 import '../App.css';
-//import AlumnoModal from './AlumnoModal';
 import M from 'materialize-css/dist/js/materialize.min.js';
+import AlumnoModal from "./AlumnoModal";
 
-function AlumnoEdit({ nombre, apellido, identificacion, email, observaciones, id, blocked, clnametr, clicons, handleEditStudent }) {
+function AlumnoEdit({ nombre, apellido, identificacion, email, observaciones, id, blocked, clnametr, clicons, handleEditBlockStudent, handleEditUpdateStudent }) {
 
+    const [name, setName] = useState(nombre);
+    const [surname, setSurname] = useState(apellido);
+    const [identifier, setIdentifier] = useState(identificacion);
+    const [emailedit, setEmailedit] = useState(email);
+    const [observations, setObservations] = useState(observaciones);
 
     const handleClickBlock = (id, value) => {
-        handleEditStudent(id, value)
+        handleEditBlockStudent(id, value)
     };
-    /*
-        const handleClickEdit = (id, value) => {
-            console.log(id, value)
-            //return <AlumnoModal />
-            //    handleEditStudent(id, value)
-        };
-    */
+
+    const handleClickUpdate = () => {
+        if (name === '' || surname === '' || identifier === '' || email === '') {
+            M.toast({ html: 'Ingresar: nombre, apellido, identificador y email' });
+        } else {
+            const editedStudent = {
+                "name": name,
+                "surname": surname,
+                "identifier": identifier,
+                "email": emailedit,
+                "observations": observations
+            }
+            console.log('handle click' + editedStudent);
+            handleEditUpdateStudent(id, editedStudent);
+            M.toast({ html: `${name} ${surname} modificado exitosamente.` });
+        }
+    };
+
     useEffect(() => {
         var elems = document.querySelectorAll('.modal');
         M.Modal.init(elems);
     }, []);
-    /*
-    document.addEventListener('DOMContentLoaded', function () {
-        var elems = document.querySelectorAll('.modal');
-        M.Modal.init(elems);
-    });
-*/
+
     return (
         <tr className={clnametr} >
             <td id="descripcion-edicion-estudiante">{apellido}</td>
@@ -41,49 +52,11 @@ function AlumnoEdit({ nombre, apellido, identificacion, email, observaciones, id
             </td>
             <td id="descripcion-edicion-estudiante-editar">
                 <div className='container section'>
-                    <a className="waves-effect waves-teal btn-flat modal-trigger" href="#modaledit"><i id="iconoBlock" className={clicons}
+                    <a className="waves-effect waves-teal btn-flat modal-trigger" href={"#modaledit" + id} ><i id="iconoBlock" className={clicons}
                     //onClick={() => handleClickEdit(id, blocked)}
-                    >mode_edit </i></a>
-
-                    <div id="modaledit" className="modal">
-                        <div className="modal-content">
-                            <h4>Modifique los datos actuales</h4>
-                            <div className="row">
-                                <form className="col s12">
-                                    <div className="row">
-                                        <div className="input-field col s6">
-                                            <input defaultValue={apellido} id="last_name" type="text" className="validate" />
-                                            <label className="active" htmlFor="last_name">Apellido</label>
-                                        </div>
-                                        <div className="input-field col s6">
-                                            <input defaultValue={nombre} id="first_name" type="text" className="validate" />
-                                            <label className="active" htmlFor="first_name">Nombre</label>
-                                        </div>
-                                    </div>
-                                    <div className="row">
-                                        <div className="input-field col s6">
-                                            <input defaultValue={email} id="email" type="email" className="validate" />
-                                            <label className="active" htmlFor="email">Email</label>
-                                        </div>
-                                        <div className="input-field col s6">
-                                            <input defaultValue={identificacion} id="first_name" type="number" /*className="validate"*/ />
-                                            <label className="active" htmlFor="itentifier">identificacion</label>
-                                        </div>
-                                    </div>
-                                    <div className="row">
-                                        <div className="input-field col s12">
-                                            <textarea defaultValue={observaciones} id="textarea1" className="materialize-textarea"></textarea>
-                                            <label className="active" htmlFor="textarea1">Observaciones</label>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                        <div className="modal-footer">
-                            <a href="#!" className="modal-close waves-effect waves-green btn-flat">Cancelar</a>
-                            <a href="#!" className="modal-close waves-effect waves-green btn-flat">Aceptar</a>
-                        </div>
-                    </div>
+                    >mode_edit </i>{id}</a>
+                    {console.log(id)}
+                    <AlumnoModal key={id} studentid={id} name={name} surname={surname} identifier={identifier} emailedit={emailedit} observations={observations} setName={setName} setSurname={setSurname} setIdentifier={setIdentifier} setEmailedit={setEmailedit} setObservations={setObservations} handleClickUpdate={handleClickUpdate} />
                 </div>
             </td>
             <td id="descripcion-edicion-estudiante">
@@ -94,4 +67,4 @@ function AlumnoEdit({ nombre, apellido, identificacion, email, observaciones, id
     )
 }
 
-export default AlumnoEdit
+export default AlumnoEdit;

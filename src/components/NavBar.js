@@ -29,6 +29,11 @@ function NavBar() {
         setResults(results);
     };
 
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter') {
+            M.toast({ html: 'Se presiono Enter' });
+        }
+      };
     useEffect(() => {
         var sidenav = document.querySelectorAll(".sidenav");
         M.Sidenav.init(sidenav, {});
@@ -55,7 +60,7 @@ function NavBar() {
                         <li >
                             <form>
                                 <div className="input-field">
-                                    <input id="search" type="search" value={input} onChange={(e) => handleChange(e.target.value)} />
+                                    <input id="search" type="search" value={input} onChange={(e) => handleChange(e.target.value)} onKeyDown={handleKeyDown}/>
                                     <label className="label-icon" htmlFor="search"><i id='lupasearch' className="material-icons">search</i></label>
                                     <i className="material-icons" onClick={() => handleChange("")}>close</i>
                                 </div>

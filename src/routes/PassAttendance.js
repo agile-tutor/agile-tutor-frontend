@@ -4,7 +4,7 @@ function PassAttendance() {
 
     return (
         <div>
-            <SelectComision />
+            <SelectComision action="Pasar Asistencia" />
         </div>
     )
 }

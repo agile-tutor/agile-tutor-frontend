@@ -82,9 +82,9 @@
   background-color: #dad9d5;
 }
 
-.bodytitulo{
+.bodytitulo {
   text-align: center;
-  font-size: xx-large;
+  font-size: 3dvw;
   width: 100vw;
   background-color: #eeeeee;
 }
@@ -159,6 +159,7 @@
 .dropdown-content {
   color: #1f849c;
   font-weight: normal;
+  top: -11vh;
 }
 
 .passAttendanceTable {
@@ -251,6 +252,7 @@
   padding-left: 1vh;
   margin-left: 1vh;
   padding-top: 4vh;
+  padding-bottom: 4vh;
 }
 
 .iconSchedulerTask {
@@ -304,7 +306,25 @@
 
 .to-notify {
   background-color: red;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
+}
+
+.to-notify .card {
+  width: 48vw;
+  float: left;
+  padding-top: 1vh;
+  padding-left: 1vw;
+  padding-right: 1vw;
+  margin: 1vw;
+}
+
+.card-image {
+  width: 44vw;
+}
+
+.card-image .logo {
+  opacity: 0.15;
+}
+
+.card-content {
+  font-size: 2.5vw;
 }

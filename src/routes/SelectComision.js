@@ -13,10 +13,6 @@ function SelectComision({ action }) {
     }, []);
 
     return (
-        /*    <div className="passAttendanceTable">
-                <h4 className="titulo-tabla" >  <i className="material-icons">pan_tool</i>Pasar Asistencia</h4>
-    
-                  <div>*/
         <div>
             <ul id="dropdownPassAtendance" className="dropdown-content">
                 <li><Link to="/comision" onClick={() => getCourse(1)}>Comisión 1</Link></li>

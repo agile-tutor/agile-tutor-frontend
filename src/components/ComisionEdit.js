@@ -8,14 +8,24 @@ import M from 'materialize-css/dist/js/materialize.min.js';
 
 function ComisionEdit() {
 
-    const { checked, number, blockUnblockStudent, getCourse } = useContext(Context)
+    const { checked, number, blockUnblockStudent, updateStudent, getCourse } = useContext(Context)
     const [change, setChange] = useState(false)
     const [chargin, setChargin] = useState(false)
 
-    const handleEditStudent = async (id, status) => {
+    const handleEditBlockStudent = async (id, status) => {
         console.log(id)
         console.log(status)
         blockUnblockStudent(id, !status)
+        setChargin(true)
+        await delay(1000);
+        setChargin(false)
+        setChange(!change)
+    }
+
+    const handleEditUpdateStudent = async (id, student) => {
+        console.log(id)
+        console.log(student)
+        updateStudent(id, student)
         setChargin(true)
         await delay(1000);
         setChargin(false)
@@ -66,7 +76,7 @@ function ComisionEdit() {
                                     } else {
                                         return a.surname < b.surname ? -1 : 1
                                     }
-                                }).map((alumno) => { return (<AlumnoEdit key={alumno.id} id={alumno.id} apellido={alumno.surname} nombre={alumno.name} identificacion={alumno.identifier} email={alumno.email} blocked={alumno.blocked} observaciones={alumno.observations} clnametr={!alumno.blocked ? 'Fila-alumno' : 'Fila-alumno-block'} clicons={!alumno.blocked ? 'material-icons left' : 'material-icons left greyicons'} handleEditStudent={handleEditStudent} />) })
+                                }).map((alumno) => { return (<AlumnoEdit key={alumno.id} id={alumno.id} apellido={alumno.surname} nombre={alumno.name} identificacion={alumno.identifier} email={alumno.email} blocked={alumno.blocked} observaciones={alumno.observations} clnametr={!alumno.blocked ? 'Fila-alumno' : 'Fila-alumno-block'} clicons={!alumno.blocked ? 'material-icons left' : 'material-icons left greyicons'} handleEditBlockStudent={handleEditBlockStudent} handleEditUpdateStudent={handleEditUpdateStudent} />) })
 
                             }
                             {/* id, nombre, apellido, indentificacion, email, observaciones */}

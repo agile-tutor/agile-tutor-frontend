@@ -14,9 +14,6 @@ function SelectComisionEdit({ action }) {
 
     return (
         <div>
-            {/*   <div className="passAttendanceTable">
-                <h4 className="titulo-tabla" >  <i className="material-icons">mode_edit</i>Editar Comisión</h4>
-    <div>*/}
             <ul id="dropdownComisionEdit" className="dropdown-content">
                 <li><Link to="/comisionEdit" onClick={() => getCourse(1)}>Comisión 1</Link></li>
                 <li className="divider"></li>
