@@ -63,8 +63,13 @@ const AlumnoModal = ({ name, surname, studentid, identifier, emailedit, observat
                 </div>
             </div>
             <div className="modal-footer">
-                <a href="#!" className="modal-close waves-effect waves-green btn-flat">Cancelar</a>
-                <a href="#!" onClick={() => { handleClickUpdate(); }} className="modal-close waves-effect waves-green btn-flat">Aceptar</a>
+                {handleClickUpdate == null ?
+                    <a href="#!" className="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+                    : <div>
+                        <a href="#!" className="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+                        <a href="#!" onClick={() => { handleClickUpdate(); }} className="modal-close waves-effect waves-green btn-flat">Aceptar</a>
+                    </div>
+                }
             </div>
         </div>);
 };

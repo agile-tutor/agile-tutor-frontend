@@ -61,9 +61,9 @@ export const Provider = ({ children }) => {
 
   const modifyAttendance = (attendances, check, id_asistencia) => {
     console.log(id_asistencia, check)
-    const checkString = check.toString()
+    //const checkString = check.toString()
     return attendances.map(attendance => attendance.id === id_asistencia
-      ? { ...attendance, attended: checkString } : attendance)
+      ? { ...attendance, attended: check } : attendance)
   }
 
   const attendanceAsJson = (attendanceJson) => {

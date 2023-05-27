@@ -50,7 +50,7 @@ class AlumnoService {
       console.error(error);
     }
   }
-
+/*
   async updateAttendances(attendances, course) {
     console.log(attendances);
     let asistencias = JSON.stringify(attendances)
@@ -73,7 +73,7 @@ class AlumnoService {
       console.error(e)
     }
   }
-/*
+*/
 async updateAttendances(attendances, courseId) {
   console.log(attendances);
   let asistencias = JSON.stringify(attendances)
@@ -96,7 +96,7 @@ async updateAttendances(attendances, courseId) {
     console.error(e)
   }
 }
-*/
+
   async blockStudent(id, blockedStatus) {
     let blockedstring = JSON.stringify(blockedStatus)
     console.log(blockedstring);

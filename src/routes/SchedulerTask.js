@@ -84,7 +84,7 @@ function SchedulerTask() {
       <h4></h4>
       <h4 className="bodytitulo left" >Alumnos a notificar:</h4>
       {
-        ((students.length) === 0 || typeof (students) == "undefined") ?
+        (typeof (students) == "undefined" || (students.length) === 0) ?
           <p>"No existen alumnos pendientes de notificar por ausencias"</p> :
           students.map((alumno) => {
             return (

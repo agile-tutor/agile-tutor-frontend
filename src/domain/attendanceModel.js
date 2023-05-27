@@ -11,7 +11,7 @@ export class AttendanceModel {
             {
                 id: (attendanceJson.id * 1),
                 day: (attendanceJson.day * 1),
-                attended: (attendanceJson.attended.toLowerCase() === 'true')
+                attended: (attendanceJson.attended/*.toLowerCase() === 'true'*/)
             }
         )
         return result
