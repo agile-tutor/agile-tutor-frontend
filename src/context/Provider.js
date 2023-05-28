@@ -9,11 +9,13 @@ export const Provider = ({ children }) => {
   const [allStudents, setAllStudents] = useState([]);
   const [checked, setChecked] = useState([]);
   const [todb, setTodb] = useState(false);
-  const [number, setNumber] = useState(1);
+  const [courses, setCourses] = useState([]);
+  const [number, setNumber] = useState(0);
 
   const value = {
     //estado
     allStudents,
+    courses,
     checked,
     number,
     //funciones que afectan el estado
@@ -49,6 +51,10 @@ export const Provider = ({ children }) => {
     getAllStudents: () => {
       console.log('obteniendo todos los alumnos');
       loadAllStudents();
+    },
+    getAllCourses: () => {
+      console.log('obteniendo todos los cursos');
+      loadAllCourses();
     }
   }
 
@@ -87,6 +93,7 @@ export const Provider = ({ children }) => {
 
   const loadCourse = async (number) => {
     try {
+      console.log(number)
       const comision = await alumnoService.getComision(number)
       comision.map(alumno =>
         alumno.attendances.map(attendanceAsJson))
@@ -107,9 +114,30 @@ export const Provider = ({ children }) => {
     }
   }
 
+  const loadAllCourses = async () => {
+    try {
+      const allCourses = await alumnoService.getAllCourses();
+      setCourses(allCourses);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  const setCourseId = async () => {
+    try {
+      await loadAllCourses();
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  useEffect(() => {
+    setCourseId();
+  }, []);
+
   useEffect(() => {
     loadCourse(number);
-  }, [todb])
+  }, [todb]);
 
   return (
     <Context.Provider value={value}>

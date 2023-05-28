@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { AlumnoModel } from '../domain/alumnoModel'
+import { CourseModel } from '../domain/courseModel';
 import { REST_SERVER_URL } from './constants'
 import M from 'materialize-css/dist/js/materialize.min.js';
 
@@ -7,6 +8,10 @@ class AlumnoService {
 
   alumnoAsJson(alumnoJson) {
     return AlumnoModel.fromJson(alumnoJson)
+  }
+
+  courseAsJson(courseJson) {
+    return CourseModel.fromJson(courseJson)
   }
 
   async getComision(number) {
@@ -46,6 +51,28 @@ class AlumnoService {
       console.log(alumnosJson);
       const alumnos = alumnosJson.data.map(this.alumnoAsJson);
       return alumnos.sort((a, b) => (a.surname < b.surname) ? -1 : 1);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  async getAllCourses() {
+
+    try {
+      const coursesJson = await axios.get(`${REST_SERVER_URL}/api/course`, {
+        method: 'GET',
+        mode: 'no-cors',
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Credentials': 'true'
+        },
+        credentials: 'same-origin',
+      })
+      console.log(coursesJson);
+      const courses = coursesJson.data.map(this.courseAsJson);
+      console.log(courses);
+      return courses.sort((a, b) => (a.id < b.id) ? -1 : 1);
     } catch (error) {
       console.error(error);
     }

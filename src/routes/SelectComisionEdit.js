@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 function SelectComisionEdit({ action }) {
 
-    const { getCourse } = useContext(Context)
+    const { getCourse, courses, getAllCourses } = useContext(Context)
 
     useEffect(() => {
         let elems = document.querySelectorAll('.dropdown-trigger');
@@ -14,12 +14,17 @@ function SelectComisionEdit({ action }) {
 
     return (
         <div>
+            {typeof (courses[0]) == "undefined" ? () => { getAllCourses } : () => { }}
             <ul id="dropdownComisionEdit" className="dropdown-content">
-                <li><Link to="/comisionEdit" onClick={() => getCourse(1)}>Comisión 1</Link></li>
-                <li className="divider"></li>
-                <li><Link to="/comisionEdit" onClick={() => getCourse(2)}>Comisión 2</Link></li>
-                <li className="divider"></li>
-                <li><Link to="/comisionEdit" onClick={() => getCourse(3)}>Comisión 3</Link></li>
+                {
+                    courses.map((course) => {
+                        return (
+                            <div>
+                                <li><Link key={course.id} to="/comisionEdit" onClick={() => getCourse(course.id)}>Comisión {course.id}</Link></li>
+                                <li className="divider"></li>
+                            </div>
+                        )
+                    })}
             </ul>
             <ul className="xxxxxxx" >
                 <li><Link className="dropdown-trigger" href="#!" data-target="dropdownComisionEdit"><i className="material-icons">mode_edit</i>{action}<i className="material-icons right">arrow_drop_down</i></Link></li>
