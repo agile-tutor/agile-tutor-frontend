@@ -10,9 +10,10 @@ function SearchResult({ result }) {
     }, []);
 
     return (
-        <div className='container section'>
-            <a className='waves-effect waves-teal btn-flat modal-trigger search-result' href={"#modaledit" + result.id} /*onClick={(e) => alert("click on " + result.name + e)}*/>{result.surname + " " + result.name}</a>
-            <AlumnoModal key={result.id} studentid={result.id} name={result.name} surname={result.surname} identifier={result.identifier} emailedit={result.email} observations={result.observations} setName={()=>{}} setSurname={()=>{}} setIdentifier={()=>{}} setEmailedit={()=>{}} setObservations={()=>{}} />
+        <div className='container section resultsearchname'>
+            <a className='waves-effect waves-teal btn-flat modal-trigger search-result' href={"#modaledit" + result.id} /*onClick={(e) => alert("click on " + result.name + e)}*/>{result.surname.toLowerCase() + " " + result.name.toLowerCase()}</a>
+            <AlumnoModal key={result.id} courseId={result.courseId} studentid={result.id} name={result.name} surname={result.surname} identifier={result.identifier} emailedit={result.email} observations={result.observations} setName={() => { }} setSurname={() => { }} setIdentifier={() => { }} setEmailedit={() => { }} setObservations={() => { }} />
+            <div className="divider"></div>
         </div>
     )
 }

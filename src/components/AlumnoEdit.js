@@ -4,7 +4,7 @@ import '../App.css';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import AlumnoModal from "./AlumnoModal";
 
-function AlumnoEdit({ nombre, apellido, identificacion, email, observaciones, id, blocked, clnametr, clicons, handleEditBlockStudent, handleEditUpdateStudent }) {
+function AlumnoEdit({ courseId, nombre, apellido, identificacion, email, observaciones, id, blocked, clnametr, clicons, handleEditBlockStudent, handleEditUpdateStudent }) {
 
     const [name, setName] = useState(nombre);
     const [surname, setSurname] = useState(apellido);
@@ -56,7 +56,7 @@ function AlumnoEdit({ nombre, apellido, identificacion, email, observaciones, id
                     //onClick={() => handleClickEdit(id, blocked)}
                     >mode_edit </i>{id}</a>
                     {console.log(id)}
-                    <AlumnoModal key={id} studentid={id} name={name} surname={surname} identifier={identifier} emailedit={emailedit} observations={observations} setName={setName} setSurname={setSurname} setIdentifier={setIdentifier} setEmailedit={setEmailedit} setObservations={setObservations} handleClickUpdate={handleClickUpdate} />
+                    <AlumnoModal key={id} studentid={id} courseId={courseId} name={name} surname={surname} identifier={identifier} emailedit={emailedit} observations={observations} setName={setName} setSurname={setSurname} setIdentifier={setIdentifier} setEmailedit={setEmailedit} setObservations={setObservations} handleClickUpdate={handleClickUpdate} />
                 </div>
             </td>
             <td id="descripcion-edicion-estudiante">

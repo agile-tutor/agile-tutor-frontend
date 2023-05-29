@@ -6,7 +6,7 @@
   padding-top: .1px;
   font-family: Lato, sans-serif;
   font-size: calc(10px + 2vmin);
-  height: 100vh;
+  /*  height: 75vh;*/
   width: 100%
 }
 
@@ -80,9 +80,12 @@
 
 .nav-wrapper {
   background-color: #dad9d5;
+  border-bottom: 2px solid #1f849c;
 }
 
 .bodytitulo {
+  padding-top: 0%;
+  margin-top: 0%;
   text-align: center;
   font-size: 3dvw;
   width: 100vw;
@@ -98,9 +101,46 @@
 }
 
 #nav-var-mob {
-  color: #dad9d5;
+  color: #dad9d5 !important;
   font-size: large;
   margin: 5vw -2.5vh;
+}
+
+.dropdownPassAtendanceMob {
+  background-color: #eeeeee;
+  margin-left: -5vw;
+  margin-top: 3vh;
+}
+
+.dropdownComisionEditMob {
+  background-color: #eeeeee;
+  margin-left: -5vw;
+  margin-top: 5vh;
+}
+
+.dropdownComisionEditMob ul {
+  margin-top: 4vh;
+  background-color: #2397b4;
+}
+
+
+.dropdownPassAtendanceMob ul {
+  margin-top: 3vh;
+  background-color: #2397b4;
+}
+
+
+.sidenav li {
+  color: #dad9d5;
+  margin-left: 0;
+  background-color: #1f849c;
+}
+
+.sidenav li>a {
+  color: #dad9d5;
+  margin: .01vh;
+  background-color: #1f849c;
+  font-size: large;
 }
 
 .hide-on-med-and-down {
@@ -233,6 +273,8 @@
 .modal {
   max-width: 90vw !important;
   max-height: 80vh !important;
+  background-color: #ffffffe7;
+  border-radius: 1%
 }
 
 #lupasearch {
@@ -283,25 +325,31 @@
   background-color: #1f839c33;
   display: flex;
   flex-direction: column;
-  box-shadow: 0px 0px 8px #ddd;
-  border-radius: 10px;
+  box-shadow: 0px 0px 8px #999898;
+  border-radius: 5px;
   margin-top: 1vh;
   max-height: 300px;
   overflow-y: scroll;
 }
 
 .search-result {
-  padding: 0 0 1vh 2vh;
+  padding: 0 0 0.1vh 0.1vh;
   font-family: Arial, Helvetica, sans-serif;
   margin-right: .5vw;
+  font-size: small;
 }
 
 .search-result :hover {
   background-color: #efefef;
 }
 
+.resultsearchname {
+  padding-top: 0.1vh;
+  padding-bottom: 0.1vh;
+}
+
 .search-page {
-  margin-top: -30vh;
+  margin-top: 0vh;
 }
 
 .to-notify {

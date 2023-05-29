@@ -1,0 +1,74 @@
+.mycard {
+    width: 70vw;
+    height: 50vh;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0.95;
+    /*    margin-top: 1vh;*/
+}
+
+#botonLogin {
+    color: white;
+    background-color: #9f283b;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    margin-top: 2vh;
+    box-shadow: 5px 4px 4px rgba(255, 0, 0, 0.24);
+}
+
+#H5Register {
+    text-align: end;
+    margin-top: 3vh;
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 100%;
+}
+
+#linkRegister {
+    color: #1f849c;
+    margin-right: 1vw;
+    margin-bottom: 1vh;
+}
+
+.logo-login {
+    width: 35vw;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0.95;
+    margin-bottom: 5vh;
+
+}
+
+#inputLogin {
+    width: 40vw;
+    color: white;
+    background-color: #1f849c;
+    padding: 1vh;
+    border-radius: 5px;
+    margin: .5vh;
+
+    /*    -moz-appearance: textfield;*/
+}
+/*
+#inputLogin:hoverable {
+    border:4px solid #b217b4;
+}
+*/
+#fondoTarjetaLogin {
+    background-color: #dad9d5;
+    border-radius: 15px;
+    padding-bottom: 2vh;
+    padding-top: 3vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-color: #1f849c;
+    border: 2px solid #3f91a5;
+    box-shadow: 5px 4px 4px #3f91a5(255, 2, 2, 0.50);
+}
+
+.loginRegisterCards {
+ /*   display: flex;
+    align-items: center;
+    justify-content: center;*/
+}

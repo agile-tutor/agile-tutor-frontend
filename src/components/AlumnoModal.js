@@ -1,5 +1,5 @@
 
-const AlumnoModal = ({ name, surname, studentid, identifier, emailedit, observations, setName, setSurname, setIdentifier, setEmailedit, setObservations, handleClickUpdate }) => {
+const AlumnoModal = ({ courseId, name, surname, studentid, identifier, emailedit, observations, setName, setSurname, setIdentifier, setEmailedit, setObservations, handleClickUpdate }) => {
 
     return (
 
@@ -40,13 +40,24 @@ const AlumnoModal = ({ name, surname, studentid, identifier, emailedit, observat
                                 }
                                 <label className="active" htmlFor="email">Email</label>
                             </div>
-                            <div className="input-field col s6">
+                            <div className="input-field col s4">
+                                {console.log(courseId)}
                                 {handleClickUpdate == null ?
-                                    <input disabled value={identifier} id="identifier" type="number" className="validate" />
+                                    <input disabled value={identifier} id="identifier" type="text" className="validate" />
                                     :
                                     <input defaultValue={identifier} onChange={(e) => setIdentifier(e.target.value)} id="identifier" type="number" />
                                 }
-                                <label className="active" htmlFor="itentifier">identificacion</label>
+                                <label className="active" htmlFor="itentifier">Identificación</label>
+                            </div>
+                            <div>
+                                {handleClickUpdate == null ?
+                                    <div className="input-field col s2">
+                                        <input disabled value={courseId} id="courseid" type="text" className="validate" />
+                                        <label className="active" htmlFor="itentifier">Comisión</label>
+                                    </div>
+                                    :
+                                    <div></div>
+                                }
                             </div>
                         </div>
                         <div className="row">

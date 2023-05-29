@@ -3,7 +3,7 @@ import { Context } from '../context/Context.js';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { Link } from 'react-router-dom';
 
-function SelectComision({ action }) {
+function SelectComision({ action, style }) {
 
     const { getCourse, courses, getAllCourses } = useContext(Context)
 
@@ -15,7 +15,7 @@ function SelectComision({ action }) {
     return (
         <div>
             {typeof (courses[0]) == "undefined" ? () => { getAllCourses } : () => { }}
-            <ul id="dropdownPassAtendance" className="dropdown-content">
+            <ul id={style} className="dropdown-content">
                 {
                     courses.map((course) => {
                         return (
@@ -26,8 +26,8 @@ function SelectComision({ action }) {
                         )
                     })}
             </ul>
-            <ul className="xxxxxxx" >
-                <li><Link className="dropdown-trigger" href="#!" data-target="dropdownPassAtendance"><i className="material-icons">pan_tool</i>{action}<i className="material-icons right">arrow_drop_down</i></Link></li>
+            <ul className={style} >
+                <li><Link className="dropdown-trigger" href="#!" data-target={style}><i className="material-icons">pan_tool</i>{action}<i className="material-icons right">arrow_drop_down</i></Link></li>
             </ul>
         </div>
     )

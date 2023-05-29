@@ -28,7 +28,7 @@ function SearchBar({ allStudents, getAllStudents, setResults }) {
                     <div className="nav-wrapper">
                         <form>
                             <div className="input-field studentSearchInput">
-                                <input placeholder="Digite para buscar" id="search" type="search" value={input} onChange={(e) => handleChange(e.target.value)} />
+                                <input placeholder="Digite para buscar" id="search" type="search" value={input} onChange={(e) => handleChange(e.target.value)} autoComplete="off"/>
                                 <label className="label-icon" htmlFor="search"><i className="material-icons">search</i></label>
                                 <i className="material-icons">close</i>
                             </div>
