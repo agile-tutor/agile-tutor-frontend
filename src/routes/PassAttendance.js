@@ -1,4 +1,4 @@
-import SelectComision from './SelectComision';
+/*import SelectComision from './SelectComision';
 
 function PassAttendance() {
 
@@ -9,4 +9,4 @@ function PassAttendance() {
     )
 }
 
-export default PassAttendance
+export default PassAttendance*/

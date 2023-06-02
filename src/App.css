@@ -41,11 +41,11 @@
 }
 
 #descripcion-edicion-estudiante {
-  padding-left: 3vw;
+  text-align: center !important;
 }
 
 #descripcion-edicion-estudiante-editar {
-  padding-left: 3vw;
+  text-align: center !important;
 }
 
 .porcentajeAsistencia {
@@ -154,35 +154,42 @@
 }
 
 #boton-change-daycheck {
-  color: #9f283b;
+  color: #ffffff;
   height: 5vh;
   width: 15vw;
   margin-bottom: .1vh;
 }
 
 #boton-change-daycheck:focus {
-  background-color: #1f849c;
-  color: #dad9d5;
+  background-color: #fde5e9;
+  color: #1f849c;
+}
+
+#boton-change-daycheck:hover {
+  background-color: #9f283b;
+  color: #ffffff;
 }
 
 .titulo-tabla {
   padding: 2rem;
-  margin: .2rem .2rem 0rem .2rem;
+  margin: 0rem .2rem 0rem .2rem;
   color: #1f849c;
   font-weight: bolder;
   text-align: center;
   justify-content: center;
   background-color: #fde5e9;
+  border: 2px solid#1f849c;
 }
 
 .sidenav {
   background-color: #1f849c;
   border-radius: 0 0 100% 0;
+  height: 100vh;
 }
 
 .breadcrumb {
-  padding: .1rem;
   color: #9f283b;
+  font-size: 2.2vh;
 }
 
 .dropdown-trigger {
@@ -211,6 +218,7 @@
   font-size: small;
   margin-left: 10vw;
   margin-right: 10vw;
+  text-align: center;
 }
 
 #guardar-asistencias-boton {

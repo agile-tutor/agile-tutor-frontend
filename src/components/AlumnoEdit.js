@@ -54,7 +54,7 @@ function AlumnoEdit({ courseId, nombre, apellido, identificacion, email, observa
                 <div className='container section'>
                     <a className="waves-effect waves-teal btn-flat modal-trigger" href={"#modaledit" + id} ><i id="iconoBlock" className={clicons}
                     //onClick={() => handleClickEdit(id, blocked)}
-                    >mode_edit </i>{id}</a>
+                    >mode_edit </i></a>
                     {console.log(id)}
                     <AlumnoModal key={id} studentid={id} courseId={courseId} name={name} surname={surname} identifier={identifier} emailedit={emailedit} observations={observations} setName={setName} setSurname={setSurname} setIdentifier={setIdentifier} setEmailedit={setEmailedit} setObservations={setObservations} handleClickUpdate={handleClickUpdate} />
                 </div>

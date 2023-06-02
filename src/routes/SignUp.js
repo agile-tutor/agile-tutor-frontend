@@ -47,16 +47,18 @@ const SignUp = () => {
 
     return (
         <div>
-            <nav>
-                <div className="nav-wrapper bodytitulo">
-                    <div className="col s12">
+            {/*            <nav>
+                <div className="nav-wrapper bodytitulo">*/}
+            <div className="bodytitulo col s12">{/*}
                         <Link to={"/"} className="breadcrumb bodytitulo">Ingrese sus datos para el registro en el sistema</Link>
-                    </div>
-                </div>
+    */ }                      <h4 className="titulo-tabla" > Ingrese sus datos para el registro en el sistema </h4>
+
+            </div>
+            {/*      </div>
             </nav>
-            <div classname="loginRegisterCards">
+                */  }     <div classname="loginRegisterCards">
                 <div className="mycard hoverable">
-                    <div id="fondoTarjetaLogin" className="card auth-card input-field">
+                    <div id="fondoTarjeta" className="card auth-card input-field tarjetaSignUp">
                         <img alt='logo' className="logo-login" src={logo} />
 
                         <input

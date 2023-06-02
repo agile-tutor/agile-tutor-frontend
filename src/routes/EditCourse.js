@@ -1,4 +1,4 @@
-import SelectComisionEdit from './SelectComisionEdit';
+/*import SelectComisionEdit from './SelectComisionEdit';
 
 function EditCourse() {
     return (
@@ -8,4 +8,4 @@ function EditCourse() {
     )
 }
 
-export default EditCourse
+export default EditCourse*/
