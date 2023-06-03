@@ -7,9 +7,9 @@ const AlumnoModal = ({ courseId, name, surname, studentid, identifier, emailedit
             {console.log(studentid)}
             <div className="modal-content">
                 {handleClickUpdate == null ?
-                    <h4>Datos del estudiante:</h4>
+                    <h4 id="modal-title">Datos del estudiante:</h4>
                     :
-                    <h4>Modifique los datos actuales:</h4>
+                    <h4 id="modal-title">Edite los datos del estudiante:</h4>
                 }
                 <div className="row">
                     <form className="col s12">
@@ -75,9 +75,9 @@ const AlumnoModal = ({ courseId, name, surname, studentid, identifier, emailedit
             </div>
             <div className="modal-footer">
                 {handleClickUpdate == null ?
-                    <a href="#!" className="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+                    <a href="#!" className="modal-close waves-effect waves-red btn-flat">Cerrar</a>
                     : <div>
-                        <a href="#!" className="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+                        <a href="#!" className="modal-close waves-effect waves-red btn-flat">Cancelar</a>
                         <a href="#!" onClick={() => { handleClickUpdate(); }} className="modal-close waves-effect waves-green btn-flat">Aceptar</a>
                     </div>
                 }

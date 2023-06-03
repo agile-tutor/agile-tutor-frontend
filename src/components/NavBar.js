@@ -50,7 +50,7 @@ function NavBar() {
                 <nav>
                     <div className="nav-wrapper">
                         <Link to="/" className="brand-logo" ><img className="image-logo" src={Logo}></img></Link>
-                        <a href="#" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
+                        <a href="#" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons hamburguer-color">menu</i></a>
                         <ul className="right hide-on-med-and-down" >
                             {//            <li><a className="dropdown-trigger" href="#!" data-target="dropdown1">Seleccionar Comision<i className="material-icons right">arrow_drop_down</i></a></li>
                             }
@@ -74,12 +74,17 @@ function NavBar() {
             </div>
             <ul className="sidenav sidenav" id="mobile-demo">
                 <li ><Link id='nav-var-mob' to="/"><i className="material-icons">home</i>Home</Link></li>
+                <div className="divider"></div>
                 <div>
                     <SelectComision action="Pasar Asistencia" style="dropdownPassAtendanceMob nav-var-mob" />
+                    <div className="divider"></div>
                     <SelectComisionEdit action="Editar Comision" style="dropdownComisionEditMob nav-var-mob" />
+                    <div className="divider"></div>
                 </div>
                 <li ><Link id='nav-var-mob' to="/attendancePercent"><i className="material-icons">settings</i>Porcentaje Asistencia</Link></li>
+                <div className="divider"></div>
                 <li ><Link id='nav-var-mob' to="/tasks"><i className="material-icons">schedule</i>Tareas Programadas</Link></li>
+                <div className="divider"></div>
                 <li >
                     <Link id='nav-var-mob' to="/search"><i className="material-icons">search</i>Buscar</Link>
                     {/* <form>
