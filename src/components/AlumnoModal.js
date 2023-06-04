@@ -45,7 +45,7 @@ const AlumnoModal = ({ courseId, name, surname, studentid, identifier, emailedit
                                 {handleClickUpdate == null ?
                                     <input disabled value={identifier} id="identifier" type="text" className="validate" />
                                     :
-                                    <input defaultValue={identifier} onChange={(e) => setIdentifier(e.target.value)} id="identifier" type="number" />
+                                    <input defaultValue={identifier} onChange={(e) => setIdentifier(e.target.value)} id="identifier" type="text" />
                                 }
                                 <label className="active" htmlFor="itentifier">Identificación</label>
                             </div>

@@ -1,66 +1,31 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { Context } from '../context/Context.js';
 import { Link } from "react-router-dom";
 import M from "materialize-css";
 import logo from "../TIPLOGO.png";
-import axios from "axios";
 
 const SignUp = () => {
     const [name, setname] = useState(null);
     const [surname, setsurname] = useState(null);
     const [email, setemail] = useState(null);
     const [password, setpassword] = useState(null);
-
-    const uploadFiedls = () => {
-
-        axios.post("https://exposicion-virtual.herokuapp.com/register",
-            {
-                "name": name,
-                "surname": surname,
-                "email": email,
-                "password": password
-            },
-        )
-            .then((res) => {
-                console.log(res)
-                if (!res.ok) {
-                    M.toast({ html: "Datos invalidos o el usuario ya existe", classes: "#c62828 red darken-3" });
-                } else {
-                    M.toast({
-                        html: "Se ha creado su usuario satisfactoriamente",
-                        classes: "#388e3c green darken-2",
-                    });
-                    history.push("/login");
-                }
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-    };
+    const { signUpTutor } = useContext(Context);
 
     const PostData = () => {
         if (!(name && surname && email && password)) {
             M.toast({ html: "Se deben ingresar los datos solicitados", classes: "#c62828 red darken-3" });
         } else {
-            uploadFiedls();
+            signUpTutor(name, surname, email, password);
         }
     };
 
     return (
-        <div>
-            {/*            <nav>
-                <div className="nav-wrapper bodytitulo">*/}
-            <div className="bodytitulo col s12">{/*}
-                        <Link to={"/"} className="breadcrumb bodytitulo">Ingrese sus datos para el registro en el sistema</Link>
-    */ }                      <h4 className="titulo-tabla" > Ingrese sus datos para el registro en el sistema </h4>
-
-            </div>
-            {/*      </div>
-            </nav>
-                */  }     <div classname="loginRegisterCards">
+        <div className="main-login-register" >
+            < div classname="loginRegisterCards" >
                 <div className="mycard hoverable">
                     <div id="fondoTarjeta" className="card auth-card input-field tarjetaSignUp">
                         <img alt='logo' className="logo-login" src={logo} />
-
+                        <h5 className="warning sign center" > Ingrese sus datos para el registro en el sistema </h5>
                         <input
                             type="text hoverable"
                             placeholder="Ingrese nombre"
@@ -102,7 +67,7 @@ const SignUp = () => {
                     </div>
                 </div>
             </div>
-        </div>)
+        </div >)
 };
 
 export default SignUp;

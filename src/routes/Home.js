@@ -6,9 +6,8 @@ function Home() {
 
 
     return (
-        <div >
-            {//            <img src={homeLogo} alt='Agile Tutor Logo' className="responsivelogo" />
-            }           <Login />
+        <div className="main-login-register" >
+            <Login />
         </div>
     )
 }

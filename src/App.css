@@ -317,9 +317,16 @@ btn-flat:focus {
 .modal {
   max-width: 80vw !important;
   max-height: 80vh !important;
-  background-color: #fffffff3;
   border-radius: 5%;
   border: 3px solid #9f283b;
+}
+
+.modal-content {
+  color: #000000 !important;
+}
+
+.modal-footer {
+  background-image: url(./images/trama_fondo.png);
 }
 
 #lupasearch {

@@ -75,6 +75,12 @@
 .tarjetaSignUp {
     background-color: #dad9d5;
 }
+
+.main-login-register {
+    background-image: url(./images/trama_fondo.png);
+    min-height: 100vh;
+    min-width: 100vw;
+}
 /*
 .loginRegisterCards {
     display: flex;

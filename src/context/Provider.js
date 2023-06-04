@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { alumnoService } from "../service/alumnoService"
+import { tutorService } from "../service/tutorService"
 import { Context } from "./Context"
 import { AttendanceModel } from "../domain/attendanceModel"
 import { StudentAttendanceDTO } from "../domain/studentAttendanceDTO"
@@ -11,6 +12,7 @@ export const Provider = ({ children }) => {
   const [todb, setTodb] = useState(false);
   const [courses, setCourses] = useState([]);
   const [number, setNumber] = useState(0);
+  const [tutor, setTutor] = useState('');
 
   const value = {
     //estado
@@ -18,6 +20,7 @@ export const Provider = ({ children }) => {
     courses,
     checked,
     number,
+    tutor,
     //funciones que afectan el estado
     updateAttendance: (target, id_asistencia) => {
       const updatedChecked = checked.map(alumno =>
@@ -55,6 +58,10 @@ export const Provider = ({ children }) => {
     getAllCourses: () => {
       console.log('obteniendo todos los cursos');
       loadAllCourses();
+    },
+    signUpTutor: (name, surname, email, password) => {
+      console.log('registrando tutor');
+      registerTutor(name, surname, email, password);
     }
   }
 
@@ -118,6 +125,15 @@ export const Provider = ({ children }) => {
     try {
       const allCourses = await alumnoService.getAllCourses();
       setCourses(allCourses);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  const registerTutor = async (name, surname, email, password) => {
+    try {
+      const registeredTutor = await tutorService.registerTutor(name, surname, email, password);
+      setTutor(registeredTutor);
     } catch (error) {
       console.error(error);
     }

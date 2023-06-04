@@ -51,45 +51,36 @@ const Login = () => {
     };
 
     return (
-        <div>
-            {/*}        <nav>
-                <div className="nav-wrapper bodytitulo">*/}
-            <div className="bodytitulo col s12">
-                {//                       <Link to={"/"} className="breadcrumb bodytitulo">Ingrese sus datos para utilizar el sistema</Link>
-                }                      <h4 className="titulo-tabla" > Ingrese sus datos para utilizar el sistema </h4>
-            </div>
-            {/*}         </div>
-            </nav>*/}
-            <div classname="loginRegisterCards">
-                <div className="mycard hoverable">
-                    <div id="fondoTarjeta" className="card auth-card input-field tarjetaLogin">
-                        <img alt="logo" className="logo-login" src={logo} />
-                        <input
-                            type="text hoverable"
-                            id='inputLogin'
-                            placeholder="Ingrese usuario"
-                            value={mail}
-                            onChange={(e) => setmail(e.target.value)}
-                        />
-                        <input
-                            type="password hoverable"
-                            id='inputLogin'
-                            placeholder="Ingrese contraseña"
-                            value={password}
-                            onChange={(e) => setpassword(e.target.value)}
-                        />
-                        <button
-                            id="botonLogin"
-                            className="btn waves-effect waves-light"
-                            onClick={() => PostData()}
-                        >
-                            Ingresar
-                        </button>
-                        <h5 id="H5Register">
-                            <tr />
-                            <Link id="linkRegister" to="/register">¿No te encuentras registrado?</Link>
-                        </h5>
-                    </div>
+        <div classname="loginRegisterCards">
+            <div className="mycard hoverable">
+                <div id="fondoTarjeta" className="card auth-card input-field tarjetaLogin">
+                    <img alt="logo" className="logo-login" src={logo} />
+                    <h5 className="warning sign center" > Ingrese sus datos para utilizar el sistema </h5>
+                    <input
+                        type="text hoverable"
+                        id='inputLogin'
+                        placeholder="Ingrese usuario"
+                        value={mail}
+                        onChange={(e) => setmail(e.target.value)}
+                    />
+                    <input
+                        type="password hoverable"
+                        id='inputLogin'
+                        placeholder="Ingrese contraseña"
+                        value={password}
+                        onChange={(e) => setpassword(e.target.value)}
+                    />
+                    <button
+                        id="botonLogin"
+                        className="btn waves-effect waves-light"
+                        onClick={() => PostData()}
+                    >
+                        Ingresar
+                    </button>
+                    <h5 id="H5Register">
+                        <tr />
+                        <Link id="linkRegister" to="/register">¿No te encuentras registrado?</Link>
+                    </h5>
                 </div>
             </div>
         </div>)
