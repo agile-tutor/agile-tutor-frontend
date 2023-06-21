@@ -5,21 +5,28 @@ import { Link } from 'react-router-dom';
 
 function SelectComisionEdit({ action, style }) {
 
-    const { getCourse, courses, getAllCourses } = useContext(Context)
+    const { /*tutorId,*/ getCourse, tutorCourses/*, getAllCoursesFromTutor*/ } = useContext(Context)
 
     useEffect(() => {
         let elems = document.querySelectorAll('.dropdown-trigger');
         M.Dropdown.init(elems, { inDuration: 300, outDuration: 225 });
     }, []);
-
+    /*
+        useEffect(() => {
+            console.log(tutorId);
+            if (tutorId != 0) {
+                getAllCoursesFromTutor(tutorId);
+            }
+        }, []);
+     */
     return (
         <div>
-            {typeof (courses[0]) == "undefined" ? () => { getAllCourses } : () => { }}
-            <ul id={style} className="dropdown-content">
+            {//    {typeof (tutorCourses[0]) == "undefined" ? () => { getAllCoursesFromTutor(tutorId) } : () => { }}
+            } <ul id={style} className="dropdown-content">
                 {
-                    courses.map((course) => {
+                    tutorCourses.map((course) => {
                         return (
-                            <div>
+                            <div key={course.id}>
                                 <li><Link key={course.id} to="/comisionEdit" onClick={() => getCourse(course.id)}>Comisión {course.id}</Link></li>
                                 <li className="divider"></li>
                             </div>

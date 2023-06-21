@@ -3,8 +3,9 @@ import 'materialize-css/dist/css/materialize.min.css';
 import '../App.css';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import AlumnoModal from "./AlumnoModal";
+import StudentCourseChangeModal from "./StudentCourseChangeModal";
 
-function AlumnoEdit({ courseId, nombre, apellido, identificacion, email, observaciones, id, blocked, clnametr, clicons, handleEditBlockStudent, handleEditUpdateStudent }) {
+function AlumnoEdit({ courseId, nombre, apellido, identificacion, email, observaciones, id, blocked, clnametr, clicons, handleEditBlockStudent, handleEditUpdateStudent, handleEditChangeStudentCourse }) {
 
     const [name, setName] = useState(nombre);
     const [surname, setSurname] = useState(apellido);
@@ -31,6 +32,11 @@ function AlumnoEdit({ courseId, nombre, apellido, identificacion, email, observa
             handleEditUpdateStudent(id, editedStudent);
             M.toast({ html: `${name} ${surname} modificado exitosamente.` });
         }
+    };
+
+    const handleClickChangeStudentCourse = (destinyCourse) => {
+        console.log("destinyCourse: "+destinyCourse)
+        handleEditChangeStudentCourse(id, destinyCourse);
     };
 
     useEffect(() => {
@@ -60,10 +66,15 @@ function AlumnoEdit({ courseId, nombre, apellido, identificacion, email, observa
                 </div>
             </td>
             <td id="descripcion-edicion-estudiante">
-                <a className="waves-effect waves-teal btn-flat"><i id="iconoBlock" className={clicons}>swap_horiz </i></a>
+
+                <div className='container section'>
+                    <a className="waves-effect waves-teal btn-flat modal-trigger" href={"#modalchangecourse" + id} ><i id="iconoBlock" className={clicons}
+                    >swap_horiz </i></a>
+                    <StudentCourseChangeModal key={id} studentid={id} courseId={courseId} name={name} surname={surname} handleClickChangeStudentCourse={handleClickChangeStudentCourse} />
+                </div>
+
             </td>
-            {//    <td id="columna-observaciones">{observaciones/*+" "+id_asistencia+" "+asistencia*/+"Hello"}</td>
-            }</tr>
+        </tr>
     )
 }
 

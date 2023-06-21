@@ -5,12 +5,13 @@ import Preloader from '../utils/Preloader.js';
 import Breadcrumbs from '../utils/Breadcrumbs.js';
 import AlumnoEdit from './AlumnoEdit.js';
 import M from 'materialize-css/dist/js/materialize.min.js';
+import NewStudentModal from './NewStudentModal.js';
 
 function ComisionEdit() {
 
-    const { checked, number, blockUnblockStudent, updateStudent, getCourse } = useContext(Context)
-    const [change, setChange] = useState(false)
-    const [chargin, setChargin] = useState(false)
+    const { checked, number, blockUnblockStudent, updateStudent, getCourse, putStudentCourseChange, addNewStudentToACourse } = useContext(Context);
+    const [change, setChange] = useState(false);
+    const [chargin, setChargin] = useState(false);
 
     const handleEditBlockStudent = async (id, status) => {
         console.log(id)
@@ -27,6 +28,25 @@ function ComisionEdit() {
         console.log(student)
         updateStudent(id, student)
         setChargin(true)
+        await delay(1000);
+        setChargin(false)
+        setChange(!change)
+    }
+
+    const handleAddStudentToACourse = async (newStudent) => {
+        console.log('handle click' + newStudent);
+        addNewStudentToACourse(newStudent);
+        setChargin(true)
+        await delay(1000);
+        setChargin(false)
+        setChange(!change)
+    }
+
+    const handleEditChangeStudentCourse = async (studentId, courseId) => {
+        console.log(studentId)
+        console.log(courseId)
+        putStudentCourseChange(studentId, courseId);
+        setChargin(true);
         await delay(1000);
         setChargin(false)
         setChange(!change)
@@ -76,13 +96,16 @@ function ComisionEdit() {
                                     } else {
                                         return a.surname < b.surname ? -1 : 1
                                     }
-                                }).map((alumno) => { return (<AlumnoEdit key={alumno.id} icourseId={alumno.courseId} id={alumno.id} apellido={alumno.surname} nombre={alumno.name} identificacion={alumno.identifier} email={alumno.email} blocked={alumno.blocked} observaciones={alumno.observations} clnametr={!alumno.blocked ? 'Fila-alumno' : 'Fila-alumno-block'} clicons={!alumno.blocked ? 'material-icons left' : 'material-icons left greyicons'} handleEditBlockStudent={handleEditBlockStudent} handleEditUpdateStudent={handleEditUpdateStudent} />) })
+                                }).map((alumno) => { return (<AlumnoEdit key={alumno.id} courseId={alumno.courseId} id={alumno.id} apellido={alumno.surname} nombre={alumno.name} identificacion={alumno.identifier} email={alumno.email} blocked={alumno.blocked} observaciones={alumno.observations} clnametr={!alumno.blocked ? 'Fila-alumno' : 'Fila-alumno-block'} clicons={!alumno.blocked ? 'material-icons left' : 'material-icons left greyicons'} handleEditBlockStudent={handleEditBlockStudent} handleEditUpdateStudent={handleEditUpdateStudent} handleEditChangeStudentCourse={handleEditChangeStudentCourse} />) })
 
                             }
                             {/* id, nombre, apellido, indentificacion, email, observaciones */}
                         </tbody>
                     </table>
-                    <a id='floating-btn' className="btn-floating btn-large waves-effect waves-light"><i className="material-icons">add</i></a>
+                    <div className='container section'>
+                        <a id='floating-btn' className="btn-floating btn-large waves-effect waves-light modal-trigger" href={"#modaladd"} ><i className="material-icons">add</i></a>
+                        <NewStudentModal courseId={number} handleAddStudentToACourse={handleAddStudentToACourse} />
+                    </div>
                 </div>}
             </div>
 

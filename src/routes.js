@@ -23,4 +23,5 @@ export const AttendanceRoutes = () =>
         }
         <Route path="/attendancePercent/" element={<PorcentajeAsistencia />} />
         <Route path="/tasks/" element={<SchedulerTask />} />
+        <Route path="*" component={<Home />} />
     </Routes>

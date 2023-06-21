@@ -1,21 +1,25 @@
 
-const AlumnoModal = ({ courseId, name, surname, studentid, identifier, emailedit, observations, setName, setSurname, setIdentifier, setEmailedit, setObservations, handleClickUpdate }) => {
+const AlumnoModal = ({ courseId, name, surname, studentid, identifier, emailedit, observations, setName, setSurname, setIdentifier, setEmailedit, setObservations, handleClickUpdate, handleAddStudentToACourse }) => {
 
     return (
 
         <div id={"modaledit" + studentid} className="modal">
             {console.log(studentid)}
             <div className="modal-content">
-                {handleClickUpdate == null ?
+                {handleClickUpdate == null && handleAddStudentToACourse == null ?
                     <h4 id="modal-title">Datos del estudiante:</h4>
                     :
-                    <h4 id="modal-title">Edite los datos del estudiante:</h4>
+                    handleAddStudentToACourse == null ?
+                        <h4 id="modal-title">Edite los datos del estudiante:</h4>
+                        :
+                        <h4 id="modal-title">Ingrese los datos del estudiante:</h4>
+
                 }
                 <div className="row">
                     <form className="col s12">
                         <div className="row">
                             <div className="input-field col s6">
-                                {handleClickUpdate == null ?
+                                {handleClickUpdate == null && handleAddStudentToACourse == null ?
                                     <input disabled value={surname} id="last_name" type="text" className="validate" />
                                     :
                                     <input defaultValue={surname} onChange={(e) => setSurname(e.target.value)} id="last_name" type="text" className="validate" />
@@ -23,7 +27,7 @@ const AlumnoModal = ({ courseId, name, surname, studentid, identifier, emailedit
                                 <label className="active" htmlFor="last_name">Apellido</label>
                             </div>
                             <div className="input-field col s6">
-                                {handleClickUpdate == null ?
+                                {handleClickUpdate == null && handleAddStudentToACourse == null ?
                                     <input disabled value={name} id="first_name" type="text" className="validate" />
                                     :
                                     <input defaultValue={name} onChange={(e) => setName(e.target.value)} id="first_name" type="text" className="validate" />
@@ -33,7 +37,7 @@ const AlumnoModal = ({ courseId, name, surname, studentid, identifier, emailedit
                         </div>
                         <div className="row">
                             <div className="input-field col s6">
-                                {handleClickUpdate == null ?
+                                {handleClickUpdate == null && handleAddStudentToACourse == null ?
                                     <input disabled value={emailedit} id="email" type="email" className="validate" />
                                     :
                                     <input defaultValue={emailedit} onChange={(e) => setEmailedit(e.target.value)} id="email" type="email" className="validate" />
@@ -42,7 +46,7 @@ const AlumnoModal = ({ courseId, name, surname, studentid, identifier, emailedit
                             </div>
                             <div className="input-field col s4">
                                 {console.log(courseId)}
-                                {handleClickUpdate == null ?
+                                {handleClickUpdate == null && handleAddStudentToACourse == null ?
                                     <input disabled value={identifier} id="identifier" type="text" className="validate" />
                                     :
                                     <input defaultValue={identifier} onChange={(e) => setIdentifier(e.target.value)} id="identifier" type="text" />
@@ -62,7 +66,7 @@ const AlumnoModal = ({ courseId, name, surname, studentid, identifier, emailedit
                         </div>
                         <div className="row">
                             <div className="input-field col s12">
-                                {handleClickUpdate == null ?
+                                {handleClickUpdate == null && handleAddStudentToACourse == null ?
                                     <textarea disabled value={observations} id="textarea1" className="materialize-textarea" />
                                     :
                                     <textarea defaultValue={observations} onChange={(e) => setObservations(e.target.value)} id="textarea1" className="materialize-textarea"></textarea>
@@ -74,12 +78,19 @@ const AlumnoModal = ({ courseId, name, surname, studentid, identifier, emailedit
                 </div>
             </div>
             <div className="modal-footer">
-                {handleClickUpdate == null ?
+                {handleClickUpdate == null && handleAddStudentToACourse == null ?
                     <a href="#!" className="modal-close waves-effect waves-red btn-flat">Cerrar</a>
-                    : <div>
-                        <a href="#!" className="modal-close waves-effect waves-red btn-flat">Cancelar</a>
-                        <a href="#!" onClick={() => { handleClickUpdate(); }} className="modal-close waves-effect waves-green btn-flat">Aceptar</a>
-                    </div>
+                    :
+                    handleAddStudentToACourse == null ?
+                        <div>
+                            <a href="#!" className="modal-close waves-effect waves-red btn-flat">Cancelar</a>
+                            <a href="#!" onClick={() => { handleClickUpdate(); }} className="modal-close waves-effect waves-green btn-flat">Aceptar</a>
+                        </div>
+                        :
+                        <div>
+                            <a href="#!" className="modal-close waves-effect waves-red btn-flat">Cancelar</a>
+                            <a href="#!" onClick={() => { handleAddStudentToACourse(); }} className="modal-close waves-effect waves-green btn-flat">Aceptar</a>
+                        </div>
                 }
             </div>
         </div>);

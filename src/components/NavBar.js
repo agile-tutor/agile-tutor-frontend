@@ -11,7 +11,7 @@ import SelectComisionEdit from '../routes/SelectComisionEdit';
 function NavBar() {
 
     const [input, setInput] = useState("");
-    const { allStudents, getAllStudents } = useContext(Context);
+    const { allStudents, getAllStudents, tutorId, logOutTutor } = useContext(Context);
     const [results, setResults] = useState([]);
 
     const handleChange = (value) => {
@@ -46,7 +46,7 @@ function NavBar() {
 
     return (
         <header>
-            <div class="navbar-fixed">
+            <div className={`navbar-fixed${tutorId != 0 ? '' : " hide"}`}>
                 <nav>
                     <div className="nav-wrapper">
                         <Link to="/" className="brand-logo" ><img className="image-logo" src={Logo}></img></Link>
@@ -56,7 +56,7 @@ function NavBar() {
                             }
                             <SelectComision action="Pasar Asistencia" style="dropdownPassAtendance nav-var-web" />
                             <SelectComisionEdit action="Editar Comision" style="dropdownComisionEdit nav-var-web" />
-                            <li ><Link className="navbar-item" id='nav-var-web' to="/attendancePercent"><i className="material-icons">settings</i>Porcentaje Asistencia</Link></li>
+                            <li ><Link className="navbar-item" id='nav-var-web' to="/attendancePercent"><i className="material-icons">show_chart</i>Porcentaje Asistencia</Link></li>
                             <li ><Link className="navbar-item" id='nav-var-web' to="/tasks"><i className="material-icons">schedule</i>Tareas Programadas</Link></li>
                             <li >
                                 <form>
@@ -68,6 +68,7 @@ function NavBar() {
                                 </form>
                                 <SearchResultList results={results} />
                             </li>
+                            <li ><Link className="navbar-item" id='nav-var-web' to="/" onClick={() => logOutTutor()} ><i className="material-icons">logout</i></Link></li>
                         </ul>
                     </div>
                 </nav>
@@ -81,7 +82,7 @@ function NavBar() {
                     <SelectComisionEdit action="Editar Comision" style="dropdownComisionEditMob nav-var-mob" />
                     <div className="divider"></div>
                 </div>
-                <li ><Link id='nav-var-mob' to="/attendancePercent"><i className="material-icons">settings</i>Porcentaje Asistencia</Link></li>
+                <li ><Link id='nav-var-mob' to="/attendancePercent"><i className="material-icons">show_chart</i>Porcentaje Asistencia</Link></li>
                 <div className="divider"></div>
                 <li ><Link id='nav-var-mob' to="/tasks"><i className="material-icons">schedule</i>Tareas Programadas</Link></li>
                 <div className="divider"></div>

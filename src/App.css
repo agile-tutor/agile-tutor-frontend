@@ -63,17 +63,68 @@
   font-weight: normal;
 }
 
-.card-panel {
-  padding: 2rem;
+.parametro-tabla {
+  font-weight: bold;
+  padding-left: 4vw;
 }
+
+.parametro-schedulertask {
+  margin: 4vh;
+}
+
+@media (max-width: 800px) {
+  .card-panel {
+    margin-left: .1vw;
+    margin-right: .1vw;
+    padding: 4vh;
+    font-size: 3.5vw;
+  }
+}
+
+@media (max-width: 800px) {
+  .block-icon {
+    font-size: 3.5vw;
+  }
+}
+
+@media (max-width: 800px) {
+  .check-icon {
+    font-size: 3.5vw;
+  }
+}
+
+@media (min-width: 800px) {
+  .card-panel {
+    padding: 2vw;
+    font-size: 1vw;
+  }
+}
+
+@media (min-width: 800px) {
+  .block-icon {
+    font-size: 1vw;
+  }
+}
+
+@media (min-width: 800px) {
+  .check-icon {
+    font-size: 1vw;
+  }
+}
+
+.card-alumno {
+  margin-bottom: .5vh !important;
+}
+
 
 .tealRed {
   background-color: #9f283b !important;
-  border-radius: 1%;
+  border-radius: 10px;
 }
 
 .tealGreen {
   background-color: #1f849c !important;
+  border-radius: 10px;
 }
 
 .image-logo {
@@ -97,7 +148,7 @@
 }
 
 .breadcrumb-main {
-  background-color: #eeeeee;
+  background-image: url(./images/trama_fondo.png);
 }
 
 #nav-var-web {
@@ -133,6 +184,23 @@
   background-color: #2397b4;
 }
 
+.dropdownChangeStudentCourse {
+  background-color: #eeeeee;
+  margin-bottom: 23vh;
+  font-size: medium;
+}
+
+.dropdown-top-row {
+  margin-top: -7vh;
+}
+
+.dropdown-upper-row {
+  margin-bottom: -10vh;
+}
+
+.dropdown-change-course-list {
+  margin-top: -14vh !important;
+}
 
 .sidenav li {
   color: #dad9d5;
@@ -158,6 +226,11 @@
   background-color: #1f849c;
 }
 
+@media (min-width: 800px) {
+  #boton-save-attendance {
+    width: 20vw;
+  }
+}
 
 #boton-change-daycheck {
   color: #ffffff;
@@ -186,17 +259,16 @@
 
 .titulo-tabla {
   padding: 2rem;
-  margin: 0rem .2rem 0rem .2rem;
+  margin: .4rem .1rem 0rem .1rem;
   color: #1f849c;
   font-weight: bolder;
   text-align: center;
   justify-content: center;
-  background-color: #fde5e9;
+  background-color: #eeeeee;
   border: 2px solid#1f849c;
 }
 
 .comsion-table-title {
-  border-top-width: 0px;
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px;
 }
@@ -256,11 +328,12 @@
   font-size: xx-large;
 }
 
+/*
 .toast {
   background-color: #1f849c;
   border-radius: 2px;
 }
-
+*/
 /*
 .btn {
   background-color: #1f849c;
@@ -290,7 +363,7 @@ btn-flat:focus {
 }
 
 .Fila-alumno-block {
-  background-color: #af5552b7;
+  background-color: #9f283b;
   color: #dad9d5
 }
 
@@ -309,15 +382,27 @@ btn-flat:focus {
   margin-top: unset;
 }
 
-.breadcrumb:last-child {
-  color: #1f849c;
-  font-weight: bold;
+@media (min-width: 800px) {
+  .breadcrumb:last-child {
+    color: #1f849c;
+    font-weight: bold;
+    font-size: 5vh;
+  }
+}
+
+@media (max-width: 800px) {
+  .breadcrumb:last-child {
+    color: #1f849c;
+    font-weight: bold;
+    font-size: 2vh;
+    background-color: #eeeeee;
+  }
 }
 
 .modal {
   max-width: 80vw !important;
   max-height: 80vh !important;
-  border-radius: 5%;
+  border-radius: 15px;
   border: 3px solid #9f283b;
 }
 
@@ -349,6 +434,12 @@ btn-flat:focus {
   padding-bottom: 4vh;
 }
 
+@media (max-width: 800px) {
+  .textSchedulerTask {
+    font-size: 12px;
+  }
+}
+
 .iconSchedulerTask {
   color: #9f283b;
   background-color: #dad9d5;
@@ -358,13 +449,29 @@ btn-flat:focus {
   padding: 1.5vh;
 }
 
+@media (max-width: 800px) {
+  .iconSchedulerTask {
+    font-size: 20px;
+  }
+}
+
 .hourTask {
   font-size: larger;
   font-style: oblique;
   text-align: center;
-  margin: 6vh;
+  margin: 1vh;
   color: #9f283b;
   border: 2px solid#1f849c;
+  padding: 2vh;
+}
+
+
+@media (max-width: 800px) {
+  .hourTask {
+    margin: 10px;
+    font-size: 16px;
+    padding: .8vh;
+  }
 }
 
 .studentSearchInput {
@@ -416,28 +523,59 @@ btn-flat:focus {
 }
 
 .to-notify {
-  background-color: red;
+  width: 80%;
+  margin: auto;
 }
 
-.to-notify .card {
-  width: 48vw;
-  float: left;
-  padding-top: 1vh;
-  padding-left: 1vw;
-  padding-right: 1vw;
-  margin: 1vw;
+@media (max-width: 800px) {
+  .to-notify .card {
+    width: 80vw;
+    padding-top: 2vh;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    margin-bottom: 5vh;
+    font-weight: bolder;
+    border-radius: 2%;
+    background-image: url(./images/trama_fondo.png);
+    border-style: double;
+    border-color: #1f849c;
+  }
 }
 
-.card-image {
-  width: 44vw;
+
+@media (min-width: 800px) {
+  .to-notify .card {
+    width: 38vw;
+    float: left;
+    padding-top: 1vh;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    margin: 1vw;
+    border-radius: 2%;
+    background-image: url(./images/trama_fondo.png);
+    border-style: double;
+    border-color: #1f849c;
+  }
 }
 
 .card-image .logo {
   opacity: 0.15;
 }
 
-.card-content {
-  font-size: 2.5vw;
+@media (max-width: 800px) {
+  .card-content {
+    font-size: 4vw;
+  }
+}
+
+.dont-notify {
+  background-color: #9f283b;
+}
+
+.email-card-container {
+  display: flex;
+  align-items: center;
+  padding: 1vw;
 }
 
 #modal-title {
@@ -452,6 +590,10 @@ btn-flat:focus {
   }
 }
 
+nav ul a {
+  padding: 0 10px;
+}
+
 .hamburguer-color {
   color: #9f283b;
 }
@@ -461,4 +603,102 @@ btn-flat:focus {
 .sidenav li>a li>a>[class*="mdi-"],
 .sidenav li>a>i.material-icons {
   margin-right: 15px;
+}
+
+.course-container {
+  background-image: url(./images/trama_fondo.png);
+  color: #9f283b;
+  width: 95vw;
+  height: auto;
+  border-top-right-radius: 35px;
+  border-bottom-left-radius: 35px;
+  border-top-left-radius: 35px;
+  border-bottom-right-radius: 35px;
+  border-color: #1f849c;
+  margin: auto;
+  border-style: double;
+  margin-bottom: 1.5vh;
+}
+
+@media (min-width: 800px) {
+  .course-container {
+    padding: 4.5vh;
+  }
+}
+
+
+@media (max-width: 800px) {
+  .course-container {
+    padding-bottom: 2vh;
+  }
+}
+
+.absent-message {
+  margin: 7vh;
+}
+
+.absentmessage-container {
+  padding: 7vh;
+  background-color: #dad9d5;
+}
+
+.scheduler-task-title {
+  padding: 3vh;
+  font-size: x-large;
+}
+
+.cards-absents-container {
+  margin-top: 10vh;
+}
+
+.md-toast.error {
+  background-color: red !important;
+}
+
+.md-toast.success {
+  background-color: green !important;
+}
+
+.percentEditOption {
+  padding: 2vh;
+  background-color: #dad9d5;
+  font-size: 2.5vh;
+  border-radius: 5px;
+  width: 50vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 800px) {
+  .attended-title {
+    font-size: 1.5vh;
+  }
+}
+
+.vhmargintop {
+  margin-top: 1vh;
+}
+
+#textarea-body {
+  height: 20vh;
+}
+
+#mail_outline {
+  font-size: 6vh;
+}
+
+.titulo-emailaenviar {
+  background-color: #eeeeee;
+  width: 100vw;
+  padding: 3vh;
+  text-align: center;
+}
+
+.label-course-id{
+  font-size:xx-large;
+}
+
+.waves-effect.waves-teal .waves-ripple {
+  background-color:#2397b421;
+  ;
 }

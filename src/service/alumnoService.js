@@ -77,15 +77,38 @@ class AlumnoService {
       console.error(error);
     }
   }
-/*
-  async updateAttendances(attendances, course) {
+  /*
+    async updateAttendances(attendances, course) {
+      console.log(attendances);
+      let asistencias = JSON.stringify(attendances)
+      console.log(asistencias);
+      try {
+        const response = await axios({
+          url: `${REST_SERVER_URL}/api/students/attendances/update/${course}`,
+          method: 'POST',
+          data: asistencias,
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Credentials': 'true'
+          },
+        })
+        M.toast({ html: 'Asistencias actualizadas con éxito!' })
+        return response
+      } catch (e) {
+        alert(e)
+        console.error(e)
+      }
+    }
+  */
+  async updateAttendances(attendances, courseId) {
     console.log(attendances);
     let asistencias = JSON.stringify(attendances)
     console.log(asistencias);
     try {
       const response = await axios({
-        url: `${REST_SERVER_URL}/api/students/attendances/update/${course}`,
-        method: 'POST',
+        url: `${REST_SERVER_URL}/api/course/students/attendances/update/${courseId}`,
+        method: 'PUT',
         data: asistencias,
         headers: {
           'Access-Control-Allow-Origin': '*',
@@ -100,29 +123,6 @@ class AlumnoService {
       console.error(e)
     }
   }
-*/
-async updateAttendances(attendances, courseId) {
-  console.log(attendances);
-  let asistencias = JSON.stringify(attendances)
-  console.log(asistencias);
-  try {
-    const response = await axios({
-      url: `${REST_SERVER_URL}/api/course/students/attendances/update/${courseId}`,
-      method: 'PUT',
-      data: asistencias,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Credentials': 'true'
-      },
-    })
-    M.toast({ html: 'Asistencias actualizadas con éxito!' })
-    return response
-  } catch (e) {
-    alert(e)
-    console.error(e)
-  }
-}
 
   async blockStudent(id, blockedStatus) {
     let blockedstring = JSON.stringify(blockedStatus)
@@ -199,13 +199,13 @@ async updateAttendances(attendances, courseId) {
   }
 
   async updateStudent(id, student) {
-   // let studentstring = JSON.stringify(student)
+    // let studentstring = JSON.stringify(student)
     console.log(student);
     try {
       const response = await axios({
         url: `${REST_SERVER_URL}/api/students/${id}`,
         method: 'PUT',
-        data: student ,
+        data: student,
         headers: {
           'Access-Control-Allow-Origin': '*',
           'Content-Type': 'application/json',
@@ -217,6 +217,85 @@ async updateAttendances(attendances, courseId) {
     } catch (e) {
       alert(e)
       console.error(e)
+    }
+  }
+
+  async getStudentsOfTutor(id) {
+
+    try {
+      const alumnosJson = await axios.get(`${REST_SERVER_URL}/api/tutor/students/${id}`, {
+        method: 'GET',
+        mode: 'no-cors',
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Credentials': 'true'
+        },
+        credentials: 'same-origin',
+      })
+      console.log(alumnosJson);
+      const alumnos = alumnosJson.data.map(this.alumnoAsJson);
+      return alumnos.sort((a, b) => (a.surname < b.surname) ? -1 : 1);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  async getCoursePercent(id) {
+
+    try {
+      const percent = await axios.get(`${REST_SERVER_URL}/api/course/students/attendances/average/${id}`, {
+        method: 'GET',
+        mode: 'no-cors',
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Credentials': 'true'
+        },
+        credentials: 'same-origin',
+      })
+      console.log(percent.data);
+      return percent.data;
+    } catch (error) {
+      console.error(error);
+    }
+
+  }
+
+  async addNewStudentToACourse(newStudent) {
+    /*        
+    attendances!!.map { AttendanceDTO(it.id, it.day, it.attended).aModelo() }.toMutableSet()
+    student.attendancepercentage = 0.0
+    student.blocked = blocked
+
+            const response = await axios({
+          url: `${REST_SERVER_URL}/api/students/attendances/update/${course}`,
+          method: 'POST',
+          data: asistencias,
+    */
+    let newStudentJson = JSON.stringify(newStudent)
+    try {
+      const studentJson = await axios({
+
+        url: `${REST_SERVER_URL}/api/students/register`,
+        method: 'POST',
+        data: newStudentJson,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Credentials': 'true'
+        },
+      })
+      const student = this.alumnoAsJson(studentJson);
+      console.log(student)
+      M.toast({
+        html: `El tutorando ${student.name} se ha creado satisfactoriamente`,
+        classes: "#388e3c green darken-2",
+      });
+      return student;
+    } catch (err) {
+      M.toast({ html: "Datos invalidos o el tutorando ya existe", classes: "#c62828 red darken-3" });
+      console.log(err);
     }
   }
 }
