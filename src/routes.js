@@ -1,14 +1,12 @@
 import { Route, Routes } from "react-router-dom";
 import Comision from "./components/Comision";
 import PorcentajeAsistencia from "./components/PorcentajeAsistencia";
-//import PassAttendance from "./routes/PassAttendance";
-//import EditCourse from "./routes/EditCourse";
 import ComisionEdit from "./components/ComisionEdit";
 import Home from "./routes/Home";
 import SchedulerTask from "./routes/SchedulerTask";
 import Search from "./routes/Search";
 import SignUp from "./routes/SignUp.js";
-//import AlumnoModal from "./components/AlumnoModal";
+import Survey from "./routes/Survey.js";
 
 export const AttendanceRoutes = () =>
 
@@ -16,11 +14,9 @@ export const AttendanceRoutes = () =>
         <Route exact={true} path="/" element={<Home />} />
         <Route path="/register/" element={<SignUp />} />
         <Route path="/search/" element={<Search />} />
+        <Route path="/survey/" element={<Survey />} />
         <Route path="/comision/" element={<Comision />} />
         <Route path="/comisionEdit" element={<ComisionEdit />} />
-        {//        <Route path="/passAttendance/" element={<PassAttendance />} />
-            //       <Route path="/editCourse/" element={<EditCourse />} />
-        }
         <Route path="/attendancePercent/" element={<PorcentajeAsistencia />} />
         <Route path="/tasks/" element={<SchedulerTask />} />
         <Route path="*" component={<Home />} />

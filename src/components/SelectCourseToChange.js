@@ -1,6 +1,5 @@
 import { useState, useContext, useEffect } from "react";
 import { Context } from '../context/Context.js';
-//import Select from "react-select";
 import '../App.css';
 import M from 'materialize-css/dist/js/materialize.min.js';
 
@@ -30,20 +29,6 @@ const SelectCourseToChange = ({ setDestinyCourse }) => {
     return (
         courses.length ?
             < div className="input-field" >
-                {/*<div >        {console.log(courses)}{
-                <Select
-                    options={courses}
-                    onChange={handleTypeSelect}
-                    value={courses.filter(function (course) {
-                        return course.name === selectedOption;
-                    })}
-                    label="Single select"
-                    style={styles.select}
-                    className="styled-select"
-                />}
-                </div>*/}
-
-
                 <select className="browser-default" value="" onChange={handleTypeSelect}>
                     <option value="" disabled selected>Seleccione una comisión</option>
                     {courses.map((course) => {

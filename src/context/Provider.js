@@ -18,6 +18,7 @@ export const Provider = ({ children }) => {
   const [tutor, setTutor] = useState('');
   const [studentsOfTutor, setStudentsOfTutor] = useState([]);
   const percentCourse = {};
+  const [studentAuth, setStudentAuth] = useState(false);
 
   const value = {
     //estado
@@ -31,6 +32,7 @@ export const Provider = ({ children }) => {
     percentCourse,
     tutor,
     tutorCoursesWithAverage,
+    studentAuth,
     //funciones que afectan el estado
     updateAttendance: (target, id_asistencia) => {
       const updatedChecked = checked.map(alumno =>
@@ -99,6 +101,15 @@ export const Provider = ({ children }) => {
     },
     addNewStudentToACourse: (newStudent) => {
       addStudentToCourse(newStudent);
+    },
+    checkStudentAuth: (email) => {
+      console.log(email);
+      setStudentAuth(!studentAuth);
+      /*implementar el checkeo del email informado para permitir el acceso a la encuesta*/
+    },
+    saveSurvey: (studentSurvey) => {
+      console.log(studentSurvey)
+      /*implementar la persistencia de la encuesta*/
     }
   }
 
@@ -136,14 +147,16 @@ export const Provider = ({ children }) => {
   }
 
   const loadCourse = async (number) => {
-    try {
-      console.log(number)
-      const comision = await alumnoService.getComision(number)
-      comision.map(alumno =>
-        alumno.attendances.map(attendanceAsJson))
-      setChecked(comision)
-    } catch (error) {
-      console.error(error)
+    if (tutorId != 0) {
+      try {
+        console.log(number)
+        const comision = await alumnoService.getComision(number)
+        comision.map(alumno =>
+          alumno.attendances.map(attendanceAsJson))
+        setChecked(comision)
+      } catch (error) {
+        console.error(error)
+      }
     }
   }
 
@@ -159,13 +172,16 @@ export const Provider = ({ children }) => {
   }
 
   const loadAllCourses = async () => {
-    try {
-      const allCourses = await alumnoService.getAllCourses();
-      setCourses(allCourses);
-    } catch (error) {
-      console.error(error);
+    if (tutorId != 0) {
+      try {
+        const allCourses = await alumnoService.getAllCourses();
+        setCourses(allCourses);
+      } catch (error) {
+        console.error(error);
+      }
     }
   }
+
   const loadAllTutorCourses = async (id) => {
     try {
       const allTutorCourses = await tutorService.getAllTutorCourses(id);
@@ -241,7 +257,7 @@ export const Provider = ({ children }) => {
     } catch (error) {
       console.error(error);
     }
-  } //addNewStudentToACurse
+  }
 
   const getAveragePercent = async () => {
     const coursesWithPercent = await Promise.all(

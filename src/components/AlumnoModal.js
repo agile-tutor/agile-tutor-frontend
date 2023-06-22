@@ -2,7 +2,6 @@
 const AlumnoModal = ({ courseId, name, surname, studentid, identifier, emailedit, observations, setName, setSurname, setIdentifier, setEmailedit, setObservations, handleClickUpdate, handleAddStudentToACourse }) => {
 
     return (
-
         <div id={"modaledit" + studentid} className="modal">
             {console.log(studentid)}
             <div className="modal-content">
@@ -13,7 +12,6 @@ const AlumnoModal = ({ courseId, name, surname, studentid, identifier, emailedit
                         <h4 id="modal-title">Edite los datos del estudiante:</h4>
                         :
                         <h4 id="modal-title">Ingrese los datos del estudiante:</h4>
-
                 }
                 <div className="row">
                     <form className="col s12">

@@ -1,5 +1,4 @@
 import React from 'react'
-//import homeLogo from "../TIPLOGO.png"
 import Login from './Login'
 
 function Home() {

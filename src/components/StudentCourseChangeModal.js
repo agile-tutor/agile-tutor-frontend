@@ -1,16 +1,9 @@
-import { useState/*, useEffect*/ } from 'react';
-//import SelectCourseDropdown from "./SelectCourseDropdown";
-//import M from 'materialize-css/dist/js/materialize.min.js';
+import { useState } from 'react';
 import SelectCourseToChange from './SelectCourseToChange';
 
 const StudentCourseChangeModal = ({ courseId, name, surname, studentid, handleClickChangeStudentCourse }) => {
 
     const [destinyCourse, setDestinyCourse] = useState(courseId);
-
-    //    useEffect(() => {
-    //        let elems = document.querySelectorAll('.dropdown-trigger');
-    //        M.Dropdown.init(elems, { inDuration: 300, outDuration: 225 });
-    //    }, []);
 
     return (
 
@@ -39,8 +32,7 @@ const StudentCourseChangeModal = ({ courseId, name, surname, studentid, handleCl
                             </div>
                             <div className="input-field col s6">
                                 <SelectCourseToChange setDestinyCourse={setDestinyCourse} />
-                                {//                                <SelectCourseDropdown action="Seleccione comisión destino" style="dropdownChangeStudentCourse" setDestinyCourse={setDestinyCourse} />
-                                }                            </div>
+                            </div>
                             <div className="input-field col s3">
 
                             </div>

@@ -121,9 +121,12 @@ function SchedulerTask() {
         </div>
         <div className="parametro-schedulertask">
           <span className="textSchedulerTask"><i className="material-icons iconSchedulerTask">notifications_active</i>Tiempo estimado para notificar ausentes: </span>
-          <span className="textSchedulerTask hourTask center">{timeToNotify === "" ? <div className="progress">
-            <div className="indeterminate"></div>
-          </div> : timeToNotify}</span>
+          {timeToNotify !== "" ?
+            <span className="textSchedulerTask hourTask center">
+              {timeToNotify}</span> :
+            <div className="progress">
+              <div className="indeterminate"></div>
+            </div>}
           <h4></h4>
         </div>
       </div>

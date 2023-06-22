@@ -1,22 +1,15 @@
 import { useContext, useEffect } from 'react';
 import { Context } from '../context/Context.js';
-//import M from 'materialize-css/dist/js/materialize.min.js';
 import { Link } from 'react-router-dom';
 
 function SelectCourseDropdown({ action, style, setDestinyCourse }) {
 
     const { getAllCourses, courses } = useContext(Context)
 
-
     useEffect(() => {
         getAllCourses();
     }, []);
-/*
-    useEffect(() => {
-        let elems = document.querySelectorAll('.dropdown-trigger');
-        M.Dropdown.init(elems, { inDuration: 300, outDuration: 225 });
-    }, []);
-*/
+
     return (
         <div>
             <ul id={style} className="dropdown-content dropdown-change-course-list">
@@ -32,7 +25,7 @@ function SelectCourseDropdown({ action, style, setDestinyCourse }) {
                     })}
             </ul>
             <ul className={style} >
-                <li><Link className="dropdown-trigger" href="#!" data-target={style}>{/*<i className="material-icons">pan_tool</i>*/}{action}<i className="material-icons right">arrow_drop_down</i></Link></li>
+                <li><Link className="dropdown-trigger" href="#!" data-target={style}>{action}<i className="material-icons right">arrow_drop_down</i></Link></li>
             </ul>
         </div>
     )

@@ -6,7 +6,6 @@
   padding-top: .1px;
   font-family: Lato, sans-serif;
   font-size: calc(10px + 2vmin);
-  /*  height: 75vh;*/
   width: 100%
 }
 
@@ -68,6 +67,13 @@
   padding-left: 4vw;
 }
 
+
+@media (max-width: 800px) {
+  .parametro-tabla {
+    font-size: large;
+  }
+}
+
 .parametro-schedulertask {
   margin: 4vh;
 }
@@ -83,7 +89,7 @@
 
 @media (max-width: 800px) {
   .block-icon {
-    font-size: 3.5vw;
+    font-size: revert;
   }
 }
 
@@ -328,18 +334,6 @@
   font-size: xx-large;
 }
 
-/*
-.toast {
-  background-color: #1f849c;
-  border-radius: 2px;
-}
-*/
-/*
-.btn {
-  background-color: #1f849c;
-}
-*/
-
 btn-flat:focus {
   background-color: #ffffff00;
 }
@@ -417,11 +411,6 @@ btn-flat:focus {
 #lupasearch {
   color: #9f283b;
 }
-
-/*
-.input-field{
-  padding-top: 3.5vh;
-}*/
 
 .textSchedulerTask {
   color: #1f849c;
@@ -694,11 +683,107 @@ nav ul a {
   text-align: center;
 }
 
-.label-course-id{
-  font-size:xx-large;
+.label-course-id {
+  font-size: xx-large;
 }
 
 .waves-effect.waves-teal .waves-ripple {
-  background-color:#2397b421;
+  background-color: #2397b421;
   ;
+}
+
+@media (max-width: 800px) {
+  .white-text {
+    padding: 0px !important;
+  }
+}
+
+@media (max-width: 800px) {
+  .white-text.col.s5 {
+    width: 45% !important;
+  }
+
+  .white-text.col.s2 {
+    width: 10% !important;
+  }
+}
+
+.course-container-title {
+  display: inline-flex;
+  margin-bottom: 5vh;
+}
+
+.survey {
+  width: 100vw;
+  margin-bottom: 5vh;
+}
+
+@media (min-width: 800px) {
+  .body-survey {
+    width: 35vw;
+    margin-left: 20vh;
+    margin-right: 20vh;
+  }
+}
+
+@media (max-width: 800px) {
+  .body-survey {
+    margin-left: 5vh;
+    margin-right: 5vh;
+  }
+}
+
+.title-survey-param {
+  margin-top: 5vh;
+  margin-bottom: 2vh;
+}
+
+@media (max-width: 800px) {
+  #boton-survey {
+    margin-top: 5vh;
+    margin-left: 10vw;
+    height: 50px;
+    background-color: #1f849c;
+  }
+}
+
+@media (min-width: 800px) {
+  #boton-survey {
+    margin-top: 5vh;
+    margin-left: 5vw;
+    height: 50px;
+    background-color: #1f849c;
+  }
+}
+
+[type="radio"]:checked+span::after,
+[type="radio"].with-gap:checked+span::after {
+  background-color: #1f849c;
+}
+
+[type="radio"]:checked+span::after,
+[type="radio"].with-gap:checked+span::before,
+[type="radio"].with-gap:checked+span::after {
+  border: 2px solid #1f849c;
+}
+
+[type="radio"]:checked+span::after,
+[type="radio"].with-gap:checked+span::before,
+[type="radio"].with-gap:checked+span::after {
+  border: 2px solid #1f849c;
+}
+
+[type="radio"]:checked+span::after,
+[type="radio"].with-gap:checked+span::after {
+  background-color: #1f849c;
+}
+
+
+[type="checkbox"]:checked+span:not(.lever)::before {
+  border-right: 2px solid #1f849c;
+  border-bottom: 2px solid #1f849c;
+}
+
+#boton-emailcheck {
+  background-color: #1f849c !important;
 }

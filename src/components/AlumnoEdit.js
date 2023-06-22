@@ -35,7 +35,7 @@ function AlumnoEdit({ courseId, nombre, apellido, identificacion, email, observa
     };
 
     const handleClickChangeStudentCourse = (destinyCourse) => {
-        console.log("destinyCourse: "+destinyCourse)
+        console.log("destinyCourse: " + destinyCourse)
         handleEditChangeStudentCourse(id, destinyCourse);
     };
 
@@ -48,8 +48,6 @@ function AlumnoEdit({ courseId, nombre, apellido, identificacion, email, observa
         <tr className={clnametr} >
             <td id="descripcion-edicion-estudiante">{apellido}</td>
             <td id="descripcion-edicion-estudiante">{nombre}</td>
-            {/*   <td id="columna-identificacion">{identificacion}</td>
-            <td id="columna-email">{email}</td> */}
             <td id="descripcion-edicion-estudiante">
                 {!blocked ?
                     <button idstudent={id} blockstatus={blocked} className="waves-effect waves-teal btn-flat" onClick={() => handleClickBlock(id, blocked)} ><i className='material-icons left'>lock_open</i></button>
@@ -59,20 +57,17 @@ function AlumnoEdit({ courseId, nombre, apellido, identificacion, email, observa
             <td id="descripcion-edicion-estudiante-editar">
                 <div className='container section'>
                     <a className="waves-effect waves-teal btn-flat modal-trigger" href={"#modaledit" + id} ><i id="iconoBlock" className={clicons}
-                    //onClick={() => handleClickEdit(id, blocked)}
                     >mode_edit </i></a>
                     {console.log(id)}
                     <AlumnoModal key={id} studentid={id} courseId={courseId} name={name} surname={surname} identifier={identifier} emailedit={emailedit} observations={observations} setName={setName} setSurname={setSurname} setIdentifier={setIdentifier} setEmailedit={setEmailedit} setObservations={setObservations} handleClickUpdate={handleClickUpdate} />
                 </div>
             </td>
             <td id="descripcion-edicion-estudiante">
-
                 <div className='container section'>
                     <a className="waves-effect waves-teal btn-flat modal-trigger" href={"#modalchangecourse" + id} ><i id="iconoBlock" className={clicons}
                     >swap_horiz </i></a>
                     <StudentCourseChangeModal key={id} studentid={id} courseId={courseId} name={name} surname={surname} handleClickChangeStudentCourse={handleClickChangeStudentCourse} />
                 </div>
-
             </td>
         </tr>
     )

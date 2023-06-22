@@ -9,7 +9,6 @@ function SearchResultList({ results }) {
                 return <SearchResult key={id} result={result}/>;
             })
             }
-
         </div>
     )
 }

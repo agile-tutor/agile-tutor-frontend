@@ -1,7 +1,7 @@
 import Logo from '../TIPLOGO.png';
 import "../App.css";
 import { useEffect, useState, useContext } from 'react';
-import { Link/*, useHistory*/ } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Context } from '../context/Context.js';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import SearchResultList from '../components/SearchResultList.js'
@@ -52,8 +52,6 @@ function NavBar() {
                         <Link to="/" className="brand-logo" ><img className="image-logo" src={Logo}></img></Link>
                         <a href="#" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons hamburguer-color">menu</i></a>
                         <ul className="right hide-on-med-and-down" >
-                            {//            <li><a className="dropdown-trigger" href="#!" data-target="dropdown1">Seleccionar Comision<i className="material-icons right">arrow_drop_down</i></a></li>
-                            }
                             <SelectComision action="Pasar Asistencia" style="dropdownPassAtendance nav-var-web" />
                             <SelectComisionEdit action="Editar Comision" style="dropdownComisionEdit nav-var-web" />
                             <li ><Link className="navbar-item" id='nav-var-web' to="/attendancePercent"><i className="material-icons">show_chart</i>Porcentaje Asistencia</Link></li>

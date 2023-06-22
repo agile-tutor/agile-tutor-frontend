@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 
-
 function SearchBar({ allStudents, getAllStudents, setResults }) {
 
     const [input, setInput] = useState("");
@@ -39,7 +38,6 @@ function SearchBar({ allStudents, getAllStudents, setResults }) {
         </div>
     )
 }
-
 {/*
                         <form>
                         <div className="input-field">

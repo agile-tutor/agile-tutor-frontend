@@ -36,16 +36,22 @@ function PorcentajeAsistencia() {
                     {
                         console.log("sinFilter " + tutorCoursesWithAverage == undefined || !tutorCoursesWithAverage.length ? tutorCoursesWithAverage.find(course => course.courseId == element.id) : '')
                     }
+                    <div className='course-container-title'>
+                        <span>
+                            <h5 className='parametro-tabla' key={element.id}>Comisión {element.id}</h5>
+                        </span>
+                        {
+                            tutorCoursesWithAverage == undefined || !tutorCoursesWithAverage.length ? <div></div> :
+                                <span>
+                                    <h5 className='parametro-tabla'>Asistecia promedio: {
 
-                    <h5 className='parametro-tabla' key={element.id}>Comisión {element.id}</h5>
-                    {
-                        tutorCoursesWithAverage == undefined || !tutorCoursesWithAverage.length ? <div></div> :
-                            <h5 className='parametro-tabla'>Porcentaje de asistecia promedio: {
-
-                                !tutorCoursesWithAverage.find(course => course.courseId == element.id)
-                                    ? 0 :
-                                    tutorCoursesWithAverage.find(course => course.courseId == element.id).average}</h5>
-                    }<div>
+                                        !tutorCoursesWithAverage.find(course => course.courseId == element.id)
+                                            ? '0%' :
+                                            tutorCoursesWithAverage.find(course => course.courseId == element.id).average} %</h5>
+                                </span>
+                        }
+                    </div>
+                    <div>
                         <div className="percent-container row center">
                             <div className="col s12 center">
                                 <div className='attended-title col s5'>Estudiante</div>

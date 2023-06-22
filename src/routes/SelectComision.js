@@ -5,24 +5,15 @@ import { Link } from 'react-router-dom';
 
 function SelectComision({ action, style }) {
 
-    const {/* tutorId,*/ getCourse, tutorCourses/*, getAllCoursesFromTutor*/ } = useContext(Context)
+    const { getCourse, tutorCourses } = useContext(Context)
 
     useEffect(() => {
         let elems = document.querySelectorAll('.dropdown-trigger');
         M.Dropdown.init(elems, { inDuration: 300, outDuration: 225 });
     }, []);
-/*
-    useEffect(() => {
-        console.log(tutorId);
-        if (tutorId != 0) {
-            getAllCoursesFromTutor(tutorId);
-        }
-    }, []);
-*/
+
     return (
         <div>
-            {//   {!tutorCourses.length ? () => { getAllCoursesFromTutor(tutorId) } : () => { }}
-            }
             <ul id={style} className="dropdown-content">
                 {console.log(tutorCourses)}
                 {

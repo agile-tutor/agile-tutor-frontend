@@ -1,4 +1,4 @@
-import React, { useState, /*useEffect,t*/ useContext } from "react";
+import React, { useState, useContext } from "react";
 import { Context } from '../context/Context.js';
 import { Link } from "react-router-dom";
 import "../Login.css";
@@ -6,10 +6,8 @@ import M from "materialize-css";
 import logo from "../TIPLOGO.png"
 
 const Login = () => {
-    //  const history = useHistory();
     const [email, setemail] = useState(null);
     const [password, setpassword] = useState(null);
-    //  const { /*state, */dispatch } = useContext(userContext);
     const { loginTutor } = useContext(Context);
 
     const PostData = () => {

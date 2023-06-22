@@ -1,6 +1,5 @@
 const EmailModal = ({ tutorId, subject, body, setSubject, setBody, handleClickUpdateEmailTemplate }) => {
 
-
     return (
         <div id={"modalemail" + tutorId} className="modal">
             <div className="modal-content">
@@ -29,7 +28,7 @@ const EmailModal = ({ tutorId, subject, body, setSubject, setBody, handleClickUp
             <div className="modal-footer">
                 <div>
                     <a href="#!" className="modal-close waves-effect waves-red btn-flat">Cancelar</a>
-                    <a href="#!" onClick={() => { handleClickUpdateEmailTemplate(); }} className="modal-close waves-effect waves-green btn-flat">Aceptar</a>
+                    <a href="#!" onClick={() => { handleClickUpdateEmailTemplate(); }} className="modal-close waves-effect waves-green btn-flat">Modificar</a>
                 </div>
             </div>
         </div>);
