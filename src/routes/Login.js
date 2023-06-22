@@ -10,6 +10,16 @@ const Login = () => {
     const [password, setpassword] = useState(null);
     const { loginTutor } = useContext(Context);
 
+    const [inputsVisible, setInputsVisible] = useState([false, false])
+
+    const toggleInputVisibility = (index) => {
+        if (index === 0) {
+            setInputsVisible([!inputsVisible[0], inputsVisible[1]])
+        } else {
+            setInputsVisible([inputsVisible[0], !inputsVisible[1]])
+        }
+    }
+
     const PostData = () => {
         if (!(email && password)) {
             M.toast({ html: "Se deben ingresar los datos solicitados", classes: "#c62828 red darken-3" });
@@ -25,19 +35,26 @@ const Login = () => {
                     <img alt="logo" className="logo-login" src={logo} />
                     <div className="warning-sign center" > Ingrese sus datos de acceso: </div>
                     <input
-                        type="email hoverable"
+                        type="email"
                         id='inputLogin'
                         placeholder="email"
                         value={email}
                         onChange={(e) => setemail(e.target.value)}
                     />
-                    <input
-                        type="password hoverable"
-                        id='inputLogin'
-                        placeholder="password"
-                        value={password}
-                        onChange={(e) => setpassword(e.target.value)}
-                    />
+                    <div className="row" id='inputLoginPassWidth'>
+                        <input
+                            type={inputsVisible[0] ? 'text' : 'password'}
+                            placeholder="password"
+                            className='valdiate col s5'
+                            id='inputLoginPass'
+                            value={password}
+                            onChange={(e) => setpassword(e.target.value)}
+                        />
+                        <button id='btnLoginPass' className='col s1' onClick={() => toggleInputVisibility(0)} >
+                            {inputsVisible[0] ? <i className="material-icons small iconblack">remove_red_eye</i> : <i className="material-icons small">remove_red_eye</i>}
+                        </button>
+                        <br />
+                    </div>
                     <button
                         id="botonLogin"
                         className="btn waves-effect waves-light"

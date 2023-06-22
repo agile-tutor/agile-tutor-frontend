@@ -11,6 +11,16 @@ const SignUp = () => {
     const [password, setpassword] = useState(null);
     const [passwordcheck, setpasswordcheck] = useState(null);
 
+    const [inputsVisible, setInputsVisible] = useState([false, false])
+
+    const toggleInputVisibility = (index) => {
+        if (index === 0) {
+            setInputsVisible([!inputsVisible[0], inputsVisible[1]])
+        } else {
+            setInputsVisible([inputsVisible[0], !inputsVisible[1]])
+        }
+    }
+
     const { signUpTutor } = useContext(Context);
 
     const PostData = () => {
@@ -33,40 +43,54 @@ const SignUp = () => {
                         <img alt='logo' className="logo-login" src={logo} />
                         <div className="warning-sign center" > Ingrese sus datos para registrarse: </div>
                         <input
-                            type="text hoverable"
+                            type="text"
                             placeholder="nombre"
                             id='inputLogin'
                             value={name}
                             onChange={(e) => setname(e.target.value)}
                         />
                         <input
-                            type="text hoverable"
+                            type="text"
                             placeholder="apellido"
                             id='inputLogin'
                             value={surname}
                             onChange={(e) => setsurname(e.target.value)}
                         />
                         <input
-                            type="email hoverable"
+                            type="email"
                             placeholder="email"
                             id='inputLogin'
                             value={email}
                             onChange={(e) => setemail(e.target.value)}
                         />
-                        <input
-                            type="password hoverable"
-                            placeholder="password"
-                            id='inputLogin'
-                            value={password}
-                            onChange={(e) => setpassword(e.target.value)}
-                        />
-                        <input
-                            type="password hoverable"
-                            placeholder="reingrese password"
-                            id='inputLogin'
-                            value={passwordcheck}
-                            onChange={(e) => setpasswordcheck(e.target.value)}
-                        />
+                        <div className="row" id='inputLoginPassWidth'>
+                            <input
+                                type={inputsVisible[0] ? 'text' : 'password'}
+                                placeholder="password"
+                                className='valdiate col s5'
+                                id='inputLoginPass'
+                                value={password}
+                                onChange={(e) => setpassword(e.target.value)}
+                            />
+                            <button id='btnLoginPass' className='col s1' onClick={() => toggleInputVisibility(0)} >
+                                {inputsVisible[0] ? <i className="material-icons small iconblack">remove_red_eye</i> : <i className="material-icons small">remove_red_eye</i>}
+                            </button>
+                            <br />
+                        </div>
+                        <div className="row" id='inputLoginPassWidth'>
+                            <input
+                                type={inputsVisible[1] ? 'text' : 'password'}
+                                placeholder="reingrese password"
+                                className='valdiate col s5'
+                                id='inputLoginPass'
+                                value={passwordcheck}
+                                onChange={(e) => setpasswordcheck(e.target.value)}
+                            />
+                            <button id='btnLoginPass' className='col s1' onClick={() => toggleInputVisibility(1)} >
+                                {inputsVisible[1] ? <i className="material-icons small iconblack">remove_red_eye</i> : <i className="material-icons small">remove_red_eye</i>}
+                            </button>
+                            <br />
+                        </div>
                         <button
                             id="botonLogin"
                             className="btn waves-effect waves-light"
