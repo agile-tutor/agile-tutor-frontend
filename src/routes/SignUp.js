@@ -88,7 +88,7 @@ const SignUp = () => {
                             />
                             <button id='btnLoginPass' className='col s1' onClick={() => toggleInputVisibility(1)} >
                                 {inputsVisible[1] ? <i className="material-icons small iconblack">remove_red_eye</i> : <i className="material-icons small">remove_red_eye</i>}
-                            </button>
+                            </button>   
                             <br />
                         </div>
                         <button
