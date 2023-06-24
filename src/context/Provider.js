@@ -16,9 +16,12 @@ export const Provider = ({ children }) => {
   const [number, setNumber] = useState(0);
   const [tutorId, setTutorId] = useState(0);
   const [tutor, setTutor] = useState('');
+  const [tutors, setTutors] = useState([]);
   const [studentsOfTutor, setStudentsOfTutor] = useState([]);
   const percentCourse = {};
   const [studentAuth, setStudentAuth] = useState(false);
+  const [allSurveys, setAllSurveys] = useState([]);
+  const [studentSurvey, setStudentSurvey] = useState([]);
 
   const value = {
     //estado
@@ -33,6 +36,9 @@ export const Provider = ({ children }) => {
     tutor,
     tutorCoursesWithAverage,
     studentAuth,
+    tutors,
+    allSurveys,
+    studentSurvey,
     //funciones que afectan el estado
     updateAttendance: (target, id_asistencia) => {
       const updatedChecked = checked.map(alumno =>
@@ -89,6 +95,7 @@ export const Provider = ({ children }) => {
     },
     logOutTutor: () => {
       setTutorId(0);
+      setTutor('');
     },
     getStudentsOfTutor: (id) => {
       loadStudentsOfTutor(id);
@@ -104,12 +111,19 @@ export const Provider = ({ children }) => {
     },
     checkStudentAuth: (email) => {
       console.log(email);
-      setStudentAuth(!studentAuth);
-      /*implementar el checkeo del email informado para permitir el acceso a la encuesta*/
+      checkIfExistStudent(email);
     },
-    saveSurvey: (studentSurvey) => {
-      console.log(studentSurvey)
-      /*implementar la persistencia de la encuesta*/
+    saveSurvey: (email, studentSurvey) => {
+      console.log(email, studentSurvey);
+      postStudentSurvey(email, studentSurvey);
+    },
+    getAllTutors: () => {
+      console.log("getting all tutors");
+      setAllTutors();
+    },
+    getAllSurveys: () => {
+      console.log("obteniendo todas las encuestas completadas")
+      loadAllSurveys();
     }
   }
 
@@ -182,6 +196,17 @@ export const Provider = ({ children }) => {
     }
   }
 
+  const loadAllTutors = async () => {
+    if (tutor.email == "admin") {
+      try {
+        const allTutors = await tutorService.getAllTutors();
+        setTutors(allTutors);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  }
+
   const loadAllTutorCourses = async (id) => {
     try {
       const allTutorCourses = await tutorService.getAllTutorCourses(id);
@@ -202,6 +227,7 @@ export const Provider = ({ children }) => {
 
   const logIn = async (email, password) => {
     setTutorCourses([]);
+    setTutor('');
     try {
       const logedTutor = await tutorService.loginTutor(email, password);
       console.log(logedTutor)
@@ -215,9 +241,17 @@ export const Provider = ({ children }) => {
     }
   }
 
-  const setCourseId = async () => {
+  const setAllCourses = async () => {
     try {
       await loadAllCourses();
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  const setAllTutors = async () => {
+    try {
+      await loadAllTutors();
     } catch (error) {
       console.error(error);
     }
@@ -269,8 +303,39 @@ export const Provider = ({ children }) => {
     setTutorCoursesWithAverage(coursesWithPercent);
   }
 
+  const checkIfExistStudent = async (email) => {
+    try {
+      const exist = await alumnoService.checkIfExistEmail(email);
+      if (exist) {
+        setStudentAuth(true);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  const postStudentSurvey = async (email, completeSurvey) => {
+    try {
+      await alumnoService.addNewSurveyResponse(email, completeSurvey);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  const loadAllSurveys = async () => {
+    try {
+      const allSurveys = await tutorService.loadSurveys();
+      setAllSurveys(allSurveys);
+      const studentsWhoCompleteSurvey = allSurveys.map((survey) => { return (survey.studentId) })
+      setStudentSurvey(studentsWhoCompleteSurvey)
+
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   useEffect(() => {
-    setCourseId();
+    setAllCourses();
   }, []);
   /*
     useEffect(() => {

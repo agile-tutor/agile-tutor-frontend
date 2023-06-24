@@ -6,7 +6,7 @@ import CardAlumno from './CardAlumno';
 
 function PorcentajeAsistencia() {
 
-    const { tutorCourses, tutorCoursesWithAverage, tutorId, getAllCoursesFromTutor, studentsOfTutor, getStudentsOfTutor, updateTutorCoursesWithAverage } = useContext(Context);
+    const { tutorCourses, tutorCoursesWithAverage, tutorId, getAllCoursesFromTutor, studentsOfTutor, getStudentsOfTutor, updateTutorCoursesWithAverage, studentSurvey, getAllSurveys } = useContext(Context);
     const [porcentaje, setPorcentaje] = useState(75);
     const [viewsettings, setViewsettings] = useState(false)
 
@@ -19,6 +19,11 @@ function PorcentajeAsistencia() {
         setViewsettings(!viewsettings)
     };
 
+    const studentCompleteSurvey = (studentId) => {
+        console.log("checking if an student completes the survey")
+        return studentSurvey.some(id => id === studentId)
+    };
+
     useEffect(() => {
         getStudentsOfTutor(tutorId);
         updateTutorCoursesWithAverage();
@@ -26,6 +31,11 @@ function PorcentajeAsistencia() {
 
     useEffect(() => {
         getAllCoursesFromTutor(tutorId);
+    }, []);
+
+
+    useEffect(() => {
+        getAllSurveys();
     }, []);
 
     const courseContainer = () => {
@@ -54,15 +64,17 @@ function PorcentajeAsistencia() {
                     <div>
                         <div className="percent-container row center">
                             <div className="col s12 center">
-                                <div className='attended-title col s5'>Estudiante</div>
+                                <div className='attended-title col s4'>Estudiante</div>
                                 <div className='attended-title col s2'>Porcentaje</div>
-                                <div className='attended-title col s4'>Aprobado</div>
+                                <div className='attended-title col s2'>Aprobado</div>
+                                <div className='attended-title col s2'>Encuesta</div>
                             </div>
-                        </div>
-                        {dontPass.filter((alumno) => alumno.courseId == element.id).map((alumno) => { return (<CardAlumno key={alumno.id} nombre={alumno.name + " " + alumno.surname} porcentaje={alumno.attendancespercent} porcentajeActual={porcentaje} />) })}
+                            {//assignment
+                            }                        </div>
+                        {dontPass.filter((alumno) => alumno.courseId == element.id).map((alumno) => { return (<CardAlumno key={alumno.id} nombre={alumno.name + " " + alumno.surname} porcentaje={alumno.attendancespercent} porcentajeActual={porcentaje} studentCompleteSurvey={studentCompleteSurvey} studentId={alumno.id}/>) })}
                     </div>
                     <div>
-                        {pass.filter((alumno) => alumno.courseId == element.id).map((alumno) => { return (<CardAlumno key={alumno.id} nombre={alumno.name + " " + alumno.surname} porcentaje={alumno.attendancespercent} porcentajeActual={porcentaje} />) })}
+                        {pass.filter((alumno) => alumno.courseId == element.id).map((alumno) => { return (<CardAlumno key={alumno.id} nombre={alumno.name + " " + alumno.surname} porcentaje={alumno.attendancespercent} porcentajeActual={porcentaje} studentCompleteSurvey={studentCompleteSurvey} studentId={alumno.id} />) })}
                     </div>
                 </div >
             )

@@ -259,7 +259,55 @@ class AlumnoService {
     } catch (error) {
       console.error(error);
     }
+  }
 
+  async checkIfExistEmail(email) {
+    console.log("enalumnoservidecheckif" + email);
+    try {
+      const exist = await axios.get(`${REST_SERVER_URL}/api/students/checkmail/${email}`, {
+        method: 'GET',
+        mode: 'no-cors',
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Credentials': 'true'
+        },
+        credentials: 'same-origin',
+      })
+      console.log(exist.data);
+      if (!exist.data) {
+        M.toast({ html: 'Email no registrado!', classes: "red-app" });
+      }
+      return exist.data;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  async addNewSurveyResponse(email, completeSurvey) {
+    console.log(email, completeSurvey)
+    try {
+      const survey = await axios({
+
+        url: `${REST_SERVER_URL}/api/students/survey/${email}/`,
+        method: 'POST',
+        data: completeSurvey,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Credentials': 'true'
+        },
+      })
+      console.log(survey.data)
+      M.toast({
+        html: `Su respuesta a la encuesta ha sido procesada satisfactoriamente`,
+        classes: "#388e3c green darken-2",
+      });
+      return survey.data;
+    } catch (err) {
+      M.toast({ html: "Se ha producido un error", classes: "red-app" });
+      console.log(err);
+    }
   }
 
   async addNewStudentToACourse(newStudent) {
@@ -267,7 +315,7 @@ class AlumnoService {
     attendances!!.map { AttendanceDTO(it.id, it.day, it.attended).aModelo() }.toMutableSet()
     student.attendancepercentage = 0.0
     student.blocked = blocked
-
+  
             const response = await axios({
           url: `${REST_SERVER_URL}/api/students/attendances/update/${course}`,
           method: 'POST',

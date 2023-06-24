@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Context } from '../context/Context.js';
 import { Link } from "react-router-dom";
 import "../Login.css";
@@ -8,7 +8,7 @@ import logo from "../TIPLOGO.png"
 const Login = () => {
     const [email, setemail] = useState(null);
     const [password, setpassword] = useState(null);
-    const { loginTutor } = useContext(Context);
+    const { loginTutor, tutor } = useContext(Context);
 
     const [inputsVisible, setInputsVisible] = useState([false, false])
 
@@ -27,6 +27,11 @@ const Login = () => {
             loginTutor(email, password);
         }
     };
+
+    useEffect(() => {
+        var elems = document.querySelectorAll('.fixed-action-btn');
+        M.FloatingActionButton.init(elems, {});
+    }, []);
 
     return (
         <div className="loginRegisterCards">
@@ -68,7 +73,15 @@ const Login = () => {
                     </h5>
                 </div>
             </div>
-        </div>)
+            {console.log("tutor:" + tutor.email)}
+            {tutor.email == "admin" ?
+                <div className="fixed-action-btn">
+                    <Link className="btn-floating btn-large red-app" id="hover-btn" title="subir .CSV" to="/uploadFiles" >
+                        <i className="large material-icons">publish</i>
+                    </Link>
+                </div>
+                : <div></div>}
+        </div >)
 };
 
 export default Login;

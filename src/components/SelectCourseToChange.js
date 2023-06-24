@@ -35,10 +35,11 @@ const SelectCourseToChange = ({ setDestinyCourse }) => {
                         return <option value={course.id}>{course.id}</option>
                     })}
                 </select>
-                {
-                    <div>
-                        < label className="label-course-id"> Comisión Destino: {selectedOption} </label >
-                    </div>
+                {<div className="input-field center col s12" id="course-destiny-field">
+                    <input disabled value={selectedOption} id="courseid" type="text" className="validate" />
+                    <label className="active" htmlFor="courseid"> Comisión Destino: </label>
+                </div>
+
                 } </div >
             :
             <div></div>

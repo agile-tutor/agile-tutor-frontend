@@ -2,7 +2,7 @@ const EmailModal = ({ tutorId, subject, body, setSubject, setBody, handleClickUp
 
     return (
         <div id={"modalemail" + tutorId} className="modal">
-            <div className="modal-content">
+            <div className="modal-content email-modal">
                 <h4 id="modal-title">Datos del email a enviar:</h4>
                 <div className="row">
                     <form className="col s12">

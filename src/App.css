@@ -108,13 +108,13 @@
 
 @media (min-width: 800px) {
   .block-icon {
-    font-size: 1vw;
+    font-size: 1.75vw;
   }
 }
 
 @media (min-width: 800px) {
   .check-icon {
-    font-size: 1vw;
+    font-size: 1.75vw;
   }
 }
 
@@ -475,7 +475,10 @@ btn-flat:focus {
   color: #444;
   height: 60px;
   border-radius: 2%;
+}
 
+#course-destiny-field{
+  margin-top: 5vh;
 }
 
 .result-list {
@@ -565,6 +568,10 @@ btn-flat:focus {
   display: flex;
   align-items: center;
   padding: 1vw;
+}
+
+.email-modal{
+  margin-bottom: -6vh;
 }
 
 #modal-title {
@@ -660,7 +667,8 @@ nav ul a {
 
 @media (max-width: 800px) {
   .attended-title {
-    font-size: 1.5vh;
+    font-size: 1.75vh;
+    font-weight: bold;
   }
 }
 
@@ -692,19 +700,28 @@ nav ul a {
   ;
 }
 
+@media (min-width: 800px) {
+  .white-text {
+    padding: 0px !important;
+    font-size: large;
+  }
+}
+
+
 @media (max-width: 800px) {
   .white-text {
     padding: 0px !important;
+    font-size: x-small;
   }
 }
 
 @media (max-width: 800px) {
   .white-text.col.s5 {
-    width: 45% !important;
+    width: 40% !important;
   }
 
   .white-text.col.s2 {
-    width: 10% !important;
+    width: 20% !important;
   }
 }
 
@@ -788,19 +805,78 @@ nav ul a {
   background-color: #1f849c !important;
 }
 
-.file-field{
+.file-field {
   width: 50vw;
   margin-left: auto;
   margin-right: auto;
 }
 
-.uploadfiles{
+#course-file-field {
+  width: 10vw;
+  margin-left: 45vw;
+  margin-right: 45vw;
+  font-size: small;
+}
+
+#tutor-file-field {
+  width: 50vw;
+  margin-left: 25vw;
+  margin-right: 25vw;
+  font-size: small;
+}
+
+.uploadfiles {
   background-color: #1f849c;
 }
 
 .uploadfiles:hover,
 select:hover {
-    border-color: rgba(0, 0, 0, 0);
-    box-shadow: 0 0 0 .25vw #1f849c;
-    background-color: grey;
+  border-color: rgba(0, 0, 0, 0);
+  box-shadow: 0 0 0 .25vw #1f849c;
+  background-color: grey;
+}
+
+@media (min-width: 800px) {
+  .studentToUpload {
+    margin-top: 10vh;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    width: 90vw;
+    font-size: small;
+  }
+}
+
+@media (max-width: 800px) {
+  .studentToUpload {
+    margin-top: 10vh;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    width: 90vw;
+    font-size: xx-small
+  }
+}
+
+.titulo-tabla-alumnos-upload {
+  margin-top: 10vh;
+  border-style: groove;
+  padding: 5vh;
+  background-image: url(./images/trama_fondo.png);
+  font-weight: bolder;
+  color: #9f283b;
+}
+
+.red-app {
+  background-color: #9f283b;
+}
+
+.upload-csv-info {
+  margin-top: 10vh;
+  color: #9f283b;
+  font-weight: bolder;
+}
+
+.thanksForSubmitSurvey{
+  margin-top: 50vh;
+  left: 50vh;
+
 }

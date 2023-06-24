@@ -154,6 +154,46 @@ class TutorService {
             console.log(err);
         }
     }
+
+    async getAllTutors() {
+        try {
+            const tutorsJson = await axios.get(`${REST_SERVER_URL}/api/tutor`, {
+                method: 'GET',
+                mode: 'no-cors',
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Credentials': 'true'
+                },
+                credentials: 'same-origin',
+            })
+            console.log(tutorsJson);
+            const tutors = tutorsJson.data.map(this.tutorAsJson);
+            return tutors.sort((a, b) => (a.surname < b.surname) ? -1 : 1);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    async loadSurveys() {
+        try {
+            const surveys = await axios.get(`${REST_SERVER_URL}/api/tutor/survey`, {
+                method: 'GET',
+                mode: 'no-cors',
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Credentials': 'true'
+                },
+                credentials: 'same-origin',
+            })
+            console.log(surveys.data);
+            //const tutors = tutorsJson.data.map(this.tutorAsJson);
+            return surveys.data.sort((a, b) => (a.studentId < b.studentId) ? -1 : 1);
+        } catch (error) {
+            console.error(error);
+        }
+    }
 }
 
 export const tutorService = new TutorService()

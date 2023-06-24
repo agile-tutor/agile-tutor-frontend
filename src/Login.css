@@ -183,3 +183,12 @@ select:focus {
 .iconblack {
     color: black;
 }
+
+.red-app{
+    background-color: #9f283b;
+}
+
+#hover-btn:hover{
+    border: 1px solid #888;
+    background-color: #ddd;
+  }
