@@ -11,8 +11,9 @@ import SelectComisionEdit from '../routes/SelectComisionEdit';
 function NavBar() {
 
     const [input, setInput] = useState("");
-    const { allStudents, getAllStudents, tutorId, logOutTutor } = useContext(Context);
+    const { allStudents, getAllStudents, tutorId, logOutTutor, activeSection } = useContext(Context);
     const [results, setResults] = useState([]);
+
 
     const handleChange = (value) => {
         getAllStudents();
@@ -34,6 +35,7 @@ function NavBar() {
             M.toast({ html: 'Se presiono Enter' });
         }
     };
+
     useEffect(() => {
         var sidenav = document.querySelectorAll(".sidenav");
         M.Sidenav.init(sidenav, {});
@@ -46,20 +48,21 @@ function NavBar() {
 
     return (
         <header>
+            {console.log(activeSection[0], activeSection[1], activeSection[2], activeSection[3])}
             <div className={`navbar-fixed${tutorId != 0 ? '' : " hide"}`}>
                 <nav>
                     <div className="nav-wrapper">
                         <Link to="/" className="brand-logo" ><img className="image-logo" src={Logo}></img></Link>
                         <a href="#" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons hamburguer-color">menu</i></a>
                         <ul className="right hide-on-med-and-down" >
-                            <SelectComision action="Pasar Asistencia" style="dropdownPassAtendance nav-var-web" />
-                            <SelectComisionEdit action="Editar Comision" style="dropdownComisionEdit nav-var-web" />
-                            <li ><Link className="navbar-item" id='nav-var-web' to="/attendancePercent"><i className="material-icons">show_chart</i>Porcentaje Asistencia</Link></li>
-                            <li ><Link className="navbar-item" id='nav-var-web' to="/tasks"><i className="material-icons">schedule</i>Tareas Programadas</Link></li>
+                            <li className={activeSection[0] ? "active" : ""}><SelectComision action="Pasar Asistencia" style="dropdownPassAtendance nav-var-web" /></li>
+                            <li className={activeSection[1] ? "active" : ""}><SelectComisionEdit action="Editar Comision" style="dropdownComisionEdit nav-var-web" /></li>
+                            <li className={activeSection[2] ? "active" : ""}><Link className="navbar-item" id='nav-var-web' to="/attendancePercent"><i className="material-icons">show_chart</i>Estado de Comisiones</Link></li>
+                            <li className={activeSection[3] ? "active" : ""}><Link className="navbar-item" id='nav-var-web' to="/tasks"><i className="material-icons">schedule</i>Tareas Programadas</Link></li>
                             <li >
                                 <form>
                                     <div className="input-field">
-                                        <input id="search" type="search" value={input} onChange={(e) => handleChange(e.target.value)} onKeyDown={handleKeyDown} autoComplete="off" />
+                                        <input id="search" type="search" value={input} onblur={() => handleChange("")} onChange={(e) => handleChange(e.target.value)} onKeyDown={handleKeyDown} autoComplete="off" />
                                         <label className="label-icon" htmlFor="search"><i id='lupasearch' className="material-icons">search</i></label>
                                         <i className="material-icons" onClick={() => handleChange("")}>close</i>
                                     </div>
@@ -80,7 +83,7 @@ function NavBar() {
                     <SelectComisionEdit action="Editar Comision" style="dropdownComisionEditMob nav-var-mob" />
                     <div className="divider"></div>
                 </div>
-                <li ><Link id='nav-var-mob' to="/attendancePercent"><i className="material-icons">show_chart</i>Porcentaje Asistencia</Link></li>
+                <li ><Link id='nav-var-mob' to="/attendancePercent"><i className="material-icons">show_chart</i>Estado de Comisiones</Link></li>
                 <div className="divider"></div>
                 <li ><Link id='nav-var-mob' to="/tasks"><i className="material-icons">schedule</i>Tareas Programadas</Link></li>
                 <div className="divider"></div>

@@ -25,6 +25,8 @@ function Survey() {
 
     const [completeSurvey, setCompleteSurvey] = useState(false);
 
+    const [submitIntent, setSubmitIntent] = useState(false);
+
     const handleRadioEntorno = e => {
         e.preventDefault();
         console.log("dentroDeHanle" + e.target.value);
@@ -66,6 +68,7 @@ function Survey() {
     };
 
     const handleSubmitSurvey = () => {
+        setSubmitIntent(true);  
         if (city === '') {
             M.toast({ html: 'Ingresar su ciudad de residencia', classes: "#c62828 red darken-3" });
         } else {
@@ -116,7 +119,7 @@ function Survey() {
                                         />
                                         <label htmlFor="email">Email</label>
                                         <button id='boton-emailcheck' className='btn waves-effect waves-light' type="submit" name='action' onClick={(e) => PostStudentEmail(e)}>
-                                            <i id="boton-emailcheck" className='material-icons left'>send </i>Check Email
+                                            <i id="boton-emailcheck" className='material-icons left'>send </i>Comprobar Email
                                         </button>
                                     </div>
                                 </div>
@@ -125,8 +128,11 @@ function Survey() {
                                 <div className="row">
                                     <div className="input-field col s12">
                                         <input id="city" type="text" className="validate" value={city}
-                                            onChange={(e) => setCity(e.target.value)} />
+                                            onChange={(e) => setCity(e.target.value)} required />
                                         <label htmlFor="city">Ciudad de residencia</label>
+                                        {(submitIntent && !city) ?
+                                            <p className='texto-campo-requerido right'>*Campo obligatorio. Debe ingresar la ciudad en la que reside</p>
+                                            : <div></div>}
                                     </div>
                                 </div>
                             }
@@ -232,7 +238,7 @@ function Survey() {
                             </button>}
                     </div>
                 </div> :
-                <div className='thanksForSubmitSurvey'>Gracias por su participación.</div>}
+                <div className='thanksForSubmitSurvey blue-app'>Gracias por su participación en la encuesta del taller de vida universitaria.</div>}
         </div>
     )
 }

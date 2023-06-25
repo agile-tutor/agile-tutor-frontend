@@ -184,6 +184,10 @@ select:focus {
     color: black;
 }
 
+.iconblackline {
+    color: #9f283b;
+}
+
 .red-app{
     background-color: #9f283b;
 }

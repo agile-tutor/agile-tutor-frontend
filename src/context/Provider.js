@@ -22,6 +22,7 @@ export const Provider = ({ children }) => {
   const [studentAuth, setStudentAuth] = useState(false);
   const [allSurveys, setAllSurveys] = useState([]);
   const [studentSurvey, setStudentSurvey] = useState([]);
+  const [activeSection, setActiveSection] = useState([false, false, false, false])
 
   const value = {
     //estado
@@ -39,6 +40,7 @@ export const Provider = ({ children }) => {
     tutors,
     allSurveys,
     studentSurvey,
+    activeSection,
     //funciones que afectan el estado
     updateAttendance: (target, id_asistencia) => {
       const updatedChecked = checked.map(alumno =>
@@ -124,6 +126,15 @@ export const Provider = ({ children }) => {
     getAllSurveys: () => {
       console.log("obteniendo todas las encuestas completadas")
       loadAllSurveys();
+    },
+    handleActiveSection: (num) => {
+      console.log("indicando pestana activa" + "num:" + num)
+      var updateActiveSection = [false, false, false, false]
+      if (-1 < num < 4) {
+        updateActiveSection[num] = true;
+        setActiveSection(updateActiveSection);
+      }
+      console.log("final: " + activeSection[0], activeSection[1], activeSection[2], activeSection[3])
     }
   }
 

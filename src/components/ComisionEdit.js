@@ -2,14 +2,14 @@ import { useContext, useState, useEffect } from 'react';
 import 'materialize-css/dist/css/materialize.min.css'
 import { Context } from '../context/Context.js';
 import Preloader from '../utils/Preloader.js';
-import Breadcrumbs from '../utils/Breadcrumbs.js';
+//import Breadcrumbs from '../utils/Breadcrumbs.js';
 import AlumnoEdit from './AlumnoEdit.js';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import NewStudentModal from './NewStudentModal.js';
 
 function ComisionEdit() {
 
-    const { checked, number, blockUnblockStudent, updateStudent, getCourse, putStudentCourseChange, addNewStudentToACourse } = useContext(Context);
+    const { handleActiveSection, checked, number, blockUnblockStudent, updateStudent, getCourse, putStudentCourseChange, addNewStudentToACourse } = useContext(Context);
     const [change, setChange] = useState(false);
     const [chargin, setChargin] = useState(false);
 
@@ -64,13 +64,15 @@ function ComisionEdit() {
         M.AutoInit();
     });
 
+    useEffect(() => {
+        handleActiveSection(1);
+    }, []);
+
     return (
         <div>
+            <h4 className="titulo-tabla" >Editar Comisión {+ number}</h4>
             <div> {checked.length === 0 ? <Preloader /> :
                 <div className="Comision">
-                    <Breadcrumbs posicion1={"Editar Comisión"} posicion2={"Comisión " + number} posicion0={"Home"} />
-                    <h4 className="titulo-tabla" >Editar Comisión</h4>
-                    <h5 id='titulo-encuentro'>-</h5>
                     {chargin ?
                         <div id='chargin-mode' className="progress">
                             <div className="indeterminate"></div>
@@ -80,7 +82,7 @@ function ComisionEdit() {
                     }
                     <table id="editComisionTable" className="Comision-table strip">
                         <thead>
-                            <tr>
+                            <tr className='fila-comision-parametros-tabla'>
                                 <th id="descripcion-edicion-estudiante">Apellido</th>
                                 <th id="descripcion-edicion-estudiante">Nombre</th>
                                 <th id="descripcion-edicion-estudiante">bloquear</th>
@@ -96,7 +98,7 @@ function ComisionEdit() {
                                     } else {
                                         return a.surname < b.surname ? -1 : 1
                                     }
-                                }).map((alumno) => { return (<AlumnoEdit key={alumno.id} courseId={alumno.courseId} id={alumno.id} apellido={alumno.surname} nombre={alumno.name} identificacion={alumno.identifier} email={alumno.email} blocked={alumno.blocked} observaciones={alumno.observations} clnametr={!alumno.blocked ? 'Fila-alumno' : 'Fila-alumno-block'} clicons={!alumno.blocked ? 'material-icons left' : 'material-icons left greyicons'} handleEditBlockStudent={handleEditBlockStudent} handleEditUpdateStudent={handleEditUpdateStudent} handleEditChangeStudentCourse={handleEditChangeStudentCourse} />) })
+                                }).map((alumno) => { return (<AlumnoEdit key={alumno.id} courseId={alumno.courseId} id={alumno.id} apellido={alumno.surname} nombre={alumno.name} identificacion={alumno.identifier} email={alumno.email} blocked={alumno.blocked} observaciones={alumno.observations} clnametr={!alumno.blocked ? 'Fila-alumno' : 'Fila-alumno-block'} clicons={!alumno.blocked ? 'material-icons left' : 'material-icons left redicons'} handleEditBlockStudent={handleEditBlockStudent} handleEditUpdateStudent={handleEditUpdateStudent} handleEditChangeStudentCourse={handleEditChangeStudentCourse} />) })
                             }
                         </tbody>
                     </table>

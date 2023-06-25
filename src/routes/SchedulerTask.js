@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from "react";
 import { Context } from '../context/Context.js';
-import { Link } from 'react-router-dom';
 import { alumnoService } from "../service/alumnoService"
 import { tutorService } from "../service/tutorService"
 import EmailModal from "../components/EmailModal";
@@ -14,7 +13,7 @@ function SchedulerTask() {
   const [timeToNotify, setTimeToNotify] = useState("");
   const [absentMessageSubject, setAbsentMessageSubject] = useState("");
   const [absentMessageBody, setAbsentMessageBody] = useState("");
-  const { tutorId } = useContext(Context);
+  const { tutorId, handleActiveSection } = useContext(Context);
 
   useEffect(() => {
     loadNotifierAbsent()
@@ -40,6 +39,10 @@ function SchedulerTask() {
   useEffect(() => {
     var elems = document.querySelectorAll('.modal');
     M.Modal.init(elems);
+  }, []);
+
+  useEffect(() => {
+    handleActiveSection(3);
   }, []);
 
   const handleClickUpdateEmailTemplate = async () => {
@@ -105,13 +108,7 @@ function SchedulerTask() {
 
   return (
     <div>
-      <nav>
-        <div className="nav-wrapper bodytitulo">
-          <div className="col s12">
-            <Link to={"/"} className="breadcrumb bodytitulo">Tareas Programadas 1/1 Notificacion de ausencias </Link>
-          </div>
-        </div>
-      </nav>
+      <div className="titulo-tabla" >Tareas Programadas 1/1 Notificacion de ausencias </div>
       {//      <h5 className="textSchedulerTask"><i className="material-icons iconSchedulerTask">access_time</i>Hora Actual: {actualHour}</h5>
       }
       <div className='course-container vhmargintop'>

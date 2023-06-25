@@ -51,7 +51,7 @@ function AlumnoEdit({ courseId, nombre, apellido, identificacion, email, observa
             <td id="descripcion-edicion-estudiante">
                 {!blocked ?
                     <button idstudent={id} blockstatus={blocked} className="waves-effect waves-teal btn-flat" onClick={() => handleClickBlock(id, blocked)} ><i className='material-icons left'>lock_open</i></button>
-                    : <button idstudent={id} blockstatus={blocked} className="waves-effect waves-teal btn-flat" onClick={() => handleClickBlock(id, blocked)} ><i className='material-icons left greyicons'>lock_outline</i></button>
+                    : <button idstudent={id} blockstatus={blocked} className="waves-effect waves-teal btn-flat" onClick={() => handleClickBlock(id, blocked)} ><i className='material-icons left redicons'>lock_outline</i></button>
                 }
             </td>
             <td id="descripcion-edicion-estudiante-editar">

@@ -1,12 +1,11 @@
 import { useContext, useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { Context } from '../context/Context';
 import '../App.css';
 import CardAlumno from './CardAlumno';
 
 function PorcentajeAsistencia() {
 
-    const { tutorCourses, tutorCoursesWithAverage, tutorId, getAllCoursesFromTutor, studentsOfTutor, getStudentsOfTutor, updateTutorCoursesWithAverage, studentSurvey, getAllSurveys } = useContext(Context);
+    const { tutorCourses, tutorCoursesWithAverage, tutorId, getAllCoursesFromTutor, studentsOfTutor, getStudentsOfTutor, updateTutorCoursesWithAverage, studentSurvey, getAllSurveys, handleActiveSection } = useContext(Context);
     const [porcentaje, setPorcentaje] = useState(75);
     const [viewsettings, setViewsettings] = useState(false)
 
@@ -71,7 +70,7 @@ function PorcentajeAsistencia() {
                             </div>
                             {//assignment
                             }                        </div>
-                        {dontPass.filter((alumno) => alumno.courseId == element.id).map((alumno) => { return (<CardAlumno key={alumno.id} nombre={alumno.name + " " + alumno.surname} porcentaje={alumno.attendancespercent} porcentajeActual={porcentaje} studentCompleteSurvey={studentCompleteSurvey} studentId={alumno.id}/>) })}
+                        {dontPass.filter((alumno) => alumno.courseId == element.id).map((alumno) => { return (<CardAlumno key={alumno.id} nombre={alumno.name + " " + alumno.surname} porcentaje={alumno.attendancespercent} porcentajeActual={porcentaje} studentCompleteSurvey={studentCompleteSurvey} studentId={alumno.id} />) })}
                     </div>
                     <div>
                         {pass.filter((alumno) => alumno.courseId == element.id).map((alumno) => { return (<CardAlumno key={alumno.id} nombre={alumno.name + " " + alumno.surname} porcentaje={alumno.attendancespercent} porcentajeActual={porcentaje} studentCompleteSurvey={studentCompleteSurvey} studentId={alumno.id} />) })}
@@ -81,18 +80,18 @@ function PorcentajeAsistencia() {
         })))
     };
 
+    useEffect(() => {
+        handleActiveSection(2);
+    }, []);
+
     const dontPass = studentsOfTutor.filter((alumno) => { return (Number(alumno.attendancespercent) < porcentaje) });
     const pass = studentsOfTutor.filter((alumno) => { return (Number(alumno.attendancespercent) >= porcentaje) });
     return (
         <div>
-            <nav>
-                <div className="nav-wrapper bodytitulo">
-                    <div className="col s12">
-                        <Link to={"/"} className="breadcrumb bodytitulo">Porcentaje de Asistencia: {porcentaje}%</Link>
-                    </div>
-                </div>
-            </nav>
-
+            <div className="titulo-tabla" >Estado de Comisiones</div>
+            <div className="col s12">
+                <p className="porcentaje-asistencia-parametro-tritulo">Porcentaje de Asistencia Requerido para la aprobación del TVU: {porcentaje}%</p>
+            </div>
             <div className='porcentajeAsistencia' >
                 <h5 className="percentEditOption center" ><i className="material-icons" onClick={() => handleView()}>settings</i>Configurar porcentaje requerido
                     {viewsettings ?

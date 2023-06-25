@@ -8,7 +8,7 @@ import logo from "../TIPLOGO.png"
 const Login = () => {
     const [email, setemail] = useState(null);
     const [password, setpassword] = useState(null);
-    const { loginTutor, tutor } = useContext(Context);
+    const { loginTutor, tutor, handleActiveSection } = useContext(Context);
 
     const [inputsVisible, setInputsVisible] = useState([false, false])
 
@@ -31,6 +31,10 @@ const Login = () => {
     useEffect(() => {
         var elems = document.querySelectorAll('.fixed-action-btn');
         M.FloatingActionButton.init(elems, {});
+    }, []);
+
+    useEffect(() => {
+        handleActiveSection(99);
     }, []);
 
     return (
@@ -56,7 +60,7 @@ const Login = () => {
                             onChange={(e) => setpassword(e.target.value)}
                         />
                         <button id='btnLoginPass' className='col s1' onClick={() => toggleInputVisibility(0)} >
-                            {inputsVisible[0] ? <i className="material-icons small iconblack">remove_red_eye</i> : <i className="material-icons small">remove_red_eye</i>}
+                            {inputsVisible[0] ? <i className="material-icons small iconblack">remove_red_eye</i> : <i className="material-icons small iconblackline">remove_red_eye</i>}
                         </button>
                         <br />
                     </div>

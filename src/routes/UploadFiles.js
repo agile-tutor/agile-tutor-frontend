@@ -48,104 +48,124 @@ function UploadFiles() {
 
     return (
         <div>
-            <div className='titulo-tabla survey'> Cargar Alumnos a Comsión </div>
-            <form action="#">
+            <div className='titulo-tabla survey'> Cargar comisión a partir de un archivo </div>
+            <form action="#" className="col s12">
                 {!parsedData.length ?
-                    <div className="file-field input-field">
-                        <div className="btn uploadfiles">
-                            <span>Seleccionar Archivo</span>
-                            <input type="file" multiple accept=".csv" onChange={changeHandler} />
+                    <div className="row">
+                        <div className="input-field col s12">
+                            <div className="file-field input-field upload-csv">
+                                <div className="btn uploadfiles">
+                                    <span>Seleccionar Archivo</span>
+                                    <input type="file" multiple accept=".csv" onChange={changeHandler} />
+                                </div>
+                                <div className="file-path-wrapper">
+                                    <input className="file-path validate" type="text" placeholder=" Seleccione el aricho a cargar" />
+                                </div>
+                                <h6>El archivo .csv debe contener "5 columnas" "sin encabezado". Las columnas deben seguir el siguiente orden: Apellido, Nombres, Identificacion, Comision, Email</h6>
+                            </div>
                         </div>
-                        <div className="file-path-wrapper">
-                            <input className="file-path validate" type="text" placeholder=" Seleccione el aricho a cargar" />
-                        </div>
-                        <h6>El archivo .csv debe contener "5 columnas" "sin encabezado". Las columnas deben seguir el siguiente orden: Apellido, Nombres, Identificacion, Comision, Email</h6>
                     </div>
-                    : <div>
-                        <input
-                            type="text"
-                            placeholder="comision"
-                            id='tutor-file-field'
-                            value={courseId}
-                        />
-                        <label id='tutor-file-field' className="active" htmlFor="tutor-file-field">Comision</label>
-                        {tutors.length ?
-                            < div className="file-field input-field" id='tutor-file-field'>
-                                <select className="browser-default" value="" onChange={handleTypeSelect}>
-                                    <option value="" disabled selected>Seleccione un tutor</option>
-                                    {tutors.map((tutor) => {
-                                        return <option value={tutor.id}>{tutor.id + " " + tutor.surname + " " + tutor.name}</option>
-                                    })}
-                                </select>
-                                {console.log(selectedOption)/*
+                    :
+                    <div>
+                        <div className="row">
+                            <div className="input-field center col s10">
+                                {tutors.length ?
+                                    < div className="file-field input-field" id='tutor-file-field'>
+                                        <select className="browser-default" value="" onChange={handleTypeSelect}>
+                                            <option value="" disabled selected>Asigne un tutor a la comisión</option>
+                                            {tutors.map((tutor) => {
+                                                return <option value={tutor.id}>{tutor.id + " " + tutor.surname + " " + tutor.name}</option>
+                                            })}
+                                        </select>
+                                        {console.log(selectedOption)/*
                             <div>
                                 < label className="label-tutor-id"> tutor-id: {selectedOption} </label >
                             </div>
-                        */} </div >
-                            :
-                            <h6 className='center'>"No hay tutores para seleccionar"</h6>}
-                        <input
-                            type="text"
-                            placeholder="tutor"
-                            id='tutor-file-field'
-                            value={selectedOption}
-                        />
-                        <label id='tutor-file-field' className="active" htmlFor="tutor-file-field">Tutor-ID</label>
-                    </div>}
-            </form>
-            {parsedData.length ?
-                <div>
-                    <h6 className='titulo-tabla-alumnos-upload center'>Alumnos a asignar:</h6>
-                    <table className='studentToUpload'>
-                        <tr>
-                            <td>
-                                Apellido
-                            </td>
-                            <td>
-                                Nombres
-                            </td>
-                            <td>
-                                Identificacion
-                            </td>
-                            <td>
-                                Comision
-                            </td>
-                            <td>
-                                Email
-                            </td>
-                        </tr>
-                        {parsedData.map((value, index) => {
-                            console.log(value)
-                            return (
-                                <tr key={index}>
-                                    <td>
-                                        {value[0]}
-                                    </td>
-                                    <td>
-                                        {value[1]}
-                                    </td>
-                                    <td>
-                                        {value[2]}
-                                    </td>
-                                    <td>
-                                        {value[3].split("-")[3]}
-                                    </td>
-                                    <td>
-                                        {value[4]}
-                                    </td>
-                                </tr>)
-                        })}
-                    </table>
-                </div>
-                : <h6 className='upload-csv-info center'>"Cargar un archivo .csv para visualizar la información"</h6>
+                        */}
+                                    </div >
+                                    :
+                                    <h6 className='center'>"Ha ocurrido un error al cargar los tutores, vuelva a Loguearse"</h6>}
+                            </div >
+                        </div>
+                        <div className="row">
+                            <div className="input-field col s5">
+                                <input
+                                    type="text"
+                                    placeholder="comision"
+                                    id='tutor-file-field'
+                                    value={courseId}
+                                />
+                                <label id='tutor-file-field' className="active" htmlFor="tutor-file-field">Comision</label>
+                            </div >
+                            <div className="input-field col s5">
+                                <input
+                                    type="text"
+                                    placeholder="tutor"
+                                    id='tutor-file-field'
+                                    value={selectedOption}
+                                />
+                                <label id='tutor-file-field' className="active" htmlFor="tutor-file-field">Tutor-ID</label>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </form >
+            {
+                parsedData.length ?
+                    <div>
+                        <h6 className='titulo-tabla-alumnos-upload center'>Alumnos a asignar:</h6>
+                        <table className='studentToUpload'>
+                            <tr className='fila-comision-parametros-tabla'>
+                                <td>
+                                    Apellido
+                                </td>
+                                <td>
+                                    Nombres
+                                </td>
+                                <td>
+                                    Identificacion
+                                </td>
+                                <td>
+                                    Comision
+                                </td>
+                                <td>
+                                    Email
+                                </td>
+                            </tr>
+                            {parsedData.map((value, index) => {
+                                console.log(value)
+                                return (
+                                    <tr key={index}>
+                                        <td>
+                                            {value[0]}
+                                        </td>
+                                        <td>
+                                            {value[1]}
+                                        </td>
+                                        <td>
+                                            {value[2]}
+                                        </td>
+                                        <td>
+                                            {value[3].split("-")[3]}
+                                        </td>
+                                        <td>
+                                            {value[4]}
+                                        </td>
+                                    </tr>)
+                            })}
+                        </table>
+                    </div>
+                    : <h6 className='upload-csv-info center'>"Cargar un archivo .csv para visualizar la información"</h6>
             }
-            {selectedOption != '' && courseId != 0 ?
-                <div class="fixed-action-btn">
-                    <a class="btn-floating btn-large red-app" id="hover-btn" title="asignar comsión">
-                        <i class="large material-icons">save</i>
-                    </a>
-                </div>
-                : <div></div>}
+            {
+                selectedOption != '' && courseId != 0 ?
+                    <div class="fixed-action-btn">
+                        <a class="btn-floating btn-large red-app" id="hover-btn" title="asignar comsión">
+                            <i class="large material-icons">save</i>
+                        </a>
+                    </div>
+                    : <div></div>
+            }
         </div >
 
     )

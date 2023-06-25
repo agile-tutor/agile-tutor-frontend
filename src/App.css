@@ -30,6 +30,12 @@
   padding-left: 10.5vw;
 }
 
+.fila-comision-parametros-tabla {
+  color: black;
+  text-shadow: .5px .5px .5px rgba(143, 143, 143, 0.479);
+  border-bottom: 2px solid #1f849c;
+}
+
 #columna-apellidonombre {
   padding-top: 1.5vh;
   padding-left: 10.5vw;
@@ -51,6 +57,14 @@
   text-align: center !important;
 }
 
+.porcentaje-asistencia-parametro-tritulo {
+  padding-top: 3vh;
+  padding-left: 3vw;
+  font-weight: bolder;
+  color: #9f283b;
+  text-shadow: .5px .5px .5px rgba(0, 0, 0, 0.479);
+}
+
 .porcentajeAsistencia {
   font-size: normal;
   padding: 1rem;
@@ -65,12 +79,14 @@
 .parametro-tabla {
   font-weight: bold;
   padding-left: 4vw;
+  text-shadow: .5px .5px .5px rgba(0, 0, 0, 0.479);
 }
 
 
 @media (max-width: 800px) {
   .parametro-tabla {
     font-size: large;
+    text-shadow: .5px .5px .5px rgba(0, 0, 0, 0.479);
   }
 }
 
@@ -142,6 +158,7 @@
 .nav-wrapper {
   background-color: #dad9d5;
   border-bottom: 2px solid #1f849c;
+  height: 10vh;
 }
 
 .bodytitulo {
@@ -151,6 +168,7 @@
   font-size: 3dvw;
   width: 100vw;
   background-color: #eeeeee;
+  border-bottom: 2px solid #1f849c;
 }
 
 .breadcrumb-main {
@@ -230,6 +248,7 @@
   height: 7vh;
   width: 66vw;
   background-color: #1f849c;
+  text-shadow: .5px .5px .5px rgba(0, 0, 0, 0.479);
 }
 
 @media (min-width: 800px) {
@@ -265,18 +284,36 @@
 
 .titulo-tabla {
   padding: 2rem;
-  margin: .4rem .1rem 0rem .1rem;
+  margin: 0rem 0rem 0rem 0rem;
   color: #1f849c;
   font-weight: bolder;
   text-align: center;
   justify-content: center;
   background-color: #eeeeee;
-  border: 2px solid#1f849c;
+  border-bottom: 2px solid #1f849c;
+  text-shadow: .5px .5px .5px rgba(0, 0, 0, 0.479);
+  width: 100vw;
+}
+
+
+.material-tooltip {
+  border-radius: 90px;
+  color: #eeeeee;
+  text-shadow: .4px .4px .4px rgba(0, 0, 0, 0.479);
+  background-color: #1f839cc5;
 }
 
 .comsion-table-title {
-  border-bottom-right-radius: 3px;
-  border-bottom-left-radius: 3px;
+  padding: .5rem;
+  margin: 0rem 0rem 0rem 0rem;
+  color: #ffffff;
+  font-weight: bolder;
+  text-align: center;
+  justify-content: center;
+  background-color: #1f849c;
+  border-bottom: 2px solid #1f849c;
+  text-shadow: .6px .6px .6px rgba(0, 0, 0, 0.479);
+  width: 100vw;
 }
 
 .sidenav {
@@ -288,17 +325,20 @@
 .breadcrumb {
   color: #9f283b;
   font-size: 2.2vh;
+  text-shadow: .5px .5px .5px rgba(0, 0, 0, 0.479);
 }
 
 .dropdown-trigger {
   color: #9f283b;
   display: flex;
   flex-wrap: wrap;
+  text-shadow: .5px .5px .5px rgba(0, 0, 0, 0.479);
 }
 
 .navbar-item {
   display: flex;
   flex-wrap: wrap;
+  text-shadow: .5px .5px .5px rgba(0, 0, 0, 0.479);
 }
 
 .dropdown-content {
@@ -323,11 +363,20 @@
 }
 
 #editComisionTable {
-  width: 80vw;
-  font-size: small;
-  margin-left: 10vw;
-  margin-right: 10vw;
+  width: 90vw;
+  font-size: x-large;
+  margin-left: 5vw;
+  margin-right: 5vw;
   text-align: center;
+}
+
+@media (max-width: 800px) {
+  #editComisionTable {
+    width: 80vw;
+    font-size: x-small;
+    margin-left: 10vw;
+    margin-right: 10vw;
+  }
 }
 
 #guardar-asistencias-boton {
@@ -344,6 +393,7 @@ btn-flat:focus {
 }
 
 .tabs {
+  margin-top: 8vh;
   font-size: 4vh;
   height: 7vh;
 }
@@ -353,12 +403,18 @@ btn-flat:focus {
 }
 
 #floating-btn {
-  background-color: #1f849c;
+  background-color: #9f283b;
+  text-shadow: .5px .5px .5px rgba(0, 0, 0, 0.479);
+
 }
 
 .Fila-alumno-block {
-  background-color: #9f283b;
-  color: #dad9d5
+  text-decoration:line-through;
+  color: #9f283b;
+}
+
+.redicons{
+  color: #9f283b;
 }
 
 .greyicons {
@@ -410,6 +466,7 @@ btn-flat:focus {
 
 #lupasearch {
   color: #9f283b;
+  text-shadow: .5px .5px .5px rgba(0, 0, 0, 0.479);
 }
 
 .textSchedulerTask {
@@ -477,7 +534,7 @@ btn-flat:focus {
   border-radius: 2%;
 }
 
-#course-destiny-field{
+#course-destiny-field {
   margin-top: 5vh;
 }
 
@@ -570,7 +627,7 @@ btn-flat:focus {
   padding: 1vw;
 }
 
-.email-modal{
+.email-modal {
   margin-bottom: -6vh;
 }
 
@@ -731,7 +788,7 @@ nav ul a {
 }
 
 .survey {
-  width: 100vw;
+  width: 105vw;
   margin-bottom: 5vh;
 }
 
@@ -804,24 +861,29 @@ nav ul a {
 #boton-emailcheck {
   background-color: #1f849c !important;
 }
-
+/*
 .file-field {
-  width: 50vw;
+  width: 90vw;
   margin-left: auto;
   margin-right: auto;
 }
-
+*/
+.upload-csv {
+  width: 90vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+/*
 #course-file-field {
   width: 10vw;
-  margin-left: 45vw;
-  margin-right: 45vw;
+  margin-left: 0vw;
+  margin-right: 0vw;
   font-size: small;
 }
-
+*/
 #tutor-file-field {
-  width: 50vw;
-  margin-left: 25vw;
-  margin-right: 25vw;
+  margin-left: 10vw;
+  margin-right: auto;
   font-size: small;
 }
 
@@ -842,7 +904,7 @@ select:hover {
     margin-left: 5vw;
     margin-right: 5vw;
     width: 90vw;
-    font-size: small;
+    font-size: medium;
   }
 }
 
@@ -869,14 +931,41 @@ select:hover {
   background-color: #9f283b;
 }
 
+.blue-app {
+  color: #1f849c;
+}
+
 .upload-csv-info {
   margin-top: 10vh;
   color: #9f283b;
   font-weight: bolder;
 }
 
-.thanksForSubmitSurvey{
+.thanksForSubmitSurvey {
   margin-top: 50vh;
   left: 50vh;
 
+}
+
+.texto-campo-requerido {
+  color: red;
+  font-style: italic;
+  font-size: small;
+  display: flex;
+  vertical-align: top;
+  text-align: right;
+  margin-top: -1vh;
+}
+
+
+@media (max-width: 800px) {
+  .texto-campo-requerido {
+    font-size: x-small;
+  }
+}
+
+nav ul li.active {
+  background-color: #1f839c60;
+  color: #eeeeee !important;
+  text-shadow: .5px .5px .5px rgba(255, 255, 255, 0.479) !important;
 }

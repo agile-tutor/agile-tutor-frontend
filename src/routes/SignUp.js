@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Context } from '../context/Context.js';
 import { Link } from "react-router-dom";
 import M from "materialize-css";
@@ -21,7 +21,7 @@ const SignUp = () => {
         }
     }
 
-    const { signUpTutor } = useContext(Context);
+    const { signUpTutor, handleActiveSection } = useContext(Context);
 
     const PostData = () => {
         if (!(name && surname && email && password)) {
@@ -34,6 +34,10 @@ const SignUp = () => {
             }
         }
     };
+
+    useEffect(() => {
+        handleActiveSection(98);
+    }, []);
 
     return (
         <div className="main-login-register" >
@@ -88,7 +92,7 @@ const SignUp = () => {
                             />
                             <button id='btnLoginPass' className='col s1' onClick={() => toggleInputVisibility(1)} >
                                 {inputsVisible[1] ? <i className="material-icons small iconblack">remove_red_eye</i> : <i className="material-icons small">remove_red_eye</i>}
-                            </button>   
+                            </button>
                             <br />
                         </div>
                         <button
