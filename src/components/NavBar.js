@@ -11,7 +11,7 @@ import SelectComisionEdit from '../routes/SelectComisionEdit';
 function NavBar() {
 
     const [input, setInput] = useState("");
-    const { allStudents, getAllStudents, tutorId, logOutTutor, activeSection } = useContext(Context);
+    const { allStudents, getAllStudents, tutor, tutorId, logOutTutor, activeSection } = useContext(Context);
     const [results, setResults] = useState([]);
 
 
@@ -59,7 +59,7 @@ function NavBar() {
                             <li className={activeSection[1] ? "active" : ""}><SelectComisionEdit action="Editar Comision" style="dropdownComisionEdit nav-var-web" /></li>
                             <li className={activeSection[2] ? "active" : ""}><Link className="navbar-item" id='nav-var-web' to="/attendancePercent"><i className="material-icons">show_chart</i>Estado de Comisiones</Link></li>
                             <li className={activeSection[3] ? "active" : ""}><Link className="navbar-item" id='nav-var-web' to="/tasks"><i className="material-icons">schedule</i>Tareas Programadas</Link></li>
-                            <li >
+                            <li className='searchComponent'>
                                 <form>
                                     <div className="input-field">
                                         <input id="search" type="search" value={input} onblur={() => handleChange("")} onChange={(e) => handleChange(e.target.value)} onKeyDown={handleKeyDown} autoComplete="off" />
@@ -69,11 +69,15 @@ function NavBar() {
                                 </form>
                                 <SearchResultList results={results} />
                             </li>
-                            <li ><Link className="navbar-item" id='nav-var-web' to="/" onClick={() => logOutTutor()} ><i className="material-icons">logout</i></Link></li>
+                            <li >
+                                <div>
+                                    <Link className="navbar-item"  title="click to LOGOUT" id='nav-var-web' to="/" onClick={() => logOutTutor()} ><i className="material-icons">person_pin</i>  <br style={{position: 'fixed' }} />{tutor? tutor.name: ''}</Link>
+                                </div>
+                            </li>
                         </ul>
                     </div>
                 </nav>
-            </div>
+            </div >
             <ul className="sidenav sidenav" id="mobile-demo">
                 <li ><Link id='nav-var-mob' to="/"><i className="material-icons">home</i>Home</Link></li>
                 <div className="divider"></div>
@@ -99,7 +103,7 @@ function NavBar() {
                     <SearchResultList results={results} />*/}
                 </li>
             </ul>
-        </header>
+        </header >
     )
 }
 

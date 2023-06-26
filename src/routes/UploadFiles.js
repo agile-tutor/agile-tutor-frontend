@@ -58,8 +58,8 @@ function UploadFiles() {
                                     <span>Seleccionar Archivo</span>
                                     <input type="file" multiple accept=".csv" onChange={changeHandler} />
                                 </div>
-                                <div className="file-path-wrapper">
-                                    <input className="file-path validate" type="text" placeholder=" Seleccione el aricho a cargar" />
+                                <div id='upload-file-input' className="file-path-wrapper">
+                                    <input className="file-path validate" type="text" placeholder=" Seleccione el archivo a cargar" />
                                 </div>
                                 <h6>El archivo .csv debe contener "5 columnas" "sin encabezado". Las columnas deben seguir el siguiente orden: Apellido, Nombres, Identificacion, Comision, Email</h6>
                             </div>
@@ -113,7 +113,7 @@ function UploadFiles() {
             {
                 parsedData.length ?
                     <div>
-                        <h6 className='titulo-tabla-alumnos-upload center'>Alumnos a asignar:</h6>
+                        <h6 className='titulo-tabla-alumnos-upload center'>Listado de alumnos a asignar a la comisión: {courseId} y al tutor: {selectedOption}</h6>
                         <table className='studentToUpload'>
                             <tr className='fila-comision-parametros-tabla'>
                                 <td>

@@ -77,16 +77,16 @@ const AlumnoModal = ({ courseId, name, surname, studentid, identifier, emailedit
             </div>
             <div className="modal-footer">
                 {handleClickUpdate == null && handleAddStudentToACourse == null ?
-                    <a href="#!" className="modal-close waves-effect waves-red btn-flat">Cerrar</a>
+                    <a href="#!" className="modal-close waves-effect waves btn-flat">Cerrar</a>
                     :
                     handleAddStudentToACourse == null ?
                         <div>
-                            <a href="#!" className="modal-close waves-effect waves-red btn-flat">Cancelar</a>
+                            <a href="#!" className="modal-close waves-effect waves btn-flat">Cancelar</a>
                             <a href="#!" onClick={() => { handleClickUpdate(); }} className="modal-close waves-effect waves-green btn-flat">Aceptar</a>
                         </div>
                         :
                         <div>
-                            <a href="#!" className="modal-close waves-effect waves-red btn-flat">Cancelar</a>
+                            <a href="#!" className="modal-close waves-effect waves btn-flat">Cancelar</a>
                             <a href="#!" onClick={() => { handleAddStudentToACourse(); }} className="modal-close waves-effect waves-green btn-flat">Aceptar</a>
                         </div>
                 }

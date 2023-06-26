@@ -71,7 +71,7 @@ const NewStudentModal = ({ courseId, handleAddStudentToACourse }) => {
             </div >
             <div className="modal-footer">
                 <div>
-                    <a href="#!" className="modal-close waves-effect waves-red btn-flat">Cancelar</a>
+                    <a href="#!" className="modal-close waves-effect waves btn-flat">Cancelar</a>
                     <a href="#!" onClick={() => { handleAddStudent(); }} className="modal-close waves-effect waves-green btn-flat">Aceptar</a>
                 </div>
             </div>
