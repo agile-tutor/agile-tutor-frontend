@@ -45,7 +45,7 @@ const SignUp = () => {
                 <div className="mycard">
                     <div id="fondoTarjeta" className="card auth-card input-field tarjetaSignUp hoverable">
                         <img alt='logo' className="logo-login" src={logo} />
-                        <div className="warning-sign center" > Ingrese sus datos para registrarse: </div>
+                        <div className="warning-sign center" > Ingrese sus datos para el registro: </div>
                         <input
                             type="text"
                             placeholder="nombre"

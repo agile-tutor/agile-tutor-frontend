@@ -7,10 +7,12 @@ import M from 'materialize-css/dist/js/materialize.min.js';
 
 function UploadFiles() {
 
-    const { tutors, getAllTutors } = useContext(Context);
+    const { tutors, getAllTutors, postNewStudents, createACourse, courseToCreate } = useContext(Context);
     const [parsedData, setParsedData] = useState([]);
     const [courseId, setCourseId] = useState(0);
     const [selectedOption, setSelectedOption] = useState('');
+    const [nameCourse, setNameCourse] = useState('');
+    const [anyChange, setAnyChange] = useState(false)
 
     const changeHandler = (event) => {
         // Passing file data (event.target.files[0]) to parse using Papa.parse
@@ -21,8 +23,43 @@ function UploadFiles() {
                 console.log(results.data)
                 setParsedData(results.data)
                 setCourseId(results.data[0][3].split("-")[3])
+                setNameCourse(results.data[0][3])
             },
         });
+    };
+
+    const saveCourse = async () => {
+        let newCourse = {
+            "id": parseInt(courseId),
+            "name": nameCourse,
+            "tutorId": parseInt(selectedOption)
+        }
+        createACourse(newCourse)
+        setAnyChange(!anyChange);
+        console.log(anyChange+"anychange")
+        //        setAnyChange(true);
+    };
+
+    const postStudents = async () => {
+
+        console.log(nameCourse);
+
+        let newStudents = parsedData.map((value, index) => {
+            console.log(value, index)
+            console.log("courseToCreateId" + courseToCreate.id)
+            return (
+                {
+                    "id": parseInt(index),
+                    "name": value[1],
+                    "surname": value[0],
+                    "identifier": value[2],
+                    "email": value[4],
+                    "courseId": parseInt(courseToCreate.id)
+                }
+            )
+        })
+        postNewStudents(newStudents)
+        //        setAnyChange(false)
     };
 
     useEffect(() => {
@@ -39,11 +76,17 @@ function UploadFiles() {
         getAllTutors();
     }, []);
 
+
+    useEffect(() => {
+        postStudents();
+    }, [anyChange]);
+
+
+
     const handleTypeSelect = e => {
         e.preventDefault();
         console.log("dentroDeHanle" + e.target.value);
         setSelectedOption(e.target.value);
-        //setDestinyCourse(e.target.value)
     };
 
     return (
@@ -146,7 +189,7 @@ function UploadFiles() {
                                             {value[2]}
                                         </td>
                                         <td>
-                                            {value[3].split("-")[3]}
+                                            {courseId}
                                         </td>
                                         <td>
                                             {value[4]}
@@ -160,7 +203,7 @@ function UploadFiles() {
             {
                 selectedOption != '' && courseId != 0 ?
                     <div class="fixed-action-btn">
-                        <a class="btn-floating btn-large red-app" id="hover-btn" title="asignar comsión">
+                        <a class="btn-floating btn-large red-app" id="hover-btn" title="asignar comsión" onClick={() => saveCourse()}>
                             <i class="large material-icons">save</i>
                         </a>
                     </div>

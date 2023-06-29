@@ -8,7 +8,7 @@ import M from 'materialize-css/dist/js/materialize.min.js';
 function SchedulerTask() {
 
   const [students, setStudents] = useState([]);
-  const [todb/*, setTodb*/] = useState(false);
+  const [todb, setTodb] = useState(false);
   const [actualHour, setActualHour] = useState("");
   const [timeToNotify, setTimeToNotify] = useState("");
   const [absentMessageSubject, setAbsentMessageSubject] = useState("");
@@ -30,7 +30,7 @@ function SchedulerTask() {
 
   useEffect(() => {
     (async () => {
-      const message = await tutorService.getAbsentMessage()
+      const message = await tutorService.getAbsentMessage(tutorId)
       setAbsentMessageSubject(message.subject);
       setAbsentMessageBody(message.body);
     })();
@@ -55,10 +55,20 @@ function SchedulerTask() {
           "body": absentMessageBody
         }
         console.log('handle click' + absentEmail);
-        const emailTemplate = await tutorService.updateNotifierAbsent(absentEmail);
+        const emailTemplate = await tutorService.updateNotifierAbsent(absentEmail, tutorId);
         console.log(emailTemplate)
         M.toast({ html: `el email ha sido modificado exitosamente.` });
       }
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  const handleClickDeleteAbsentNotification = async (alumnoId) => {
+    try {
+      console.log('handle click' + alumnoId);
+      await tutorService.removeAbsentNotifierStudent(alumnoId, tutorId);
+      setTodb(!todb)
     } catch (error) {
       console.error(error)
     }
@@ -70,7 +80,7 @@ function SchedulerTask() {
   */
   const loadNotifierAbsent = async () => {
     try {
-      const studentslist = await alumnoService.getNotifierAbsent()
+      const studentslist = await alumnoService.getNotifierAbsent(tutorId)
       console.log(studentslist)
       setStudents(studentslist)
     } catch (error) {
@@ -94,13 +104,13 @@ function SchedulerTask() {
     return time
   }
 
-  const twentytwo = "22 horas"
+  const twentytwo = "22:00 horas"
 
   let setHourNotify = (h < 22 && s == 0 && m == 0) ? 22 - h : (h < 22) ? 21 - h : (s == 0 && m == 0) ? 46 - h : 45 - h
   let setMinNotify = (m == 0 && s == 0) ? 0 : s == 0 ? 60 - m : 59 - m
   let setSecondNotify = s == 0 ? 0 : 60 - s
 
-  let timeNotify = addZero(setHourNotify) + "horas " + addZero(setMinNotify) + "minutos " + addZero(setSecondNotify) + "segundos";
+  let timeNotify = addZero(setHourNotify) + "hh " + addZero(setMinNotify) + "mm " + addZero(setSecondNotify) + "ss";
 
   function getTimeNotify() {
     return timeNotify
@@ -112,14 +122,14 @@ function SchedulerTask() {
       {//      <h5 className="textSchedulerTask"><i className="material-icons iconSchedulerTask">access_time</i>Hora Actual: {actualHour}</h5>
       }
       <div className='course-container vhmargintop'>
-        <div className="parametro-schedulertask">
-          <span className="textSchedulerTask"><i className="material-icons iconSchedulerTask">send</i>Las notificaciones se enviarán a las: </span>
-          <span className="textSchedulerTask hourTask center">{twentytwo}</span>
+        <div className="parametro-schedulertask row">
+          <span className="textSchedulerTask col s6"><i className="material-icons iconSchedulerTask">send</i>Las notificaciones se enviarán a las: </span>
+          <span className="textSchedulerTask hourTask center col s5">{twentytwo}</span>
         </div>
-        <div className="parametro-schedulertask">
-          <span className="textSchedulerTask"><i className="material-icons iconSchedulerTask">notifications_active</i>Tiempo estimado para notificar ausentes: </span>
+        <div className="parametro-schedulertask row">
+          <span className="textSchedulerTask col s6"><i className="material-icons iconSchedulerTask">notifications_active</i>Próximo envio programado dentro de : </span>
           {timeToNotify !== "" ?
-            <span className="textSchedulerTask hourTask center">
+            <span className="textSchedulerTask hourTask center col s5">
               {timeToNotify}</span> :
             <div className="progress">
               <div className="indeterminate"></div>
@@ -127,41 +137,47 @@ function SchedulerTask() {
           <h4></h4>
         </div>
       </div>
-      <div>
-        <div className="col s12 center titulo-emailaenviar">Email a enviar:</div>
-        <div className="col s12 center">
-          <a className="waves-effect waves-teal btn-flat modal-trigger" href={"#modalemail" + tutorId} ><i id="mail_outline" className='material-icons'
-          >mail_outline</i></a>
-          {console.log(tutorId)}
-          <EmailModal key={tutorId} tutorId={tutorId} subject={absentMessageSubject} body={absentMessageBody} setSubject={setAbsentMessageSubject} setBody={setAbsentMessageBody} handleClickUpdateEmailTemplate={handleClickUpdateEmailTemplate} />
+      <div className="course-container row">
+        <div className="titulo-email-template col s12 center">Personalice el email que se envía:</div>
+        <div className="row">
+          <div className="col s3"></div>
+          <div className="col s3 center titulo-emailaenviar">Email modelo:</div>
+          <div className="col s3 center emailicon">
+            <a className="waves-effect waves-teal btn-flat modal-trigger" href={"#modalemail" + tutorId} ><i id="mail_outline" className='material-icons'
+            >mail_outline</i></a>
+            {console.log(tutorId)}
+            <EmailModal key={tutorId} tutorId={tutorId} subject={absentMessageSubject} body={absentMessageBody} setSubject={setAbsentMessageSubject} setBody={setAbsentMessageBody} handleClickUpdateEmailTemplate={handleClickUpdateEmailTemplate} />
+          </div>
+          <div className="col s3"></div>
         </div>
       </div>
       {
         (typeof (students) == "undefined" || (students.length) === 0) ?
-          <p>"No existen alumnos pendientes de notificar por ausencias"</p> :
-          <div>
-            <h4 className="bodytitulo left margin-bt scheduler-task-title" >Alumnos a notificar:</h4>
-            <div className="cards-absents-container">
-              {students.map((alumno) => {
-                return (
-                  <div className="to-notify">
-                    <div className="card">
-                      <div className="card-content">
-                        <div className="email-card-container">
-                          <i className="material-icons">face</i><span>{" " + alumno.name + " " + alumno.surname}</span>
-                        </div>
-                        <div className="email-card-container">
-                          <i className="material-icons">school</i><span> Comisión {alumno.courseId}</span>
-                        </div>
-                        <a className="btn-floating halfway-fab waves-effect waves-light"><i className="material-icons dont-notify">notifications_off</i></a>
-                        <div className="email-card-container">
-                          <i className="material-icons">email</i><span> {alumno.email}</span>
+          <p className="titulo-email-template col s12 center">"No existen alumnos pendientes de notificar por ausencias"</p> :
+          <div className="scheduler-task-title center" >Alumnos a notificar:
+            <div className="marginbt5vh center" >
+              <div className=" center" >
+                {students.map((alumno) => {
+                  return (
+                    <div className="to-notify">
+                      <div className="card">
+                        <div className="card-content">
+                          <div className="email-card-container">
+                            <i className="material-icons">face</i><span>{" " + alumno.name + " " + alumno.surname}</span>
+                          </div>
+                          <div className="email-card-container">
+                            <i className="material-icons">school</i><span> Comisión {alumno.courseId}</span>
+                          </div>
+                          <a className="btn-floating halfway-fab waves-effect waves-light" onClick={() => handleClickDeleteAbsentNotification(alumno.id)}><i className="material-icons dont-notify">notifications_off</i></a>
+                          <div className="email-card-container">
+                            <i className="material-icons">email</i><span> {alumno.email}</span>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                )
-              })}
+                  )
+                })}
+              </div>
             </div>
           </div>
       }

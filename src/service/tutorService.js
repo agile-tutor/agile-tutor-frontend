@@ -25,9 +25,9 @@ class TutorService {
                 },
             );
             const tutor = this.tutorAsJson(tutorJson);
-            console.log(tutor)
+            console.log(tutor.data)
             M.toast({
-                html: `El usuario ${tutor.name} se ha creado satisfactoriamente`,
+                html: `El tutor ${tutorJson.data.name} se ha creado satisfactoriamente`,
                 classes: "#388e3c green darken-2",
             });
             return tutor;
@@ -83,12 +83,12 @@ class TutorService {
         }
     }
 
-    async updateNotifierAbsent(updtadedEmail) {
+    async updateNotifierAbsent(updtadedEmail, tutorId) {
         // let studentstring = JSON.stringify(student)
         //console.log(student);
         try {
             const absentMessageJson = await axios({
-                url: `${REST_SERVER_URL}/api/tutor/absentmessage`,
+                url: `${REST_SERVER_URL}/api/tutor/absentmessage/${tutorId}`,
                 method: 'PUT',
                 mode: 'no-cors',
                 headers: {
@@ -109,9 +109,26 @@ class TutorService {
         }
     }
 
-    async getAbsentMessage() {
+    async removeAbsentNotifierStudent(alumnoId, tutorId) {
         try {
-            const absentMessageJson = await axios.get(`${REST_SERVER_URL}/api/tutor/absentmessage`, {
+            const course = await axios.post(`${REST_SERVER_URL}/api/tutor/absent/${tutorId}/${alumnoId}`,
+                {},
+            );
+            console.log(course.data)
+            M.toast({
+                html: `el tutorando no sera notificado por su ausencia.`,
+                classes: "#388e3c green darken-2",
+            });
+            return course.data;
+        } catch (err) {
+            M.toast({ html: "Un error ha ocurrido en el proceso", classes: "#c62828 red darken-3" });
+            console.log(err);
+        }
+    }
+
+    async getAbsentMessage(tutorId) {
+        try {
+            const absentMessageJson = await axios.get(`${REST_SERVER_URL}/api/tutor/absentmessage/${tutorId}`, {
                 method: 'GET',
                 mode: 'no-cors',
                 headers: {
@@ -146,7 +163,7 @@ class TutorService {
             const responseData = response.data;
             console.log(responseData)
             M.toast({
-                html: `El tutorando con id:${studentId} se ha cambiado de comisión satisfactoriamente`,
+                html: `El tutorando se ha cambiado de comisión satisfactoriamente`,
                 classes: "#388e3c green darken-2",
             });
         } catch (err) {
@@ -192,6 +209,23 @@ class TutorService {
             return surveys.data.sort((a, b) => (a.studentId < b.studentId) ? -1 : 1);
         } catch (error) {
             console.error(error);
+        }
+    }
+
+    async addNewCourse(newCourse) {
+        try {
+            const course = await axios.post(`${REST_SERVER_URL}/api/course/register`,
+                newCourse,
+            );
+            console.log(course.data)
+            M.toast({
+                html: `La comisión ${course.name} se ha creado satisfactoriamente`,
+                classes: "#388e3c green darken-2",
+            });
+            return course.data;
+        } catch (err) {
+            M.toast({ html: "Datos invalidos o el curso ya existe", classes: "#c62828 red darken-3" });
+            console.log(err);
         }
     }
 }

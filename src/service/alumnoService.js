@@ -77,6 +77,27 @@ class AlumnoService {
       console.error(error);
     }
   }
+
+  async getCourseByName(name) {
+
+    try {
+      const courseData = await axios.get(`${REST_SERVER_URL}/api/course/${name}`, {
+        method: 'GET',
+        mode: 'no-cors',
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Credentials': 'true'
+        },
+        credentials: 'same-origin',
+      })
+      console.log(courseData);
+      const course = courseData.data;
+      return course;
+    } catch (error) {
+      console.error(error);
+    }
+  }
   /*
     async updateAttendances(attendances, course) {
       console.log(attendances);
@@ -146,10 +167,10 @@ class AlumnoService {
     }
   }
 
-  async getNotifierAbsent() {
+  async getNotifierAbsent(tutorId) {
 
     try {
-      const alumnosJson = await axios.get(`${REST_SERVER_URL}/api/students/toNotify`, {
+      const alumnosJson = await axios.get(`${REST_SERVER_URL}/api/tutor/toNotify/${tutorId}`, {
         method: 'GET',
         mode: 'no-cors',
         headers: {
@@ -346,6 +367,60 @@ class AlumnoService {
       console.log(err);
     }
   }
+
+  async addNewStudents(students) {
+    //let newStudentsJson = JSON.stringify(students)
+    console.log(JSON.stringify(students))
+    let id = students[0].courseId
+    console.log(id)
+    try {
+      const studentsJson = await axios({
+        url: `${REST_SERVER_URL}/api/students/many/register/${id}`,
+        method: 'POST',
+        data: JSON.stringify(students),
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Credentials': 'true'
+        },
+      });
+      console.log(studentsJson);
+      const alumnos = studentsJson.data.map(this.alumnoAsJson);
+      M.toast({
+        html: `Se asignaron los tutorandos a la comisión satisfactoriamente`,
+        classes: "#388e3c green darken-2",
+      });
+      return alumnos.sort((a, b) => (a.surname < b.surname) ? -1 : 1);
+    } catch (err) {
+      M.toast({ html: "Datos invalidos o algún tutorando ya existe", classes: "#c62828 red darken-3" });
+      console.log(err);
+    }
+  }
+  /*
+  
+    async registerTutor(name, surname, email, password) {
+        try {
+            const tutorJson = await axios.post(`${REST_SERVER_URL}/api/tutor/register`,
+                {
+                    "name": name,
+                    "surname": surname,
+                    "email": email,
+                    "password": password
+                },
+            );
+            const tutor = this.tutorAsJson(tutorJson);
+            console.log(tutor)
+            M.toast({
+                html: `El usuario ${tutor.name} se ha creado satisfactoriamente`,
+                classes: "#388e3c green darken-2",
+            });
+            return tutor;
+        } catch (err) {
+            M.toast({ html: "Datos invalidos o el usuario ya existe", classes: "#c62828 red darken-3" });
+            console.log(err);
+        }
+    }
+  */
 }
 
 export const alumnoService = new AlumnoService()

@@ -180,6 +180,11 @@ select:focus {
     }
 }
 
+.warning-sign {
+    text-shadow: .5px .5px .5px rgba(0, 0, 0, 0.479);
+}
+
+
 .iconblack {
     color: black;
 }
@@ -188,11 +193,19 @@ select:focus {
     color: #9f283b;
 }
 
-.red-app{
+.red-app {
     background-color: #9f283b;
 }
 
-#hover-btn:hover{
+#hover-btn:hover {
     border: 1px solid #888;
     background-color: #ddd;
-  }
+}
+
+#inputLogin:focus {
+    background-color: #1f849c !important;
+}
+
+#inputLoginPass:focus {
+    background-color: #1f849c !important;
+}

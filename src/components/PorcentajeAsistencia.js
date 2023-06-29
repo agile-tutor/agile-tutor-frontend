@@ -7,7 +7,8 @@ function PorcentajeAsistencia() {
 
     const { tutorCourses, tutorCoursesWithAverage, tutorId, getAllCoursesFromTutor, studentsOfTutor, getStudentsOfTutor, updateTutorCoursesWithAverage, studentSurvey, getAllSurveys, handleActiveSection } = useContext(Context);
     const [porcentaje, setPorcentaje] = useState(75);
-    const [viewsettings, setViewsettings] = useState(false)
+    const [viewsettings, setViewsettings] = useState(false);
+    //  const [courseData, setCourseData] = useState([]);
 
     const handleChange = event => {
         setPorcentaje(event.target.value);
@@ -23,6 +24,27 @@ function PorcentajeAsistencia() {
         return studentSurvey.some(id => id === studentId)
     };
 
+    function unionArrays(a, b) {
+        var c = a.concat(b).sort();
+        var res = c.filter((value, pos) => { return c.indexOf(value) == pos; });
+        return res
+    }
+    /*
+        const getCourseData = () => {
+            const total = tutorCourses.map((course) => {
+                return { courseId: course.id, aproved: 0, total: 0, surveysDone: 0 }
+            })
+            console.log(total);
+            setCourseData(total);
+        }*/
+    /*
+        const updateCurseData = (course, courseId) => {
+            const updateData = courseData.map(course =>
+                course.id === courseId ? { ...course, total: course.lenght } : course);
+            console.log(updateData);
+            setCourseData(updateData);
+        }
+    */
     useEffect(() => {
         getStudentsOfTutor(tutorId);
         updateTutorCoursesWithAverage();
@@ -30,6 +52,8 @@ function PorcentajeAsistencia() {
 
     useEffect(() => {
         getAllCoursesFromTutor(tutorId);
+        /*       getCourseData();
+               console.log(courseData);*/
     }, []);
 
 
@@ -56,9 +80,23 @@ function PorcentajeAsistencia() {
 
                                         !tutorCoursesWithAverage.find(course => course.courseId == element.id)
                                             ? '0%' :
-                                            tutorCoursesWithAverage.find(course => course.courseId == element.id).average} %</h5>
+                                            Math.round(tutorCoursesWithAverage.find(course => course.courseId == element.id).average * 100) / 100}%</h5>
                                 </span>
                         }
+                        <span>
+                            <h5 className='parametro-tabla' key={element.id}>Cantidad de Aprobados:
+                                {" "}{pass.filter((alumno) => alumno.courseId == element.id).length}
+                            </h5>
+                        </span>
+                        <span>
+                            <h5 className='parametro-tabla' key={element.id}>Encuestas completadas:
+                                {" "}{
+                                    unionArrays(dontPass, pass).filter((alumno) => (alumno.courseId == element.id) &&
+                                        studentCompleteSurvey(alumno.id)).length
+                                    //                  pass.filter((alumno) => alumno.courseId == element.id && !studentSurvey.some(n2 => alumno.courseId == n2))
+                                }
+                            </h5>
+                        </span>
                     </div>
                     <div>
                         <div className="percent-container row center">
@@ -75,6 +113,13 @@ function PorcentajeAsistencia() {
                     <div>
                         {pass.filter((alumno) => alumno.courseId == element.id).map((alumno) => { return (<CardAlumno key={alumno.id} nombre={alumno.name + " " + alumno.surname} porcentaje={alumno.attendancespercent} porcentajeActual={porcentaje} studentCompleteSurvey={studentCompleteSurvey} studentId={alumno.id} />) })}
                     </div>
+                    <div className='parametro-final-tabla right'>
+                        Total alumnos:
+                        {" "}
+                        {dontPass.filter((alumno) => alumno.courseId == element.id).length +
+                            pass.filter((alumno) => alumno.courseId == element.id).length
+                        }
+                    </div>
                 </div >
             )
         })))
@@ -84,8 +129,10 @@ function PorcentajeAsistencia() {
         handleActiveSection(2);
     }, []);
 
-    const dontPass = studentsOfTutor.filter((alumno) => { return (Number(alumno.attendancespercent) < porcentaje) });
-    const pass = studentsOfTutor.filter((alumno) => { return (Number(alumno.attendancespercent) >= porcentaje) });
+    const dontPass = (studentsOfTutor === undefined) ? [] : studentsOfTutor.filter((alumno) => { return (Number(alumno.attendancespercent) < porcentaje) })
+
+    const pass = (studentsOfTutor === undefined) ? [] : studentsOfTutor.filter((alumno) => { return (Number(alumno.attendancespercent) >= porcentaje) })
+
     return (
         <div>
             <div className="titulo-tabla" >Estado de Comisiones</div>

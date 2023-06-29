@@ -23,6 +23,7 @@ export const Provider = ({ children }) => {
   const [allSurveys, setAllSurveys] = useState([]);
   const [studentSurvey, setStudentSurvey] = useState([]);
   const [activeSection, setActiveSection] = useState([false, false, false, false])
+  const [courseToCreate, setCourseToCreate] = useState('')
 
   const value = {
     //estado
@@ -41,6 +42,7 @@ export const Provider = ({ children }) => {
     allSurveys,
     studentSurvey,
     activeSection,
+    courseToCreate,
     //funciones que afectan el estado
     updateAttendance: (target, id_asistencia) => {
       const updatedChecked = checked.map(alumno =>
@@ -135,6 +137,14 @@ export const Provider = ({ children }) => {
         setActiveSection(updateActiveSection);
       }
       console.log("final: " + activeSection[0], activeSection[1], activeSection[2], activeSection[3])
+    },
+    postNewStudents: (studentsRegister) => {
+      console.log("asignando los estudiantes a la comision");
+      postStudentsRegister(studentsRegister);
+    },
+    createACourse: (newCourse) => {
+      console.log("creando comision y asignando un tutor");
+      postCourseRegister(newCourse);
     }
   }
 
@@ -313,7 +323,17 @@ export const Provider = ({ children }) => {
     console.log(coursesWithPercent);
     setTutorCoursesWithAverage(coursesWithPercent);
   }
-
+  /*
+    const getCourseByName = async (name) => {
+      try {
+        const newCourse = await alumnoService.getCourseByName(name);
+        console.log("newCourse"+newCourse);
+        setCourseToCreate(newCourse);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  */
   const checkIfExistStudent = async (email) => {
     try {
       const exist = await alumnoService.checkIfExistEmail(email);
@@ -343,6 +363,26 @@ export const Provider = ({ children }) => {
     } catch (error) {
       console.error(error);
     }
+  }
+
+  const postStudentsRegister = async (studentsRegister) => {
+    try {
+      await alumnoService.addNewStudents(studentsRegister);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  const postCourseRegister = async (newCourse) => {
+    try {
+      const neWCourse = await tutorService.addNewCourse(newCourse);
+      console.log(neWCourse.name);
+      //  getCourseByName(neWCourse.name);
+      setCourseToCreate(neWCourse);
+    } catch (error) {
+      console.error(error);
+    }
+
   }
 
   useEffect(() => {

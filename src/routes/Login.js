@@ -42,7 +42,7 @@ const Login = () => {
             <div className="mycard">
                 <div id="fondoTarjeta" className="card auth-card input-field tarjetaLogin hoverable">
                     <img alt="logo" className="logo-login" src={logo} />
-                    <div className="warning-sign center" > Ingrese sus datos de acceso: </div>
+                    <div className="warning-sign center" > Ingrese sus credenciales: </div>
                     <input
                         type="email"
                         id='inputLogin'

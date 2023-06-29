@@ -27,7 +27,7 @@ const SelectCourseToChange = ({ setDestinyCourse }) => {
 
 
     return (
-        courses.length ?
+        (courses != undefined || courses.length) ?
             < div className="input-field" >
                 <select className="browser-default" value="" onChange={handleTypeSelect}>
                     <option value="" disabled selected>Seleccione una comisión</option>
