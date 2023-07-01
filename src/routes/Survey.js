@@ -2,6 +2,8 @@ import { useEffect, useState, useContext } from 'react';
 import { Context } from '../context/Context.js';
 import 'materialize-css/dist/css/materialize.min.css';
 import M from 'materialize-css/dist/js/materialize.min.js';
+import logo from '../TIPLOGO.png';
+import '../App.css';
 
 function Survey() {
 
@@ -29,17 +31,17 @@ function Survey() {
 
     const handleRadioEntorno = e => {
         e.preventDefault();
-        console.log("dentroDeHanle" + e.target.value);
+        /*console.log("dentroDeHanle" + e.target.value);*/
         setEntorno(e.target.value);
     };
     const handleRadioExclusividad = e => {
         e.preventDefault();
-        console.log("dentroDeHanle" + e.target.value);
+        /*console.log("dentroDeHanle" + e.target.value);*/
         setExclusividad(e.target.value);
     };
     const handleRadioEstado = e => {
         e.preventDefault();
-        console.log("dentroDeHanle" + e.target.value);
+        /*console.log("dentroDeHanle" + e.target.value);*/
         setEstado(e.target.value);
     };
 
@@ -68,9 +70,9 @@ function Survey() {
     };
 
     const handleSubmitSurvey = () => {
-        setSubmitIntent(true);  
+        setSubmitIntent(true);
         if (city === '') {
-            M.toast({ html: 'Ingresar su ciudad de residencia', classes: "#c62828 red darken-3" });
+            M.toast({ html: 'Ingresar su ciudad de residencia', classes: 'rounded red-app-semitr' });
         } else {
             const completeSurvey = {
                 "ciudad": city,
@@ -84,7 +86,7 @@ function Survey() {
                 "exclusividad": exclusividad,
                 "estado": estado
             }
-            console.log('handle submit' + completeSurvey);
+            /*console.log('handle submit' + completeSurvey);*/
             saveSurvey(email, completeSurvey);
             setCompleteSurvey(true);
         }
@@ -92,9 +94,9 @@ function Survey() {
 
     const PostStudentEmail = (e) => {
         e.preventDefault();
-        console.log("checkemail" + email)
+        /*console.log("checkemail" + email)*/
         if (email === "") {
-            M.toast({ html: "Ingrese el email con el que se encuentra registrado", classes: "#c62828 red darken-3" });
+            M.toast({ html: "Ingrese el email con el que se encuentra registrado", classes: 'rounded red-app-semitr' });
         } else {
             checkStudentAuth(email);
         }
@@ -238,7 +240,10 @@ function Survey() {
                             </button>}
                     </div>
                 </div> :
-                <div className='thanksForSubmitSurvey blue-app'>Gracias por su participación en la encuesta del taller de vida universitaria.</div>}
+                <div>
+                    <img src={logo} className="App-logo image-survey" alt="logo" />
+                    <div className='thanksForSubmitSurvey center'>Gracias por su participación en la encuesta del taller de vida universitaria.</div>
+                </div>}
         </div>
     )
 }

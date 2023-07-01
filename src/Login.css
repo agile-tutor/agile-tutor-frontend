@@ -203,9 +203,9 @@ select:focus {
 }
 
 #inputLogin:focus {
-    background-color: #1f849c !important;
+    background-color: #1f839c !important;
 }
 
 #inputLoginPass:focus {
-    background-color: #1f849c !important;
+    background-color: #1f839c !important;
 }

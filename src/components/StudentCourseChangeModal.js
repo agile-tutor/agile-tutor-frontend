@@ -1,14 +1,20 @@
-import { useState } from 'react';
 import SelectCourseToChange from './SelectCourseToChange';
+import { useState/*, useContext, useEffect */} from "react";
+//import { Context } from '../context/Context.js';
 
 const StudentCourseChangeModal = ({ courseId, name, surname, studentid, handleClickChangeStudentCourse }) => {
 
     const [destinyCourse, setDestinyCourse] = useState(courseId);
-
+  //  const { getAllStudents } = useContext(Context);
+/*
+    useEffect(() => {
+        getAllStudents();
+    }, []);
+*/
     return (
 
         <div id={"modalchangecourse" + studentid} className="modal">
-            {console.log(studentid, courseId)}
+            {/*console.log(studentid, courseId)*/}
             <div className="modal-content">
                 <h4 id="modal-title">Seleccione la nueva comisión del tutorando:</h4>
                 <div className="row">

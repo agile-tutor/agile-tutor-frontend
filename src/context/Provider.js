@@ -24,6 +24,7 @@ export const Provider = ({ children }) => {
   const [studentSurvey, setStudentSurvey] = useState([]);
   const [activeSection, setActiveSection] = useState([false, false, false, false])
   const [courseToCreate, setCourseToCreate] = useState('')
+  const [porcentajeActual, setPorcentajeActual] = useState(75)
 
   const value = {
     //estado
@@ -43,6 +44,7 @@ export const Provider = ({ children }) => {
     studentSurvey,
     activeSection,
     courseToCreate,
+    porcentajeActual,
     //funciones que afectan el estado
     updateAttendance: (target, id_asistencia) => {
       const updatedChecked = checked.map(alumno =>
@@ -114,11 +116,11 @@ export const Provider = ({ children }) => {
       addStudentToCourse(newStudent);
     },
     checkStudentAuth: (email) => {
-      console.log(email);
+      /*console.log(email);*/
       checkIfExistStudent(email);
     },
     saveSurvey: (email, studentSurvey) => {
-      console.log(email, studentSurvey);
+      /*console.log(email, studentSurvey);*/
       postStudentSurvey(email, studentSurvey);
     },
     getAllTutors: () => {
@@ -130,13 +132,13 @@ export const Provider = ({ children }) => {
       loadAllSurveys();
     },
     handleActiveSection: (num) => {
-      console.log("indicando pestana activa" + "num:" + num)
+      /*console.log("indicando pestana activa" + "num:" + num)*/
       var updateActiveSection = [false, false, false, false]
       if (-1 < num < 4) {
         updateActiveSection[num] = true;
         setActiveSection(updateActiveSection);
       }
-      console.log("final: " + activeSection[0], activeSection[1], activeSection[2], activeSection[3])
+      /*console.log("final: " + activeSection[0], activeSection[1], activeSection[2], activeSection[3])*/
     },
     postNewStudents: (studentsRegister) => {
       console.log("asignando los estudiantes a la comision");
@@ -145,6 +147,12 @@ export const Provider = ({ children }) => {
     createACourse: (newCourse) => {
       console.log("creando comision y asignando un tutor");
       postCourseRegister(newCourse);
+    },
+    clearCourseToCreate: () => {
+      setCourseToCreate('')
+    },
+    changePercent: (porcentaje) => {
+      setPorcentajeActual(porcentaje)
     }
   }
 
@@ -156,7 +164,7 @@ export const Provider = ({ children }) => {
   }
 
   const modifyAttendance = (attendances, check, id_asistencia) => {
-    console.log(id_asistencia, check)
+    /*console.log(id_asistencia, check)*/
     //const checkString = check.toString()
     return attendances.map(attendance => attendance.id === id_asistencia
       ? { ...attendance, attended: check } : attendance)
@@ -184,7 +192,7 @@ export const Provider = ({ children }) => {
   const loadCourse = async (number) => {
     if (tutorId != 0) {
       try {
-        console.log(number)
+        /*console.log(number)*/
         const comision = await alumnoService.getComision(number)
         comision.map(alumno =>
           alumno.attendances.map(attendanceAsJson))
@@ -249,14 +257,16 @@ export const Provider = ({ children }) => {
   const logIn = async (email, password) => {
     setTutorCourses([]);
     setTutor('');
+    setTutorId(0);
     try {
       const logedTutor = await tutorService.loginTutor(email, password);
-      console.log(logedTutor)
+      /*console.log(logedTutor)*/
       setTutorId(logedTutor.id);
       setTutor(logedTutor);
       await loadAllTutorCourses(logedTutor.id);
-      console.log(tutorId);
-      console.log(tutorCourses);
+      await loadAllCourses();
+      /*console.log(tutorId);
+      console.log(tutorCourses);*/
     } catch (error) {
       console.error(error);
     }
@@ -281,7 +291,7 @@ export const Provider = ({ children }) => {
   const loadStudentsOfTutor = async (id) => {
     try {
       const students = await alumnoService.getStudentsOfTutor(id);
-      console.log(students);
+      /*console.log(students);*/
       setStudentsOfTutor(students);
     } catch (error) {
       console.error(error);
@@ -291,7 +301,7 @@ export const Provider = ({ children }) => {
   const loadCoursePercent = async (id) => {
     try {
       const percent = await alumnoService.getCoursePercent(id);
-      console.log(percent);
+      /*console.log(percent);*/
       percentCourse[id] = percent;
     } catch (error) {
       console.error(error);
@@ -320,7 +330,7 @@ export const Provider = ({ children }) => {
         return { courseId: course.id, average: await alumnoService.getCoursePercent(course.id) }
       })
     )
-    console.log(coursesWithPercent);
+    /*console.log(coursesWithPercent);*/
     setTutorCoursesWithAverage(coursesWithPercent);
   }
   /*
@@ -368,6 +378,9 @@ export const Provider = ({ children }) => {
   const postStudentsRegister = async (studentsRegister) => {
     try {
       await alumnoService.addNewStudents(studentsRegister);
+      /*console.log("comision lista? parted"+courseToCreate)
+      console.log("comision lista - alumnos a guardar"+studentsRegister)*/
+      setCourseToCreate('');
     } catch (error) {
       console.error(error);
     }
@@ -376,9 +389,9 @@ export const Provider = ({ children }) => {
   const postCourseRegister = async (newCourse) => {
     try {
       const neWCourse = await tutorService.addNewCourse(newCourse);
-      console.log(neWCourse.name);
-      //  getCourseByName(neWCourse.name);
-      setCourseToCreate(neWCourse);
+      console.log(neWCourse == undefined)
+      neWCourse == undefined ? setCourseToCreate('') : setCourseToCreate(neWCourse);
+      /*console.log("comision lista"+courseToCreate)*/
     } catch (error) {
       console.error(error);
     }

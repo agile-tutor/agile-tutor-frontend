@@ -25,10 +25,10 @@ const SignUp = () => {
 
     const PostData = () => {
         if (!(name && surname && email && password)) {
-            M.toast({ html: "Se deben ingresar los datos solicitados", classes: "#c62828 red darken-3" });
+            M.toast({ html: "Se deben ingresar los datos solicitados", classes: 'rounded red-app-semitr' });
         } else {
             if (!(password == passwordcheck)) {
-                M.toast({ html: "La contraseña ingresada no coincide", classes: "#c62828 red darken-3" });
+                M.toast({ html: "La contraseña ingresada no coincide", classes: 'rounded red-app-semitr' });
             } else {
                 signUpTutor(name, surname, email, password);
             }

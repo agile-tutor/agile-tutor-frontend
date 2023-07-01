@@ -14,8 +14,8 @@ function ComisionEdit() {
     const [chargin, setChargin] = useState(false);
 
     const handleEditBlockStudent = async (id, status) => {
-        console.log(id)
-        console.log(status)
+        /*console.log(id)
+        console.log(status)*/
         blockUnblockStudent(id, !status)
         setChargin(true)
         await delay(1000);
@@ -24,8 +24,8 @@ function ComisionEdit() {
     }
 
     const handleEditUpdateStudent = async (id, student) => {
-        console.log(id)
-        console.log(student)
+        /*console.log(id)
+        console.log(student)*/
         updateStudent(id, student)
         setChargin(true)
         await delay(1000);
@@ -34,7 +34,7 @@ function ComisionEdit() {
     }
 
     const handleAddStudentToACourse = async (newStudent) => {
-        console.log('handle click' + newStudent);
+        /*console.log('handle click' + newStudent);*/
         addNewStudentToACourse(newStudent);
         setChargin(true)
         await delay(1000);
@@ -43,8 +43,8 @@ function ComisionEdit() {
     }
 
     const handleEditChangeStudentCourse = async (studentId, courseId) => {
-        console.log(studentId)
-        console.log(courseId)
+        /*console.log(studentId)
+        console.log(courseId)*/
         putStudentCourseChange(studentId, courseId);
         setChargin(true);
         await delay(1000);
@@ -91,14 +91,18 @@ function ComisionEdit() {
                             </tr>
                         </thead>
                         <tbody>
-                            {
+
+                            {/*
                                 checked.sort((a, b) => {
                                     if (a.surname === b.surname) {
                                         return a.name < b.name ? -1 : 1
                                     } else {
                                         return a.surname < b.surname ? -1 : 1
-                                    }
+                                     }
                                 }).map((alumno) => { return (<AlumnoEdit key={alumno.id} courseId={alumno.courseId} id={alumno.id} apellido={alumno.surname} nombre={alumno.name} identificacion={alumno.identifier} email={alumno.email} blocked={alumno.blocked} observaciones={alumno.observations} clnametr={!alumno.blocked ? 'Fila-alumno' : 'Fila-alumno-block'} clicons={!alumno.blocked ? 'material-icons left' : 'material-icons left redicons'} handleEditBlockStudent={handleEditBlockStudent} handleEditUpdateStudent={handleEditUpdateStudent} handleEditChangeStudentCourse={handleEditChangeStudentCourse} />) })
+                            */  }
+
+                            {checked.map((alumno) => { return (<AlumnoEdit key={alumno.id} courseId={alumno.courseId} id={alumno.id} apellido={alumno.surname} nombre={alumno.name} identificacion={alumno.identifier} email={alumno.email} blocked={alumno.blocked} observaciones={alumno.observations} clnametr={!alumno.blocked ? 'Fila-alumno' : 'Fila-alumno-block'} clicons={!alumno.blocked ? 'material-icons left' : 'material-icons left redicons'} handleEditBlockStudent={handleEditBlockStudent} handleEditUpdateStudent={handleEditUpdateStudent} handleEditChangeStudentCourse={handleEditChangeStudentCourse} />) })
                             }
                         </tbody>
                     </table>

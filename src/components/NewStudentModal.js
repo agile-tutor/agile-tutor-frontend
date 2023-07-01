@@ -11,7 +11,7 @@ const NewStudentModal = ({ courseId, handleAddStudentToACourse }) => {
 
     const handleAddStudent = async () => {
         if (name === '' || surname === '' || identifier === '' || emailedit === '') {
-            M.toast({ html: 'Ingresar: nombre, apellido, identificador y email' });
+            M.toast({ html: 'Ingresar: nombre, apellido, identificador y email', classes: 'rounded red-app-semitr' });
         } else {
             const newStudent = {
                 "name": name,
@@ -21,9 +21,9 @@ const NewStudentModal = ({ courseId, handleAddStudentToACourse }) => {
                 "observations": observations,
                 "courseId": courseId
             }
-            console.log('handle click' + newStudent);
+            /*console.log('handle click' + newStudent);*/
             handleAddStudentToACourse(newStudent);
-            M.toast({ html: `${name} ${surname} agregado exitosamente.` });
+            M.toast({ html: `${name} ${surname} agregado exitosamente.`, classes: 'rounded blue-app-semitr' });
         }
     }
 

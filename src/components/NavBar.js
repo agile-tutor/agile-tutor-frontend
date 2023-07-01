@@ -32,7 +32,7 @@ function NavBar() {
 
     const handleKeyDown = (event) => {
         if (event.key === 'Enter') {
-            M.toast({ html: 'Se presiono Enter' });
+            M.toast({ html: 'Se presiono Enter', classes: 'rounded'});
         }
     };
 
@@ -48,7 +48,7 @@ function NavBar() {
 
     return (
         <header>
-            {console.log(activeSection[0], activeSection[1], activeSection[2], activeSection[3])}
+            {/*console.log(activeSection[0], activeSection[1], activeSection[2], activeSection[3])*/}
             <div className={`navbar-fixed${tutorId != 0 ? '' : " hide"}`}>
                 <nav>
                     <div className="nav-wrapper">
@@ -62,9 +62,9 @@ function NavBar() {
                             <li className='searchComponent'>
                                 <form>
                                     <div className="input-field">
-                                        <input id="search" type="search" value={input} onblur={() => handleChange("")} onChange={(e) => handleChange(e.target.value)} onKeyDown={handleKeyDown} autoComplete="off" />
-                                        <label className="label-icon" htmlFor="search"><i id='lupasearch' className="material-icons">search</i></label>
-                                        <i className="material-icons" onClick={() => handleChange("")}>close</i>
+                                        <input id="search" type="search" value={input} onBlur={() => handleChange("")} onChange={(e) => handleChange(e.target.value)} onKeyDown={handleKeyDown} autoComplete="off" />
+                                        <label className="label-icon iconsearch" htmlFor="search"><i id='lupasearch' className="material-icons">search</i></label>
+                                        <i className="material-icons iconsearch" onClick={() => handleChange("")}>close</i>
                                     </div>
                                 </form>
                                 <SearchResultList results={results} />

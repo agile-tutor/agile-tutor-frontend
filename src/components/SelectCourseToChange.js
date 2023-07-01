@@ -14,17 +14,12 @@ const SelectCourseToChange = ({ setDestinyCourse }) => {
 
     const handleTypeSelect = e => {
         e.preventDefault();
-        console.log("dentroDeHanle" + e.target.value);
+        /*console.log("dentroDeHanle" + e.target.value);*/
         setSelectedOption(e.target.value);
         setDestinyCourse(e.target.value)
     };
 
-    const { getAllCourses, courses } = useContext(Context);
-
-    useEffect(() => {
-        getAllCourses();
-    }, []);
-
+    const { courses } = useContext(Context);
 
     return (
         (courses != undefined || courses.length) ?
@@ -32,7 +27,7 @@ const SelectCourseToChange = ({ setDestinyCourse }) => {
                 <select className="browser-default" value="" onChange={handleTypeSelect}>
                     <option value="" disabled selected>Seleccione una comisión</option>
                     {courses.map((course) => {
-                        return <option value={course.id}>{course.id}</option>
+                        return <option key={course.id} value={course.id}>{course.id}</option>
                     })}
                 </select>
                 {<div className="input-field center col s12" id="course-destiny-field">

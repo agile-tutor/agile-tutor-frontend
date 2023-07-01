@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 function SearchBar({ allStudents, getAllStudents, setResults }) {
 
     const [input, setInput] = useState("");
 
     const handleChange = (value) => {
-        getAllStudents();
+   //     getAllStudents();
         setInput(value);
         const results = allStudents.filter((student) => {
             return (
@@ -19,6 +19,10 @@ function SearchBar({ allStudents, getAllStudents, setResults }) {
         setResults(results);
     };
 
+    useEffect(() => {
+        getAllStudents();
+    }, []);
+
     return (
         <div className='search-page'>
             <div className="navbar">
@@ -27,7 +31,7 @@ function SearchBar({ allStudents, getAllStudents, setResults }) {
                     <div className="nav-wrapper">
                         <form>
                             <div className="input-field studentSearchInput">
-                                <input placeholder="Digite para buscar" id="search-input" type="search" value={input} onChange={(e) => handleChange(e.target.value)} autoComplete="off"/>
+                                <input placeholder="Digite para buscar" id="search-input" type="search" value={input} onChange={(e) => handleChange(e.target.value)} autoComplete="off" />
                                 <label className="label-icon" htmlFor="search"><i className="material-icons">search</i></label>
                                 <i className="material-icons">close</i>
                             </div>

@@ -5,7 +5,7 @@ function CardAlumno({ nombre, porcentaje, porcentajeActual, studentCompleteSurve
 
     return (
         <div>
-            {console.log(porcentaje)}
+            {/*console.log(porcentaje)*/}
             <div className="row card-alumno center">
                 <div className="col s12 m12 center">
                     <div className={"card-panel teal " + (porcentaje < porcentajeActual ? 'tealRed' : 'tealGreen')}>

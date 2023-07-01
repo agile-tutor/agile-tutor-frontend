@@ -49,10 +49,10 @@ function Comision() {
     return student.attendances.find(a => a.day === lookingForday)
   }
 
-  console.log(checked.map(alumno => alumno.attendances).flat().filter(attendance => attendance.day === diaToCheck))
+  /*console.log(checked.map(alumno => alumno.attendances).flat().filter(attendance => attendance.day === diaToCheck))
 
   console.log(checked.filter((alumno) => (alumno.attendances.find(a => a.day === diaToCheck).attended === 'false')))
-  console.log(checked.filter((alumno) => alumno.attendances.find(a => a.day === diaToCheck).attended === 'true'))
+  console.log(checked.filter((alumno) => alumno.attendances.find(a => a.day === diaToCheck).attended === 'true'))*/
 
   const withoutCheck = checked.filter((alumno) =>
     ((alumno.attendances.find(a => a.day === diaToCheck).attended === 'false')
@@ -71,10 +71,10 @@ function Comision() {
   );
 
   const anycheck = withCheck.length > 0
-
+/*
   console.log(withoutCheck)
   console.log(withCheck)
-
+*/
   return (
     <div>
       <h4 className="titulo-tabla" >Pasar Asistencias Comisión {number}</h4>

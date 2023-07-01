@@ -9,7 +9,7 @@ function SchedulerTask() {
 
   const [students, setStudents] = useState([]);
   const [todb, setTodb] = useState(false);
-  const [actualHour, setActualHour] = useState("");
+  /*const [actualHour, setActualHour] = useState("");*/
   const [timeToNotify, setTimeToNotify] = useState("");
   const [absentMessageSubject, setAbsentMessageSubject] = useState("");
   const [absentMessageBody, setAbsentMessageBody] = useState("");
@@ -21,7 +21,7 @@ function SchedulerTask() {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setActualHour(getTime());
+      /*setActualHour(getTime());*/
       setTimeToNotify(getTimeNotify());
     }, 1000);
 
@@ -48,16 +48,16 @@ function SchedulerTask() {
   const handleClickUpdateEmailTemplate = async () => {
     try {
       if (absentMessageSubject === '' || absentMessageBody === '') {
-        M.toast({ html: 'Ingresar asunto y cuerpo del mensaje' });
+        M.toast({ html: 'Ingresar asunto y cuerpo del mensaje', classes: 'rounded red-app-semitr' });
       } else {
         const absentEmail = {
           "subject": absentMessageSubject,
           "body": absentMessageBody
         }
-        console.log('handle click' + absentEmail);
+        /*console.log('handle click' + absentEmail);*/
         const emailTemplate = await tutorService.updateNotifierAbsent(absentEmail, tutorId);
         console.log(emailTemplate)
-        M.toast({ html: `el email ha sido modificado exitosamente.` });
+        M.toast({ html: `El email ha sido modificado exitosamente.`, classes: 'rounded blue-app-semitr' });
       }
     } catch (error) {
       console.error(error)
@@ -66,7 +66,7 @@ function SchedulerTask() {
 
   const handleClickDeleteAbsentNotification = async (alumnoId) => {
     try {
-      console.log('handle click' + alumnoId);
+      /*console.log('handle click' + alumnoId);*/
       await tutorService.removeAbsentNotifierStudent(alumnoId, tutorId);
       setTodb(!todb)
     } catch (error) {
@@ -81,11 +81,11 @@ function SchedulerTask() {
   const loadNotifierAbsent = async () => {
     try {
       const studentslist = await alumnoService.getNotifierAbsent(tutorId)
-      console.log(studentslist)
+      /*console.log(studentslist)*/
       setStudents(studentslist)
     } catch (error) {
       console.error(error)
-      console.log(actualHour)
+      /*console.log(actualHour)*/
     }
   }
 
@@ -98,12 +98,12 @@ function SchedulerTask() {
   let h = addZero(d.getHours());
   let m = addZero(d.getMinutes());
   let s = addZero(d.getSeconds());
-  let time = h + ":" + m + ":" + s;
-
+//  let time = h + ":" + m + ":" + s;
+/*
   function getTime() {
     return time
   }
-
+*/
   const twentytwo = "22:00 horas"
 
   let setHourNotify = (h < 22 && s == 0 && m == 0) ? 22 - h : (h < 22) ? 21 - h : (s == 0 && m == 0) ? 46 - h : 45 - h
@@ -145,7 +145,7 @@ function SchedulerTask() {
           <div className="col s3 center emailicon">
             <a className="waves-effect waves-teal btn-flat modal-trigger" href={"#modalemail" + tutorId} ><i id="mail_outline" className='material-icons'
             >mail_outline</i></a>
-            {console.log(tutorId)}
+            {/*console.log(tutorId)*/}
             <EmailModal key={tutorId} tutorId={tutorId} subject={absentMessageSubject} body={absentMessageBody} setSubject={setAbsentMessageSubject} setBody={setAbsentMessageBody} handleClickUpdateEmailTemplate={handleClickUpdateEmailTemplate} />
           </div>
           <div className="col s3"></div>
@@ -159,7 +159,7 @@ function SchedulerTask() {
               <div className=" center" >
                 {students.map((alumno) => {
                   return (
-                    <div className="to-notify">
+                    <div key={alumno.id} className="to-notify">
                       <div className="card">
                         <div className="card-content">
                           <div className="email-card-container">

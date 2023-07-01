@@ -25,14 +25,13 @@ class TutorService {
                 },
             );
             const tutor = this.tutorAsJson(tutorJson);
-            console.log(tutor.data)
+            /*(tutor.data)*/
             M.toast({
-                html: `El tutor ${tutorJson.data.name} se ha creado satisfactoriamente`,
-                classes: "#388e3c green darken-2",
+                html: `El tutor ${tutorJson.data.name} se ha creado satisfactoriamente`, classes: 'rounded blue-app-semitr'
             });
             return tutor;
         } catch (err) {
-            M.toast({ html: "Datos invalidos o el usuario ya existe", classes: "#c62828 red darken-3" });
+            M.toast({ html: "Datos invalidos o el tutor ya existe", classes: 'rounded red-app-semitr' });
             console.log(err);
         }
     }
@@ -46,17 +45,16 @@ class TutorService {
                 },
             );
             const tutor = this.tutorAsJson(tutorJson);
-            console.log(tutor.data)
+            /*(tutor.data)*/
             M.toast({
-                html: `Bienvenido ${tutor.data.name}`,
-                classes: "#388e3c green darken-2",
+                html: `Bienvenido ${tutor.data.name}`, classes: 'rounded blue-app-semitr'
             });
             return tutor.data;
-            //                    console.log("success", success.headers.authorization);
+            //                    ("success", success.headers.authorization);
             //                    history.push("/");
         } catch (err) {
-            console.log(err);
-            M.toast({ html: "datos invalidos o el tutor no existe", classes: "#c62828 red darken-3" });
+            (err);
+            M.toast({ html: "Datos invalidos o el tutor no existe", classes: 'rounded red-app-semitr' });
         }
     }
 
@@ -73,9 +71,9 @@ class TutorService {
                     },
                     credentials: 'same-origin',
                 })
-                console.log(coursesJson);
+                /*(coursesJson);*/
                 const courses = coursesJson.data.map(this.courseAsJson);
-                console.log(courses);
+                (courses);
                 return courses.sort((a, b) => (a.id < b.id) ? -1 : 1);
             } catch (error) {
                 console.error(error);
@@ -85,7 +83,7 @@ class TutorService {
 
     async updateNotifierAbsent(updtadedEmail, tutorId) {
         // let studentstring = JSON.stringify(student)
-        //console.log(student);
+        //(student);
         try {
             const absentMessageJson = await axios({
                 url: `${REST_SERVER_URL}/api/tutor/absentmessage/${tutorId}`,
@@ -99,9 +97,9 @@ class TutorService {
                 credentials: 'same-origin',
                 data: updtadedEmail,
             })
-            console.log(absentMessageJson);
+            /*(absentMessageJson);*/
             const absentMessage = absentMessageJson.data;
-            console.log(absentMessage);
+            /*console.log(absentMessage);*/
             return absentMessage;
         } catch (error) {
             alert(error)
@@ -114,14 +112,13 @@ class TutorService {
             const course = await axios.post(`${REST_SERVER_URL}/api/tutor/absent/${tutorId}/${alumnoId}`,
                 {},
             );
-            console.log(course.data)
+            /*console.log(course.data)*/
             M.toast({
-                html: `el tutorando no sera notificado por su ausencia.`,
-                classes: "#388e3c green darken-2",
+                html: `El tutorando no sera notificado por su ausencia.`, classes: 'rounded blue-app-semitr'
             });
             return course.data;
         } catch (err) {
-            M.toast({ html: "Un error ha ocurrido en el proceso", classes: "#c62828 red darken-3" });
+            M.toast({ html: "Un error ha ocurrido durante el proceso", classes: 'rounded red-app-semitr'});
             console.log(err);
         }
     }
@@ -138,9 +135,9 @@ class TutorService {
                 },
                 credentials: 'same-origin',
             })
-            console.log(absentMessageJson);
+            /*console.log(absentMessageJson);*/
             const absentMessage = absentMessageJson.data;
-            console.log(absentMessage);
+            /*console.log(absentMessage);*/
             return absentMessage;
         } catch (error) {
             console.error(error);
@@ -163,11 +160,10 @@ class TutorService {
             const responseData = response.data;
             console.log(responseData)
             M.toast({
-                html: `El tutorando se ha cambiado de comisión satisfactoriamente`,
-                classes: "#388e3c green darken-2",
+                html: `El tutorando se ha cambiado de comisión satisfactoriamente`, classes: 'rounded blue-app-semitr'
             });
         } catch (err) {
-            M.toast({ html: "Ha ocurrido un error durante el cambio de comisión", classes: "#c62828 red darken-3" });
+            M.toast({ html: "Ha ocurrido un error durante el cambio de comisión", classes: 'rounded red-app-semitr' });
             console.log(err);
         }
     }
@@ -184,7 +180,7 @@ class TutorService {
                 },
                 credentials: 'same-origin',
             })
-            console.log(tutorsJson);
+            /*console.log(tutorsJson);*/
             const tutors = tutorsJson.data.map(this.tutorAsJson);
             return tutors.sort((a, b) => (a.surname < b.surname) ? -1 : 1);
         } catch (error) {
@@ -204,7 +200,7 @@ class TutorService {
                 },
                 credentials: 'same-origin',
             })
-            console.log(surveys.data);
+            /*console.log(surveys.data);*/
             //const tutors = tutorsJson.data.map(this.tutorAsJson);
             return surveys.data.sort((a, b) => (a.studentId < b.studentId) ? -1 : 1);
         } catch (error) {
@@ -217,14 +213,13 @@ class TutorService {
             const course = await axios.post(`${REST_SERVER_URL}/api/course/register`,
                 newCourse,
             );
-            console.log(course.data)
+            /*console.log(course.data)*/
             M.toast({
-                html: `La comisión ${course.name} se ha creado satisfactoriamente`,
-                classes: "#388e3c green darken-2",
+                html: `La comisión se ha creado satisfactoriamente`, classes: 'rounded blue-app-semitr'
             });
             return course.data;
         } catch (err) {
-            M.toast({ html: "Datos invalidos o el curso ya existe", classes: "#c62828 red darken-3" });
+            M.toast({ html: "Datos invalidos o la comisión ya existe", classes: 'rounded red-app-semitr' });
             console.log(err);
         }
     }

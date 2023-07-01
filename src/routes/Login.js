@@ -22,7 +22,7 @@ const Login = () => {
 
     const PostData = () => {
         if (!(email && password)) {
-            M.toast({ html: "Se deben ingresar los datos solicitados", classes: "#c62828 red darken-3" });
+            M.toast({ html: "Se deben ingresar los datos solicitados", classes: 'rounded red-app-semitr' });
         } else {
             loginTutor(email, password);
         }
@@ -77,7 +77,7 @@ const Login = () => {
                     </h5>
                 </div>
             </div>
-            {console.log("tutor:" + tutor.email)}
+            {/*console.log("tutor:" + tutor.email)*/}
             {tutor.email == "admin" ?
                 <div className="fixed-action-btn">
                     <Link className="btn-floating btn-large red-app" id="hover-btn" title="subir .CSV" to="/uploadFiles" >

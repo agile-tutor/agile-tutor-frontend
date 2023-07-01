@@ -27,7 +27,7 @@ class AlumnoService {
         },
         credentials: 'same-origin',
       })
-      console.log(alumnosJson);
+      /*console.log(alumnosJson);*/
       const alumnos = alumnosJson.data.map(this.alumnoAsJson);
       return alumnos.sort((a, b) => (a.surname < b.surname) ? -1 : 1);
     } catch (error) {
@@ -48,7 +48,7 @@ class AlumnoService {
         },
         credentials: 'same-origin',
       })
-      console.log(alumnosJson);
+      /*console.log(alumnosJson);*/
       const alumnos = alumnosJson.data.map(this.alumnoAsJson);
       return alumnos.sort((a, b) => (a.surname < b.surname) ? -1 : 1);
     } catch (error) {
@@ -69,9 +69,9 @@ class AlumnoService {
         },
         credentials: 'same-origin',
       })
-      console.log(coursesJson);
+      /*console.log(coursesJson);*/
       const courses = coursesJson.data.map(this.courseAsJson);
-      console.log(courses);
+      /*console.log(courses);*/
       return courses.sort((a, b) => (a.id < b.id) ? -1 : 1);
     } catch (error) {
       console.error(error);
@@ -91,7 +91,7 @@ class AlumnoService {
         },
         credentials: 'same-origin',
       })
-      console.log(courseData);
+      /*console.log(courseData);*/
       const course = courseData.data;
       return course;
     } catch (error) {
@@ -123,9 +123,9 @@ class AlumnoService {
     }
   */
   async updateAttendances(attendances, courseId) {
-    console.log(attendances);
+    /*console.log(attendances);*/
     let asistencias = JSON.stringify(attendances)
-    console.log(asistencias);
+    /*console.log(asistencias);*/
     try {
       const response = await axios({
         url: `${REST_SERVER_URL}/api/course/students/attendances/update/${courseId}`,
@@ -137,7 +137,7 @@ class AlumnoService {
           'Access-Control-Allow-Credentials': 'true'
         },
       })
-      M.toast({ html: 'Asistencias actualizadas con éxito!' })
+      M.toast({ html: 'Asistencias actualizadas con éxito!', classes: 'rounded blue-app-semitr' })
       return response
     } catch (e) {
       alert(e)
@@ -147,7 +147,7 @@ class AlumnoService {
 
   async blockStudent(id, blockedStatus) {
     let blockedstring = JSON.stringify(blockedStatus)
-    console.log(blockedstring);
+    /*console.log(blockedstring);*/
     try {
       const response = await axios({
         url: `${REST_SERVER_URL}/api/students/block/${id}`,
@@ -159,7 +159,7 @@ class AlumnoService {
           'Access-Control-Allow-Credentials': 'true'
         },
       })
-      M.toast({ html: 'Alumno actualizado con éxito!' })
+      M.toast({ html: 'Tutorando actualizado con éxito!', classes: 'rounded blue-app-semitr' })
       return response
     } catch (e) {
       alert(e)
@@ -180,7 +180,7 @@ class AlumnoService {
         },
         credentials: 'same-origin',
       })
-      console.log(alumnosJson);
+      /*console.log(alumnosJson);*/
       const alumnos = alumnosJson.data.map(this.alumnoAsJson);
       return alumnos.sort((a, b) => (a.surname < b.surname) ? -1 : 1);
     } catch (error) {
@@ -211,7 +211,7 @@ class AlumnoService {
         },
         credentials: 'same-origin',
       })
-      console.log(alumnoJson);
+      /*console.log(alumnoJson);*/
       const alumno = this.alumnoAsJson(alumnoJson);
       return alumno;
     } catch (error) {
@@ -221,7 +221,7 @@ class AlumnoService {
 
   async updateStudent(id, student) {
     // let studentstring = JSON.stringify(student)
-    console.log(student);
+    /*console.log(student);*/
     try {
       const response = await axios({
         url: `${REST_SERVER_URL}/api/students/${id}`,
@@ -233,7 +233,7 @@ class AlumnoService {
           'Access-Control-Allow-Credentials': 'true'
         },
       })
-      M.toast({ html: 'Alumno actualizado con éxito!' })
+      M.toast({ html: 'Tutorando actualizado con éxito!', classes: 'rounded blue-app-semitr' })
       return response
     } catch (e) {
       alert(e)
@@ -254,7 +254,7 @@ class AlumnoService {
         },
         credentials: 'same-origin',
       })
-      console.log(alumnosJson);
+      /*console.log(alumnosJson);*/
       const alumnos = alumnosJson.data.map(this.alumnoAsJson);
       return alumnos.sort((a, b) => (a.surname < b.surname) ? -1 : 1);
     } catch (error) {
@@ -275,7 +275,7 @@ class AlumnoService {
         },
         credentials: 'same-origin',
       })
-      console.log(percent.data);
+      /*console.log(percent.data);*/
       return percent.data;
     } catch (error) {
       console.error(error);
@@ -283,7 +283,7 @@ class AlumnoService {
   }
 
   async checkIfExistEmail(email) {
-    console.log("enalumnoservidecheckif" + email);
+    /*console.log("enalumnoservidecheckif" + email);*/
     try {
       const exist = await axios.get(`${REST_SERVER_URL}/api/students/checkmail/${email}`, {
         method: 'GET',
@@ -295,9 +295,9 @@ class AlumnoService {
         },
         credentials: 'same-origin',
       })
-      console.log(exist.data);
+      /*console.log(exist.data);*/
       if (!exist.data) {
-        M.toast({ html: 'Email no registrado!', classes: "red-app" });
+        M.toast({ html: 'Email no registrado!', classes: 'rounded red-app-semitr' });
       }
       return exist.data;
     } catch (error) {
@@ -306,7 +306,7 @@ class AlumnoService {
   }
 
   async addNewSurveyResponse(email, completeSurvey) {
-    console.log(email, completeSurvey)
+    /*console.log(email, completeSurvey)*/
     try {
       const survey = await axios({
 
@@ -319,15 +319,15 @@ class AlumnoService {
           'Access-Control-Allow-Credentials': 'true'
         },
       })
-      console.log(survey.data)
+      /*console.log(survey.data)*/
       M.toast({
         html: `Su respuesta a la encuesta ha sido procesada satisfactoriamente`,
-        classes: "#388e3c green darken-2",
+        classes: "blue-app-semitr",
       });
       return survey.data;
     } catch (err) {
-      M.toast({ html: "Se ha producido un error", classes: "red-app" });
-      console.log(err);
+      M.toast({ html: "Se ha producido un error", classes: 'rounded red-app-semitr'});
+      /*console.log(err);*/
     }
   }
 
@@ -356,23 +356,22 @@ class AlumnoService {
         },
       })
       const student = this.alumnoAsJson(studentJson);
-      console.log(student)
-      M.toast({
-        html: `El tutorando ${student.name} se ha creado satisfactoriamente`,
-        classes: "#388e3c green darken-2",
-      });
+      /*console.log(student)*/
+//      M.toast({
+//        html: `El tutorando ${student.name} se ha creado satisfactoriamente`, classes: 'rounded blue-app-semitr'
+//      });
       return student;
     } catch (err) {
-      M.toast({ html: "Datos invalidos o el tutorando ya existe", classes: "#c62828 red darken-3" });
+      M.toast({ html: "Datos invalidos o el tutorando ya existe", classes: 'rounded red-app-semitr' });
       console.log(err);
     }
   }
 
   async addNewStudents(students) {
     //let newStudentsJson = JSON.stringify(students)
-    console.log(JSON.stringify(students))
+    /*console.log(JSON.stringify(students))*/
     let id = students[0].courseId
-    console.log(id)
+    /*console.log(id)*/
     try {
       const studentsJson = await axios({
         url: `${REST_SERVER_URL}/api/students/many/register/${id}`,
@@ -384,15 +383,14 @@ class AlumnoService {
           'Access-Control-Allow-Credentials': 'true'
         },
       });
-      console.log(studentsJson);
+      /*console.log(studentsJson);*/
       const alumnos = studentsJson.data.map(this.alumnoAsJson);
       M.toast({
-        html: `Se asignaron los tutorandos a la comisión satisfactoriamente`,
-        classes: "#388e3c green darken-2",
+        html: `Se asignaron los tutorandos a la comisión satisfactoriamente`, classes: 'rounded blue-app-semitr'
       });
       return alumnos.sort((a, b) => (a.surname < b.surname) ? -1 : 1);
     } catch (err) {
-      M.toast({ html: "Datos invalidos o algún tutorando ya existe", classes: "#c62828 red darken-3" });
+      M.toast({ html: "Datos invalidos o algún tutorando ya existe", classes: 'rounded red-app-semitr' });
       console.log(err);
     }
   }

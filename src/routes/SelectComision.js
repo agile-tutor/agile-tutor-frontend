@@ -15,7 +15,7 @@ function SelectComision({ action, style }) {
     return (
         <div>
             <ul id={style} className="dropdown-content">
-                {console.log(tutorCourses)}
+                {/*console.log(tutorCourses)*/}
                 {
                     tutorCourses.map((course) => {
                         return (

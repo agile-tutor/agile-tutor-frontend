@@ -13,7 +13,7 @@ function SelectCourseDropdown({ action, style, setDestinyCourse }) {
     return (
         <div>
             <ul id={style} className="dropdown-content dropdown-change-course-list">
-                {console.log(courses)}
+                {/*console.log(courses)*/}
                 {
                     courses.map((course) => {
                         return (
