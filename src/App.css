@@ -281,9 +281,37 @@
   border-top-right-radius: 10px;
   border-bottom-right-radius: 0px;
   border-bottom-left-radius: 0px;
-  background-color: #1f849c;
+  /* background-color: #1f849c;*/
   border: 2px solid#1f849c;
   border-bottom-width: 0px;
+}
+
+#boton-change-daycheck:hover {
+  background-color: whitesmoke;
+  color: #000000;
+}
+
+
+#boton-change-daycheck:focus {
+  background-color: whitesmoke !important;
+  color: #000000 !important;
+}
+
+#boton-change-daycheck:hover {
+  background-color: whitesmoke !important;
+  color: #000000 !important;
+}
+
+.btn.tooltipped.daypast {
+  background-color: gray;
+}
+
+.btn.tooltipped.daypresent {
+  background-color: #9f283b;
+}
+
+.btn.tooltipped.dayfuture {
+  background-color: #1f849c;
 }
 
 #boton-change-daycheck:focus {
@@ -463,18 +491,48 @@ btn-flat:focus {
   }
 }
 
-.modal {
-  max-width: 80vw !important;
-  max-height: 86vh !important;
-  border-radius: 15px;
-  border: 3px solid #9f283b;
+@media (min-width: 800px) {
+  .modal {
+    max-width: 80vw !important;
+    max-height: 86vh !important;
+    border-radius: 15px;
+    border: 3px solid #9f283b;
+  }
+}
+
+@media (max-width: 800px) {
+  .modal {
+    max-width: 85vw !important;
+    max-height: 86vh !important;
+    border-radius: 15px;
+    border: 3px solid #9f283b;
+  }
 }
 
 .modal-content {
   color: #000000 !important;
   text-shadow: .5px .5px .5px #1f839c4b;
   background-image: url(./images/trama_fondo.png);
-  ;
+}
+
+@media (max-width: 800px) {
+  .modal-content h4 {
+    font-size: medium !important;
+  }
+}
+
+@media (max-width: 800px) {
+  .modal-content div.row form.col.s12 div.row div.input-field input {
+    font-size: x-small !important;
+    width: 100%;
+    padding-left: 0.5vw;
+  }
+}
+
+@media (max-width: 800px) {
+  .modal-content div.row form.col.s12 div.row div.input-field textarea {
+    font-size: x-small !important;
+  }
 }
 
 .modal-footer {
@@ -936,7 +994,7 @@ height: 70%;
 .percentEditOption {
   padding: 2vh;
   background-image: url(./images/trama_fondo.png);
-  color:#1f849c;
+  color: #1f849c;
   font-size: 2.5vh;
   border-radius: 5px;
   width: 50vw;

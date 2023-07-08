@@ -25,6 +25,7 @@ export const Provider = ({ children }) => {
   const [activeSection, setActiveSection] = useState([false, false, false, false])
   const [courseToCreate, setCourseToCreate] = useState('')
   const [porcentajeActual, setPorcentajeActual] = useState(75)
+  const [attendedDayCourse, setAttendedDayCourse] = useState([]);
 
   const value = {
     //estado
@@ -45,6 +46,7 @@ export const Provider = ({ children }) => {
     activeSection,
     courseToCreate,
     porcentajeActual,
+    attendedDayCourse,
     //funciones que afectan el estado
     updateAttendance: (target, id_asistencia) => {
       const updatedChecked = checked.map(alumno =>
@@ -153,6 +155,9 @@ export const Provider = ({ children }) => {
     },
     changePercent: (porcentaje) => {
       setPorcentajeActual(porcentaje)
+    },
+    getAttendedDays: (ncourse) => {
+      attendedAtDays(ncourse);
     }
   }
 
@@ -395,17 +400,26 @@ export const Provider = ({ children }) => {
     } catch (error) {
       console.error(error);
     }
+  }
 
+  const attendedAtDays = async (courseId) => {
+    try {
+      const attendedDays = await tutorService.attendedAtDays(courseId);
+      console.log(attendedDays);
+      setAttendedDayCourse(attendedDays);
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   useEffect(() => {
     setAllCourses();
+  }, [tutorId]);
+/*
+  useEffect(() => {
+    attendedAtDays(number);
   }, []);
-  /*
-    useEffect(() => {
-      loadCourse(number);
-    }, [todb]);
-  */
+*/
   return (
     <Context.Provider value={value}>
       {children}

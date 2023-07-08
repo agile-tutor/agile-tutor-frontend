@@ -233,7 +233,7 @@ class AlumnoService {
           'Access-Control-Allow-Credentials': 'true'
         },
       })
-      M.toast({ html: 'Tutorando actualizado con éxito!', classes: 'rounded blue-app-semitr' })
+//      M.toast({ html: 'Tutorando actualizado con éxito!', classes: 'rounded blue-app-semitr' })
       return response
     } catch (e) {
       alert(e)

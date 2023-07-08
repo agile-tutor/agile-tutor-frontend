@@ -118,7 +118,7 @@ class TutorService {
             });
             return course.data;
         } catch (err) {
-            M.toast({ html: "Un error ha ocurrido durante el proceso", classes: 'rounded red-app-semitr'});
+            M.toast({ html: "Un error ha ocurrido durante el proceso", classes: 'rounded red-app-semitr' });
             console.log(err);
         }
     }
@@ -221,6 +221,26 @@ class TutorService {
         } catch (err) {
             M.toast({ html: "Datos invalidos o la comisión ya existe", classes: 'rounded red-app-semitr' });
             console.log(err);
+        }
+    }
+
+    async attendedAtDays(courseId) {
+        try {
+            const surveys = await axios.get(`${REST_SERVER_URL}/api/course/attended/${courseId}`, {
+                method: 'GET',
+                mode: 'no-cors',
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Credentials': 'true'
+                },
+                credentials: 'same-origin',
+            })
+            /*console.log(surveys.data);*/
+            //const tutors = tutorsJson.data.map(this.tutorAsJson);
+            return surveys.data;
+        } catch (error) {
+            console.error(error);
         }
     }
 }
