@@ -8,12 +8,15 @@ import Search from "./routes/Search";
 import SignUp from "./routes/SignUp.js";
 import Survey from "./routes/Survey.js";
 import UploadFiles from "./routes/UploadFiles";
+import SchedulerDay from "./components/SchedulerDay.js";
+import Encuentros from "./components/Encuentros.js";
 
 export const AttendanceRoutes = () =>
 
     <Routes>
         <Route exact={true} path="/" element={<Home />} />
         <Route path="/register/" element={<SignUp />} />
+        <Route path="/meetings/" element={<Encuentros />} />
         <Route path="/search/" element={<Search />} />
         <Route path="/survey/" element={<Survey />} />
         <Route path="/uploadFiles/" element={<UploadFiles />} />
@@ -21,5 +24,6 @@ export const AttendanceRoutes = () =>
         <Route path="/comisionEdit" element={<ComisionEdit />} />
         <Route path="/attendancePercent/" element={<PorcentajeAsistencia />} />
         <Route path="/tasks/" element={<SchedulerTask />} />
+        <Route path="/scheduler-day/" element={<SchedulerDay />} />
         <Route path="*" component={<Home />} />
     </Routes>

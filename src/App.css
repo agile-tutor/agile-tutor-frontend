@@ -1321,3 +1321,43 @@ nav ul a.btn-floating {
   margin: 30vh;
   opacity: .65;
 }
+
+.avatarEncuentros {
+  background-color: #1f849c;
+  color: whitesmoke;
+  padding: 1dvh;
+}
+
+.topalignament {
+  top: 16px !important;
+  color: #1f849c;
+}
+
+.bottompalignament {
+  top: 54px !important;
+}
+
+@media only screen and (min-width: 601px) {
+
+  .datepicker-controls,
+  .datepicker-table,
+  .datepicker-footer {
+    width: 282px;
+  }
+}
+
+.datepicker-date-display{
+  padding: 20px 13px;
+}
+
+.datepicker-table td.is-selected, .datepicker-date-display {
+  background-color: #1f849c;
+}
+
+.datepicker-done {
+  color: #1f849c;
+}
+
+.datepicker-cancel {
+  color :#9f283b;
+}

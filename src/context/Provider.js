@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { alumnoService } from "../service/alumnoService"
 import { tutorService } from "../service/tutorService"
+import { scheduledDayService } from "../service/scheduledDayService"
 import { Context } from "./Context"
 import { AttendanceModel } from "../domain/attendanceModel"
 import { StudentAttendanceDTO } from "../domain/studentAttendanceDTO"
@@ -24,8 +25,11 @@ export const Provider = ({ children }) => {
   const [studentSurvey, setStudentSurvey] = useState([]);
   const [activeSection, setActiveSection] = useState([false, false, false, false])
   const [courseToCreate, setCourseToCreate] = useState('')
+  const [meetingToCreate, setMeetingToCreate] = useState('')
   const [porcentajeActual, setPorcentajeActual] = useState(75)
   const [attendedDayCourse, setAttendedDayCourse] = useState([]);
+  const [encuentros, setEncuentros] = useState([]);
+
 
   const value = {
     //estado
@@ -45,8 +49,10 @@ export const Provider = ({ children }) => {
     studentSurvey,
     activeSection,
     courseToCreate,
+    meetingToCreate,
     porcentajeActual,
     attendedDayCourse,
+    encuentros,
     //funciones que afectan el estado
     updateAttendance: (target, id_asistencia) => {
       const updatedChecked = checked.map(alumno =>
@@ -133,6 +139,10 @@ export const Provider = ({ children }) => {
       console.log("obteniendo todas las encuestas completadas")
       loadAllSurveys();
     },
+    getAllMeetings: () => {
+      console.log("obteniendo todas los encuentros")
+      loadAllMeetings();
+    },
     handleActiveSection: (num) => {
       /*console.log("indicando pestana activa" + "num:" + num)*/
       var updateActiveSection = [false, false, false, false]
@@ -149,6 +159,18 @@ export const Provider = ({ children }) => {
     createACourse: (newCourse) => {
       console.log("creando comision y asignando un tutor");
       postCourseRegister(newCourse);
+    },
+    addNewMeeting: (newMeeting) => {
+      console.log("creando encuentro");
+      postMeetingRegister(newMeeting);
+    },
+    updateMeeting: (idMeeting, meeting) => {
+      console.log('actualizando encuentro');
+      updateMeeting(idMeeting, meeting);
+    },
+    deleteMeeting: (meetingId) => {
+      console.log('eliminando encuentro');
+      deleteMeeting(meetingId);
     },
     clearCourseToCreate: () => {
       setCourseToCreate('')
@@ -245,6 +267,15 @@ export const Provider = ({ children }) => {
     try {
       const allTutorCourses = await tutorService.getAllTutorCourses(id);
       setTutorCourses(allTutorCourses);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  const loadAllMeetings = async () => {
+    try {
+      const allMeetings = await scheduledDayService.getAllMeetings();
+      setEncuentros(allMeetings);
     } catch (error) {
       console.error(error);
     }
@@ -402,6 +433,35 @@ export const Provider = ({ children }) => {
     }
   }
 
+  const postMeetingRegister = async (newMeeting) => {
+    try {
+      const registeredMeeting = await scheduledDayService.addNewMeeting(newMeeting);
+      console.log(registeredMeeting == undefined)
+      setMeetingToCreate(newMeeting)
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  const updateMeeting = async (idMeeting, meeting) => {
+    let modifiedMeeting = '';
+    try {
+      modifiedMeeting = await scheduledDayService.updateMeeting(idMeeting, meeting)
+    } catch (error) {
+      console.error(error);
+    }
+    setMeetingToCreate(modifiedMeeting)
+  }
+
+  const deleteMeeting = async (meetingId) => {
+    try {
+      await scheduledDayService.deleteMeeting(meetingId)
+    } catch (error) {
+      console.error(error);
+    }
+    setMeetingToCreate('')
+  }
+
   const attendedAtDays = async (courseId) => {
     try {
       const attendedDays = await tutorService.attendedAtDays(courseId);
@@ -415,11 +475,11 @@ export const Provider = ({ children }) => {
   useEffect(() => {
     setAllCourses();
   }, [tutorId]);
-/*
-  useEffect(() => {
-    attendedAtDays(number);
-  }, []);
-*/
+  /*
+    useEffect(() => {
+      attendedAtDays(number);
+    }, []);
+  */
   return (
     <Context.Provider value={value}>
       {children}
