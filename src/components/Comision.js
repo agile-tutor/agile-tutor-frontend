@@ -28,7 +28,7 @@ function Comision() {
   }, []);
 
   useEffect(() => {
-    var elems = document.querySelectorAll('.tooltipped');
+    let elems = document.querySelectorAll('.tooltipped');
     M.Tooltip.init(elems);
   }, []);
 

@@ -25,8 +25,8 @@ function PorcentajeAsistencia() {
     };
 
     function unionArrays(a, b) {
-        var c = a.concat(b).sort();
-        var res = c.filter((value, pos) => { return c.indexOf(value) == pos; });
+        let c = a.concat(b).sort();
+        let res = c.filter((value, pos) => { return c.indexOf(value) == pos; });
         return res
     }
 

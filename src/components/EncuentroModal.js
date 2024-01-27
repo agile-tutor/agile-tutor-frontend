@@ -9,8 +9,8 @@ function EncuentroModal({ id, day, schedulerday, title, setDay, setTitle, setSch
   const [sdate, setSDate] = useState(schedulerday);
 
   useEffect(() => {
-    var elems = document.querySelectorAll('.datepicker');
-    var options = {
+    let elems = document.querySelectorAll('.datepicker');
+    let options = {
       format: 'dd-mm-yyyy',
       //      defaultDate: toDate(schedulerday),
       //      setDefaultDate: true,
@@ -44,7 +44,7 @@ function EncuentroModal({ id, day, schedulerday, title, setDay, setTitle, setSch
   }
   /*
     const toDate = (dateStr) => {
-      var parts = dateStr.split("-")
+      let parts = dateStr.split("-")
       return new Date(parts[2], parts[1] - 1, parts[0])
   }
   */

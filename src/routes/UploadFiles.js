@@ -72,7 +72,7 @@ function UploadFiles() {
     }, []);
 
     useEffect(() => {
-        var elems = document.querySelectorAll('.fixed-action-btn');
+        let elems = document.querySelectorAll('.fixed-action-btn');
         M.FloatingActionButton.init(elems, {});
     }, []);
 

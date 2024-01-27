@@ -37,7 +37,7 @@ function NavBar() {
     };
 
     useEffect(() => {
-        var sidenav = document.querySelectorAll(".sidenav");
+        let sidenav = document.querySelectorAll(".sidenav");
         M.Sidenav.init(sidenav, {});
     }, []);
 

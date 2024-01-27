@@ -145,7 +145,7 @@ export const Provider = ({ children }) => {
     },
     handleActiveSection: (num) => {
       /*console.log("indicando pestana activa" + "num:" + num)*/
-      var updateActiveSection = [false, false, false, false]
+      let updateActiveSection = [false, false, false, false]
       if (-1 < num < 4) {
         updateActiveSection[num] = true;
         setActiveSection(updateActiveSection);

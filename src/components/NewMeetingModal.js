@@ -24,8 +24,8 @@ const NewMeetingModal = ({ handleAddMeeting }) => {
         }
     }
     useEffect(() => {
-        var elems = document.querySelectorAll('.datepicker');
-        var options = {
+        let elems = document.querySelectorAll('.datepicker');
+        let options = {
             format: 'dd-mm-yyyy',
             i18n: {
                 months: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
@@ -40,7 +40,7 @@ const NewMeetingModal = ({ handleAddMeeting }) => {
         };
         M.Datepicker.init(elems, options);
     }, []);
-    
+
     return (
 
         <div id={"modalschadd"} className="modal">
