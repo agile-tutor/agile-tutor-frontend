@@ -19,7 +19,6 @@ class ScheduledDayService {
                     method: 'GET',
                     mode: 'no-cors',
                     headers: {
-                        'Access-Control-Allow-Origin': '*',
                         'Content-Type': 'application/json',
                         'Access-Control-Allow-Credentials': 'true'
                     },
@@ -40,7 +39,6 @@ class ScheduledDayService {
                 method: 'POST',
                 data: JSON.stringify(newMeeting),
                 headers: {
-                    'Access-Control-Allow-Origin': '*',
                     'Content-Type': 'application/json',
                     'Access-Control-Allow-Credentials': 'true'
                 },
@@ -64,7 +62,6 @@ class ScheduledDayService {
                 method: 'PUT',
                 data: JSON.stringify(modifiedMeeting),
                 headers: {
-                    'Access-Control-Allow-Origin': '*',
                     'Content-Type': 'application/json',
                     'Access-Control-Allow-Credentials': 'true'
                 },
@@ -105,7 +102,6 @@ class ScheduledDayService {
                         method: 'GET',
                         mode: 'no-cors',
                         headers: {
-                            'Access-Control-Allow-Origin': '*',
                             'Content-Type': 'application/json',
                             'Access-Control-Allow-Credentials': 'true'
                         },
