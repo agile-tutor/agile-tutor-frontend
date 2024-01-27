@@ -114,8 +114,8 @@ class ScheduledDayService {
                     console.error(error);
                     console.log(error);
                 }*/
-        await console.log(data.map(this.scheduledDayAsJson));
-        return data.map(this.scheduledDayAsJson);
+        let meetings = await data.map(this.scheduledDayAsJson);
+        return meetings;
     }
 }
 
