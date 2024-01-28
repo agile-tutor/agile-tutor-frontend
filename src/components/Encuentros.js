@@ -2,9 +2,7 @@ import { useContext, useState, useEffect } from 'react';
 import 'materialize-css/dist/css/materialize.min.css'
 import { Context } from '../context/Context.js';
 import Preloader from '../utils/Preloader.js';
-//import Breadcrumbs from '../utils/Breadcrumbs.js';
 import EncuentroEdit from './EncuentroEdit.js';
-//import M from 'materialize-css/dist/js/materialize.min.js';
 import NewMeetingModal from './NewMeetingModal.js';
 import "../App.css"
 
@@ -18,7 +16,7 @@ function Encuentros() {
         console.log(id)
         console.log(meeting)
         updateMeeting(id, meeting)
-        console.log("vuelta"+meeting)
+        console.log("vuelta" + meeting)
         setChargin(true)
         await delay(1000);
         setChargin(false)
@@ -26,7 +24,6 @@ function Encuentros() {
     }
 
     const handleAddMeeting = async (newMeeting) => {
-        /*console.log('handle click' + newMeeting);*/
         addNewMeeting(newMeeting);
         setChargin(true)
         await delay(1000);
@@ -35,7 +32,6 @@ function Encuentros() {
     }
 
     const handleDeleteMeeting = async (id) => {
-        /*console.log('handle click' + newMeeting);*/
         deleteMeeting(id);
         setChargin(true)
         await delay(1000);
@@ -50,11 +46,7 @@ function Encuentros() {
     useEffect(() => {
         getAllMeetings();
     }, [meetingToCreate]);
-/*
-    useEffect(() => {
-        M.AutoInit();
-    });
-*/
+
     return (
         <div>
             <h4 className="titulo-tabla" >Encuentros Programados del TVU</h4>
@@ -78,16 +70,6 @@ function Encuentros() {
                             </tr>
                         </thead>
                         <tbody>
-                            { /*
-                                encuentrosa,=> {
-          === b.surname) {
-                                        return a.name < b.name ? -1 : 1
-                                    } else {
-                                        return a.surname < b.surname ? -1 : 1
-                                     }
-                                }).map((alumno) => { return (<AlumnoEdit key={alumno.id} courseId={alumno.courseId} id={alumno.id} apellido={alumno.surname} nombre={alumno.name} identificacion={alumno.identifier} email={alumno.email} blocked={alumno.blocked} observaciones={alumno.observations} clnametr={!alumno.blocked ? 'Fila-alumno' : 'Fila-alumno-block'} clicons={!alumno.blocked ? 'material-icons left' : 'material-icons left redicons'} handleEditBlockStudent={handleEditBlockStudent} handleEditUpdateMeeting={handleEditUpdateMeeting} handleEditChangeStudentCourse={handleEditChangeStudentCourse} />) })
-                            */  }
-
                             {
                                 (encuentros == undefined) ? <Preloader /> :
                                     (encuentros.length !== 0) ?
