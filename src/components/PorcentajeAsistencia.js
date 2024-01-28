@@ -120,7 +120,7 @@ function PorcentajeAsistencia() {
 
     return (
         <div>
-            <div className="titulo-tabla" >Estado de Comisiones</div>
+            <div className="titulo-tabla" ><i className="material-icons">show_chart</i> Estado de Comisiones</div>
             <div className="col s12">
                 <p className="porcentaje-asistencia-parametro-tritulo">Porcentaje de Asistencia Requerido para la aprobación del TVU: {porcentajeActual}%</p>
             </div>

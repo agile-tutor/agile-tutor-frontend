@@ -98,12 +98,12 @@ function SchedulerTask() {
   let h = addZero(d.getHours());
   let m = addZero(d.getMinutes());
   let s = addZero(d.getSeconds());
-//  let time = h + ":" + m + ":" + s;
-/*
-  function getTime() {
-    return time
-  }
-*/
+  //  let time = h + ":" + m + ":" + s;
+  /*
+    function getTime() {
+      return time
+    }
+  */
   const twentytwo = "22:00 horas"
 
   let setHourNotify = (h < 22 && s == 0 && m == 0) ? 22 - h : (h < 22) ? 21 - h : (s == 0 && m == 0) ? 46 - h : 45 - h
@@ -118,7 +118,7 @@ function SchedulerTask() {
 
   return (
     <div>
-      <div className="titulo-tabla" >Tareas Programadas 1/1 Notificacion de ausencias </div>
+      <div className="titulo-tabla" ><i className="material-icons">schedule</i> Tareas Programadas 1/1 Notificacion de ausencias </div>
       {//      <h5 className="textSchedulerTask"><i className="material-icons iconSchedulerTask">access_time</i>Hora Actual: {actualHour}</h5>
       }
       <div className='course-container vhmargintop'>

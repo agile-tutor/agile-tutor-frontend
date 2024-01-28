@@ -37,7 +37,7 @@
 }
 
 #columna-apellidonombre {
-  padding-top: 1.5vh;
+  padding-top: 1vh;
   padding-left: 10.5vw;
 }
 
@@ -325,16 +325,21 @@
 }
 
 .titulo-tabla {
-  padding: 2rem;
+  padding: .5rem;
   margin: 0rem 0rem 0rem 0rem;
-  color: #1f849c;
-  font-weight: bolder;
-  text-align: center;
-  justify-content: center;
+  /*font-weight: bolder;
+    text-align: center;
+  justify-content: center;*/
   background-color: #eeeeee;
   border-bottom: 2px solid #1f849c;
-  text-shadow: .5px .5px .5px rgba(0, 0, 0, 0.479);
+  /*text-shadow: .5px .5px .5px rgba(0, 0, 0, 0.479);*/
   width: 100vw;
+  color: #1f849c;
+  -webkit-text-fill-color: transparent;
+  /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #1f839c77;
+  font-size: 1.5rem;
 }
 
 
@@ -347,7 +352,7 @@
 
 .comsion-table-title {
   padding: .5rem;
-  margin: 0rem 0rem 0rem 0rem;
+  margin: 0rem 0rem 2rem 0rem;
   color: #ffffff;
   font-weight: bolder;
   text-align: center;
@@ -356,6 +361,7 @@
   border-bottom: 2px solid #1f849c;
   text-shadow: .6px .6px .6px rgba(0, 0, 0, 0.479);
   width: 100vw;
+  height: 5rem;
 }
 
 .sidenav {
@@ -414,10 +420,10 @@
 
 @media (max-width: 800px) {
   #editComisionTable {
-    width: 80vw;
-    font-size: x-small;
-    margin-left: 10vw;
-    margin-right: 10vw;
+    width: 98vw;
+    font-size: small;
+    margin-left: 1vw;
+    margin-right: 1vw;
   }
 }
 
@@ -435,9 +441,20 @@ btn-flat:focus {
 }
 
 .tabs {
-  margin-top: 8vh;
   font-size: 4vh;
   height: 7vh;
+}
+
+@media (min-width: 800px) {
+  .tabs {
+    margin-top: 8vh;
+  }
+}
+
+@media (max-width: 800px) {
+  .tabs {
+    margin-top: 0vh;
+  }
 }
 
 .responsivelogo {
@@ -1346,11 +1363,12 @@ nav ul a.btn-floating {
   }
 }
 
-.datepicker-date-display{
+.datepicker-date-display {
   padding: 20px 13px;
 }
 
-.datepicker-table td.is-selected, .datepicker-date-display {
+.datepicker-table td.is-selected,
+.datepicker-date-display {
   background-color: #1f849c;
 }
 
@@ -1359,5 +1377,5 @@ nav ul a.btn-floating {
 }
 
 .datepicker-cancel {
-  color :#9f283b;
+  color: #9f283b;
 }

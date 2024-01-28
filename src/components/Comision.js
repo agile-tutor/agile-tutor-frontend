@@ -115,14 +115,14 @@ function Comision() {
   return (
     (attendedDayCourse[0] == undefined) ? <div></div> :
       <div>
-        <h4 className="titulo-tabla" >Pasar Asistencias Comisión {number}</h4>
+        <div className="titulo-tabla" ><i className="material-icons">pan_tool</i> Pasar Asistencias Comisión {number}</div>
         {checked.length === 0 || !attendedDayCourse.length ? <Preloader /> :
           <div className="Comision">
             <div className="row comision-table-body">
               {tooltips()}
             </div>
             {disabled ? <a id='floating-btn' className="btn-floating btn-large waves-effect waves-light right" onClick={() => setDisabled(false)}><i className="material-icons">create</i></a> : <div></div>}
-            <div className="comsion-table-title" > Encuentro N° {diaToCheck} - {title} </div>
+            <div className="comsion-table-title" > {diaToCheck}º Encuentro - {title} </div>
             <table className="Comision-table strip">
               <thead>
                 <tr className='fila-comision-parametros-tabla'>

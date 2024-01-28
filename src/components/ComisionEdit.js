@@ -70,7 +70,7 @@ function ComisionEdit() {
 
     return (
         <div>
-            <h4 className="titulo-tabla" >Editar Comisión {+ number}</h4>
+            <h4 className="titulo-tabla" ><i className="material-icons">mode_edit</i> Editar Comisión {+ number}</h4>
             <div> {checked.length === 0 ? <Preloader /> :
                 <div className="Comision">
                     {chargin ?
