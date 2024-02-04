@@ -78,7 +78,9 @@ function NavBar() {
                 </nav>
             </div >
             <ul className="sidenav sidenav" id="mobile-demo">
-                <li ><Link id='nav-var-mob' to="/"><i className="material-icons">home</i>Home</Link></li>
+                <li >
+                    <Link className='sidenav-close'id='nav-var-mob' to="/"><i className="material-icons">home</i>Home</Link>
+                </li>
                 <div className="divider"></div>
                 <div>
                     <ComisionDropdown action="Pasar Asistencia" style="dropdownPassAtendanceMob nav-var-mob" route="/comision" icon="pan_tool" />
@@ -86,12 +88,16 @@ function NavBar() {
                     <ComisionDropdown action="Editar Comision" style="dropdownComisionEditMob nav-var-mob" route="/comisionEdit" icon="mode_edit" />
                     <div className="divider"></div>
                 </div>
-                <li ><Link id='nav-var-mob' to="/attendancePercent"><i className="material-icons">show_chart</i>Estado de Comisiones</Link></li>
-                <div className="divider"></div>
-                <li ><Link id='nav-var-mob' to="/tasks"><i className="material-icons">schedule</i>Tareas Programadas</Link></li>
+                <li >
+                    <Link className='sidenav-close' id='nav-var-mob' to="/attendancePercent"><i className="material-icons">show_chart</i>Estado de Comisiones</Link>
+                </li>
                 <div className="divider"></div>
                 <li >
-                    <Link id='nav-var-mob' to="/search"><i className="material-icons">search</i>Buscar</Link>
+                    <Link className='sidenav-close' id='nav-var-mob' to="/tasks"><i className="material-icons">schedule</i>Tareas Programadas</Link>
+                </li>
+                <div className="divider"></div>
+                <li >
+                    <Link className='sidenav-close' id='nav-var-mob' to="/search"><i className="material-icons">search</i>Buscar</Link>
                     {/* <form>
                         <div className="input-field">
                             <input id="search" type="search" value={input} onChange={(e) => handleChange(e.target.value)} onKeyDown={handleKeyDown} autoComplete="off" />

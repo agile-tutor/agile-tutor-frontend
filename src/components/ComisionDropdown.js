@@ -19,7 +19,7 @@ function ComisionDropdown({ action, style, route, icon }) {
                     tutorCourses.map((course) => {
                         return (
                             <div key={course.id}>
-                                <li><Link key={course.id} to={route} onClick={() => getCourse(course.id)}>Comisión {course.id}</Link></li>
+                                <li><Link className='sidenav-close' key={course.id} to={route} onClick={() => getCourse(course.id)}>Comisión {course.id}</Link></li>
                                 <li className="divider"></li>
                             </div>
                         )

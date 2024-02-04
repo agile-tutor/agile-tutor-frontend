@@ -14,8 +14,6 @@ function ComisionEdit() {
     const [chargin, setChargin] = useState(false);
 
     const handleEditBlockStudent = async (id, status) => {
-        /*console.log(id)
-        console.log(status)*/
         blockUnblockStudent(id, !status)
         setChargin(true)
         await delay(1000);
@@ -24,8 +22,6 @@ function ComisionEdit() {
     }
 
     const handleEditUpdateStudent = async (id, student) => {
-        /*console.log(id)
-        console.log(student)*/
         updateStudent(id, student)
         setChargin(true)
         await delay(1000);
@@ -34,7 +30,6 @@ function ComisionEdit() {
     }
 
     const handleAddStudentToACourse = async (newStudent) => {
-        /*console.log('handle click' + newStudent);*/
         addNewStudentToACourse(newStudent);
         setChargin(true)
         await delay(1000);
@@ -43,8 +38,6 @@ function ComisionEdit() {
     }
 
     const handleEditChangeStudentCourse = async (studentId, courseId) => {
-        /*console.log(studentId)
-        console.log(courseId)*/
         putStudentCourseChange(studentId, courseId);
         setChargin(true);
         await delay(1000);
