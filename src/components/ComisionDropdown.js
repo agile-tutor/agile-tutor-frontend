@@ -3,7 +3,7 @@ import { Context } from '../context/Context.js';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { Link } from 'react-router-dom';
 
-function SelectComision({ action, style }) {
+function ComisionDropdown({ action, style, route, icon }) {
 
     const { getCourse, tutorCourses } = useContext(Context)
 
@@ -15,22 +15,21 @@ function SelectComision({ action, style }) {
     return (
         <div>
             <ul id={style} className="dropdown-content">
-                {/*console.log(tutorCourses)*/}
                 {
                     tutorCourses.map((course) => {
                         return (
                             <div key={course.id}>
-                                <li><Link key={course.id} to="/comision" onClick={() => getCourse(course.id)}>Comisión {course.id}</Link></li>
+                                <li><Link key={course.id} to={route} onClick={() => getCourse(course.id)}>Comisión {course.id}</Link></li>
                                 <li className="divider"></li>
                             </div>
                         )
                     })}
             </ul>
             <ul className={style} >
-                <li><Link className="dropdown-trigger" href="#!" data-target={style}><i className="material-icons">pan_tool</i>{action}<i className="material-icons right">arrow_drop_down</i></Link></li>
+                <li><Link className="dropdown-trigger" href="#!" data-target={style}><i className="material-icons">{icon}</i>{action}<i className="material-icons right">arrow_drop_down</i></Link></li>
             </ul>
         </div>
     )
 }
 
-export default SelectComision
+export default ComisionDropdown

@@ -150,7 +150,6 @@ export const Provider = ({ children }) => {
         updateActiveSection[num] = true;
         setActiveSection(updateActiveSection);
       }
-      /*console.log("final: " + activeSection[0], activeSection[1], activeSection[2], activeSection[3])*/
     },
     postNewStudents: (studentsRegister) => {
       console.log("asignando los estudiantes a la comision");

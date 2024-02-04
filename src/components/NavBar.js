@@ -4,9 +4,8 @@ import { useEffect, useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Context } from '../context/Context.js';
 import M from 'materialize-css/dist/js/materialize.min.js';
-import SearchResultList from '../components/SearchResultList.js'
-import SelectComision from '../routes/SelectComision';
-import SelectComisionEdit from '../routes/SelectComisionEdit';
+import SearchResultList from '../components/SearchResultList.js';
+import ComisionDropdown from './ComisionDropdown.js';
 
 function NavBar() {
 
@@ -32,7 +31,7 @@ function NavBar() {
 
     const handleKeyDown = (event) => {
         if (event.key === 'Enter') {
-            M.toast({ html: 'Se presiono Enter', classes: 'rounded'});
+            M.toast({ html: 'Se presiono Enter', classes: 'rounded' });
         }
     };
 
@@ -48,15 +47,15 @@ function NavBar() {
 
     return (
         <header>
-            {/*console.log(activeSection[0], activeSection[1], activeSection[2], activeSection[3])*/}
             <div className={`navbar-fixed${tutorId != 0 ? '' : " hide"}`}>
                 <nav>
                     <div className="nav-wrapper">
                         <Link to="/" className="brand-logo" ><img className="image-logo" src={Logo}></img></Link>
                         <a href="#" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons hamburguer-color">menu</i></a>
                         <ul className="right hide-on-med-and-down" >
-                            <li className={activeSection[0] ? "active" : ""}><SelectComision action="Pasar Asistencia" style="dropdownPassAtendance nav-var-web" /></li>
-                            <li className={activeSection[1] ? "active" : ""}><SelectComisionEdit action="Editar Comision" style="dropdownComisionEdit nav-var-web" /></li>
+
+                            <li className={activeSection[0] ? "active" : ""}><ComisionDropdown action="Pasar Asistencia" style="dropdownPassAtendance nav-var-web" route="/comision" icon="pan_tool" /></li>
+                            <li className={activeSection[1] ? "active" : ""}><ComisionDropdown action="Editar Comision" style="dropdownComisionEdit nav-var-web" route="/comisionEdit" icon="mode_edit" /></li>
                             <li className={activeSection[2] ? "active" : ""}><Link className="navbar-item" id='nav-var-web' to="/attendancePercent"><i className="material-icons">show_chart</i>Estado de Comisiones</Link></li>
                             <li className={activeSection[3] ? "active" : ""}><Link className="navbar-item" id='nav-var-web' to="/tasks"><i className="material-icons">schedule</i>Tareas Programadas</Link></li>
                             <li className='searchComponent'>
@@ -71,7 +70,7 @@ function NavBar() {
                             </li>
                             <li >
                                 <div>
-                                    <Link className="navbar-item"  title="click to LOGOUT" id='nav-var-web' to="/" onClick={() => logOutTutor()} ><i className="material-icons">person_pin</i>  <br style={{position: 'fixed' }} />{tutor? tutor.name: ''}</Link>
+                                    <Link className="navbar-item" title="click to LOGOUT" id='nav-var-web' to="/" onClick={() => logOutTutor()} ><i className="material-icons">person_pin</i>  <br style={{ position: 'fixed' }} />{tutor ? tutor.name : ''}</Link>
                                 </div>
                             </li>
                         </ul>
@@ -82,9 +81,9 @@ function NavBar() {
                 <li ><Link id='nav-var-mob' to="/"><i className="material-icons">home</i>Home</Link></li>
                 <div className="divider"></div>
                 <div>
-                    <SelectComision action="Pasar Asistencia" style="dropdownPassAtendanceMob nav-var-mob" />
+                    <ComisionDropdown action="Pasar Asistencia" style="dropdownPassAtendanceMob nav-var-mob" route="/comision" icon="pan_tool" />
                     <div className="divider"></div>
-                    <SelectComisionEdit action="Editar Comision" style="dropdownComisionEditMob nav-var-mob" />
+                    <ComisionDropdown action="Editar Comision" style="dropdownComisionEditMob nav-var-mob" route="/comisionEdit" icon="mode_edit" />
                     <div className="divider"></div>
                 </div>
                 <li ><Link id='nav-var-mob' to="/attendancePercent"><i className="material-icons">show_chart</i>Estado de Comisiones</Link></li>

@@ -9,7 +9,7 @@ function Comision() {
 
   const { encuentros, getAllMeetings, checked, saveAttendance, number, handleActiveSection, attendedDayCourse, getAttendedDays } = useContext(Context)
   const [diaToCheck, setDiaToCheck] = useState(1)
-  const [title, setTitle] = useState("Presentación del taller de vida universitaria")
+  const [title, setTitle] = useState("Seleccione el encuentro")
   const [disabled, setDisabled] = useState(false);
 
   useEffect(() => {
