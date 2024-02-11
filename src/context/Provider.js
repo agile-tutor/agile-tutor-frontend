@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { alumnoService } from "../service/alumnoService"
 import { tutorService } from "../service/tutorService"
+import { courseService } from "../service/courseService"
 import { scheduledDayService } from "../service/scheduledDayService"
 import { Context } from "./Context"
 import { AttendanceModel } from "../domain/attendanceModel"
@@ -19,6 +20,7 @@ export const Provider = ({ children }) => {
   const [tutor, setTutor] = useState('');
   const [tutors, setTutors] = useState([]);
   const [studentsOfTutor, setStudentsOfTutor] = useState([]);
+  const [studentsCourseWhithAttendanceMeeting, setStudentsCourseWhithAttendanceMeeting] = useState([]);
   const percentCourse = {};
   const [studentAuth, setStudentAuth] = useState(false);
   const [allSurveys, setAllSurveys] = useState([]);
@@ -27,7 +29,7 @@ export const Provider = ({ children }) => {
   const [courseToCreate, setCourseToCreate] = useState('')
   const [meetingToCreate, setMeetingToCreate] = useState('')
   const [porcentajeActual, setPorcentajeActual] = useState(75)
-  const [attendedDayCourse, setAttendedDayCourse] = useState([]);
+  //const [attendedDayCourse, setAttendedDayCourse] = useState([]);
   const [encuentros, setEncuentros] = useState([]);
 
 
@@ -51,20 +53,26 @@ export const Provider = ({ children }) => {
     courseToCreate,
     meetingToCreate,
     porcentajeActual,
-    attendedDayCourse,
+    //  attendedDayCourse,
     encuentros,
+    studentsCourseWhithAttendanceMeeting,
     //funciones que afectan el estado
-    updateAttendance: (target, id_asistencia) => {
-      const updatedChecked = checked.map(alumno =>
-        alumno.id === (target.id * 1)
-          ? { ...alumno, attendances: modifyAttendance(alumno.attendances, (target.checked), (id_asistencia)) }
+    updateAttendance: (target) => {
+
+      const modAttendance = (attendance, bool) => {
+        attendance.attended = bool
+        return attendance
+      }
+      const attendanceUpdated = studentsCourseWhithAttendanceMeeting.map(alumno =>
+        alumno.studentId === (target.id * 1)
+          ? { ...alumno, attendance: modAttendance(alumno.attendance, target.checked) }
           : alumno
       );
-      setChecked(updatedChecked);
+      setStudentsCourseWhithAttendanceMeeting(attendanceUpdated);
     },
     saveAttendance: (day) => {
       console.log('guardando cambios');
-      updateAttendances(attendanceToStudentAttendanceDTO(checked, day), number);
+      updateAttendances(studentAttendanceDtoToJson(studentsCourseWhithAttendanceMeeting), number, day);
     },
     getCourse: (number) => {
       console.log('cargando comision');
@@ -124,11 +132,9 @@ export const Provider = ({ children }) => {
       addStudentToCourse(newStudent);
     },
     checkStudentAuth: (email) => {
-      /*console.log(email);*/
       checkIfExistStudent(email);
     },
     saveSurvey: (email, studentSurvey) => {
-      /*console.log(email, studentSurvey);*/
       postStudentSurvey(email, studentSurvey);
     },
     getAllTutors: () => {
@@ -176,32 +182,28 @@ export const Provider = ({ children }) => {
     },
     changePercent: (porcentaje) => {
       setPorcentajeActual(porcentaje)
-    },
+    },/*
     getAttendedDays: (ncourse) => {
       attendedAtDays(ncourse);
+    },*/
+    getStudentsFromCourseWhithAttendanceMeeting: (courseid, meetingday) => {
+      loadStudentsFromCourseWhithAttendanceMeeting(courseid, meetingday)
     }
   }
 
-  const attendanceToStudentAttendanceDTO = (checked, day) => {
-    const list = checked.map(alumno =>
-      StudentAttendanceDTO.toJson(alumno.id, alumno.attendances.filter(attendance =>
-        attendance.day == day)[0]))
-    return list
-  }
+  const studentAttendanceDtoToJson = (studentAttendanceDto) => {
+    const studentAttendanceJson = studentAttendanceDto.map(dto =>
+      StudentAttendanceDTO.toJson(dto.studentId, dto.attendance))
 
-  const modifyAttendance = (attendances, check, id_asistencia) => {
-    /*console.log(id_asistencia, check)*/
-    //const checkString = check.toString()
-    return attendances.map(attendance => attendance.id === id_asistencia
-      ? { ...attendance, attended: check } : attendance)
+    return studentAttendanceJson
   }
 
   const attendanceAsJson = (attendanceJson) => {
     return AttendanceModel.fromJson(attendanceJson)
   }
 
-  const updateAttendances = async (updatedAttendances, number) => {
-    await alumnoService.updateAttendances(updatedAttendances, number)
+  const updateAttendances = async (updatedAttendances, number, day) => {
+    await alumnoService.updateAttendances(updatedAttendances, number, day)
     await loadCourse(number)
   }
 
@@ -218,10 +220,7 @@ export const Provider = ({ children }) => {
   const loadCourse = async (number) => {
     if (tutorId != 0) {
       try {
-        /*console.log(number)*/
         const comision = await alumnoService.getComision(number)
-        comision.map(alumno =>
-          alumno.attendances.map(attendanceAsJson))
         setChecked(comision)
       } catch (error) {
         console.error(error)
@@ -460,16 +459,26 @@ export const Provider = ({ children }) => {
     }
     setMeetingToCreate('')
   }
-
-  const attendedAtDays = async (courseId) => {
+  /*
+    const attendedAtDays = async (courseId) => {
+      try {
+        const attendedDays = await tutorService.attendedAtDays(courseId);
+        console.log(attendedDays);
+        setAttendedDayCourse(attendedDays);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  */
+  const loadStudentsFromCourseWhithAttendanceMeeting = async (courseid, meetingday) => {
     try {
-      const attendedDays = await tutorService.attendedAtDays(courseId);
-      console.log(attendedDays);
-      setAttendedDayCourse(attendedDays);
+      const studentsWhithAttended = await courseService.getStudentFromCourseWhitAttendanceMeetingDay(courseid, meetingday);
+      setStudentsCourseWhithAttendanceMeeting(studentsWhithAttended);
     } catch (error) {
       console.error(error);
     }
   }
+
 
   useEffect(() => {
     setAllCourses();

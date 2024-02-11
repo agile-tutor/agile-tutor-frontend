@@ -6,8 +6,8 @@ import M from "materialize-css";
 import logo from "../TIPLOGO.png"
 
 const Login = () => {
-    const [email, setemail] = useState(null);
-    const [password, setpassword] = useState(null);
+    const [email, setemail] = useState('');
+    const [password, setpassword] = useState('');
     const { loginTutor, tutor, handleActiveSection } = useContext(Context);
 
     const [inputsVisible, setInputsVisible] = useState([false, false])
@@ -73,7 +73,6 @@ const Login = () => {
                         Ingresar
                     </button>
                     <h5 id="H5Register">
-                        <tr />
                         <Link id="linkRegister" to="/register">¿No te encuentras registrado?</Link>
                     </h5>
                 </div>

@@ -11,4 +11,16 @@ export class StudentAttendanceDTO {
         }
         return result
     }
+
+
+    static fromJson(studentAttendanceJson) {
+        const result = Object.assign(new StudentAttendanceDTO(),
+        studentAttendanceJson,
+            {
+                studentId: (studentAttendanceJson.studentId * 1),
+                attendance: studentAttendanceJson.attendance
+            }
+        )
+        return result
+    }
 }

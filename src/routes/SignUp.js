@@ -5,11 +5,11 @@ import M from "materialize-css";
 import logo from "../TIPLOGO.png";
 
 const SignUp = () => {
-    const [name, setname] = useState(null);
-    const [surname, setsurname] = useState(null);
-    const [email, setemail] = useState(null);
-    const [password, setpassword] = useState(null);
-    const [passwordcheck, setpasswordcheck] = useState(null);
+    const [name, setname] = useState('');
+    const [surname, setsurname] = useState('');
+    const [email, setemail] = useState('');
+    const [password, setpassword] = useState('');
+    const [passwordcheck, setpasswordcheck] = useState('');
 
     const [inputsVisible, setInputsVisible] = useState([false, false])
 

@@ -364,6 +364,13 @@
   height: 5rem;
 }
 
+@media (min-width: 800px) {
+  .comsion-table-title {
+    padding: 1.5rem;
+    font-size: x-large;
+  }
+}
+
 .sidenav {
   background-color: #1f849c;
   border-radius: 0 0 100% 0;
@@ -991,11 +998,12 @@ nav ul a {
   }
 }
 
+/*
 .marginbt5vh {
   margin-bottom: 100%;
 }
 
-/*
+
 .cards-absents{
 height: 70%;
 }

@@ -122,13 +122,13 @@ class AlumnoService {
       }
     }
   */
-  async updateAttendances(attendances, courseId) {
+  async updateAttendances(attendances, courseId, day) {
     /*console.log(attendances);*/
     let asistencias = JSON.stringify(attendances)
     /*console.log(asistencias);*/
     try {
       const response = await axios({
-        url: `${REST_SERVER_URL}/api/course/students/attendances/update/${courseId}`,
+        url: `${REST_SERVER_URL}/api/course/students/attendances/update/${courseId}/${day}`,
         method: 'PUT',
         data: asistencias,
         headers: {

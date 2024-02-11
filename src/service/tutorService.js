@@ -223,7 +223,7 @@ class TutorService {
             console.log(err);
         }
     }
-
+/*
     async attendedAtDays(courseId) {
         try {
             const surveys = await axios.get(`${REST_SERVER_URL}/api/course/attended/${courseId}`, {
@@ -236,13 +236,13 @@ class TutorService {
                 },
                 credentials: 'same-origin',
             })
-            /*console.log(surveys.data);*/
+            /*console.log(surveys.data);
             //const tutors = tutorsJson.data.map(this.tutorAsJson);
             return surveys.data;
         } catch (error) {
             console.error(error);
         }
-    }
+    }*/
 }
 
 export const tutorService = new TutorService()
