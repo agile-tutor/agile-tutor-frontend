@@ -4,12 +4,13 @@ import PorcentajeAsistencia from "./components/PorcentajeAsistencia";
 import ComisionEdit from "./components/ComisionEdit";
 import Home from "./routes/Home";
 import SchedulerTask from "./routes/SchedulerTask";
+import Dashboard from "./routes/Dashboard";
 import Search from "./routes/Search";
 import SignUp from "./routes/SignUp.js";
 import Survey from "./routes/Survey.js";
 import UploadFiles from "./routes/UploadFiles";
 import SchedulerDay from "./components/SchedulerDay.js";
-import Encuentros from "./components/Encuentros.js";
+import Encuentros from "./routes/Encuentros.js";
 
 export const AttendanceRoutes = () =>
 
@@ -25,5 +26,6 @@ export const AttendanceRoutes = () =>
         <Route path="/attendancePercent/" element={<PorcentajeAsistencia />} />
         <Route path="/tasks/" element={<SchedulerTask />} />
         <Route path="/scheduler-day/" element={<SchedulerDay />} />
+        <Route path="/dashboard/" element={<Dashboard />} />
         <Route path="*" component={<Home />} />
     </Routes>

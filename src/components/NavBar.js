@@ -45,60 +45,66 @@ function NavBar() {
         M.Dropdown.init(elems, { inDuration: 300, outDuration: 225 });
     }, []);
 
-    return (
-        <header>
-            <div className={`navbar-fixed${tutorId != 0 ? '' : " hide"}`}>
-                <nav>
-                    <div className="nav-wrapper">
-                        <Link to="/" className="brand-logo" ><img className="image-logo" src={Logo}></img></Link>
-                        <a href="#" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons hamburguer-color">menu</i></a>
-                        <ul className="right hide-on-med-and-down" >
+    useEffect(() => {
+        let elems = document.querySelectorAll('.fixed-action-btn');
+        M.FloatingActionButton.init(elems, { direction: 'top', hoverEnabled: true });
+    }, []);
 
-                            <li className={activeSection[0] ? "active" : ""}><ComisionDropdown action="Pasar Asistencia" style="dropdownPassAtendance nav-var-web" route="/comision" icon="pan_tool" /></li>
-                            <li className={activeSection[1] ? "active" : ""}><ComisionDropdown action="Editar Comision" style="dropdownComisionEdit nav-var-web" route="/comisionEdit" icon="mode_edit" /></li>
-                            <li className={activeSection[2] ? "active" : ""}><Link className="navbar-item" id='nav-var-web' to="/attendancePercent"><i className="material-icons">show_chart</i>Estado de Comisiones</Link></li>
-                            <li className={activeSection[3] ? "active" : ""}><Link className="navbar-item" id='nav-var-web' to="/tasks"><i className="material-icons">schedule</i>Tareas Programadas</Link></li>
-                            <li className='searchComponent'>
-                                <form>
-                                    <div className="input-field">
-                                        <input id="search" type="search" value={input} onBlur={() => handleChange("")} onChange={(e) => handleChange(e.target.value)} onKeyDown={handleKeyDown} autoComplete="off" />
-                                        <label className="label-icon iconsearch" htmlFor="search"><i id='lupasearch' className="material-icons">search</i></label>
-                                        <i className="material-icons iconsearch" onClick={() => handleChange("")}>close</i>
+    return (
+        <div>
+            <header>
+                <div className={`navbar-fixed${tutorId != 0 ? '' : " hide"}`}>
+                    <nav>
+                        <div className="nav-wrapper">
+                            <Link to="/" className="brand-logo" ><img className="image-logo" src={Logo}></img></Link>
+                            <a href="#" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons hamburguer-color">menu</i></a>
+                            <ul className="right hide-on-med-and-down" >
+
+                                <li className={activeSection[0] ? "active" : ""}><ComisionDropdown action="Pasar Asistencia" style="dropdownPassAtendance nav-var-web" route="/comision" icon="pan_tool" /></li>
+                                <li className={activeSection[1] ? "active" : ""}><ComisionDropdown action="Editar Comision" style="dropdownComisionEdit nav-var-web" route="/comisionEdit" icon="mode_edit" /></li>
+                                <li className={activeSection[2] ? "active" : ""}><Link className="navbar-item" id='nav-var-web' to="/attendancePercent"><i className="material-icons">show_chart</i>Estado de Comisiones</Link></li>
+                                <li className={activeSection[3] ? "active" : ""}><Link className="navbar-item" id='nav-var-web' to="/tasks"><i className="material-icons">schedule</i>Tareas Programadas</Link></li>
+                                <li className='searchComponent'>
+                                    <form>
+                                        <div className="input-field">
+                                            <input id="search" type="search" value={input} onBlur={() => handleChange("")} onChange={(e) => handleChange(e.target.value)} onKeyDown={handleKeyDown} autoComplete="off" />
+                                            <label className="label-icon iconsearch" htmlFor="search"><i id='lupasearch' className="material-icons">search</i></label>
+                                            <i className="material-icons iconsearch" onClick={() => handleChange("")}>close</i>
+                                        </div>
+                                    </form>
+                                    <SearchResultList results={results} />
+                                </li>
+                                <li >
+                                    <div>
+                                        <Link className="navbar-item" title="click to LOGOUT" id='nav-var-web' to="/" onClick={() => logOutTutor()} ><i className="material-icons">person_pin</i>  <br style={{ position: 'fixed' }} />{tutor ? tutor.name : ''}</Link>
                                     </div>
-                                </form>
-                                <SearchResultList results={results} />
-                            </li>
-                            <li >
-                                <div>
-                                    <Link className="navbar-item" title="click to LOGOUT" id='nav-var-web' to="/" onClick={() => logOutTutor()} ><i className="material-icons">person_pin</i>  <br style={{ position: 'fixed' }} />{tutor ? tutor.name : ''}</Link>
-                                </div>
-                            </li>
-                        </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div >
+                <ul className="sidenav sidenav" id="mobile-demo">
+                    <li >
+                        <Link className='sidenav-close' id='nav-var-mob' to="/"><i className="material-icons">home</i>Home</Link>
+                    </li>
+                    <div className="divider"></div>
+                    <div>
+                        <ComisionDropdown action="Pasar Asistencia" style="dropdownPassAtendanceMob nav-var-mob" route="/comision" icon="pan_tool" />
+                        <div className="divider"></div>
+                        <ComisionDropdown action="Editar Comision" style="dropdownComisionEditMob nav-var-mob" route="/comisionEdit" icon="mode_edit" />
+                        <div className="divider"></div>
                     </div>
-                </nav>
-            </div >
-            <ul className="sidenav sidenav" id="mobile-demo">
-                <li >
-                    <Link className='sidenav-close'id='nav-var-mob' to="/"><i className="material-icons">home</i>Home</Link>
-                </li>
-                <div className="divider"></div>
-                <div>
-                    <ComisionDropdown action="Pasar Asistencia" style="dropdownPassAtendanceMob nav-var-mob" route="/comision" icon="pan_tool" />
+                    <li >
+                        <Link className='sidenav-close' id='nav-var-mob' to="/attendancePercent"><i className="material-icons">show_chart</i>Estado de Comisiones</Link>
+                    </li>
                     <div className="divider"></div>
-                    <ComisionDropdown action="Editar Comision" style="dropdownComisionEditMob nav-var-mob" route="/comisionEdit" icon="mode_edit" />
+                    <li >
+                        <Link className='sidenav-close' id='nav-var-mob' to="/tasks"><i className="material-icons">schedule</i>Tareas Programadas</Link>
+                    </li>
                     <div className="divider"></div>
-                </div>
-                <li >
-                    <Link className='sidenav-close' id='nav-var-mob' to="/attendancePercent"><i className="material-icons">show_chart</i>Estado de Comisiones</Link>
-                </li>
-                <div className="divider"></div>
-                <li >
-                    <Link className='sidenav-close' id='nav-var-mob' to="/tasks"><i className="material-icons">schedule</i>Tareas Programadas</Link>
-                </li>
-                <div className="divider"></div>
-                <li >
-                    <Link className='sidenav-close' id='nav-var-mob' to="/search"><i className="material-icons">search</i>Buscar</Link>
-                    {/* <form>
+                    <li >
+                        <Link className='sidenav-close' id='nav-var-mob' to="/search"><i className="material-icons">search</i>Buscar</Link>
+                        {/* <form>
                         <div className="input-field">
                             <input id="search" type="search" value={input} onChange={(e) => handleChange(e.target.value)} onKeyDown={handleKeyDown} autoComplete="off" />
                             <label className="label-icon" htmlFor="search"><i id='lupasearch' className="material-icons">search</i></label>
@@ -106,9 +112,26 @@ function NavBar() {
                         </div>
                     </form>
                     <SearchResultList results={results} />*/}
-                </li>
-            </ul>
-        </header >
+                    </li>
+                </ul>
+            </header >
+            {tutor.email == "admin" ?
+                //If you want a fixed floating action button, you can add multiple actions that will appear on hover. Our demo is in the bottom righthand corner of the page.
+                <div className="fixed-action-btn">
+                    <a className="btn-floating btn-large red">
+                        <i className="large material-icons">settings</i>
+                    </a>
+                    <ul>
+                        <li><a className="btn-floating red"><i className="material-icons">insert_chart</i></a></li>
+                        <li><Link className="btn-floating yellow darken-1" title="establecer requerimiento para la aprobacion del TVU" to="/attendancePercent" ><i className="material-icons">tune</i></Link></li>
+                        <li><Link className="btn-floating green" title="crear comision, asignar tutor y alumnos" to="/uploadFiles"><i className="material-icons">publish</i></Link></li>
+                        <li><Link className="btn-floating blue" title="crear encuentros" to="/meetings" ><i className="material-icons">event</i></Link></li>
+                    </ul>
+                </div>
+                :
+                <div>
+                </div>}
+        </div>
     )
 }
 

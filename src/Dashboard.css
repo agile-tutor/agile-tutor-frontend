@@ -1,0 +1,19 @@
+.dashboardpanel {
+    height: 300px;
+    border-radius: 10px;
+    border-color: black;
+    background-color: blueviolet;
+    text-align: center;
+    vertical-align: middle;
+    width: calc((94vw / 2) - 1vw);
+    display: inline-block;
+    padding-top: 20vh;
+    margin-right: .5vw;
+    margin-bottom: .5vh;
+}
+
+.dashboardcontent {
+    /*    columns: 2;*/
+    margin-top: 3vh;
+    margin-left: 1vw;
+}

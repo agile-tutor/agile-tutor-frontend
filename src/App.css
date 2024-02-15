@@ -272,34 +272,28 @@
 }
 
 #boton-change-daycheck {
-  color: #ffffff;
+  color: #000000;
   font-weight: bolder;
   height: 5vh;
   width: 15vw;
-  margin-bottom: .1vh;
+  margin-bottom: -1.5vh;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 0px;
   border-bottom-left-radius: 0px;
-  /* background-color: #1f849c;*/
-  border: 2px solid#1f849c;
+  background-color: #ffffff;
+  border: 2px solid#1a6b80;
   border-bottom-width: 0px;
 }
 
-#boton-change-daycheck:hover {
-  background-color: whitesmoke;
-  color: #000000;
-}
-
-
 #boton-change-daycheck:focus {
-  background-color: whitesmoke !important;
-  color: #000000 !important;
+  background-color: #1f849c !important;
+  color: #ffffff !important;
 }
 
 #boton-change-daycheck:hover {
-  background-color: whitesmoke !important;
-  color: #000000 !important;
+  background-color: #29b1d3 !important;
+  color: #9f283b !important;
 }
 
 .btn.tooltipped.daypast {

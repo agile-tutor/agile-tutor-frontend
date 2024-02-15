@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Context } from '../context/Context.js';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../Login.css";
 import M from "materialize-css";
 import logo from "../TIPLOGO.png"
@@ -8,7 +8,7 @@ import logo from "../TIPLOGO.png"
 const Login = () => {
     const [email, setemail] = useState('');
     const [password, setpassword] = useState('');
-    const { loginTutor, tutor, handleActiveSection } = useContext(Context);
+    const { loginTutor, tutor, handleActiveSection, tutorId } = useContext(Context);
 
     const [inputsVisible, setInputsVisible] = useState([false, false])
 
@@ -19,6 +19,8 @@ const Login = () => {
             setInputsVisible([inputsVisible[0], !inputsVisible[1]])
         }
     }
+
+    let navigate = useNavigate();
 
     const PostData = () => {
         if (!(email && password)) {
@@ -78,13 +80,7 @@ const Login = () => {
                 </div>
             </div>
             {/*console.log("tutor:" + tutor.email)*/}
-            {tutor.email == "admin" ?
-                <div className="fixed-action-btn">
-                    <Link className="btn-floating btn-large red-app" id="hover-btn" title="subir .CSV" to="/uploadFiles" >
-                        <i className="large material-icons">publish</i>
-                    </Link>
-                </div>
-                : <div></div>}
+            {tutorId !== 0 && tutor.email == "admin" ? navigate(`/dashboard/`) : () => { }}
         </div >)
 };
 

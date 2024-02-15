@@ -168,6 +168,49 @@ class TutorService {
         }
     }
 
+    async getTutorFromCourse(courseId) {
+        try {
+            const tutorJson = await axios.get(`${REST_SERVER_URL}/api/course/tutor/${courseId}`, {
+                method: 'GET',
+                mode: 'no-cors',
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Credentials': 'true'
+                },
+                credentials: 'same-origin',
+            })
+            return this.tutorAsJson(tutorJson.data);
+        } catch (err) {
+            M.toast({ html: "Datos invalidos o la comision no existe", classes: 'rounded red-app-semitr' });
+            console.log(err);
+        }
+    }
+
+    async changeTutorCourse(tutorId, courseId) {
+        try {
+            const response = await axios({
+                url: `${REST_SERVER_URL}/api/tutor/course/move/${tutorId}/${courseId}`,
+                method: 'PUT',
+                data: {},
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Credentials': 'true'
+                },
+            }
+            );
+            const responseData = response.data;
+            console.log(responseData)
+            M.toast({
+                html: `El tutor se ha asignado a la comisión satisfactoriamente`, classes: 'rounded blue-app-semitr'
+            });
+        } catch (err) {
+            M.toast({ html: "Ha ocurrido un error durante el cambio de comisión", classes: 'rounded red-app-semitr' });
+            console.log(err);
+        }
+    }
+
     async getAllTutors() {
         try {
             const tutorsJson = await axios.get(`${REST_SERVER_URL}/api/tutor`, {

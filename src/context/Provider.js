@@ -19,6 +19,7 @@ export const Provider = ({ children }) => {
   const [tutorId, setTutorId] = useState(0);
   const [tutor, setTutor] = useState('');
   const [tutors, setTutors] = useState([]);
+  const [tutorsCourses, setTutorsCourses] = useState([]);
   const [studentsOfTutor, setStudentsOfTutor] = useState([]);
   const [studentsCourseWhithAttendanceMeeting, setStudentsCourseWhithAttendanceMeeting] = useState([]);
   const percentCourse = {};
@@ -56,6 +57,7 @@ export const Provider = ({ children }) => {
     //  attendedDayCourse,
     encuentros,
     studentsCourseWhithAttendanceMeeting,
+    tutorsCourses,
     //funciones que afectan el estado
     updateAttendance: (target) => {
 
@@ -127,6 +129,12 @@ export const Provider = ({ children }) => {
     },
     putStudentCourseChange: (studentId, courseId) => {
       changeAStudentToAnotherCourse(studentId, courseId);
+    },
+    getTutorCourse: (courseId) => {
+      getTutorFromCourse(courseId);
+    },
+    putTutorCourseChange: (turorId, courseId) => {
+      changeTutorFromCourse(turorId, courseId);
     },
     addNewStudentToACourse: (newStudent) => {
       addStudentToCourse(newStudent);
@@ -345,6 +353,28 @@ export const Provider = ({ children }) => {
   const changeAStudentToAnotherCourse = async (studentId, courseId) => {
     try {
       await tutorService.changeStudentCourse(studentId, courseId);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  const getTutorFromCourse = async (courseId) => {
+    let tutorCourseSetted = tutorCourses;
+    try {
+      let tutor = await tutorService.getTutorFromCourse(courseId);
+      console.log({ courseid: courseId, tutor: tutor })
+      if (!tutorCourses.some((tutorcourse) => { return tutorcourse.courseid == courseId})) {
+        tutorCourseSetted.push({ courseid: courseId, tutor: tutor })
+      }
+    } catch (error) {
+      console.error(error);
+    }
+    setTutorsCourses(tutorCourseSetted);
+  }
+
+  const changeTutorFromCourse = async (tutorId, courseId) => {
+    try {
+      await tutorService.changeTutorCourse(tutorId, courseId);
     } catch (error) {
       console.error(error);
     }

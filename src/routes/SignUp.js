@@ -31,9 +31,18 @@ const SignUp = () => {
                 M.toast({ html: "La contraseña ingresada no coincide", classes: 'rounded red-app-semitr' });
             } else {
                 signUpTutor(name, surname, email, password);
+                cleanForm();
             }
         }
     };
+
+    const cleanForm = () => {
+        setname("");
+        setsurname("");
+        setemail("");
+        setpassword("");
+        setpasswordcheck("");
+    }
 
     useEffect(() => {
         handleActiveSection(98);

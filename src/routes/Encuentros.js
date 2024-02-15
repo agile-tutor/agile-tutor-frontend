@@ -2,8 +2,8 @@ import { useContext, useState, useEffect } from 'react';
 import 'materialize-css/dist/css/materialize.min.css'
 import { Context } from '../context/Context.js';
 import Preloader from '../utils/Preloader.js';
-import EncuentroEdit from './EncuentroEdit.js';
-import NewMeetingModal from './NewMeetingModal.js';
+import EncuentroEdit from '../components/EncuentroEdit.js';
+import NewMeetingModal from '../components/NewMeetingModal.js';
 import "../App.css"
 
 function Encuentros() {
