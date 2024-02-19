@@ -206,7 +206,7 @@ class TutorService {
                 html: `El tutor se ha asignado a la comisión satisfactoriamente`, classes: 'rounded blue-app-semitr'
             });
         } catch (err) {
-            M.toast({ html: "Ha ocurrido un error durante el cambio de comisión", classes: 'rounded red-app-semitr' });
+            M.toast({ html: "Ha ocurrido un error durante el cambio de tutor", classes: 'rounded red-app-semitr' });
             console.log(err);
         }
     }

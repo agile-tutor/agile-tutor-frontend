@@ -1,19 +1,25 @@
 .dashboardpanel {
-    height: 300px;
+    height: auto;
     border-radius: 10px;
-    border-color: black;
-    background-color: blueviolet;
+    border-color: rgb(102, 25, 25);
+    background: rgb(238,174,202);
+    background: linear-gradient(180deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%); 
+    color: rgb(0, 0, 0);
     text-align: center;
     vertical-align: middle;
-    width: calc((94vw / 2) - 1vw);
+    width: calc((98vw / 2) - 1vw);
     display: inline-block;
-    padding-top: 20vh;
-    margin-right: .5vw;
-    margin-bottom: .5vh;
+    padding-top: .1vh;
+    padding-inline: 2vw;
+    margin-right: .2vw;
+    margin-bottom: .2vh;
+    font-size: medium;
 }
 
 .dashboardcontent {
     /*    columns: 2;*/
-    margin-top: 3vh;
-    margin-left: 1vw;
+    margin-top: 1vh;
+    padding-block: .2vh;
+    text-align: center;
+    font-size: medium;
 }

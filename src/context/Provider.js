@@ -359,17 +359,19 @@ export const Provider = ({ children }) => {
   }
 
   const getTutorFromCourse = async (courseId) => {
-    let tutorCourseSetted = tutorCourses;
+    let tutorsCourseSetted = tutorsCourses;
     try {
       let tutor = await tutorService.getTutorFromCourse(courseId);
       console.log({ courseid: courseId, tutor: tutor })
-      if (!tutorCourses.some((tutorcourse) => { return tutorcourse.courseid == courseId})) {
-        tutorCourseSetted.push({ courseid: courseId, tutor: tutor })
+      if (tutorsCourses.some((tutorcourse) => { return tutorcourse.courseid == courseId })) {
+        tutorsCourseSetted = tutorsCourses.filter((tutorcourse) => tutorcourse.courseid != courseId);
       }
+      tutorsCourseSetted.push({ courseid: courseId, tutor: tutor })
     } catch (error) {
       console.error(error);
     }
-    setTutorsCourses(tutorCourseSetted);
+    console.log(tutorsCourseSetted);
+    setTutorsCourses(tutorsCourseSetted);
   }
 
   const changeTutorFromCourse = async (tutorId, courseId) => {

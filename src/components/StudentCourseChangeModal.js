@@ -1,10 +1,11 @@
-import SelectCourseToChange from './SelectCourseToChange';
-import { useState/*, useContext, useEffect */} from "react";
-//import { Context } from '../context/Context.js';
+import SelectEntityToChange from './SelectEntityToChange';
+import { useState, useContext/*, useEffect */} from "react";
+import { Context } from '../context/Context.js';
 
 const StudentCourseChangeModal = ({ courseId, name, surname, studentid, handleClickChangeStudentCourse }) => {
 
     const [destinyCourse, setDestinyCourse] = useState(courseId);
+    const { courses } = useContext(Context);
   //  const { getAllStudents } = useContext(Context);
 /*
     useEffect(() => {
@@ -37,7 +38,7 @@ const StudentCourseChangeModal = ({ courseId, name, surname, studentid, handleCl
                             <div className="input-field col s3">
                             </div>
                             <div className="input-field col s6">
-                                <SelectCourseToChange setDestinyCourse={setDestinyCourse} />
+                                <SelectEntityToChange setDestinyEntity={setDestinyCourse} entityArray={courses} entityName={"Comisión"} />
                             </div>
                             <div className="input-field col s3">
 
