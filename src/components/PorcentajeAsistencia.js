@@ -5,7 +5,7 @@ import CardAlumno from './CardAlumno';
 
 function PorcentajeAsistencia() {
 
-    const { tutor, tutorCourses, tutorCoursesWithAverage, tutorId, getAllCoursesFromTutor, studentsOfTutor, getStudentsOfTutor, updateTutorCoursesWithAverage, studentSurvey, getAllSurveys, handleActiveSection, porcentajeActual, changePercent } = useContext(Context);
+    const { tutor, tutorCourses, tutorCoursesWithAverage, tutorId/*, getAllCoursesFromTutor*/, studentsOfTutor, getStudentsOfTutor, updateTutorCoursesWithAverage, studentSurvey, getAllSurveys, handleActiveSection, porcentajeActual, changePercent } = useContext(Context);
     //    const [porcentaje, setPorcentaje] = useState(75);
     const [viewsettings, setViewsettings] = useState(false);
     //  const [courseData, setCourseData] = useState([]);
@@ -34,13 +34,13 @@ function PorcentajeAsistencia() {
         getStudentsOfTutor(tutorId);
         updateTutorCoursesWithAverage();
     }, [tutorCourses]);
-
+/*
     useEffect(() => {
         getAllCoursesFromTutor(tutorId);
-        /*       getCourseData();
-               console.log(courseData);*/
+               getCourseData();
+               console.log(courseData);
     }, []);
-
+*/
 
     useEffect(() => {
         getAllSurveys();

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { /*useEffect,*/ useState } from "react"
 import { alumnoService } from "../service/alumnoService"
 import { tutorService } from "../service/tutorService"
 import { courseService } from "../service/courseService"
@@ -313,7 +313,7 @@ export const Provider = ({ children }) => {
       console.error(error);
     }
   }
-
+/*
   const setAllCourses = async () => {
     try {
       await loadAllCourses();
@@ -321,7 +321,7 @@ export const Provider = ({ children }) => {
       console.error(error);
     }
   }
-
+*/
   const setAllTutors = async () => {
     try {
       await loadAllTutors();
@@ -511,11 +511,11 @@ export const Provider = ({ children }) => {
     }
   }
 
-
+/*
   useEffect(() => {
     setAllCourses();
   }, [tutorId]);
-  /*
+  *//*
     useEffect(() => {
       attendedAtDays(number);
     }, []);

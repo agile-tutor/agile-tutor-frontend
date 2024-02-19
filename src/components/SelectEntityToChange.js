@@ -22,7 +22,7 @@ const SelectEntityToChange = ({ setDestinyEntity, entityArray, entityName }) => 
         (entityArray != undefined || entityArray.length) ?
             < div className="input-field" >
                 <select className="browser-default" value="" onChange={handleTypeSelect}>
-                    <option value="" disabled selected>Seleccione {entityName}</option>
+                    <option value="" disabled /*selected*/>Seleccione {entityName}</option>
                     {entityArray.map((entity) => {
                         return <option key={entity.id} value={entity.id}>{entity.id} {entity.name}</option>
                     })}

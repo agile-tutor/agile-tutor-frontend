@@ -52,7 +52,6 @@ function CourseChanges() {
                     : <tr>
                         <td></td>
                         <td></td>
-                        <td></td>
                     </tr>
             }))
     }
@@ -74,7 +73,6 @@ function CourseChanges() {
                 <div>{" Tutor Actual: " + tutordetails.id + " " + tutordetails.name}</div>
             </td>
             <td className='dashboardcontent'>
-
                 <SelectEntityToChange setDestinyEntity={setDestinyTutor} entityArray={tutors} entityName={"Tutor"} />
                 {/*destinyTutor != undefined && destinyTutor.length > 0  ? destinyTutor.find((coursetutor) => coursetutor.courseid == course.id).tutorid : ""*/}
             </td>
@@ -90,7 +88,6 @@ function CourseChanges() {
                         <tr>
                             <th>Nombre de la comisión</th>
                             <th>Nombre del tutor</th>
-                            <th>Actualizar</th>
                         </tr>
                         {courseDetails()}
                     </tbody>

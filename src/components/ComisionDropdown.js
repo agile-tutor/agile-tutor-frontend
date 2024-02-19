@@ -5,17 +5,17 @@ import { Link } from 'react-router-dom';
 
 function ComisionDropdown({ action, style, route, icon }) {
 
-    const { getCourse, tutorCourses, getAllCoursesFromTutor, tutorId } = useContext(Context)
+    const { getCourse, tutorCourses/*, getAllCoursesFromTutor, tutorId*/ } = useContext(Context)
 
     useEffect(() => {
         let elems = document.querySelectorAll('.dropdown-trigger');
         M.Dropdown.init(elems, { inDuration: 300, outDuration: 225 });
     }, []);
-
+/*
     useEffect(() => {
         getAllCoursesFromTutor(tutorId)
     }, []);
-
+*/
     return (
         <div>
             <ul id={style} className="dropdown-content">

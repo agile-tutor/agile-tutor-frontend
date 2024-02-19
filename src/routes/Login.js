@@ -39,6 +39,12 @@ const Login = () => {
         handleActiveSection(99);
     }, []);
 
+    useEffect(() => {
+        if (tutorId !== 0 && tutor.email == "admin") {
+            navigate(`/dashboard/`)
+        }
+    }, [tutor]);
+
     return (
         <div className="loginRegisterCards">
             <div className="mycard">
@@ -79,8 +85,6 @@ const Login = () => {
                     </h5>
                 </div>
             </div>
-            {/*console.log("tutor:" + tutor.email)*/}
-            {tutorId !== 0 && tutor.email == "admin" ? navigate(`/dashboard/`) : () => { }}
         </div >)
 };
 
