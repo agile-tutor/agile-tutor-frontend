@@ -30,6 +30,7 @@ function NavBar() {
     };
 
     const handleKeyDown = (event) => {
+        //  console.log(event)
         if (event.key === 'Enter') {
             M.toast({ html: 'Se presiono Enter', classes: 'rounded' });
         }
@@ -67,13 +68,15 @@ function NavBar() {
                                 <li className='searchComponent'>
                                     <form>
                                         <div className="input-field">
-                                            <input id="search" type="search" value={input} onBlur={() => handleChange("")} onChange={(e) => handleChange(e.target.value)} onKeyDown={handleKeyDown} autoComplete="off" />
+                                            <input id="search" type="search" value={input} /*onBlur={() => handleChange("")}*/ onChange={(e) => handleChange(e.target.value)} onKeyDown={handleKeyDown} autoComplete="off" />
                                             <label className="label-icon iconsearch" htmlFor="search"><i id='lupasearch' className="material-icons">search</i></label>
                                             <i className="material-icons iconsearch" onClick={() => handleChange("")}>close</i>
                                         </div>
                                     </form>
-                                    <SearchResultList results={results} />
-                                </li>
+                                    {
+                                        results && results.length > 0 ? <SearchResultList results={results} />
+                                            : <div></div>
+                                    }</li>
                                 <li >
                                     <div>
                                         <Link className="navbar-item" title="click to LOGOUT" id='nav-var-web' to="/" onClick={() => logOutTutor()} ><i className="material-icons">person_pin</i>  <br style={{ position: 'fixed' }} />{tutor ? tutor.name : ''}</Link>

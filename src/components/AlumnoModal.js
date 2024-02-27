@@ -3,7 +3,7 @@ const AlumnoModal = ({ courseId, name, surname, studentid, identifier, emailedit
 
     return (
         <div id={"modaledit" + studentid} className="modal">
-            {/*console.log(studentid)*/}
+            {console.log(studentid)}
             <div className="modal-content">
                 {handleClickUpdate == null && handleAddStudentToACourse == null ?
                     <h4 id="modal-title">Datos del estudiante:</h4>

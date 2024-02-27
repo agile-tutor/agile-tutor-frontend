@@ -69,8 +69,8 @@ function CourseChanges() {
         const tutordetails = tutorsCourses.find((tutorcourse) => tutorcourse.courseid == course.id).tutor
         return <tr key={course.id}>
             <td className='dashboardcontent'>
-                <div>{course.name}</div>
-                <div>{" Tutor Actual: " + tutordetails.id + " " + tutordetails.name}</div>
+                <h6>{course.name}</h6>
+                <h5>{" Tutor actual: " + tutordetails.id + " " + tutordetails.name}</h5>
             </td>
             <td className='dashboardcontent'>
                 <SelectEntityToChange setDestinyEntity={setDestinyTutor} entityArray={tutors} entityName={"Tutor"} />

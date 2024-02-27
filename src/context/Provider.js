@@ -4,7 +4,7 @@ import { tutorService } from "../service/tutorService"
 import { courseService } from "../service/courseService"
 import { scheduledDayService } from "../service/scheduledDayService"
 import { Context } from "./Context"
-import { AttendanceModel } from "../domain/attendanceModel"
+//import { AttendanceModel } from "../domain/attendanceModel"
 import { StudentAttendanceDTO } from "../domain/studentAttendanceDTO"
 
 export const Provider = ({ children }) => {
@@ -205,10 +205,10 @@ export const Provider = ({ children }) => {
 
     return studentAttendanceJson
   }
-
+/*
   const attendanceAsJson = (attendanceJson) => {
     return AttendanceModel.fromJson(attendanceJson)
-  }
+  }*/
 
   const updateAttendances = async (updatedAttendances, number, day) => {
     await alumnoService.updateAttendances(updatedAttendances, number, day)
@@ -239,8 +239,8 @@ export const Provider = ({ children }) => {
   const loadAllStudents = async () => {
     try {
       const allData = await alumnoService.getAllStudents();
-      allData.map(alumno =>
-        alumno.attendances.map(attendanceAsJson));
+/*      allData.map(alumno =>
+        alumno.attendances.map(attendanceAsJson));*/
       setAllStudents(allData);
     } catch (error) {
       console.error(error);
