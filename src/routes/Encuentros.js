@@ -73,7 +73,8 @@ function Encuentros() {
                             {
                                 (encuentros == undefined) ? <Preloader /> :
                                     (encuentros.length !== 0) ?
-                                        encuentros.map((encuentro) => { return (<EncuentroEdit key={encuentro.id} id={encuentro.id} dayUpstream={encuentro.day} titleUpstream={encuentro.title} schedulerdayUpstream={encuentro.date} handleClickUpdateUpstream={handleEditUpdateMeeting} handleClickDeleteUpstream={handleDeleteMeeting} />) }) :
+                                        encuentros.map((encuentro) => <EncuentroEdit key={encuentro.id} id={encuentro.id} dayUpstream={encuentro.day} titleUpstream={encuentro.title} schedulerdayUpstream={encuentro.date} handleClickUpdateUpstream={handleEditUpdateMeeting} handleClickDeleteUpstream={handleDeleteMeeting} />
+                                        ) :
                                         <tr></tr>
                             }
                         </tbody>

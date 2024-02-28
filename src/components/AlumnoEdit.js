@@ -43,7 +43,7 @@ function AlumnoEdit({ courseId, nombre, apellido, identificacion, email, observa
         let elems = document.querySelectorAll('.modal');
         M.Modal.init(elems);
     }, []);
-
+    
     return (
         <tr className={clnametr} >
             <td id="descripcion-edicion-estudiante">{apellido}</td>

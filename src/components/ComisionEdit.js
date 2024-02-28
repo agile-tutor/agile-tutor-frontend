@@ -9,7 +9,7 @@ import NewStudentModal from './NewStudentModal.js';
 
 function ComisionEdit() {
 
-    const { handleActiveSection, checked, number, blockUnblockStudent, updateStudent, getCourse, putStudentCourseChange, addNewStudentToACourse } = useContext(Context);
+    const { handleActiveSection, checked, number, blockUnblockStudent, updateStudent, getCourse, putStudentCourseChange, addNewStudentToACourse, getAllCourses } = useContext(Context);
     const [change, setChange] = useState(false);
     const [chargin, setChargin] = useState(false);
 
@@ -61,6 +61,10 @@ function ComisionEdit() {
         handleActiveSection(1);
     }, []);
 
+    useEffect(() => {
+        getAllCourses();
+    }, []);
+
     return (
         <div>
             <h4 className="titulo-tabla" ><i className="material-icons">mode_edit</i> Editar Comisión {+ number}</h4>
@@ -84,18 +88,9 @@ function ComisionEdit() {
                             </tr>
                         </thead>
                         <tbody>
-
-                            {/*
-                                checked.sort((a, b) => {
-                                    if (a.surname === b.surname) {
-                                        return a.name < b.name ? -1 : 1
-                                    } else {
-                                        return a.surname < b.surname ? -1 : 1
-                                     }
-                                }).map((alumno) => { return (<AlumnoEdit key={alumno.id} courseId={alumno.courseId} id={alumno.id} apellido={alumno.surname} nombre={alumno.name} identificacion={alumno.identifier} email={alumno.email} blocked={alumno.blocked} observaciones={alumno.observations} clnametr={!alumno.blocked ? 'Fila-alumno' : 'Fila-alumno-block'} clicons={!alumno.blocked ? 'material-icons left' : 'material-icons left redicons'} handleEditBlockStudent={handleEditBlockStudent} handleEditUpdateStudent={handleEditUpdateStudent} handleEditChangeStudentCourse={handleEditChangeStudentCourse} />) })
-                            */  }
-
-                            {checked.map((alumno) => { return (<AlumnoEdit key={alumno.id} courseId={alumno.courseId} id={alumno.id} apellido={alumno.surname} nombre={alumno.name} identificacion={alumno.identifier} email={alumno.email} blocked={alumno.blocked} observaciones={alumno.observations} clnametr={!alumno.blocked ? 'Fila-alumno' : 'Fila-alumno-block'} clicons={!alumno.blocked ? 'material-icons left' : 'material-icons left redicons'} handleEditBlockStudent={handleEditBlockStudent} handleEditUpdateStudent={handleEditUpdateStudent} handleEditChangeStudentCourse={handleEditChangeStudentCourse} />) })
+                            {
+                                checked.map((alumno) => <AlumnoEdit key={alumno.id} courseId={alumno.courseId} id={alumno.id} apellido={alumno.surname} nombre={alumno.name} identificacion={alumno.identifier} email={alumno.email} blocked={alumno.blocked} observaciones={alumno.observations} clnametr={!alumno.blocked ? 'Fila-alumno' : 'Fila-alumno-block'} clicons={!alumno.blocked ? 'material-icons left' : 'material-icons left redicons'} handleEditBlockStudent={handleEditBlockStudent} handleEditUpdateStudent={handleEditUpdateStudent} handleEditChangeStudentCourse={handleEditChangeStudentCourse} />
+                                )
                             }
                         </tbody>
                     </table>

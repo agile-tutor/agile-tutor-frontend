@@ -23,9 +23,12 @@ const SelectEntityToChange = ({ setDestinyEntity, entityArray, entityName }) => 
             < div className="input-field" >
                 <select className="browser-default" value="" onChange={handleTypeSelect}>
                     <option value="" disabled /*selected*/>Seleccione {entityName}</option>
-                    {entityArray.map((entity) => {
-                        return <option key={entity.id} value={entity.id}>{entity.id} {entity.name}</option>
-                    })}
+                    {console.log(entityArray)}
+                    {
+                        entityArray.map((entity) =>
+                            <option key={entity.id} value={entity.id}>{entity.id} {entity.name}</option>
+                        )
+                    }
                 </select>
                 {<div className="input-field center col s12" id="course-destiny-field">
                     <input disabled value={selectedOption} id="entityid" type="text" className="validate" />

@@ -157,26 +157,24 @@ function SchedulerTask() {
           <div className="scheduler-task-title center" >Alumnos a notificar:
             <div className="marginbt5vh center" >
               <div className=" center" >
-                {students.map((alumno) => {
-                  return (
-                    <div key={alumno.id} className="to-notify">
-                      <div className="card">
-                        <div className="card-content">
-                          <div className="email-card-container">
-                            <i className="material-icons">face</i><span>{" " + alumno.name + " " + alumno.surname}</span>
-                          </div>
-                          <div className="email-card-container">
-                            <i className="material-icons">school</i><span> Comisión {alumno.courseId}</span>
-                          </div>
-                          <a className="btn-floating halfway-fab waves-effect waves-light" onClick={() => handleClickDeleteAbsentNotification(alumno.id)}><i className="material-icons dont-notify">notifications_off</i></a>
-                          <div className="email-card-container">
-                            <i className="material-icons">email</i><span> {alumno.email}</span>
-                          </div>
+                {students.map((alumno) =>
+                  <div key={alumno.id} className="to-notify">
+                    <div className="card">
+                      <div className="card-content">
+                        <div className="email-card-container">
+                          <i className="material-icons">face</i><span>{" " + alumno.name + " " + alumno.surname}</span>
+                        </div>
+                        <div className="email-card-container">
+                          <i className="material-icons">school</i><span> Comisión {alumno.courseId}</span>
+                        </div>
+                        <a className="btn-floating halfway-fab waves-effect waves-light" onClick={() => handleClickDeleteAbsentNotification(alumno.id)}><i className="material-icons dont-notify">notifications_off</i></a>
+                        <div className="email-card-container">
+                          <i className="material-icons">email</i><span> {alumno.email}</span>
                         </div>
                       </div>
                     </div>
-                  )
-                })}
+                  </div>
+                )}
               </div>
             </div>
           </div>

@@ -119,9 +119,9 @@ function UploadFiles() {
                                             < div className="file-field input-field" id='tutor-file-field'>
                                                 <select className="browser-default" value="" onChange={handleTypeSelect}>
                                                     <option value="" disabled selected>Asigne un tutor a la comisión</option>
-                                                    {tutors.map((tutor) => {
-                                                        return <option key={tutor.id} value={tutor.id}>{tutor.id + " " + tutor.surname + " " + tutor.name}</option>
-                                                    })}
+                                                    {tutors.map((tutor) =>
+                                                        <option key={tutor.id} value={tutor.id}>{tutor.id + " " + tutor.surname + " " + tutor.name}</option>
+                                                    )}
                                                 </select>
                                                 {/*console.log(selectedOption)*//*
                             <div>
@@ -192,27 +192,25 @@ function UploadFiles() {
                                 Email
                             </td>
                         </tr>
-                        {parsedData.map((value, index) => {
-                            /*console.log(value)*/
-                            return (
-                                <tr key={index}>
-                                    <td>
-                                        {value[0]}
-                                    </td>
-                                    <td>
-                                        {value[1]}
-                                    </td>
-                                    <td>
-                                        {value[2]}
-                                    </td>
-                                    <td>
-                                        {courseId}
-                                    </td>
-                                    <td>
-                                        {value[4]}
-                                    </td>
-                                </tr>)
-                        })}
+                        {parsedData.map((value, index) =>
+                            <tr key={index}>
+                                <td>
+                                    {value[0]}
+                                </td>
+                                <td>
+                                    {value[1]}
+                                </td>
+                                <td>
+                                    {value[2]}
+                                </td>
+                                <td>
+                                    {courseId}
+                                </td>
+                                <td>
+                                    {value[4]}
+                                </td>
+                            </tr>
+                        )}
                     </table>
                 </div>
                 :

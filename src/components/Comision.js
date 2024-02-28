@@ -115,12 +115,11 @@ function Comision() {
     return (
       <div className="col s12">
         <ul className="tabs">
-          {encuentros.map((meeting) => {
-            return (<li key={meeting.day} className="tab col s2"><button className={`btn tooltipped ${/*presentDay() == meeting.day ? "daypresent" : pastPresentOFuture(meeting.day) ? "daypast" : "dayfuture"*/" "}`} id="boton-change-daycheck" data-position="top" data-tooltip={meeting.title} onClick={() => {
+          {encuentros.map((meeting) =>
+            <li key={meeting.day} className="tab col s2"><button className={`btn tooltipped ${/*presentDay() == meeting.day ? "daypresent" : pastPresentOFuture(meeting.day) ? "daypast" : "dayfuture"*/" "}`} id="boton-change-daycheck" data-position="top" data-tooltip={meeting.title} onClick={() => {
               changeDay(meeting.day, meeting.title)
             }}>{meeting.day}</button></li>
-            )
-          })}
+          )}
         </ul>
       </div>
     )
@@ -129,10 +128,9 @@ function Comision() {
   const studentsRow = (students) => {
 
     return (
-      students.map((student) => {
-        return (<Alumno key={student.id} id={student.id} nombre={student.surname + " " + student.name}
+      students.map((student) =>
+        <Alumno key={student.id} id={student.id} nombre={student.surname + " " + student.name}
           asistencia={student.attendance.attended} clnametr={!student.blocked ? 'Fila-alumno' : 'Fila-alumno-block'} disablevalue={student.blocked || disabled ? true : false} handleChange={handleChangeAttendance} />)
-      })
     )
   }
 

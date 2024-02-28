@@ -6,11 +6,10 @@ function SearchResultList({ results }) {
 
     return (
         <div className='result-list' >
-        {results.map((result, id) => {
-            return <SearchResult key={id} result={result}/>;
-        })
-        }
-         </div>
+            {results.map((result, id) =>
+                <SearchResult key={id} result={result} />
+            )}
+        </div>
     )
 }
 

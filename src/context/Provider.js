@@ -205,10 +205,10 @@ export const Provider = ({ children }) => {
 
     return studentAttendanceJson
   }
-/*
-  const attendanceAsJson = (attendanceJson) => {
-    return AttendanceModel.fromJson(attendanceJson)
-  }*/
+  /*
+    const attendanceAsJson = (attendanceJson) => {
+      return AttendanceModel.fromJson(attendanceJson)
+    }*/
 
   const updateAttendances = async (updatedAttendances, number, day) => {
     await alumnoService.updateAttendances(updatedAttendances, number, day)
@@ -239,8 +239,8 @@ export const Provider = ({ children }) => {
   const loadAllStudents = async () => {
     try {
       const allData = await alumnoService.getAllStudents();
-/*      allData.map(alumno =>
-        alumno.attendances.map(attendanceAsJson));*/
+      /*      allData.map(alumno =>
+              alumno.attendances.map(attendanceAsJson));*/
       setAllStudents(allData);
     } catch (error) {
       console.error(error);
@@ -313,15 +313,15 @@ export const Provider = ({ children }) => {
       console.error(error);
     }
   }
-/*
-  const setAllCourses = async () => {
-    try {
-      await loadAllCourses();
-    } catch (error) {
-      console.error(error);
+  /*
+    const setAllCourses = async () => {
+      try {
+        await loadAllCourses();
+      } catch (error) {
+        console.error(error);
+      }
     }
-  }
-*/
+  */
   const setAllTutors = async () => {
     try {
       await loadAllTutors();
@@ -433,7 +433,7 @@ export const Provider = ({ children }) => {
     try {
       const allSurveys = await tutorService.loadSurveys();
       setAllSurveys(allSurveys);
-      const studentsWhoCompleteSurvey = allSurveys.map((survey) => { return (survey.studentId) })
+      const studentsWhoCompleteSurvey = allSurveys.map((survey) => survey.studentId)
       setStudentSurvey(studentsWhoCompleteSurvey)
 
     } catch (error) {
@@ -511,11 +511,11 @@ export const Provider = ({ children }) => {
     }
   }
 
-/*
-  useEffect(() => {
-    setAllCourses();
-  }, [tutorId]);
-  *//*
+  /*
+    useEffect(() => {
+      setAllCourses();
+    }, [tutorId]);
+    *//*
     useEffect(() => {
       attendedAtDays(number);
     }, []);

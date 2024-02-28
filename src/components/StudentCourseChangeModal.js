@@ -1,17 +1,12 @@
 import SelectEntityToChange from './SelectEntityToChange';
-import { useState, useContext/*, useEffect */} from "react";
+import { useState, useContext, /*useEffect*/ } from "react";
 import { Context } from '../context/Context.js';
 
 const StudentCourseChangeModal = ({ courseId, name, surname, studentid, handleClickChangeStudentCourse }) => {
 
     const [destinyCourse, setDestinyCourse] = useState(courseId);
     const { courses } = useContext(Context);
-  //  const { getAllStudents } = useContext(Context);
-/*
-    useEffect(() => {
-        getAllStudents();
-    }, []);
-*/
+
     return (
 
         <div id={"modalchangecourse" + studentid} className="modal">
