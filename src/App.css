@@ -321,16 +321,6 @@
   background-color: #1f849c;
 }
 
-#boton-change-daycheck:focus {
-  background-color: #fde5e9;
-  color: #1f849c;
-}
-
-#boton-change-daycheck:hover {
-  background-color: #9f283b;
-  color: #ffffff;
-}
-
 .titulo-tabla {
   padding: .5rem;
   margin: 0rem 0rem 0rem 0rem;
@@ -1151,18 +1141,6 @@ nav ul a {
 [type="radio"].with-gap:checked+span::after {
   border: 2px solid #1f849c;
 }
-
-[type="radio"]:checked+span::after,
-[type="radio"].with-gap:checked+span::before,
-[type="radio"].with-gap:checked+span::after {
-  border: 2px solid #1f849c;
-}
-
-[type="radio"]:checked+span::after,
-[type="radio"].with-gap:checked+span::after {
-  background-color: #1f849c;
-}
-
 
 [type="checkbox"]:checked+span:not(.lever)::before {
   border-right: 2px solid #1f849c;
