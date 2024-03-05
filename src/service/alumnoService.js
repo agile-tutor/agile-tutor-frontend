@@ -21,7 +21,7 @@ class AlumnoService {
         method: 'GET',
         mode: 'no-cors',
         headers: {
-          'Access-Control-Allow-Origin': '*',
+          /*'Access-Control-Allow-Origin': '*',*/
           'Content-Type': 'application/json',
           'Access-Control-Allow-Credentials': 'true'
         },
@@ -42,7 +42,7 @@ class AlumnoService {
         method: 'GET',
         mode: 'no-cors',
         headers: {
-          'Access-Control-Allow-Origin': '*',
+          /*'Access-Control-Allow-Origin': '*',*/
           'Content-Type': 'application/json',
           'Access-Control-Allow-Credentials': 'true'
         },
@@ -63,7 +63,7 @@ class AlumnoService {
         method: 'GET',
         mode: 'no-cors',
         headers: {
-          'Access-Control-Allow-Origin': '*',
+          /*'Access-Control-Allow-Origin': '*',*/
           'Content-Type': 'application/json',
           'Access-Control-Allow-Credentials': 'true'
         },
@@ -85,7 +85,7 @@ class AlumnoService {
         method: 'GET',
         mode: 'no-cors',
         headers: {
-          'Access-Control-Allow-Origin': '*',
+          /*'Access-Control-Allow-Origin': '*',*/
           'Content-Type': 'application/json',
           'Access-Control-Allow-Credentials': 'true'
         },
@@ -132,7 +132,7 @@ class AlumnoService {
         method: 'PUT',
         data: asistencias,
         headers: {
-          'Access-Control-Allow-Origin': '*',
+          /*'Access-Control-Allow-Origin': '*',*/
           'Content-Type': 'application/json',
           'Access-Control-Allow-Credentials': 'true'
         },
@@ -154,7 +154,7 @@ class AlumnoService {
         method: 'PUT',
         data: { blocked: blockedstring },
         headers: {
-          'Access-Control-Allow-Origin': '*',
+          /*'Access-Control-Allow-Origin': '*',*/
           'Content-Type': 'application/json',
           'Access-Control-Allow-Credentials': 'true'
         },
@@ -174,7 +174,7 @@ class AlumnoService {
         method: 'GET',
         mode: 'no-cors',
         headers: {
-          'Access-Control-Allow-Origin': '*',
+          /*'Access-Control-Allow-Origin': '*',*/
           'Content-Type': 'application/json',
           'Access-Control-Allow-Credentials': 'true'
         },
@@ -205,7 +205,7 @@ class AlumnoService {
         method: 'GET',
         mode: 'no-cors',
         headers: {
-          'Access-Control-Allow-Origin': '*',
+          /*'Access-Control-Allow-Origin': '*',*/
           'Content-Type': 'application/json',
           'Access-Control-Allow-Credentials': 'true'
         },
@@ -228,7 +228,7 @@ class AlumnoService {
         method: 'PUT',
         data: student,
         headers: {
-          'Access-Control-Allow-Origin': '*',
+          /*'Access-Control-Allow-Origin': '*',*/
           'Content-Type': 'application/json',
           'Access-Control-Allow-Credentials': 'true'
         },
@@ -248,7 +248,7 @@ class AlumnoService {
         method: 'GET',
         mode: 'no-cors',
         headers: {
-          'Access-Control-Allow-Origin': '*',
+          /*'Access-Control-Allow-Origin': '*',*/
           'Content-Type': 'application/json',
           'Access-Control-Allow-Credentials': 'true'
         },
@@ -269,7 +269,7 @@ class AlumnoService {
         method: 'GET',
         mode: 'no-cors',
         headers: {
-          'Access-Control-Allow-Origin': '*',
+          /*'Access-Control-Allow-Origin': '*',*/
           'Content-Type': 'application/json',
           'Access-Control-Allow-Credentials': 'true'
         },
@@ -289,7 +289,7 @@ class AlumnoService {
         method: 'GET',
         mode: 'no-cors',
         headers: {
-          'Access-Control-Allow-Origin': '*',
+          /*'Access-Control-Allow-Origin': '*',*/
           'Content-Type': 'application/json',
           'Access-Control-Allow-Credentials': 'true'
         },
@@ -314,7 +314,7 @@ class AlumnoService {
         method: 'POST',
         data: completeSurvey,
         headers: {
-          'Access-Control-Allow-Origin': '*',
+          /*'Access-Control-Allow-Origin': '*',*/
           'Content-Type': 'application/json',
           'Access-Control-Allow-Credentials': 'true'
         },
@@ -350,7 +350,7 @@ class AlumnoService {
         method: 'POST',
         data: newStudentJson,
         headers: {
-          'Access-Control-Allow-Origin': '*',
+          /*'Access-Control-Allow-Origin': '*',*/
           'Content-Type': 'application/json',
           'Access-Control-Allow-Credentials': 'true'
         },
@@ -378,7 +378,7 @@ class AlumnoService {
         method: 'POST',
         data: JSON.stringify(students),
         headers: {
-          'Access-Control-Allow-Origin': '*',
+          /*'Access-Control-Allow-Origin': '*',*/
           'Content-Type': 'application/json',
           'Access-Control-Allow-Credentials': 'true'
         },
