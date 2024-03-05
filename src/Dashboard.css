@@ -7,7 +7,6 @@
     color: rgb(0, 0, 0);
     text-align: center;
     vertical-align: middle;
-    /*width: calc((99vw / 2) - 1vw);*/
     width: auto;
     display: table;
     margin-right: .2vw;
@@ -16,7 +15,6 @@
 }
 
 .dashboardcontent {
-    /*    columns: 2;*/
     margin-top: 1vh;
     padding-block: .5vh;
     padding-inline: 1vw;
