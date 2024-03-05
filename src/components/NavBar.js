@@ -70,7 +70,7 @@ function NavBar() {
                                         <div className="input-field">
                                             <input id="search" type="search" value={input} /*onBlur={() => handleChange("")}*/ onChange={(e) => handleChange(e.target.value)} onKeyDown={handleKeyDown} autoComplete="off" />
                                             <label className="label-icon iconsearch" htmlFor="search"><i id='lupasearch' className="material-icons">search</i></label>
-                                            <i className="material-icons iconsearch" onClick={() => handleChange("")}>close</i>
+                                            <i className="material-icons iconsearch" onClick={() => handleChange("")} onKeyUp={() => handleChange("")}>close</i>
                                         </div>
                                     </form>
                                     {

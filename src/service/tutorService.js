@@ -53,7 +53,6 @@ class TutorService {
             //                    ("success", success.headers.authorization);
             //                    history.push("/");
         } catch (err) {
-            (err);
             M.toast({ html: "Datos invalidos o el tutor no existe", classes: 'rounded red-app-semitr' });
         }
     }
@@ -73,7 +72,6 @@ class TutorService {
                 })
                 /*(coursesJson);*/
                 const courses = coursesJson.data.map(this.courseAsJson);
-                (courses);
                 return courses.sort((a, b) => (a.id < b.id) ? -1 : 1);
             } catch (error) {
                 console.error(error);

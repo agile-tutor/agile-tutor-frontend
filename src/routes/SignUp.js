@@ -86,7 +86,7 @@ const SignUp = () => {
                                 onChange={(e) => setpassword(e.target.value)}
                             />
                             <button id='btnLoginPass' className='col s1' onClick={() => toggleInputVisibility(0)} >
-                                {inputsVisible[0] ? <i className="material-icons small iconwhite">remove_red_eye</i> : <i className="material-icons small iconred">remove_red_eye</i>}
+                                {inputsVisible[0] ? <i className="material-icons small iconwhite strikediag">remove_red_eye</i> : <i className="material-icons small iconred">remove_red_eye</i>}
                             </button>
                             <br />
                         </div>
@@ -100,7 +100,7 @@ const SignUp = () => {
                                 onChange={(e) => setpasswordcheck(e.target.value)}
                             />
                             <button id='btnLoginPass' className='col s1' onClick={() => toggleInputVisibility(1)} >
-                                {inputsVisible[1] ? <i className="material-icons small iconwhite">remove_red_eye</i> : <i className="material-icons small iconred">remove_red_eye</i>}
+                                {inputsVisible[1] ? <i className="material-icons small iconwhite strikediag">remove_red_eye</i> : <i className="material-icons small iconred">remove_red_eye</i>}
                             </button>
                             <br />
                         </div>

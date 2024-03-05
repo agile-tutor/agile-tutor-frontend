@@ -171,7 +171,6 @@
 
 .nav-wrapper {
   background-color: #dad9d5;
-  background: rgb(2, 0, 36);
   background: linear-gradient(180deg, rgb(182, 182, 247) 1%, #dad9d5 100%);
   border-bottom: 2px solid #1f849c;
   height: 10vh;

@@ -125,7 +125,7 @@ function PorcentajeAsistencia() {
 
             <div className='porcentajeAsistencia' >
                 {tutor.email == "admin" ?
-                    <h5 className="percentEditOption center" ><i className="material-icons" onClick={() => handleView()}>settings</i>Configurar porcentaje requerido
+                    <h5 className="percentEditOption center" ><i className="material-icons" onClick={() => handleView()} onKeyDown={() => handleView()}>settings</i>Configurar porcentaje requerido
                         {viewsettings ?
                             <form action="#">
                                 <p className="range-field">

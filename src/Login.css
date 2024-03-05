@@ -198,7 +198,7 @@ select:focus {
     }
 
     .iconwhite {
-        color: #ffffff;
+        color: black;
         margin: -20px;
     }
 }
@@ -210,9 +210,13 @@ select:focus {
     }
 
     .iconwhite {
-        color: #ffffff;
+        color: black;
         margin: 0px;
     }
+}
+
+.strikediag {
+    background: linear-gradient(to left top, transparent 47.75%, currentColor 49.5%, currentColor 50.5%, transparent 52.25%);
 }
 
 .red-app {

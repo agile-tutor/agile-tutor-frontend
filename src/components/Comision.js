@@ -130,7 +130,7 @@ function Comision() {
     return (
       students.map((student) =>
         <Alumno key={student.id} id={student.id} nombre={student.surname + " " + student.name}
-          asistencia={student.attendance.attended} clnametr={!student.blocked ? 'Fila-alumno' : 'Fila-alumno-block'} disablevalue={student.blocked || disabled ? true : false} handleChange={handleChangeAttendance} />)
+          asistencia={student.attendance.attended} clnametr={!student.blocked ? 'Fila-alumno' : 'Fila-alumno-block'} disablevalue={student.blocked || disabled} handleChange={handleChangeAttendance} />)
     )
   }
 
@@ -173,7 +173,7 @@ function Comision() {
                 </tbody>
               </table>
             }
-            <button id='boton-save-attendance' className='btn waves-effect waves-light' type="submit" name='action' onClick={() => saveAttendance(diaToCheck)}>
+            <button id='boton-save-attendance' className='btn waves-effect waves-light' type="submit" name='action' onClick={() => saveAttendance(diaToCheck) } onKeyDown={() => saveAttendance(diaToCheck) }>
               <i id="guardar-asistencias-boton" className='material-icons left'>save </i>  Guardar Asistencias
             </button>
           </div>}
