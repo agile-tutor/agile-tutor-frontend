@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 
 const AlumnoModal = ({ courseId, name, surname, studentid, identifier, emailedit, observations, setName, setSurname, setIdentifier, setEmailedit, setObservations, handleClickUpdate, handleAddStudentToACourse }) => {
 
@@ -92,6 +93,23 @@ const AlumnoModal = ({ courseId, name, surname, studentid, identifier, emailedit
                 }
             </div>
         </div>);
+};
+
+AlumnoModal.propTypes = {
+    courseId: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    surname: PropTypes.string.isRequired,
+    studentid: PropTypes.number.isRequired,
+    identifier: PropTypes.string.isRequired,
+    emailedit: PropTypes.string.isRequired,
+    observations: PropTypes.string.isRequired,
+    setName: PropTypes.func.isRequired,
+    setSurname: PropTypes.func.isRequired,
+    setIdentifier: PropTypes.func.isRequired,
+    setEmailedit: PropTypes.func.isRequired,
+    setObservations: PropTypes.func.isRequired,
+    handleClickUpdate: PropTypes.func.isRequired,
+    handleAddStudentToACourse: PropTypes.func.isRequired,
 };
 
 export default AlumnoModal;
