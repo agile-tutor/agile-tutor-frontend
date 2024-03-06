@@ -1,5 +1,6 @@
 import 'materialize-css/dist/css/materialize.min.css';
 import '../App.css';
+import PropTypes from 'prop-types';
 
 function Alumno({ id, nombre, asistencia, clnametr, disablevalue, handleChange }) {
 
@@ -26,5 +27,13 @@ function Alumno({ id, nombre, asistencia, clnametr, disablevalue, handleChange }
     </tr>
   );
 }
+
+Alumno.propTypes = {
+  id: PropTypes.number.isRequired,
+  nombre: PropTypes.string.isRequired,
+  asistencia: PropTypes.bool.isRequired,
+  clnametr: PropTypes.string.isRequired,
+  disablevalue: PropTypes.bool.isRequired,
+};
 
 export default Alumno;
