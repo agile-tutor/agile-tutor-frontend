@@ -34,6 +34,7 @@ Alumno.propTypes = {
   asistencia: PropTypes.bool.isRequired,
   clnametr: PropTypes.string.isRequired,
   disablevalue: PropTypes.bool.isRequired,
+  handleChange: PropTypes.func.isRequired,
 };
 
 export default Alumno;

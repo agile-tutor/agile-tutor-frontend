@@ -4,6 +4,7 @@ import '../App.css';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import AlumnoModal from "./AlumnoModal";
 import StudentCourseChangeModal from "./StudentCourseChangeModal";
+import PropTypes from 'prop-types';
 
 function AlumnoEdit({ courseId, nombre, apellido, identificacion, email, observaciones, id, blocked, clnametr, clicons, handleEditBlockStudent, handleEditUpdateStudent, handleEditChangeStudentCourse }) {
 
@@ -72,5 +73,21 @@ function AlumnoEdit({ courseId, nombre, apellido, identificacion, email, observa
         </tr>
     )
 }
+
+AlumnoEdit.propTypes = {
+    courseId: PropTypes.number.isRequired,
+    nombre: PropTypes.string.isRequired,
+    apellido: PropTypes.string.isRequired,
+    identificacion: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    observaciones: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
+    blocked: PropTypes.bool.isRequired,
+    clnametr: PropTypes.string.isRequired,
+    clicons: PropTypes.string.isRequired,
+    handleEditBlockStudent: PropTypes.func.isRequired,
+    handleEditChangeStudentCourse: PropTypes.func.isRequired,
+    handleEditUpdateStudent: PropTypes.func.isRequired,
+  };
 
 export default AlumnoEdit;

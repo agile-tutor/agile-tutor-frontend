@@ -2,6 +2,7 @@ import { useState/*, useContext*/, useEffect } from "react";
 //import { Context } from '../context/Context.js';
 import '../App.css';
 import M from 'materialize-css/dist/js/materialize.min.js';
+import PropTypes from 'prop-types';
 
 const SelectEntityToChange = ({ setDestinyEntity, entityArray, entityName }) => {
 
@@ -40,5 +41,11 @@ const SelectEntityToChange = ({ setDestinyEntity, entityArray, entityName }) => 
             <div></div>
     );
 };
+
+SelectEntityToChange.propTypes = {
+    setDestinyEntity: PropTypes.func.isRequired,
+    entityArray: PropTypes.array.isRequired,
+    entityName: PropTypes.string.isRequired,
+  };
 
 export default SelectEntityToChange;
