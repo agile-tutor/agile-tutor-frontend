@@ -156,7 +156,7 @@ function Comision() {
             <div className="row comision-table-body">
               {tooltips()}
             </div>
-            {disabled ? <a id='floating-btn' className="btn-floating btn-large waves-effect waves-light right" onClick={() => setDisabled(false)}><i className="material-icons">create</i></a> : <div></div>}
+            {disabled ? <a id='floating-btn' className="btn-floating btn-large waves-effect waves-light right" onClick={() => setDisabled(false)} onKeyDown={() => setDisabled(false)}><i className="material-icons">create</i></a> : <div></div>}
             <div className="comsion-table-title" > {diaToCheck}º Encuentro - {title} </div>
             {studentsCourseWhithAttendanceMeeting.length === 0 ? <Preloader /> :
               <table className="Comision-table strip">
@@ -173,7 +173,7 @@ function Comision() {
                 </tbody>
               </table>
             }
-            <button id='boton-save-attendance' className='btn waves-effect waves-light' type="submit" name='action' onClick={() => saveAttendance(diaToCheck) } onKeyDown={() => saveAttendance(diaToCheck) }>
+            <button id='boton-save-attendance' className='btn waves-effect waves-light' type="submit" name='action' onClick={() => saveAttendance(diaToCheck)} onKeyDown={() => saveAttendance(diaToCheck)}>
               <i id="guardar-asistencias-boton" className='material-icons left'>save </i>  Guardar Asistencias
             </button>
           </div>}

@@ -167,7 +167,7 @@ function SchedulerTask() {
                         <div className="email-card-container">
                           <i className="material-icons">school</i><span> Comisión {alumno.courseId}</span>
                         </div>
-                        <a className="btn-floating halfway-fab waves-effect waves-light" onClick={() => handleClickDeleteAbsentNotification(alumno.id)}><i className="material-icons dont-notify">notifications_off</i></a>
+                        <a className="btn-floating halfway-fab waves-effect waves-light" onClick={() => handleClickDeleteAbsentNotification(alumno.id)} onKeyDown={() => handleClickDeleteAbsentNotification(alumno.id)}><i className="material-icons dont-notify">notifications_off</i></a>
                         <div className="email-card-container">
                           <i className="material-icons">email</i><span> {alumno.email}</span>
                         </div>
