@@ -2,6 +2,7 @@ import { useContext, useEffect } from 'react';
 import { Context } from '../context/Context.js';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 function ComisionDropdown({ action, style, route, icon }) {
 
@@ -33,5 +34,9 @@ function ComisionDropdown({ action, style, route, icon }) {
         </div>
     )
 }
+
+ComisionDropdown.propTypes = {
+    route: PropTypes.string.isRequired
+};
 
 export default ComisionDropdown
