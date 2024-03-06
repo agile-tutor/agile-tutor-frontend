@@ -36,6 +36,8 @@ function ComisionDropdown({ action, style, route, icon }) {
 }
 
 ComisionDropdown.propTypes = {
+    action: PropTypes.string.isRequired,
+    style: PropTypes.string.isRequired,
     route: PropTypes.string.isRequired,
     icon: PropTypes.string.isRequired,
 };

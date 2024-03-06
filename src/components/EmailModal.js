@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 const EmailModal = ({ tutorId, subject, body, setSubject, setBody, handleClickUpdateEmailTemplate }) => {
 
     return (
@@ -33,5 +35,16 @@ const EmailModal = ({ tutorId, subject, body, setSubject, setBody, handleClickUp
             </div>
         </div>);
 };
+
+//tutorId, subject, body, setSubject, setBody, handleClickUpdateEmailTemplate
+
+EmailModal.propTypes = {
+    tutorId: PropTypes.number.isRequired,
+    subject: PropTypes.string.isRequired,
+    body: PropTypes.string.isRequired,
+    setSubject: PropTypes.func.isRequired,
+    setBody: PropTypes.func.isRequired,
+    handleClickUpdateEmailTemplate: PropTypes.func.isRequired,
+}
 
 export default EmailModal;

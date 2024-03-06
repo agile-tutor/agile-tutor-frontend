@@ -3,6 +3,7 @@ import 'materialize-css/dist/css/materialize.min.css';
 import '../App.css';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import EncuentroModal from "./EncuentroModal";
+import PropTypes from 'prop-types';
 
 function EncuentroEdit({ id, dayUpstream, schedulerdayUpstream, titleUpstream, handleClickUpdateUpstream, handleClickDeleteUpstream }) {
 
@@ -51,5 +52,14 @@ function EncuentroEdit({ id, dayUpstream, schedulerdayUpstream, titleUpstream, h
         </tr>
     )
 }
+
+EncuentroEdit.propTypes = {
+    id: PropTypes.number.isRequired,
+    dayUpstream: PropTypes.string.isRequired,
+    schedulerdayUpstream: PropTypes.string.isRequired,
+    titleUpstream: PropTypes.string.isRequired,
+    handleClickUpdateUpstream: PropTypes.func.isRequired,
+    handleClickDeleteUpstream: PropTypes.func.isRequired,
+  };
 
 export default EncuentroEdit;
