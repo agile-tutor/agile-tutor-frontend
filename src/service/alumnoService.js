@@ -21,13 +21,11 @@ class AlumnoService {
         method: 'GET',
         mode: 'no-cors',
         headers: {
-          /*'Access-Control-Allow-Origin': '*',*/
           'Content-Type': 'application/json',
           'Access-Control-Allow-Credentials': 'true'
         },
         credentials: 'same-origin',
       })
-      /*console.log(alumnosJson);*/
       const alumnos = alumnosJson.data.map(this.alumnoAsJson);
       return alumnos.sort((a, b) => (a.surname < b.surname) ? -1 : 1);
     } catch (error) {
@@ -42,13 +40,11 @@ class AlumnoService {
         method: 'GET',
         mode: 'no-cors',
         headers: {
-          /*'Access-Control-Allow-Origin': '*',*/
           'Content-Type': 'application/json',
           'Access-Control-Allow-Credentials': 'true'
         },
         credentials: 'same-origin',
       })
-      /*console.log(alumnosJson);*/
       const alumnos = alumnosJson.data.map(this.alumnoAsJson);
       return alumnos.sort((a, b) => (a.surname < b.surname) ? -1 : 1);
     } catch (error) {
@@ -63,15 +59,12 @@ class AlumnoService {
         method: 'GET',
         mode: 'no-cors',
         headers: {
-          /*'Access-Control-Allow-Origin': '*',*/
           'Content-Type': 'application/json',
           'Access-Control-Allow-Credentials': 'true'
         },
         credentials: 'same-origin',
       })
-      /*console.log(coursesJson);*/
       const courses = coursesJson.data.map(this.courseAsJson);
-      /*console.log(courses);*/
       return courses.sort((a, b) => (a.id < b.id) ? -1 : 1);
     } catch (error) {
       console.error(error);
@@ -85,13 +78,11 @@ class AlumnoService {
         method: 'GET',
         mode: 'no-cors',
         headers: {
-          /*'Access-Control-Allow-Origin': '*',*/
           'Content-Type': 'application/json',
           'Access-Control-Allow-Credentials': 'true'
         },
         credentials: 'same-origin',
       })
-      /*console.log(courseData);*/
       const course = courseData.data;
       return course;
     } catch (error) {
@@ -123,16 +114,13 @@ class AlumnoService {
     }
   */
   async updateAttendances(attendances, courseId, day) {
-    /*console.log(attendances);*/
     let asistencias = JSON.stringify(attendances)
-    /*console.log(asistencias);*/
     try {
       const response = await axios({
         url: `${REST_SERVER_URL}/api/course/students/attendances/update/${courseId}/${day}`,
         method: 'PUT',
         data: asistencias,
         headers: {
-          /*'Access-Control-Allow-Origin': '*',*/
           'Content-Type': 'application/json',
           'Access-Control-Allow-Credentials': 'true'
         },
@@ -147,14 +135,12 @@ class AlumnoService {
 
   async blockStudent(id, blockedStatus) {
     let blockedstring = JSON.stringify(blockedStatus)
-    /*console.log(blockedstring);*/
     try {
       const response = await axios({
         url: `${REST_SERVER_URL}/api/students/block/${id}`,
         method: 'PUT',
         data: { blocked: blockedstring },
         headers: {
-          /*'Access-Control-Allow-Origin': '*',*/
           'Content-Type': 'application/json',
           'Access-Control-Allow-Credentials': 'true'
         },
@@ -174,13 +160,11 @@ class AlumnoService {
         method: 'GET',
         mode: 'no-cors',
         headers: {
-          /*'Access-Control-Allow-Origin': '*',*/
           'Content-Type': 'application/json',
           'Access-Control-Allow-Credentials': 'true'
         },
         credentials: 'same-origin',
       })
-      /*console.log(alumnosJson);*/
       const alumnos = alumnosJson.data.map(this.alumnoAsJson);
       return alumnos.sort((a, b) => (a.surname < b.surname) ? -1 : 1);
     } catch (error) {
@@ -205,13 +189,11 @@ class AlumnoService {
         method: 'GET',
         mode: 'no-cors',
         headers: {
-          /*'Access-Control-Allow-Origin': '*',*/
           'Content-Type': 'application/json',
           'Access-Control-Allow-Credentials': 'true'
         },
         credentials: 'same-origin',
       })
-      /*console.log(alumnoJson);*/
       const alumno = this.alumnoAsJson(alumnoJson);
       return alumno;
     } catch (error) {
@@ -228,7 +210,6 @@ class AlumnoService {
         method: 'PUT',
         data: student,
         headers: {
-          /*'Access-Control-Allow-Origin': '*',*/
           'Content-Type': 'application/json',
           'Access-Control-Allow-Credentials': 'true'
         },
@@ -248,13 +229,11 @@ class AlumnoService {
         method: 'GET',
         mode: 'no-cors',
         headers: {
-          /*'Access-Control-Allow-Origin': '*',*/
           'Content-Type': 'application/json',
           'Access-Control-Allow-Credentials': 'true'
         },
         credentials: 'same-origin',
       })
-      /*console.log(alumnosJson);*/
       const alumnos = alumnosJson.data.map(this.alumnoAsJson);
       return alumnos.sort((a, b) => (a.surname < b.surname) ? -1 : 1);
     } catch (error) {
@@ -269,13 +248,11 @@ class AlumnoService {
         method: 'GET',
         mode: 'no-cors',
         headers: {
-          /*'Access-Control-Allow-Origin': '*',*/
           'Content-Type': 'application/json',
           'Access-Control-Allow-Credentials': 'true'
         },
         credentials: 'same-origin',
       })
-      /*console.log(percent.data);*/
       return percent.data;
     } catch (error) {
       console.error(error);
@@ -289,13 +266,11 @@ class AlumnoService {
         method: 'GET',
         mode: 'no-cors',
         headers: {
-          /*'Access-Control-Allow-Origin': '*',*/
           'Content-Type': 'application/json',
           'Access-Control-Allow-Credentials': 'true'
         },
         credentials: 'same-origin',
       })
-      /*console.log(exist.data);*/
       if (!exist.data) {
         M.toast({ html: 'Email no registrado!', classes: 'rounded red-app-semitr' });
       }
@@ -306,7 +281,6 @@ class AlumnoService {
   }
 
   async addNewSurveyResponse(email, completeSurvey) {
-    /*console.log(email, completeSurvey)*/
     try {
       const survey = await axios({
 
@@ -314,12 +288,10 @@ class AlumnoService {
         method: 'POST',
         data: completeSurvey,
         headers: {
-          /*'Access-Control-Allow-Origin': '*',*/
           'Content-Type': 'application/json',
           'Access-Control-Allow-Credentials': 'true'
         },
       })
-      /*console.log(survey.data)*/
       M.toast({
         html: `Su respuesta a la encuesta ha sido procesada satisfactoriamente`,
         classes: "blue-app-semitr",
@@ -327,7 +299,7 @@ class AlumnoService {
       return survey.data;
     } catch (err) {
       M.toast({ html: "Se ha producido un error", classes: 'rounded red-app-semitr'});
-      /*console.log(err);*/
+      console.log(err);
     }
   }
 
@@ -350,13 +322,11 @@ class AlumnoService {
         method: 'POST',
         data: newStudentJson,
         headers: {
-          /*'Access-Control-Allow-Origin': '*',*/
           'Content-Type': 'application/json',
           'Access-Control-Allow-Credentials': 'true'
         },
       })
       const student = this.alumnoAsJson(studentJson);
-      /*console.log(student)*/
 //      M.toast({
 //        html: `El tutorando ${student.name} se ha creado satisfactoriamente`, classes: 'rounded blue-app-semitr'
 //      });
@@ -371,19 +341,16 @@ class AlumnoService {
     //let newStudentsJson = JSON.stringify(students)
     /*console.log(JSON.stringify(students))*/
     let id = students[0].courseId
-    /*console.log(id)*/
     try {
       const studentsJson = await axios({
         url: `${REST_SERVER_URL}/api/students/many/register/${id}`,
         method: 'POST',
         data: JSON.stringify(students),
         headers: {
-          /*'Access-Control-Allow-Origin': '*',*/
           'Content-Type': 'application/json',
           'Access-Control-Allow-Credentials': 'true'
         },
       });
-      /*console.log(studentsJson);*/
       const alumnos = studentsJson.data.map(this.alumnoAsJson);
       M.toast({
         html: `Se asignaron los tutorandos a la comisión satisfactoriamente`, classes: 'rounded blue-app-semitr'

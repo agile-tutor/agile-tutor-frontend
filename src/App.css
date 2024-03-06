@@ -742,7 +742,6 @@ btn-flat:focus {
 
 .search-input {
   border-radius: 5px !important;
-  ;
 }
 
 .input-field input[type=search]:focus:not(.browser-default) {
@@ -1053,7 +1052,6 @@ nav ul a {
 
 .waves-effect.waves-teal .waves-ripple {
   background-color: #2397b421;
-  ;
 }
 
 @media (min-width: 800px) {
@@ -1271,7 +1269,6 @@ nav ul li.active {
 .nav ul a.btn,
 nav ul a.btn-large,
 nav ul a.btn-small,
-nav ul a.btn-large,
 nav ul a.btn-flat,
 nav ul a.btn-floating {
   font-size: xx-small;

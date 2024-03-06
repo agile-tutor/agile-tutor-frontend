@@ -25,7 +25,6 @@ class TutorService {
                 },
             );
             const tutor = this.tutorAsJson(tutorJson);
-            /*(tutor.data)*/
             M.toast({
                 html: `El tutor ${tutorJson.data.name} se ha creado satisfactoriamente`, classes: 'rounded blue-app-semitr'
             });
@@ -45,7 +44,6 @@ class TutorService {
                 },
             );
             const tutor = this.tutorAsJson(tutorJson);
-            /*(tutor.data)*/
             M.toast({
                 html: `Bienvenido ${tutor.data.name}`, classes: 'rounded blue-app-semitr'
             });
@@ -64,7 +62,6 @@ class TutorService {
                     method: 'GET',
                     mode: 'no-cors',
                     headers: {
-                        /*'Access-Control-Allow-Origin': '*',*/
                         'Content-Type': 'application/json',
                         'Access-Control-Allow-Credentials': 'true'
                     },
@@ -81,23 +78,19 @@ class TutorService {
 
     async updateNotifierAbsent(updtadedEmail, tutorId) {
         // let studentstring = JSON.stringify(student)
-        //(student);
         try {
             const absentMessageJson = await axios({
                 url: `${REST_SERVER_URL}/api/tutor/absentmessage/${tutorId}`,
                 method: 'PUT',
                 mode: 'no-cors',
                 headers: {
-                    /*'Access-Control-Allow-Origin': '*',*/
                     'Content-Type': 'application/json',
                     'Access-Control-Allow-Credentials': 'true'
                 },
                 credentials: 'same-origin',
                 data: updtadedEmail,
             })
-            /*(absentMessageJson);*/
             const absentMessage = absentMessageJson.data;
-            /*console.log(absentMessage);*/
             return absentMessage;
         } catch (error) {
             alert(error)
@@ -110,7 +103,6 @@ class TutorService {
             const course = await axios.post(`${REST_SERVER_URL}/api/tutor/absent/${tutorId}/${alumnoId}`,
                 {},
             );
-            /*console.log(course.data)*/
             M.toast({
                 html: `El tutorando no sera notificado por su ausencia.`, classes: 'rounded blue-app-semitr'
             });
@@ -127,15 +119,12 @@ class TutorService {
                 method: 'GET',
                 mode: 'no-cors',
                 headers: {
-                    /*'Access-Control-Allow-Origin': '*',*/
                     'Content-Type': 'application/json',
                     'Access-Control-Allow-Credentials': 'true'
                 },
                 credentials: 'same-origin',
             })
-            /*console.log(absentMessageJson);*/
             const absentMessage = absentMessageJson.data;
-            /*console.log(absentMessage);*/
             return absentMessage;
         } catch (error) {
             console.error(error);
@@ -149,7 +138,6 @@ class TutorService {
                 method: 'PUT',
                 data: {},
                 headers: {
-                    /*'Access-Control-Allow-Origin': '*',*/
                     'Content-Type': 'application/json',
                     'Access-Control-Allow-Credentials': 'true'
                 },
@@ -172,7 +160,6 @@ class TutorService {
                 method: 'GET',
                 mode: 'no-cors',
                 headers: {
-                    /*'Access-Control-Allow-Origin': '*',*/
                     'Content-Type': 'application/json',
                     'Access-Control-Allow-Credentials': 'true'
                 },
@@ -192,7 +179,6 @@ class TutorService {
                 method: 'PUT',
                 data: {},
                 headers: {
-                    /*'Access-Control-Allow-Origin': '*',*/
                     'Content-Type': 'application/json',
                     'Access-Control-Allow-Credentials': 'true'
                 },
@@ -215,13 +201,11 @@ class TutorService {
                 method: 'GET',
                 mode: 'no-cors',
                 headers: {
-                    /*'Access-Control-Allow-Origin': '*',*/
                     'Content-Type': 'application/json',
                     'Access-Control-Allow-Credentials': 'true'
                 },
                 credentials: 'same-origin',
             })
-            /*console.log(tutorsJson);*/
             const tutors = tutorsJson.data.map(this.tutorAsJson);
             return tutors.sort((a, b) => (a.surname < b.surname) ? -1 : 1);
         } catch (error) {
@@ -235,13 +219,11 @@ class TutorService {
                 method: 'GET',
                 mode: 'no-cors',
                 headers: {
-                    /*'Access-Control-Allow-Origin': '*',*/
                     'Content-Type': 'application/json',
                     'Access-Control-Allow-Credentials': 'true'
                 },
                 credentials: 'same-origin',
             })
-            /*console.log(surveys.data);*/
             //const tutors = tutorsJson.data.map(this.tutorAsJson);
             return surveys.data.sort((a, b) => (a.studentId < b.studentId) ? -1 : 1);
         } catch (error) {
@@ -254,7 +236,6 @@ class TutorService {
             const course = await axios.post(`${REST_SERVER_URL}/api/course/register`,
                 newCourse,
             );
-            /*console.log(course.data)*/
             M.toast({
                 html: `La comisión se ha creado satisfactoriamente`, classes: 'rounded blue-app-semitr'
             });
@@ -264,26 +245,26 @@ class TutorService {
             console.log(err);
         }
     }
-/*
-    async attendedAtDays(courseId) {
-        try {
-            const surveys = await axios.get(`${REST_SERVER_URL}/api/course/attended/${courseId}`, {
-                method: 'GET',
-                mode: 'no-cors',
-                headers: {
-                    'Access-Control-Allow-Origin': '*',
-                    'Content-Type': 'application/json',
-                    'Access-Control-Allow-Credentials': 'true'
-                },
-                credentials: 'same-origin',
-            })
-            /*console.log(surveys.data);
-            //const tutors = tutorsJson.data.map(this.tutorAsJson);
-            return surveys.data;
-        } catch (error) {
-            console.error(error);
-        }
-    }*/
+    /*
+        async attendedAtDays(courseId) {
+            try {
+                const surveys = await axios.get(`${REST_SERVER_URL}/api/course/attended/${courseId}`, {
+                    method: 'GET',
+                    mode: 'no-cors',
+                    headers: {
+                        'Access-Control-Allow-Origin': '*',
+                        'Content-Type': 'application/json',
+                        'Access-Control-Allow-Credentials': 'true'
+                    },
+                    credentials: 'same-origin',
+                })
+                /*console.log(surveys.data);
+                //const tutors = tutorsJson.data.map(this.tutorAsJson);
+                return surveys.data;
+            } catch (error) {
+                console.error(error);
+            }
+        }*/
 }
 
 export const tutorService = new TutorService()

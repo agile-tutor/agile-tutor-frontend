@@ -3,8 +3,6 @@ import { AlumnoModel } from '../domain/alumnoModel'
 import { CourseModel } from '../domain/courseModel';
 import { REST_SERVER_URL } from './constants'
 import { StudentAttendanceDTO } from '../domain/studentAttendanceDTO';
-//import M from 'materialize-css/dist/js/materialize.min.js';
-
 
 class CourseService {
 
@@ -27,7 +25,6 @@ class CourseService {
                 method: 'GET',
                 mode: 'no-cors',
                 headers: {
-                    /*'Access-Control-Allow-Origin': '*',*/
                     'Content-Type': 'application/json',
                     'Access-Control-Allow-Credentials': 'true'
                 },
@@ -38,10 +35,6 @@ class CourseService {
             console.error(error);
         }
     }
-    /*
-    /api/course/attended/{course}/{meetingday}
-    */
-
 }
 
 export const courseService = new CourseService()

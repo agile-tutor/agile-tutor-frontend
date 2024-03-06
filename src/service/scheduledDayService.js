@@ -43,7 +43,6 @@ class ScheduledDayService {
                     'Access-Control-Allow-Credentials': 'true'
                 },
             });
-            /*console.log(meetingJson);*/
             const meeting = this.scheduledDayAsJson(meetingJson);
             M.toast({
                 html: `Encuentro creado exitosamente`, classes: 'rounded blue-app-semitr'
@@ -88,7 +87,6 @@ class ScheduledDayService {
             M.toast({ html: 'Encuentro eliminado!', classes: 'rounded blue-app-semitr' })
         } catch (error) {
             M.toast({ html: "Datos invalidos o encuentro inexistente", classes: 'rounded red-app-semitr' });
-            // Log any errors that occur
             console.error(error);
         }
     }
