@@ -2,7 +2,6 @@ import { useContext, useState, useEffect } from 'react';
 import 'materialize-css/dist/css/materialize.min.css'
 import { Context } from '../context/Context.js';
 import Preloader from '../utils/Preloader.js';
-//import Breadcrumbs from '../utils/Breadcrumbs.js';
 import AlumnoEdit from './AlumnoEdit.js';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import NewStudentModal from './NewStudentModal.js';

@@ -6,7 +6,6 @@ function SearchBar({ allStudents, getAllStudents, setResults }) {
     const [input, setInput] = useState("");
 
     const handleChange = (value) => {
-   //     getAllStudents();
         setInput(value);
         const results = allStudents.filter((student) => {
             return (
@@ -43,15 +42,6 @@ function SearchBar({ allStudents, getAllStudents, setResults }) {
         </div>
     )
 }
-{/*
-                        <form>
-                        <div className="input-field">
-                            <input id="search" type="search" />
-                            <label className="label-icon" htmlFor="search"><i id='lupasearch' className="material-icons">search</i></label>
-                            <i className="material-icons">close</i>
-                        </div>
-                    </form>
-*/}
 
 SearchBar.propTypes = {
     allStudents: PropTypes.array.isRequired,

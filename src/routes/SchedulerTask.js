@@ -54,7 +54,6 @@ function SchedulerTask() {
           "subject": absentMessageSubject,
           "body": absentMessageBody
         }
-        /*console.log('handle click' + absentEmail);*/
         const emailTemplate = await tutorService.updateNotifierAbsent(absentEmail, tutorId);
         console.log(emailTemplate)
         M.toast({ html: `El email ha sido modificado exitosamente.`, classes: 'rounded blue-app-semitr' });
@@ -66,7 +65,6 @@ function SchedulerTask() {
 
   const handleClickDeleteAbsentNotification = async (alumnoId) => {
     try {
-      /*console.log('handle click' + alumnoId);*/
       await tutorService.removeAbsentNotifierStudent(alumnoId, tutorId);
       setTodb(!todb)
     } catch (error) {
@@ -81,11 +79,9 @@ function SchedulerTask() {
   const loadNotifierAbsent = async () => {
     try {
       const studentslist = await alumnoService.getNotifierAbsent(tutorId)
-      /*console.log(studentslist)*/
       setStudents(studentslist)
     } catch (error) {
       console.error(error)
-      /*console.log(actualHour)*/
     }
   }
 
@@ -145,7 +141,6 @@ function SchedulerTask() {
           <div className="col s3 center emailicon">
             <a className="waves-effect waves-teal btn-flat modal-trigger" href={"#modalemail" + tutorId} ><i id="mail_outline" className='material-icons'
             >mail_outline</i></a>
-            {/*console.log(tutorId)*/}
             <EmailModal key={tutorId} tutorId={tutorId} subject={absentMessageSubject} body={absentMessageBody} setSubject={setAbsentMessageSubject} setBody={setAbsentMessageBody} handleClickUpdateEmailTemplate={handleClickUpdateEmailTemplate} />
           </div>
           <div className="col s3"></div>

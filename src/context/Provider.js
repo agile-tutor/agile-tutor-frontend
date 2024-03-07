@@ -302,13 +302,10 @@ export const Provider = ({ children }) => {
     setTutorId(0);
     try {
       const logedTutor = await tutorService.loginTutor(email, password);
-      /*console.log(logedTutor)*/
       setTutorId(logedTutor.id);
       setTutor(logedTutor);
       await loadAllTutorCourses(logedTutor.id);
       await loadAllCourses();
-      /*console.log(tutorId);
-      console.log(tutorCourses);*/
     } catch (error) {
       console.error(error);
     }
@@ -333,7 +330,6 @@ export const Provider = ({ children }) => {
   const loadStudentsOfTutor = async (id) => {
     try {
       const students = await alumnoService.getStudentsOfTutor(id);
-      /*console.log(students);*/
       setStudentsOfTutor(students);
     } catch (error) {
       console.error(error);
@@ -343,7 +339,6 @@ export const Provider = ({ children }) => {
   const loadCoursePercent = async (id) => {
     try {
       const percent = await alumnoService.getCoursePercent(id);
-      /*console.log(percent);*/
       percentCourse[id] = percent;
     } catch (error) {
       console.error(error);
@@ -396,7 +391,6 @@ export const Provider = ({ children }) => {
         return { courseId: course.id, average: await alumnoService.getCoursePercent(course.id) }
       })
     )
-    /*console.log(coursesWithPercent);*/
     setTutorCoursesWithAverage(coursesWithPercent);
   }
   /*
@@ -444,8 +438,6 @@ export const Provider = ({ children }) => {
   const postStudentsRegister = async (studentsRegister) => {
     try {
       await alumnoService.addNewStudents(studentsRegister);
-      /*console.log("comision lista? parted"+courseToCreate)
-      console.log("comision lista - alumnos a guardar"+studentsRegister)*/
       setCourseToCreate('');
     } catch (error) {
       console.error(error);
@@ -457,7 +449,6 @@ export const Provider = ({ children }) => {
       const neWCourse = await tutorService.addNewCourse(newCourse);
       console.log(neWCourse == undefined)
       neWCourse == undefined ? setCourseToCreate('') : setCourseToCreate(neWCourse);
-      /*console.log("comision lista"+courseToCreate)*/
     } catch (error) {
       console.error(error);
     }

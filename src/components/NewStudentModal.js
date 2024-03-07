@@ -22,7 +22,6 @@ const NewStudentModal = ({ courseId, handleAddStudentToACourse }) => {
                 "observations": observations,
                 "courseId": courseId
             }
-            /*console.log('handle click' + newStudent);*/
             handleAddStudentToACourse(newStudent);
             M.toast({ html: `${name} ${surname} agregado exitosamente.`, classes: 'rounded blue-app-semitr' });
         }

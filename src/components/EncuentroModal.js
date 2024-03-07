@@ -1,5 +1,4 @@
-import { useEffect, useState/* useContext*/ } from 'react';
-//import { Context } from '../context/Context.js';
+import { useEffect, useState } from 'react';
 import 'materialize-css/dist/css/materialize.min.css';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import '../App.css';

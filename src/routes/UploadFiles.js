@@ -1,6 +1,5 @@
 import { useState, useEffect, useContext } from "react";
 import { Context } from '../context/Context.js';
-//import { Link } from "react-router-dom";
 import Papa from 'papaparse';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import '../App.css';
@@ -20,7 +19,6 @@ function UploadFiles() {
             header: false,
             skipEmptyLines: true,
             complete: function (results) {
-                /*console.log(results.data)*/
                 setParsedData(results.data)
                 setCourseId(results.data[0][3].split("-")[3])
                 setNameCourse(results.data[0][3])
@@ -40,11 +38,8 @@ function UploadFiles() {
     };
 
     const postStudents = async () => {
-        /*console.log(nameCourse + "pasoporaca");*/
-
         let newStudents = parsedData.map((value, index) => {
             console.log(value, index)
-            /*            console.log("courseToCreateId" + courseToCreate.id)*/
             return (
                 {
                     "id": 0/*parseInt(index)*/,
@@ -84,7 +79,6 @@ function UploadFiles() {
 
     const handleTypeSelect = e => {
         e.preventDefault();
-        /*console.log("dentroDeHanle" + e.target.value);*/
         setSelectedOption(e.target.value);
     };
 

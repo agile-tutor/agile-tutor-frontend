@@ -29,7 +29,6 @@ function AlumnoEdit({ courseId, nombre, apellido, identificacion, email, observa
                 "email": emailedit,
                 "observations": observations
             }
-            /*console.log('handle click' + editedStudent);*/
             handleEditUpdateStudent(id, editedStudent);
             M.toast({ html: `${name} ${surname} modificado exitosamente.`, classes: 'rounded blue-app-semitr'});
         }

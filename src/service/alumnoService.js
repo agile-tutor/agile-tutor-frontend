@@ -203,7 +203,6 @@ class AlumnoService {
 
   async updateStudent(id, student) {
     // let studentstring = JSON.stringify(student)
-    /*console.log(student);*/
     try {
       const response = await axios({
         url: `${REST_SERVER_URL}/api/students/${id}`,
@@ -260,7 +259,6 @@ class AlumnoService {
   }
 
   async checkIfExistEmail(email) {
-    /*console.log("enalumnoservidecheckif" + email);*/
     try {
       const exist = await axios.get(`${REST_SERVER_URL}/api/students/checkmail/${email}`, {
         method: 'GET',
@@ -339,7 +337,6 @@ class AlumnoService {
 
   async addNewStudents(students) {
     //let newStudentsJson = JSON.stringify(students)
-    /*console.log(JSON.stringify(students))*/
     let id = students[0].courseId
     try {
       const studentsJson = await axios({

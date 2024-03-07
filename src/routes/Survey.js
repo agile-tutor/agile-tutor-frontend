@@ -31,17 +31,14 @@ function Survey() {
 
     const handleRadioEntorno = e => {
         e.preventDefault();
-        /*console.log("dentroDeHanle" + e.target.value);*/
         setEntorno(e.target.value);
     };
     const handleRadioExclusividad = e => {
         e.preventDefault();
-        /*console.log("dentroDeHanle" + e.target.value);*/
         setExclusividad(e.target.value);
     };
     const handleRadioEstado = e => {
         e.preventDefault();
-        /*console.log("dentroDeHanle" + e.target.value);*/
         setEstado(e.target.value);
     };
 
@@ -86,7 +83,6 @@ function Survey() {
                 "exclusividad": exclusividad,
                 "estado": estado
             }
-            /*console.log('handle submit' + completeSurvey);*/
             saveSurvey(email, completeSurvey);
             setCompleteSurvey(true);
         }
@@ -94,7 +90,6 @@ function Survey() {
 
     const PostStudentEmail = (e) => {
         e.preventDefault();
-        /*console.log("checkemail" + email)*/
         if (email === "") {
             M.toast({ html: "Ingrese el email con el que se encuentra registrado", classes: 'rounded red-app-semitr' });
         } else {

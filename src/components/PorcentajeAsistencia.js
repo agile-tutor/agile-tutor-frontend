@@ -6,13 +6,10 @@ import CardAlumno from './CardAlumno';
 function PorcentajeAsistencia() {
 
     const { tutor, tutorCourses, tutorCoursesWithAverage, tutorId/*, getAllCoursesFromTutor*/, studentsOfTutor, getStudentsOfTutor, updateTutorCoursesWithAverage, studentSurvey, getAllSurveys, handleActiveSection, porcentajeActual, changePercent } = useContext(Context);
-    //    const [porcentaje, setPorcentaje] = useState(75);
     const [viewsettings, setViewsettings] = useState(false);
-    //  const [courseData, setCourseData] = useState([]);
 
     const handleChange = event => {
         changePercent(event.target.value);
-        /*console.log('value is:', event.target.value);*/
     };
 
     const handleView = () => {
@@ -20,7 +17,6 @@ function PorcentajeAsistencia() {
     };
 
     const studentCompleteSurvey = (studentId) => {
-        /*console.log("checking if an student completes the survey")*/
         return studentSurvey.some(id => id === studentId)
     };
 
@@ -47,7 +43,6 @@ function PorcentajeAsistencia() {
     }, []);
 
     const courseContainer = () => {
-        {/* console.log("incoursecontainer " + tutorCourses) */ }
         return (tutorCourses.map((element =>
             < div key={element.id} className='course-container' >
                 {
