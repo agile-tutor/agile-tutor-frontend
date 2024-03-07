@@ -1,4 +1,3 @@
-import React from 'react';
 import { useState, useEffect, useContext } from "react";
 import { Context } from '../context/Context.js';
 //import { Link } from "react-router-dom";

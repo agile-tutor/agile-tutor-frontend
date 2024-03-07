@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 function Breadcrumbs({ posicion0, posicion1, posicion2 }) {
 
@@ -17,5 +18,11 @@ function Breadcrumbs({ posicion0, posicion1, posicion2 }) {
         </div>
     )
 }
+
+Breadcrumbs.propTypes = {
+    posicion0: PropTypes.string.isRequired,
+    posicion1: PropTypes.string.isRequired,
+    posicion2: PropTypes.string.isRequired,
+  };
 
 export default Breadcrumbs
