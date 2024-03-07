@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import M from 'materialize-css/dist/js/materialize.min.js';
 import AlumnoModal from "./AlumnoModal";
+import PropTypes from 'prop-types';
 
 function SearchResult({ result }) {
 
@@ -18,5 +19,9 @@ function SearchResult({ result }) {
         </div>
     )
 }
+
+SearchResult.propTypes = {
+    result: PropTypes.object.isRequired,
+  };
 
 export default SearchResult 

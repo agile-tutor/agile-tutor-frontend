@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import M from 'materialize-css/dist/js/materialize.min.js';
+import PropTypes from 'prop-types';
 
 const NewMeetingModal = ({ handleAddMeeting }) => {
 
@@ -79,5 +80,9 @@ const NewMeetingModal = ({ handleAddMeeting }) => {
             </div>
         </div >);
 };
+
+NewMeetingModal.propTypes = {
+    handleAddMeeting: PropTypes.func.isRequired,
+  };
 
 export default NewMeetingModal;

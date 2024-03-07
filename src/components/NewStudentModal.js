@@ -1,5 +1,6 @@
 import { useState } from "react";
 import M from 'materialize-css/dist/js/materialize.min.js';
+import PropTypes from 'prop-types';
 
 const NewStudentModal = ({ courseId, handleAddStudentToACourse }) => {
 
@@ -77,5 +78,10 @@ const NewStudentModal = ({ courseId, handleAddStudentToACourse }) => {
             </div>
         </div >);
 };
+
+NewStudentModal.propTypes = {
+    courseId: PropTypes.number.isRequired,
+    handleAddStudentToACourse: PropTypes.func.isRequired,
+  };
 
 export default NewStudentModal;

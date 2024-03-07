@@ -1,6 +1,7 @@
 import SelectEntityToChange from './SelectEntityToChange';
 import { useState, useContext, /*useEffect*/ } from "react";
 import { Context } from '../context/Context.js';
+import PropTypes from 'prop-types';
 
 const StudentCourseChangeModal = ({ courseId, name, surname, studentid, handleClickChangeStudentCourse }) => {
 
@@ -50,5 +51,13 @@ const StudentCourseChangeModal = ({ courseId, name, surname, studentid, handleCl
             </div>
         </div >);
 };
+
+StudentCourseChangeModal.propTypes = {
+    courseId: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    surname: PropTypes.string.isRequired,
+    studentid: PropTypes.number.isRequired,
+    handleClickChangeStudentCourse: PropTypes.func.isRequired,
+  };
 
 export default StudentCourseChangeModal;
