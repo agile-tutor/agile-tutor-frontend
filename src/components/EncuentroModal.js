@@ -3,6 +3,7 @@ import { useEffect, useState/* useContext*/ } from 'react';
 import 'materialize-css/dist/css/materialize.min.css';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import '../App.css';
+import PropTypes from 'prop-types';
 
 function EncuentroModal({ id, day, schedulerday, title, setDay, setTitle, setSchedulerday, handleClickUpdate, handleAddScheduler }) {
 
@@ -112,5 +113,17 @@ function EncuentroModal({ id, day, schedulerday, title, setDay, setTitle, setSch
       </div>
     </div>);
 }
+
+EncuentroModal.propTypes = {
+  id: PropTypes.number.isRequired,
+  day: PropTypes.string.isRequired,
+  schedulerday: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  setDay: PropTypes.func.isRequired,
+  setTitle: PropTypes.func.isRequired,
+  setSchedulerday: PropTypes.func.isRequired,
+  handleClickUpdate: PropTypes.func.isRequired,
+  handleAddScheduler: PropTypes.func.isRequired,
+};
 
 export default EncuentroModal;

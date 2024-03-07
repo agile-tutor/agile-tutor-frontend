@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 function SearchBar({ allStudents, getAllStudents, setResults }) {
 
@@ -51,5 +52,11 @@ function SearchBar({ allStudents, getAllStudents, setResults }) {
                         </div>
                     </form>
 */}
+
+SearchBar.propTypes = {
+    allStudents: PropTypes.array.isRequired,
+    getAllStudents: PropTypes.func.isRequired,
+    setResults: PropTypes.func.isRequired,
+  };
 
 export default SearchBar

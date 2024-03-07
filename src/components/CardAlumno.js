@@ -1,5 +1,6 @@
-import React from 'react'
-import "../App.css"
+import React from 'react';
+import "../App.css";
+import PropTypes from 'prop-types';
 
 function CardAlumno({ nombre, porcentaje, porcentajeActual, studentCompleteSurvey, studentId }) {
 
@@ -25,5 +26,13 @@ function CardAlumno({ nombre, porcentaje, porcentajeActual, studentCompleteSurve
         </div>
     )
 }
+
+CardAlumno.propTypes = {
+    nombre: PropTypes.string.isRequired,
+    porcentaje: PropTypes.number.isRequired,
+    porcentajeActual: PropTypes.number.isRequired,
+    studentCompleteSurvey: PropTypes.bool.isRequired,
+    studentId: PropTypes.number.isRequired,
+};
 
 export default CardAlumno;
