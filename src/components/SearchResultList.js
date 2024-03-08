@@ -7,8 +7,8 @@ function SearchResultList({ results }) {
 
     return (
         <div className='result-list' >
-            {results.map((result, id) =>
-                <SearchResult key={id} result={result} />
+            {results.map((result) =>
+                <SearchResult key={result.id} result={result} />
             )}
         </div>
     )

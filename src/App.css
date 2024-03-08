@@ -202,17 +202,17 @@
 .dropdownPassAtendanceMob {
   background-color: #eeeeee;
   margin-left: -5vw;
-  margin-top: 3vh;
 }
 
 .dropdownComisionEditMob {
   background-color: #eeeeee;
   margin-left: -5vw;
-  margin-top: 5vh;
 }
 
 @media (max-width: 800px) {
-  .dropdownPassAtendanceMob, .dropdownComisionEditMob  {
+
+  .dropdownPassAtendanceMob,
+  .dropdownComisionEditMob {
     background: linear-gradient(180deg, rgba(31, 132, 156, 0) 35%, rgba(0, 212, 255, 0) 100%) !important;
   }
 }
@@ -223,7 +223,7 @@
 }
 
 .dropdownPassAtendanceMob ul {
-  margin-top: 3vh;
+  margin-top: 2vh;
   background-color: #2397b4;
 }
 
@@ -233,16 +233,8 @@
   font-size: medium;
 }
 
-.dropdown-top-row {
-  margin-top: -7vh;
-}
-
 .dropdown-upper-row {
   margin-bottom: -10vh;
-}
-
-.dropdown-change-course-list {
-  margin-top: -14vh !important;
 }
 
 .sidenav li {
@@ -396,7 +388,7 @@
 .dropdown-content {
   color: #1f849c;
   font-weight: normal;
-  top: -11vh;
+  top: 64px !important;
 }
 
 .dropdown-content li>a,
@@ -790,9 +782,9 @@ btn-flat:focus {
 }
 
 .search-result {
-  padding: 0 0 0.1vh 0.1vh;
+  padding: 0 0 0.01vh 0.01vh !important;
   font-family: Arial, Helvetica, sans-serif;
-  margin-right: .5vw;
+  margin-right: .05vw !important;
 }
 
 .search-result :hover {
@@ -800,19 +792,19 @@ btn-flat:focus {
 }
 
 .resultsearchname {
-  padding-top: 0.1vh;
-  padding-bottom: 0.1vh;
+  padding-top: 0.1vh !important;
+  padding-bottom: 0.1vh !important;
   height: 60px !important;
 }
 
 .waves-effect.waves-teal.btn-flat.modal-trigger.search-result {
   color: #000000 !important;
-  font-weight: bolder;
-  text-shadow: .5px .5px .5px rgba(255, 255, 255, 0.479) !important;
+  font-weight: normal !important;
+  text-shadow: .5px .5px .5px rgba(146, 145, 145, 0.479) !important;
   text-transform: capitalize;
-  font-size: small !important;
-  margin-left: 5px !important;
-  margin-right: 5px !important;
+  font-size: 1.1dvw !important;
+  margin-left: 1px !important;
+  margin-right: 1px !important;
 }
 
 .search-page {
