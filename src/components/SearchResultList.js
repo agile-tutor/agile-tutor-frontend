@@ -15,7 +15,7 @@ function SearchResultList({ results }) {
 }
 
 SearchResultList.propTypes = {
-    result: PropTypes.array.isRequired,
+    results: PropTypes.array.isRequired,
   };
 
 export default SearchResultList

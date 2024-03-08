@@ -19,11 +19,8 @@ function NavBar() {
         setInput(value);
         const results = allStudents.filter((student) => {
             return (
-                value && student &&
-                (
-                    student.name && student.name.toLowerCase().includes(value)
-                    || student.surname && student.surname.toLowerCase().includes(value)
-                )
+                value && student && (student.name?.toLowerCase().includes(value)
+                    || student.surname?.toLowerCase().includes(value))
             );
         });
         setResults(results);
@@ -57,7 +54,7 @@ function NavBar() {
                 <div className={`navbar-fixed${tutorId != 0 ? '' : " hide"}`}>
                     <nav>
                         <div className="nav-wrapper">
-                            <Link to="/" className="brand-logo" ><img className="image-logo" src={Logo}></img></Link>
+                            <Link to="/" className="brand-logo" ><img className="image-logo" src={Logo} alt='app logo'></img></Link>
                             <a href="#" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons hamburguer-color">menu</i></a>
                             <ul className="right hide-on-med-and-down" >
 
@@ -70,7 +67,7 @@ function NavBar() {
                                         <div className="input-field">
                                             <input id="search" type="search" value={input} /*onBlur={() => handleChange("")}*/ onChange={(e) => handleChange(e.target.value)} onKeyDown={handleKeyDown} autoComplete="off" />
                                             <label className="label-icon iconsearch" htmlFor="search"><i id='lupasearch' className="material-icons">search</i></label>
-                                            <i className="material-icons iconsearch" onClick={() => handleChange("")} onKeyUp={() => handleChange("")}>close</i>
+                                            <i className="material-icons iconsearch" onClick={() => handleChange("")} onKeyUp={() => handleChange("")} role="button" >close</i>
                                         </div>
                                     </form>
                                     {

@@ -9,11 +9,8 @@ function SearchBar({ allStudents, getAllStudents, setResults }) {
         setInput(value);
         const results = allStudents.filter((student) => {
             return (
-                value && student &&
-                (
-                    student.name && student.name.toLowerCase().includes(value)
-                    || student.surname && student.surname.toLowerCase().includes(value)
-                )
+                value && student && (student.name?.toLowerCase().includes(value)
+                    || student.surname?.toLowerCase().includes(value))
             );
         });
         setResults(results);
@@ -47,6 +44,6 @@ SearchBar.propTypes = {
     allStudents: PropTypes.array.isRequired,
     getAllStudents: PropTypes.func.isRequired,
     setResults: PropTypes.func.isRequired,
-  };
+};
 
 export default SearchBar
