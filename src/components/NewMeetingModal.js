@@ -18,10 +18,10 @@ const NewMeetingModal = ({ handleAddMeeting }) => {
                 "date": date.target.value
             }
             console.log('handle click ' + newMeeting.day + " " + newMeeting.title + " " + newMeeting.date);
+            handleAddMeeting(newMeeting);
             setDay('');
             setTitle('');
             setDate('');
-            handleAddMeeting(newMeeting);
         }
     }
     useEffect(() => {
@@ -65,7 +65,7 @@ const NewMeetingModal = ({ handleAddMeeting }) => {
                         </div>
                         <div className="row">
                             <div className="input-field col s12">
-                                <input type="text" className="datepicker" select={date} onSelect={setDate} />
+                                <input type="text" className="datepicker" value={date} onSelect={setDate} />
                                 <label className="active" htmlFor="textarea1">Fecha programada</label>
                             </div>
                         </div>

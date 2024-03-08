@@ -902,7 +902,8 @@ modal-close.waves-effect.waves-red.btn-flat {
 }
 
 nav ul a {
-  padding: 0 10px;
+  padding: 0 1vw;
+  font-size: 1vw;
 }
 
 .hamburguer-color {
