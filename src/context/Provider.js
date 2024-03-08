@@ -239,8 +239,6 @@ export const Provider = ({ children }) => {
   const loadAllStudents = async () => {
     try {
       const allData = await alumnoService.getAllStudents();
-      /*      allData.map(alumno =>
-              alumno.attendances.map(attendanceAsJson));*/
       setAllStudents(allData);
     } catch (error) {
       console.error(error);
