@@ -130,7 +130,6 @@ function SchedulerTask() {
             <div className="progress">
               <div className="indeterminate"></div>
             </div>}
-          <h4></h4>
         </div>
       </div>
       <div className="course-container row">
@@ -162,7 +161,7 @@ function SchedulerTask() {
                         <div className="email-card-container">
                           <i className="material-icons">school</i><span> Comisión {alumno.courseId}</span>
                         </div>
-                        <a className="btn-floating halfway-fab waves-effect waves-light" onClick={() => handleClickDeleteAbsentNotification(alumno.id)} onKeyDown={() => handleClickDeleteAbsentNotification(alumno.id)}><i className="material-icons dont-notify">notifications_off</i></a>
+                        <button className="btn-floating halfway-fab waves-effect waves-light" onClick={() => handleClickDeleteAbsentNotification(alumno.id)} onKeyDown={() => handleClickDeleteAbsentNotification(alumno.id)}><i className="material-icons dont-notify">notifications_off</i></button>
                         <div className="email-card-container">
                           <i className="material-icons">email</i><span> {alumno.email}</span>
                         </div>

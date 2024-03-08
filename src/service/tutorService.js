@@ -224,7 +224,6 @@ class TutorService {
                 },
                 credentials: 'same-origin',
             })
-            //const tutors = tutorsJson.data.map(this.tutorAsJson);
             return surveys.data.sort((a, b) => (a.studentId < b.studentId) ? -1 : 1);
         } catch (error) {
             console.error(error);

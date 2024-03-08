@@ -50,7 +50,7 @@ function Encuentros() {
     return (
         <div>
             <h4 className="titulo-tabla" >Encuentros Programados del TVU</h4>
-            <div> {(typeof encuentros === "undefined"/* || encuentros.length === 0*/) ?
+            <div> {(typeof encuentros === "undefined" || encuentros == undefined) ?
                 <Preloader /> :
                 <div className="Comision">
                     {chargin ?
@@ -71,11 +71,10 @@ function Encuentros() {
                         </thead>
                         <tbody>
                             {
-                                (encuentros == undefined) ? <Preloader /> :
-                                    (encuentros.length !== 0) ?
-                                        encuentros.map((encuentro) => <EncuentroEdit key={encuentro.id} id={encuentro.id} dayUpstream={encuentro.day} titleUpstream={encuentro.title} schedulerdayUpstream={encuentro.date} handleClickUpdateUpstream={handleEditUpdateMeeting} handleClickDeleteUpstream={handleDeleteMeeting} />
-                                        ) :
-                                        <tr></tr>
+                                (encuentros.length !== 0) ?
+                                    encuentros.map((encuentro) => <EncuentroEdit key={encuentro.id} id={encuentro.id} dayUpstream={encuentro.day} titleUpstream={encuentro.title} schedulerdayUpstream={encuentro.date} handleClickUpdateUpstream={handleEditUpdateMeeting} handleClickDeleteUpstream={handleDeleteMeeting} />
+                                    ) :
+                                    <tr></tr>
                             }
                         </tbody>
                     </table>{

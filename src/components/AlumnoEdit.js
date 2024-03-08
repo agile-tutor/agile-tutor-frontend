@@ -20,7 +20,7 @@ function AlumnoEdit({ courseId, nombre, apellido, identificacion, email, observa
 
     const handleClickUpdate = () => {
         if (name === '' || surname === '' || identifier === '' || email === '') {
-            M.toast({ html: 'Ingresar: nombre, apellido, identificador y email', classes: 'rounded red-app-semitr'});
+            M.toast({ html: 'Ingresar: nombre, apellido, identificador y email', classes: 'rounded red-app-semitr' });
         } else {
             const editedStudent = {
                 "name": name,
@@ -30,7 +30,7 @@ function AlumnoEdit({ courseId, nombre, apellido, identificacion, email, observa
                 "observations": observations
             }
             handleEditUpdateStudent(id, editedStudent);
-            M.toast({ html: `${name} ${surname} modificado exitosamente.`, classes: 'rounded blue-app-semitr'});
+            M.toast({ html: `${name} ${surname} modificado exitosamente.`, classes: 'rounded blue-app-semitr' });
         }
     };
 
@@ -43,22 +43,21 @@ function AlumnoEdit({ courseId, nombre, apellido, identificacion, email, observa
         let elems = document.querySelectorAll('.modal');
         M.Modal.init(elems);
     }, []);
-    
+
     return (
         <tr className={clnametr} >
             <td id="descripcion-edicion-estudiante">{apellido}</td>
             <td id="descripcion-edicion-estudiante">{nombre}</td>
             <td id="descripcion-edicion-estudiante">
                 {!blocked ?
-                    <button idstudent={id} blockstatus={blocked.toString()} className="waves-effect waves-teal btn-flat" onClick={() => handleClickBlock(id, blocked)} ><i className='material-icons left'>lock_open</i></button>
-                    : <button idstudent={id} blockstatus={blocked.toString()} className="waves-effect waves-teal btn-flat" onClick={() => handleClickBlock(id, blocked)} ><i className='material-icons left redicons'>lock_outline</i></button>
+                    <button key={id} /*blockstatus={blocked.toString()}*/ className="waves-effect waves-teal btn-flat" onClick={() => handleClickBlock(id, blocked)} ><i className='material-icons left'>lock_open</i></button>
+                    : <button key={id} /*blockstatus={blocked.toString()}*/ className="waves-effect waves-teal btn-flat" onClick={() => handleClickBlock(id, blocked)} ><i className='material-icons left redicons'>lock_outline</i></button>
                 }
             </td>
             <td id="descripcion-edicion-estudiante-editar">
                 <div className='container section'>
                     <a className="waves-effect waves-teal btn-flat modal-trigger" href={"#modaledit" + id} ><i id="iconoBlock" className={clicons}
                     >mode_edit </i></a>
-                    {/*console.log(id)*/}
                     <AlumnoModal key={id} studentid={id} courseId={courseId} name={name} surname={surname} identifier={identifier} emailedit={emailedit} observations={observations} setName={setName} setSurname={setSurname} setIdentifier={setIdentifier} setEmailedit={setEmailedit} setObservations={setObservations} handleClickUpdate={handleClickUpdate} />
                 </div>
             </td>
@@ -87,6 +86,6 @@ AlumnoEdit.propTypes = {
     handleEditBlockStudent: PropTypes.func.isRequired,
     handleEditChangeStudentCourse: PropTypes.func.isRequired,
     handleEditUpdateStudent: PropTypes.func.isRequired,
-  };
+};
 
 export default AlumnoEdit;

@@ -5,11 +5,11 @@ import M from "materialize-css";
 import logo from "../TIPLOGO.png";
 
 const SignUp = () => {
-    const [name, setname] = useState('');
-    const [surname, setsurname] = useState('');
-    const [email, setemail] = useState('');
-    const [password, setpassword] = useState('');
-    const [passwordcheck, setpasswordcheck] = useState('');
+    const [name, setName] = useState('');
+    const [surname, setSurname] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [passwordcheck, setPasswordcheck] = useState('');
 
     const [inputsVisible, setInputsVisible] = useState([false, false])
 
@@ -26,22 +26,20 @@ const SignUp = () => {
     const PostData = () => {
         if (!(name && surname && email && password)) {
             M.toast({ html: "Se deben ingresar los datos solicitados", classes: 'rounded red-app-semitr' });
+        } else if (password != passwordcheck) {
+            M.toast({ html: "La contraseña ingresada no coincide", classes: 'rounded red-app-semitr' });
         } else {
-            if (!(password == passwordcheck)) {
-                M.toast({ html: "La contraseña ingresada no coincide", classes: 'rounded red-app-semitr' });
-            } else {
-                signUpTutor(name, surname, email, password);
-                cleanForm();
-            }
+            signUpTutor(name, surname, email, password);
+            cleanForm();
         }
     };
 
     const cleanForm = () => {
-        setname("");
-        setsurname("");
-        setemail("");
-        setpassword("");
-        setpasswordcheck("");
+        setName("");
+        setSurname("");
+        setEmail("");
+        setPassword("");
+        setPasswordcheck("");
     }
 
     useEffect(() => {
@@ -60,21 +58,21 @@ const SignUp = () => {
                             placeholder="nombre"
                             id='inputLogin'
                             value={name}
-                            onChange={(e) => setname(e.target.value)}
+                            onChange={(e) => setName(e.target.value)}
                         />
                         <input
                             type="text"
                             placeholder="apellido"
                             id='inputLogin'
                             value={surname}
-                            onChange={(e) => setsurname(e.target.value)}
+                            onChange={(e) => setSurname(e.target.value)}
                         />
                         <input
                             type="email"
                             placeholder="email"
                             id='inputLogin'
                             value={email}
-                            onChange={(e) => setemail(e.target.value)}
+                            onChange={(e) => setEmail(e.target.value)}
                         />
                         <div className="row" id='inputLoginPassWidth'>
                             <input
@@ -83,7 +81,7 @@ const SignUp = () => {
                                 className='valdiate col s5'
                                 id='inputLoginPass'
                                 value={password}
-                                onChange={(e) => setpassword(e.target.value)}
+                                onChange={(e) => setPassword(e.target.value)}
                             />
                             <button id='btnLoginPass' className='col s1' onClick={() => toggleInputVisibility(0)} >
                                 {inputsVisible[0] ? <i className="material-icons small iconwhite strikediag">remove_red_eye</i> : <i className="material-icons small iconred">remove_red_eye</i>}
@@ -97,7 +95,7 @@ const SignUp = () => {
                                 className='valdiate col s5'
                                 id='inputLoginPass'
                                 value={passwordcheck}
-                                onChange={(e) => setpasswordcheck(e.target.value)}
+                                onChange={(e) => setPasswordcheck(e.target.value)}
                             />
                             <button id='btnLoginPass' className='col s1' onClick={() => toggleInputVisibility(1)} >
                                 {inputsVisible[1] ? <i className="material-icons small iconwhite strikediag">remove_red_eye</i> : <i className="material-icons small iconred">remove_red_eye</i>}

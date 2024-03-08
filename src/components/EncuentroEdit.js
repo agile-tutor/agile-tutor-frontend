@@ -46,7 +46,7 @@ function EncuentroEdit({ id, dayUpstream, schedulerdayUpstream, titleUpstream, h
                     <EncuentroModal key={id} id={id} day={day} schedulerday={schedulerday} title={title} setDay={setDay} setTitle={setTitle} setSchedulerday={setSchedulerday} handleClickUpdate={handleClickUpdate} />
                 </div>
                 <div>
-                    <button meetingid={id} className="waves-effect waves-teal btn-flat center" onClick={() => handleClickDelete()} ><i className='material-icons left'>close</i></button>
+                    <button key={id} className="waves-effect waves-teal btn-flat center" onClick={() => handleClickDelete()} ><i className='material-icons left'>close</i></button>
                 </div>
             </td>
         </tr>
