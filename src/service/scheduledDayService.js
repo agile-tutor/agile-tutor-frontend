@@ -92,26 +92,7 @@ class ScheduledDayService {
     }
 
     async getAllMeetingsLocal() {
-        /*
-                try {
-                    const meetingsJson = await axios.get(
-                        `${REST_SERVER_URL}/api/meetings`
-                        , {
-                        method: 'GET',
-                        mode: 'no-cors',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'Access-Control-Allow-Credentials': 'true'
-                        },
-                        credentials: 'same-origin',
-                    })
-                    console.log(meetingsJson);
-                    const meetings = meetingsJson.data.map(this.scheduledDayAsJson);
-                    return meetings.sort((a, b) => (a.day < b.day) ? -1 : 1);
-                } catch (error) {
-                    console.error(error);
-                    console.log(error);
-                }*/
+
         let meetings = await data.map(this.scheduledDayAsJson);
         return meetings;
     }

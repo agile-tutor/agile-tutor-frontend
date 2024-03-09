@@ -48,8 +48,6 @@ class TutorService {
                 html: `Bienvenido ${tutor.data.name}`, classes: 'rounded blue-app-semitr'
             });
             return tutor.data;
-            //                    ("success", success.headers.authorization);
-            //                    history.push("/");
         } catch (err) {
             M.toast({ html: "Datos invalidos o el tutor no existe", classes: 'rounded red-app-semitr' });
         }

@@ -302,16 +302,7 @@ class AlumnoService {
   }
 
   async addNewStudentToACourse(newStudent) {
-    /*        
-    attendances!!.map { AttendanceDTO(it.id, it.day, it.attended).aModelo() }.toMutableSet()
-    student.attendancepercentage = 0.0
-    student.blocked = blocked
-  
-            const response = await axios({
-          url: `${REST_SERVER_URL}/api/students/attendances/update/${course}`,
-          method: 'POST',
-          data: asistencias,
-    */
+
     let newStudentJson = JSON.stringify(newStudent)
     try {
       const studentJson = await axios({
