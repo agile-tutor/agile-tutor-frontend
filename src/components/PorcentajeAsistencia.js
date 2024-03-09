@@ -5,7 +5,7 @@ import CardAlumno from './CardAlumno';
 
 function PorcentajeAsistencia() {
 
-    const { tutor, tutorCourses, tutorCoursesWithAverage, tutorId/*, getAllCoursesFromTutor*/, studentsOfTutor, getStudentsOfTutor, updateTutorCoursesWithAverage, studentSurvey, getAllSurveys, handleActiveSection, porcentajeActual, changePercent } = useContext(Context);
+    const { tutor, tutorCourses, tutorCoursesWithAverage, tutorId, studentsOfTutor, getStudentsOfTutor, updateTutorCoursesWithAverage, studentSurvey, getAllSurveys, handleActiveSection, porcentajeActual, changePercent } = useContext(Context);
     const [viewsettings, setViewsettings] = useState(false);
 
     const handleChange = event => {
@@ -30,13 +30,6 @@ function PorcentajeAsistencia() {
         getStudentsOfTutor(tutorId);
         updateTutorCoursesWithAverage();
     }, [tutorCourses]);
-    /*
-        useEffect(() => {
-            getAllCoursesFromTutor(tutorId);
-                   getCourseData();
-                   console.log(courseData);
-        }, []);
-    */
 
     useEffect(() => {
         getAllSurveys();
@@ -53,7 +46,7 @@ function PorcentajeAsistencia() {
                         <h5 className='parametro-tabla'>Comisión {element.id}</h5>
                     </span>
                     {
-                        tutorCoursesWithAverage == undefined || !tutorCoursesWithAverage.length ? <div></div> :
+                        tutorCoursesWithAverage?.length ?
                             <span>
                                 <h5 className='parametro-tabla'>Asistecia promedio: {
 
@@ -61,6 +54,9 @@ function PorcentajeAsistencia() {
                                         ? '0%' :
                                         Math.round(tutorCoursesWithAverage.find(course => course.courseId == element.id).average * 100) / 100}%</h5>
                             </span>
+                            :
+                            <div>
+                            </div>
                     }
                     <span>
                         <h5 className='parametro-tabla' key={element.id}>Cantidad de Aprobados:
@@ -120,7 +116,7 @@ function PorcentajeAsistencia() {
 
             <div className='porcentajeAsistencia' >
                 {tutor.email == "admin" ?
-                    <h5 className="percentEditOption center" ><i className="material-icons" onClick={() => handleView()} onKeyDown={() => handleView()}>settings</i>Configurar porcentaje requerido
+                    <h5 className="percentEditOption center" ><i className="material-icons" role="button" onClick={() => handleView()} onKeyDown={() => handleView()}>settings</i>Configurar porcentaje requerido
                         {viewsettings ?
                             <form action="#">
                                 <p className="range-field">

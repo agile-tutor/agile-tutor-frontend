@@ -6,8 +6,8 @@ import M from "materialize-css";
 import logo from "../TIPLOGO.png"
 
 const Login = () => {
-    const [email, setemail] = useState('');
-    const [password, setpassword] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const { loginTutor, tutor, handleActiveSection, tutorId } = useContext(Context);
 
     const [inputsVisible, setInputsVisible] = useState([false, false])
@@ -56,7 +56,7 @@ const Login = () => {
                         id='inputLogin'
                         placeholder="email"
                         value={email}
-                        onChange={(e) => setemail(e.target.value)}
+                        onChange={(e) => setEmail(e.target.value)}
                     />
                     <div className="row" id='inputLoginPassWidth'>
                         <input
@@ -65,7 +65,7 @@ const Login = () => {
                             className='valdiate col s5'
                             id='inputLoginPass'
                             value={password}
-                            onChange={(e) => setpassword(e.target.value)}
+                            onChange={(e) => setPassword(e.target.value)}
                         />
                         <button id='btnLoginPass' className='col s1' onClick={() => toggleInputVisibility(0)} >
                             {inputsVisible[0] ? <i className="material-icons small iconwhite strikediag">remove_red_eye</i> :

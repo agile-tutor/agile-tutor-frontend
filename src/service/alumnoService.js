@@ -213,7 +213,7 @@ class AlumnoService {
           'Access-Control-Allow-Credentials': 'true'
         },
       })
-//      M.toast({ html: 'Tutorando actualizado con éxito!', classes: 'rounded blue-app-semitr' })
+      //      M.toast({ html: 'Tutorando actualizado con éxito!', classes: 'rounded blue-app-semitr' })
       return response
     } catch (e) {
       alert(e)
@@ -296,7 +296,7 @@ class AlumnoService {
       });
       return survey.data;
     } catch (err) {
-      M.toast({ html: "Se ha producido un error", classes: 'rounded red-app-semitr'});
+      M.toast({ html: "Se ha producido un error", classes: 'rounded red-app-semitr' });
       console.log(err);
     }
   }
@@ -325,9 +325,9 @@ class AlumnoService {
         },
       })
       const student = this.alumnoAsJson(studentJson);
-//      M.toast({
-//        html: `El tutorando ${student.name} se ha creado satisfactoriamente`, classes: 'rounded blue-app-semitr'
-//      });
+      //      M.toast({
+      //        html: `El tutorando ${student.name} se ha creado satisfactoriamente`, classes: 'rounded blue-app-semitr'
+      //      });
       return student;
     } catch (err) {
       M.toast({ html: "Datos invalidos o el tutorando ya existe", classes: 'rounded red-app-semitr' });
@@ -358,31 +358,6 @@ class AlumnoService {
       console.log(err);
     }
   }
-  /*
-  
-    async registerTutor(name, surname, email, password) {
-        try {
-            const tutorJson = await axios.post(`${REST_SERVER_URL}/api/tutor/register`,
-                {
-                    "name": name,
-                    "surname": surname,
-                    "email": email,
-                    "password": password
-                },
-            );
-            const tutor = this.tutorAsJson(tutorJson);
-            console.log(tutor)
-            M.toast({
-                html: `El usuario ${tutor.name} se ha creado satisfactoriamente`,
-                classes: "#388e3c green darken-2",
-            });
-            return tutor;
-        } catch (err) {
-            M.toast({ html: "Datos invalidos o el usuario ya existe", classes: "#c62828 red darken-3" });
-            console.log(err);
-        }
-    }
-  */
 }
 
 export const alumnoService = new AlumnoService()

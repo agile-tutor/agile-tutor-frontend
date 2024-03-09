@@ -316,12 +316,8 @@
 .titulo-tabla {
   padding: .5rem;
   margin: 0rem 0rem 0rem 0rem;
-  /*font-weight: bolder;
-    text-align: center;
-  justify-content: center;*/
   background-color: #eeeeee;
   border-bottom: 2px solid #1f849c;
-  /*text-shadow: .5px .5px .5px rgba(0, 0, 0, 0.479);*/
   width: 100vw;
   color: #1f849c;
   -webkit-text-fill-color: transparent;
@@ -330,7 +326,6 @@
   -webkit-text-stroke-color: #1f839c77;
   font-size: 1.5rem;
 }
-
 
 .material-tooltip {
   border-radius: 90px;
